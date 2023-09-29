@@ -7,7 +7,7 @@
     - [Set up Raspberry Pi](./installation/raspberry-pi.md)
     - [Set up email address](./installation/email.md)
     - [Install Hush Line](./installation/hush-line.md)
-    - [Sending a test message](./installation/test-message.md)
+    - [Send a test message](./installation/test-message.md)
     - [Regular use](./installation/regular-use.md)
     - [Optional e-ink display](./installation/epaper-display.md)
 - [Advanced](./advanced/index.md)
