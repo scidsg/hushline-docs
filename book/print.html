@@ -382,7 +382,7 @@ http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion
 </ol>
 <img width="350" src="https://github.com/scidsg/hushline/assets/28545431/8fd840d2-c2b9-4ba3-b0f8-bbe105c1baa2">
 <div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-set-up"><a class="header" href="#advanced-set-up">Advanced set up</a></h1>
-<p>This section contains some more advanced things you can do to make your Hush Line more secure and a bit more convenient to maintain.</p>
+<p>This section contains some more advanced things you can do to make your Hush Line a bit more convenient to maintain.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-ssh-to-access-your-raspberry-pi"><a class="header" href="#using-ssh-to-access-your-raspberry-pi">Using SSH to access your Raspberry Pi</a></h1>
 <p>If you don't want to plug in a monitor and keyboard into your Raspberry Pi every time you need to use it, you can remotely access using a tool called <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>.</p>
 <p>To do this, you first need to find out your Raspberry Pi's IP address. </p>
@@ -464,22 +464,6 @@ http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
