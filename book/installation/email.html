@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installation - Hush Line Field Manual</title>
+        <title>Set up email address - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../installation/index.html" class="active"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html" class="active"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,18 +166,45 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installing-hush-line"><a class="header" href="#installing-hush-line">Installing Hush Line</a></h1>
-<p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
+                        <h1 id="setting-up-an-email-address-for-your-hush-line"><a class="header" href="#setting-up-an-email-address-for-your-hush-line">Setting up an email address for your Hush Line</a></h1>
+<p>Let's learn a little more about what Hush Line actually does. </p>
+<p>When a community member hits the Submit button on your Hush Line form, Hush Line does two things: It encrypts their message, and then it emails it to your Hush Line email address, which we're about to set up.</p>
+<p>We recommend making a dedicated email account for Hush Line. You can use your organization email system, GMail, or another provider. (Note that this email address will be publicly displayed on your Hush Line site.)</p>
+<p>Either way, we need to take some careful steps to ensure Hush Line can use it and that your messages will be properly encrypted. In the steps below, we'll use GMail. We'll also assume you're using a Mac computer.</p>
+<h2 id="create-a-new-gmail-account-for-hush-line"><a class="header" href="#create-a-new-gmail-account-for-hush-line">Create a new GMail account for Hush Line</a></h2>
+<ol>
+<li>In your browser, head over to <a href="mail.google.com/">mail.google.com</a> to create a new GMail account.</li>
+<li>Once created, turn on 2-factor authentication.</li>
+<li>Create an <a href="https://support.google.com/accounts/answer/185833?hl=en">&quot;app password&quot;</a> for Hush Line to use. Write this down for later use.</li>
+<li>Open Apple Mail and add this new GMail account.</li>
+</ol>
+<h2 id="create-a-pgp-key-for-this-email-account-to-use"><a class="header" href="#create-a-pgp-key-for-this-email-account-to-use">Create a PGP key for this email account to use</a></h2>
+<p>Next, we need to give Hush Line a way to encrypt our sources' emails so that only we can read messages submitted to Hush Line (and not even Google can read them). To do that, we're going to use an encryption system called PGP, which stands for &quot;Pretty Good Privacy&quot;. </p>
+<h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
+<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
+<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
+<h3 id="creating-our-envelopes-and-letter-opener-on-a-mac"><a class="header" href="#creating-our-envelopes-and-letter-opener-on-a-mac">Creating our envelopes and letter opener (on a Mac)</a></h3>
+<p>IMPORTANT: These next steps you'll need to do on the computer than you want to be able to read your Hush Line messages on. We're here going to assume it's a Mac. </p>
+<p>To create our envelopes and letter opener,we're going to use some software called <a href="https://gpgtools.org/">GPG tools</a>. </p>
+<p>As you can probably guess, the envelopes and letter opener have more technical names in the PGP system. Anyone who knows your <strong>public key</strong> can make your envelopes and the letter opener is called your <strong>private key</strong>. A public key and a private key is called a key-pair.</p>
+<p>Once you've installed GPG Tools, open a tool called GPG Keychain. Click &quot;New&quot; at the top of the window to create a key-pair (a public and private key) for our new Hush Line email address. Enter your Hush Line email address. Then choose a strong password or passphrase for your PGP password -- this will protect your private key (letter opener).</p>
+<p>Your private key (letter opener) will be stored on the computer you're using to set up this email account. As mentioned above, this means that only someone using this computer will be able to read the messages sent to your Hush Line.</p>
+<p>If you or someone else logged in to your Hush Line email address on a different computer (and thus did not have your private key), all your Hush Line messages would remain encrypted and unreadable.</p>
+<h3 id="uploading-our-public-key-the-envelopes"><a class="header" href="#uploading-our-public-key-the-envelopes">Uploading our public key (the envelopes)</a></h3>
+<p>Next, we need to upload our public key to a website.</p>
+<p>You can do this with GPG Keychain by clicking &quot;Upload Public Key&quot;. (Remember, it's fine to share your envelopes, but never share the letter opener [the private key].) You'll receive a confirmation email. Click the link to verify that you indeed have access to the new Hush Line email address.</p>
+<p>This address verification process will take you to a URL that you will need later. It should look something like <code>https://keys.openpgp.org/vks/v1/by-fingerprint/D278DD437B275C8668989A4B425C6C74405C3EB1</code>. This is essentially the URL for your public PGP key. For now, paste it into a note or text file. (If you didn't save it, you can visit <a href="https://keys.openpgp.org/">https://keys.openpgp.org</a> and search for your Hush Line email address and find it that way).</p>
+<p>Next, we get to install Hush Line back on our Raspberry Pi.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../what-is-hush-line.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../installation/raspberry-pi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../installation/hardware.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../installation/hush-line.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -187,17 +214,33 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../what-is-hush-line.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../installation/raspberry-pi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../installation/hardware.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../installation/hush-line.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

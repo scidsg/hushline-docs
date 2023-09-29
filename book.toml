@@ -1,0 +1,6 @@
+[book]
+authors = ["Sam Schlinkert"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Hush Line Field Manual"

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Required hardware - Hush Line Field Manual</title>
+        <title>Optional e-ink display - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html" class="active"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html" class="active"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,27 +166,38 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="required-hardware"><a class="header" href="#required-hardware">Required Hardware</a></h1>
-<p>We're going to &quot;run&quot; Hush Line on a small, cheap computer called a Raspberry Pi. We recommend Raspberry Pi 4 Model B. Here are the Amazon links to the things we'll need:</p>
-<ul>
-<li>One <a href="https://www.amazon.com/gp/product/B07TC2BK1X/ref=ox_sc_act_title_4?smid=A1JX327N91FZPX&amp;th=1">Raspberry Pi 4 Model B</a></li>
-<li>One <a href="https://www.amazon.com/gp/product/B07TYQRXTK/ref=ox_sc_act_title_7?smid=A30ZYR2W3VAJ0A&amp;psc=1">Raspberry Pi 4 power supply</a></li>
-<li>A <a href="https://www.amazon.com/gp/product/B073JYC4XM/ref=ox_sc_act_title_6?smid=A2TWIRHLRS9O1T&amp;psc=1">MicroSD card</a>, which will serve as the Raspberry Pi's hard drive.</li>
-<li>A MicroSD card <strong>reader</strong> will be needed for initial set up. You might have one already, but if not <a href="https://www.amazon.com/SanDisk-MobileMate-microSD-Card-Reader/dp/B07G5JV2B5/ref=sr_1_3?keywords=SanDisk-MobileMate-microSD-Card-Reader&amp;qid=1695826928&amp;sr=8-3">here's one on Amazon</a>.</li>
-<li>Optional: <a href="https://www.amazon.com/gp/product/B075FQKSZ9/ref=ox_sc_act_title_5?smid=A50C560NZEBBE&amp;psc=1">An e-ink display</a> to show the status of your Hush Line. </li>
-</ul>
-<p>When setting up your Raspberry Pi to be your Hush Line, you'll need need access to a keyboard and <strong>a computer monitor</strong>. You'll have to be able to plug the Raspberry Pi into that computer monitor. If you have a monitor with an HDMI port, you'll need an HDMI-to-Micro HDMI cable like <a href="https://www.amazon.com/gp/product/B07KSDB25X/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&amp;psc=1">this one</a>.</p>
-<p>Once you've rounded all that up, it's time to set up your Raspberry Pi.</p>
+                        <h1 id="add-an-e-ink-display-optional"><a class="header" href="#add-an-e-ink-display-optional">Add an e-ink display (optional)</a></h1>
+<p>This isn't necessary to run your Hush Line, but if you'd like to be able to check the status of your Hush Line at a glance, or if you'd like your Hush Line Raspberry Pi to display your Hush Line URL, you might want to add an e-ink display to your Hush Line.</p>
+<ol>
+<li>
+<p>Purchase a Waveshare 2.7inch E-Ink Display. Here's <a href="https://www.amazon.com/gp/product/B075FQKSZ9/ref=ox_sc_act_title_5?smid=A50C560NZEBBE&amp;psc=1">an Amazon link</a>.</p>
+</li>
+<li>
+<p>With your Raspberry Pi off, attach the Waveshare display to your Pi's GPIO pins. Make sure it's attached securely.</p>
+</li>
+<li>
+<p>Plug in and start up your Raspberry Pi. On your Raspberry Pi, open the Terminal app. Type or paste this command and then hit enter:</p>
+<pre><code>curl -sSL https://raw.githubusercontent.com/scidsg/hushline/main/scripts/waveshare-2_7in-eink-display.sh | bash
+</code></pre>
+</li>
+<li>
+<p>Follow the prompts to enable the SPI interface.</p>
+</li>
+<li>
+<p>When the installation completes, the device will reboot. You should see the Hush Line splash screen, followed by information about your tip line. When everything is running smoothly, you'll see something like this:</p>
+</li>
+</ol>
+<img width="350" src="https://github.com/scidsg/hushline/assets/28545431/8fd840d2-c2b9-4ba3-b0f8-bbe105c1baa2">
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../installation/regular-use.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../installation/raspberry-pi.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../advanced/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -196,17 +207,33 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../installation/regular-use.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../installation/raspberry-pi.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../advanced/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

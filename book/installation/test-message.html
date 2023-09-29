@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Regular use - Hush Line Field Manual</title>
+        <title>Sending a test message - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html" class="active"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html" class="active"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,25 +166,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="regular-use"><a class="header" href="#regular-use">Regular use</a></h1>
-<p>Now you're ready for day-to-day Hush Line use. </p>
-<h2 id="how-to-leave-your-raspberry-pi"><a class="header" href="#how-to-leave-your-raspberry-pi">How to leave your Raspberry Pi</a></h2>
-<p>For your Hush Line to work, all you need to do is keep your Raspberry Pi powered and connected to the internet (you don't need to have a monitor or keyboard plugged into it all the time.) Hush Line will run 24/7, and even keep itself updated automatically.</p>
-<h2 id="promoting-your-hush-line"><a class="header" href="#promoting-your-hush-line">Promoting your Hush Line</a></h2>
-<p>Now we need to get some messages from your community.</p>
-<p>To do this, share/publicize your Hush Line site URL to your community. Be sure to include a link to <a href="https://torproject.org/download">download and install Tor Browser</a>, which they'll need to access your Hush Line site. You can share this information via email, your work chat app, on social media platforms, fliers, and even business cards if appropriate.</p>
-<p>After that, all you need to do is monitor your Hush Line email address's inbox, using Apple Mail on the computer you set up your PGP keys on. When attempting to read a Hush Line message, you'll periodically be prompted to enter your PGP password again. </p>
-<p>Again, only people using this computer, who know your PGP password, will be able you read your Hush Line messages.</p>
+                        <h1 id="sending-a-test-message-using-hush-line"><a class="header" href="#sending-a-test-message-using-hush-line">Sending a test message using Hush Line</a></h1>
+<p>Now that Hush Line is set up, let's send a test message. </p>
+<ol>
+<li>In Tor Browser, visit your Hush Line site URL (it will look something like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code>). You should see your Hush Line form.</li>
+<li>Enter a test message like &quot;Here's a secret message!&quot;</li>
+<li>Click the submit button.</li>
+<li>Open Apple Mail. In a moment you should receive an email with the subject line &quot;🤫 New Hush Line Message Received&quot;. </li>
+<li>When you try to read the email, Apple Mail should prompt you to enter your Hush Line PGP password. Once that's entered, you should be able to read your test message.</li>
+</ol>
+<p>Congratulations! Your Hush Line is now ready for regular, day-to-day use.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/test-message.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../installation/hush-line.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../installation/epaper-display.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../installation/regular-use.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -194,17 +195,33 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/test-message.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../installation/hush-line.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../installation/epaper-display.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../installation/regular-use.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
