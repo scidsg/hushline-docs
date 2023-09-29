@@ -2,7 +2,7 @@
 
 Hush Line provides a safe way to receive private messages from your community when confidentiality is a must.
 
-![Hush Line's web form](../img/finish-hl-example.png)
+![Hush Line's web form](./img/finish-hl-example.png)
 
 Hush Line is a website with a form.
 
