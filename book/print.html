@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/prereqs.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prereqs/mac.html"><strong aria-hidden="true">3.1.</strong> Mac</a></li></ol></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/email.html"><strong aria-hidden="true">4.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">4.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">4.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">4.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">4.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -181,6 +181,55 @@
 <p>Have you ever used Google Forms? You create a form, say a text box, and send the URL to people to fill out. When a person fills in your form and hits submit, their response gets automatically put into a Google Spreadsheet. </p>
 <p>This is convenient for things like, surveying food choices or picking a date that works for most people. But what if you're asking people to share more sensitive information? To make them feel as safe as possible, we would want a system such that only you can read the responses. Not other users, not your company's IT department, not even Google. Furthermore, we really don't even want to know anything about the submitter that they don't choose to reveal.</p>
 <p>This is what Hush Line provides. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
+<p>Before installing Hush Line, we need to set up a couple of things so that everything goes according to plan. We'll configure your SMTP settings, PGP keys, and mail client.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="macos"><a class="header" href="#macos">MacOS</a></h1>
+<h2 id="software-in-this-guide"><a class="header" href="#software-in-this-guide">Software in this guide</a></h2>
+<ul>
+<li><a href="https://gpgtools.org">GPGTools</a></li>
+<li><a href="https://torproject.org/download">Tor Browser</a></li>
+<li><a href="https://gmail.com">Gmail</a></li>
+</ul>
+<h2 id="gpgtools"><a class="header" href="#gpgtools">GPGTools</a></h2>
+<p>Hush Line uses PGP to protect your messages. The GPG Suite desktop application contains all the tools you need to create keys and decrypt your messages.</p>
+<h3 id="step-1-download-and-install-gpg-suite"><a class="header" href="#step-1-download-and-install-gpg-suite">Step 1: Download and Install GPG Suite</a></h3>
+<p>Go to <code>https://gpgtools.org</code> and download the GPG Suite. Run the downloaded files to install the suite.</p>
+<img width="640px" src="prereqs/../img/pgp-installer.png">
+<h3 id="step-2-create-and-upload-your-keys"><a class="header" href="#step-2-create-and-upload-your-keys">Step 2: Create and Upload Your Keys</a></h3>
+<ul>
+<li>Press Command + Spacebar to open Spotlight and search for GPG Keychain.</li>
+<li>Click &quot;New&quot; at the top of the window. Enter the email address you want messages to be encrypted to, then create a strong password.</li>
+<li>After creating the keys, you'll see a dialog with the option to upload your public key. Choose this so Hush Line can find your key to encrypt incoming messages.</li>
+<li>Before it's discoverable online, you'll need to verify your email address. Go to the email account you entered and look for a message from <code>keyserver@keys.openpgp.org</code>. </li>
+<li>After verifying your address, you'll be brought to a site confirming that your key has been published. Click your email address to get your key's URL. You'll see an address that looks like this:  <code>https://keys.openpgp.org/vks/v1/by-fingerprint/F75C5CEF4E358AE820AA75C9A3CCE90F2B08CA39</code>. Copy this address into a notepad.</li>
+<li>Now, anyone can send an encrypted message to you with your public key, and the only way to decrypt and read the message is to have your computer, private key, and the key's password.</li>
+</ul>
+<img src="prereqs/../img/new-key.png">
+<h2 id="email-setup"><a class="header" href="#email-setup">Email Setup</a></h2>
+<h3 id="step-3-gmail-app-password"><a class="header" href="#step-3-gmail-app-password">Step 3: Gmail App-Password</a></h3>
+<p>For Hush Line to send your message, it needs an SMTP-compatible email address. We'll use Google's Gmail.</p>
+<ul>
+<li>So that we don't leak our real password, we will create an app-password. Click on your avatar, then &quot;Manage your Google Account.&quot;</li>
+<li>On the left column, click &quot;Security,&quot; then scroll to 2-Step Verification.</li>
+<li>You'll need to configure 2-Step Verification to get an app 
+password.</li>
+<li>Next, back on the Security tab, find and click on 2-Step Verification again. </li>
+<li>Scroll to the bottom and look for &quot;App passwords.&quot; Create a new password for Hush Line and copy it to a notepad.</li>
+</ul>
+<img src="prereqs/../img/gmail.png">
+<h3 id="step-4-apple-mail"><a class="header" href="#step-4-apple-mail">Step 4: Apple Mail</a></h3>
+<p>GPG Suite integrates with Apple Mail so you can seamlessly and automatically decrypt your Hush Line messages.</p>
+<ul>
+<li>Press Command + Spacebar to use Spotlight to search for Mail. </li>
+<li>Click on Google and log in to receive messages sent to your Gmail account.</li>
+</ul>
+<img src="prereqs/../img/apple-mail.png">
+<h2 id="tor"><a class="header" href="#tor">Tor</a></h2>
+<h3 id="step-5-tor-browser"><a class="header" href="#step-5-tor-browser">Step 5: Tor Browser</a></h3>
+<p>In order to access your Hush Line for a Tor-only install, you'll need Tor Browser. Head to <a href="https://torproject.org/download">https://torproject.org/download</a> to download it. </p>
+<img src="prereqs/../img/tor.png">
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>🎉 Congratulations! You just set up everything you need to prepare to install Hush Line!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line"><a class="header" href="#installing-hush-line">Installing Hush Line</a></h1>
 <p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="required-hardware"><a class="header" href="#required-hardware">Required Hardware</a></h1>
