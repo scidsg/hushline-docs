@@ -1,5 +1,5 @@
 [book]
-authors = ["Sam Schlinkert"]
+authors = ["Sam Schlinkert", "Glenn Sorrentino"]
 language = "en"
 multilingual = false
 src = "src"
