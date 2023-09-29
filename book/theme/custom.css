@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'Sans';
+    src: url('fonts/sans/Atkinson-Hyperlegible-Regular.woff2') format('woff2'), 
+    	 url('fonts/sans/Atkinson-Hyperlegible-Regular.woff') format('woff'); 
+}
+
+@font-face {
+    font-family: 'Sans Bold';
+    src: url('fonts/sans/Atkinson-Hyperlegible-Bold.woff2') format('woff2'), 
+    	 url('fonts/sans/Atkinson-Hyperlegible-Bold.woff') format('woff'); 
+}
+
+@font-face {
+    font-family: 'Mono';
+    src: url('fonts/mono/IBMPlexMono-Regular.woff2') format('woff2'), 
+    	 url('fonts/mono/IBMPlexMono-Regular.woff') format('woff'); 
+}
+
+/* Use the custom font in your styles, for example: */
+body {
+    font-family: 'Sans', sans-serif;
+    color: #333 !important; 
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Sans Bold', sans-serif; 
+	font-weight: initial;
+	color: #333 !imporant;
+}
+
+.content .header:link {
+	color: #333;
+}
+
+main h1 {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+	transform: scale(1.2);
+	transform-origin: left;
+}
+
+.content main {
+	margin-left: inherit;
+	margin-right: inherit;
+}
+
+.menu-title {
+	font-family: 'Mono', monospace; 
+	font-weight: inherit;
+	font-size: 1.325rem;
+}
+
+#menu-bar-hover-placeholder {
+	height: 64px;
+}
+
+#theme-toggle {
+	display: none;
+}
+
+.sidebar .sidebar-scrollbox {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.chapter li.chapter-item {
+	margin-top: 1.25rem;
+}
+
+#menu-bar i {
+	transform: scale(1.1);
+}
+
+.chapter li a.active {
+	color: #333;
+	font-weight: initial;
+	font-family: 'Sans Bold', sans-serif;
+}
+
+.sidebar {
+	border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+#menu-bar.bordered {
+	border-bottom: none;
+}
+
+strong {
+	font-weight: initial;
+}

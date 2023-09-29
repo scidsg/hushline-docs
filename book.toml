@@ -4,3 +4,5 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Hush Line Field Manual"
+[output.html]
+additional-css = ["theme/custom.css", "theme/fonts/sans/Atkinson-Hyperlegible-Regular.woff2", "theme/fonts/sans/Atkinson-Hyperlegible-Regular.woff", "theme/fonts/sans/Atkinson-Hyperlegible-Bold.woff2", "theme/fonts/sans/Atkinson-Hyperlegible-Bold.woff"]
