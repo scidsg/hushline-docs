@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hush Line Field Manual</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">3.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">3.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/email.html"><strong aria-hidden="true">3.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">3.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">3.5.</strong> Sending a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">3.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">3.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">4.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="advanced/ssh.html"><strong aria-hidden="true">4.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="advanced/use-existing-email.html"><strong aria-hidden="true">4.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hush Line Field Manual</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hush-line-field-manual"><a class="header" href="#hush-line-field-manual">Hush Line Field Manual</a></h1>
+<p><a href="https://hushline.app/">Hush Line</a> is a lightweight, secure, and anonymous tip line. It's easy to install and to use.</p>
+<p>Think of a box in your office or school in which people can slip in anonymous messages, with a lock on it that only you have the key to open.</p>
+<p>It's intended for journalists and newsrooms to offer a public tip line, by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers for anonymous employee reporting.</p>
+<p>This guide will show you to set up your own Hush Line. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-does-hush-line-do"><a class="header" href="#what-does-hush-line-do">What does Hush Line do?</a></h1>
+<p>Hush Line provides a safe way to receive private messages from your community when confidentiality is a must.</p>
+<p><img src="../img/finish-hl-example.png" alt="Hush Line's web form" /></p>
+<p>Hush Line is a website with a form.</p>
+<p>When a member of your community writes a message into the form and clicks the submit button, Hush Line encrypts their message in such a way that only you can read it, then emails it to you.</p>
+<h2 id="i-still-dont-get-it-conceptually"><a class="header" href="#i-still-dont-get-it-conceptually">I still don't get it, conceptually</a></h2>
+<p>Have you ever used Google Forms? You create a form, say a text box, and send the URL to people to fill out. When a person fills in your form and hits submit, their response gets automatically put into a Google Spreadsheet. </p>
+<p>This is convenient for things like, surveying food choices or picking a date that works for most people. But what if you're asking people to share more sensitive information? To make them feel as safe as possible, we would want a system such that only you can read the responses. Not other users, not your company's IT department, not even Google. Furthermore, we really don't even want to know anything about the submitter that they don't choose to reveal.</p>
+<p>This is what Hush Line provides. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line"><a class="header" href="#installing-hush-line">Installing Hush Line</a></h1>
+<p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="required-hardware"><a class="header" href="#required-hardware">Required Hardware</a></h1>
+<p>We're going to &quot;run&quot; Hush Line on a small, cheap computer called a Raspberry Pi. We recommend Raspberry Pi 4 Model B. Here are the Amazon links to the things we'll need:</p>
+<ul>
+<li>One <a href="https://www.amazon.com/gp/product/B07TC2BK1X/ref=ox_sc_act_title_4?smid=A1JX327N91FZPX&amp;th=1">Raspberry Pi 4 Model B</a></li>
+<li>One <a href="https://www.amazon.com/gp/product/B07TYQRXTK/ref=ox_sc_act_title_7?smid=A30ZYR2W3VAJ0A&amp;psc=1">Raspberry Pi 4 power supply</a></li>
+<li>A <a href="https://www.amazon.com/gp/product/B073JYC4XM/ref=ox_sc_act_title_6?smid=A2TWIRHLRS9O1T&amp;psc=1">MicroSD card</a>, which will serve as the Raspberry Pi's hard drive.</li>
+<li>A MicroSD card <strong>reader</strong> will be needed for initial set up. You might have one already, but if not <a href="https://www.amazon.com/SanDisk-MobileMate-microSD-Card-Reader/dp/B07G5JV2B5/ref=sr_1_3?keywords=SanDisk-MobileMate-microSD-Card-Reader&amp;qid=1695826928&amp;sr=8-3">here's one on Amazon</a>.</li>
+<li>Optional: <a href="https://www.amazon.com/gp/product/B075FQKSZ9/ref=ox_sc_act_title_5?smid=A50C560NZEBBE&amp;psc=1">An e-ink display</a> to show the status of your Hush Line. </li>
+</ul>
+<p>When setting up your Raspberry Pi to be your Hush Line, you'll need need access to a keyboard and <strong>a computer monitor</strong>. You'll have to be able to plug the Raspberry Pi into that computer monitor. If you have a monitor with an HDMI port, you'll need an HDMI-to-Micro HDMI cable like <a href="https://www.amazon.com/gp/product/B07KSDB25X/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&amp;psc=1">this one</a>.</p>
+<p>Once you've rounded all that up, it's time to set up your Raspberry Pi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-your-raspberry-pi"><a class="header" href="#setting-up-your-raspberry-pi">Setting up your Raspberry Pi</a></h1>
+<p>If you didn't know, your Raspberry Pi doesn't come with an operating system. Don't panic! We're going to install one now called Raspberry Pi OS.</p>
+<p>The way this works is we're going to put Raspberry Pi OS onto your microSD card. To do this, you need a program called Raspberry Pi Imager and a computer (not your Raspberry Pi).</p>
+<ol>
+<li>On a computer, <a href="https://www.raspberrypi.com/software/">download Raspberry Pi Imager here</a> and install it.</li>
+<li>Insert your MicroSD card into your computer.</li>
+<li>Start the Raspberry Pi Imager program.</li>
+<li>In the Imager program, click &quot;CHOOSE OS&quot;. We want &quot;Raspberry Pi OS (64-bit)&quot; (it may be under &quot;Raspberry Pi OS (other)&quot;.</li>
+<li>Click &quot;CHOOSE STORAGE&quot; and select your MicroSD card.</li>
+<li>Click the gear button in the bottom-right of the window. Enter your wi-fi network information. Also, choose to &quot;Enable SSH&quot; and create a strong password for your Raspberry Pi. Save this password some safe. e.g. by writing it down or in a password manager.</li>
+<li>Click the &quot;WRITE&quot; button and wait a moment. This will &quot;write&quot; Raspberry Pi OS to your MicroSD card.</li>
+</ol>
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ntaXWS8Lk34?si=U5zZuFSYd1-MNRpO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+<h2 id="starting-up-your-raspberry-pi-for-the-first-time"><a class="header" href="#starting-up-your-raspberry-pi-for-the-first-time">Starting up your Raspberry Pi for the first time</a></h2>
+<p>Now we're ready to turn on our Raspberry Pi. </p>
+<ol>
+<li>Eject your microSD from your computer. Place it in to the Raspberry Pi.</li>
+<li>Plug your Raspberry Pi into a computer monitor, using a Micro HDMI cable.</li>
+<li>Plug a keyboard into your Raspberry Pi.</li>
+<li>Plug your Raspberry Pi power supply into your Raspberry and into an outlet.</li>
+</ol>
+<p>Your Raspberry Pi should turn on once you plug it in. </p>
+<p>Next, we're going to set up an email address for Hush Line to use.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-an-email-address-for-your-hush-line"><a class="header" href="#setting-up-an-email-address-for-your-hush-line">Setting up an email address for your Hush Line</a></h1>
+<p>Let's learn a little more about what Hush Line actually does. </p>
+<p>When a community member hits the Submit button on your Hush Line form, Hush Line does two things: It encrypts their message, and then it emails it to your Hush Line email address, which we're about to set up.</p>
+<p>We recommend making a dedicated email account for Hush Line. You can use your organization email system, GMail, or another provider. (Note that this email address will be publicly displayed on your Hush Line site.)</p>
+<p>Either way, we need to take some careful steps to ensure Hush Line can use it and that your messages will be properly encrypted. In the steps below, we'll use GMail. We'll also assume you're using a Mac computer.</p>
+<h2 id="create-a-new-gmail-account-for-hush-line"><a class="header" href="#create-a-new-gmail-account-for-hush-line">Create a new GMail account for Hush Line</a></h2>
+<ol>
+<li>In your browser, head over to <a href="installation/mail.google.com/">mail.google.com</a> to create a new GMail account.</li>
+<li>Once created, turn on 2-factor authentication.</li>
+<li>Create an <a href="https://support.google.com/accounts/answer/185833?hl=en">&quot;app password&quot;</a> for Hush Line to use. Write this down for later use.</li>
+<li>Open Apple Mail and add this new GMail account.</li>
+</ol>
+<h2 id="create-a-pgp-key-for-this-email-account-to-use"><a class="header" href="#create-a-pgp-key-for-this-email-account-to-use">Create a PGP key for this email account to use</a></h2>
+<p>Next, we need to give Hush Line a way to encrypt our sources' emails so that only we can read messages submitted to Hush Line (and not even Google can read them). To do that, we're going to use an encryption system called PGP, which stands for &quot;Pretty Good Privacy&quot;. </p>
+<h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
+<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
+<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
+<h3 id="creating-our-envelopes-and-letter-opener-on-a-mac"><a class="header" href="#creating-our-envelopes-and-letter-opener-on-a-mac">Creating our envelopes and letter opener (on a Mac)</a></h3>
+<p>IMPORTANT: These next steps you'll need to do on the computer than you want to be able to read your Hush Line messages on. We're here going to assume it's a Mac. </p>
+<p>To create our envelopes and letter opener,we're going to use some software called <a href="https://gpgtools.org/">GPG tools</a>. </p>
+<p>As you can probably guess, the envelopes and letter opener have more technical names in the PGP system. Anyone who knows your <strong>public key</strong> can make your envelopes and the letter opener is called your <strong>private key</strong>. A public key and a private key is called a key-pair.</p>
+<p>Once you've installed GPG Tools, open a tool called GPG Keychain. Click &quot;New&quot; at the top of the window to create a key-pair (a public and private key) for our new Hush Line email address. Enter your Hush Line email address. Then choose a strong password or passphrase for your PGP password -- this will protect your private key (letter opener).</p>
+<p>Your private key (letter opener) will be stored on the computer you're using to set up this email account. As mentioned above, this means that only someone using this computer will be able to read the messages sent to your Hush Line.</p>
+<p>If you or someone else logged in to your Hush Line email address on a different computer (and thus did not have your private key), all your Hush Line messages would remain encrypted and unreadable.</p>
+<h3 id="uploading-our-public-key-the-envelopes"><a class="header" href="#uploading-our-public-key-the-envelopes">Uploading our public key (the envelopes)</a></h3>
+<p>Next, we need to upload our public key to a website.</p>
+<p>You can do this with GPG Keychain by clicking &quot;Upload Public Key&quot;. (Remember, it's fine to share your envelopes, but never share the letter opener [the private key].) You'll receive a confirmation email. Click the link to verify that you indeed have access to the new Hush Line email address.</p>
+<p>This address verification process will take you to a URL that you will need later. It should look something like <code>https://keys.openpgp.org/vks/v1/by-fingerprint/D278DD437B275C8668989A4B425C6C74405C3EB1</code>. This is essentially the URL for your public PGP key. For now, paste it into a note or text file. (If you didn't save it, you can visit <a href="https://keys.openpgp.org/">https://keys.openpgp.org</a> and search for your Hush Line email address and find it that way).</p>
+<p>Next, we get to install Hush Line back on our Raspberry Pi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line-1"><a class="header" href="#installing-hush-line-1">Installing Hush Line</a></h1>
+<p>Now go back to your Raspberry. You'll need a monitor and keyboard plugged in for this step.</p>
+<h2 id="what-youll-need-to-know-for-this-step"><a class="header" href="#what-youll-need-to-know-for-this-step">What you'll need to know for this step</a></h2>
+<p>Here is the information you'll need (all of which you should have at this point):</p>
+<ul>
+<li>Your Hush Line email address</li>
+<li>An <a href="https://support.google.com/accounts/answer/185833?hl=en">app password</a> for that email address</li>
+<li>The URL of your public PGP key</li>
+<li>The password for your Raspberry Pi</li>
+</ul>
+<h2 id="installing-hush-line-2"><a class="header" href="#installing-hush-line-2">Installing Hush Line</a></h2>
+<p>Over on your Raspberry Pi, you'll need to now open an app called Terminal. Into that app you're going to type this exactly: </p>
+<pre><code class="language-bash">sudo su
+</code></pre>
+<p>and hit enter. You'll be asked for the password for your Raspberry Pi you set earlier (don't worry if nothing happens as you type, just hit enter when you're done typing the password).</p>
+<p>Next, type or paste (command+shift+v) this exactly:</p>
+<pre><code class="language-bash">curl -sSL https://install.hushline.app | bash
+</code></pre>
+<p>and then hit enter. You should see a flurry of white-on-black text, and then a series of prompts will ask you questions. Here are the answers you should use: </p>
+<ol>
+<li>We want to set up Hush Line as &quot;Tor Only&quot;</li>
+<li>Enter your Hush Line email address we created earlier</li>
+<li>For SMTP server address, enter <code>smtp.gmail.com</code></li>
+<li>For password of your email address, enter the App Password you created</li>
+<li>For SMTP server port, enter <code>465</code></li>
+<li>For address of your PGP key, enter the keys.openpgp.org URL we saved earlier, which should look like <code>https://keys.openpgp.org/vks/v1/by-fingerprint/D278DD437B275C8668989A4B425C6C74405C3EB1</code>.</li>
+</ol>
+<p>Once you're finished with the prompts, Hush Line will then be installed on your Raspberry Pi. If all went well, you should see a message similar to this in your Terminal.</p>
+<pre><code>✅ Installation complete!
+                                            
+Hush Line is a product by Science &amp; Design. 
+Learn more about us at https://scidsg.org.
+Have feedback? Send us an email at hushline@scidsg.org.
+
+● Hush Line is running
+http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion
+</code></pre>
+<p>To visit your Hush Line, over on your computer <a href="https://torproject.org/download">download the Tor Browser</a> and enter the <code>.onion</code> address that you see. You should see your new Hush Line form to submit information privately and securely.</p>
+<p>Note that you can now unplug the keyboard and monitor from your Raspberry Pi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-a-test-message-using-hush-line"><a class="header" href="#sending-a-test-message-using-hush-line">Sending a test message using Hush Line</a></h1>
+<p>Now that Hush Line is set up, let's send a test message. </p>
+<ol>
+<li>In Tor Browser, visit your Hush Line site URL (it will look something like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code>). You should see your Hush Line form.</li>
+<li>Enter a test message like &quot;Here's a secret message!&quot;</li>
+<li>Click the submit button.</li>
+<li>Open Apple Mail. In a moment you should receive an email with the subject line &quot;🤫 New Hush Line Message Received&quot;. </li>
+<li>When you try to read the email, Apple Mail should prompt you to enter your Hush Line PGP password. Once that's entered, you should be able to read your test message.</li>
+</ol>
+<p>Congratulations! Your Hush Line is now ready for regular, day-to-day use.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="regular-use"><a class="header" href="#regular-use">Regular use</a></h1>
+<p>Now you're ready for day-to-day Hush Line use. </p>
+<h2 id="how-to-leave-your-raspberry-pi"><a class="header" href="#how-to-leave-your-raspberry-pi">How to leave your Raspberry Pi</a></h2>
+<p>For your Hush Line to work, all you need to do is keep your Raspberry Pi powered and connected to the internet (you don't need to have a monitor or keyboard plugged into it all the time.) Hush Line will run 24/7, and even keep itself updated automatically.</p>
+<h2 id="promoting-your-hush-line"><a class="header" href="#promoting-your-hush-line">Promoting your Hush Line</a></h2>
+<p>Now we need to get some messages from your community.</p>
+<p>To do this, share/publicize your Hush Line site URL to your community. Be sure to include a link to <a href="https://torproject.org/download">download and install Tor Browser</a>, which they'll need to access your Hush Line site. You can share this information via email, your work chat app, on social media platforms, fliers, and even business cards if appropriate.</p>
+<p>After that, all you need to do is monitor your Hush Line email address's inbox, using Apple Mail on the computer you set up your PGP keys on. When attempting to read a Hush Line message, you'll periodically be prompted to enter your PGP password again. </p>
+<p>Again, only people using this computer, who know your PGP password, will be able you read your Hush Line messages.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="add-an-e-ink-display-optional"><a class="header" href="#add-an-e-ink-display-optional">Add an e-ink display (optional)</a></h1>
+<p>This isn't necessary to run your Hush Line, but if you'd like to be able to check the status of your Hush Line at a glance, or if you'd like your Hush Line Raspberry Pi to display your Hush Line URL, you might want to add an e-ink display to your Hush Line.</p>
+<ol>
+<li>
+<p>Purchase a Waveshare 2.7inch E-Ink Display. Here's <a href="https://www.amazon.com/gp/product/B075FQKSZ9/ref=ox_sc_act_title_5?smid=A50C560NZEBBE&amp;psc=1">an Amazon link</a>.</p>
+</li>
+<li>
+<p>With your Raspberry Pi off, attach the Waveshare display to your Pi's GPIO pins. Make sure it's attached securely.</p>
+</li>
+<li>
+<p>Plug in and start up your Raspberry Pi. On your Raspberry Pi, open the Terminal app. Type or paste this command and then hit enter:</p>
+<pre><code>curl -sSL https://raw.githubusercontent.com/scidsg/hushline/main/scripts/waveshare-2_7in-eink-display.sh | bash
+</code></pre>
+</li>
+<li>
+<p>Follow the prompts to enable the SPI interface.</p>
+</li>
+<li>
+<p>When the installation completes, the device will reboot. You should see the Hush Line splash screen, followed by information about your tip line. When everything is running smoothly, you'll see something like this:</p>
+</li>
+</ol>
+<img width="350" src="https://github.com/scidsg/hushline/assets/28545431/8fd840d2-c2b9-4ba3-b0f8-bbe105c1baa2">
+<div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-set-up"><a class="header" href="#advanced-set-up">Advanced set up</a></h1>
+<p>This section contains some more advanced things you can do to make your Hush Line more secure and a bit more convenient to maintain.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-ssh-to-access-your-raspberry-pi"><a class="header" href="#using-ssh-to-access-your-raspberry-pi">Using SSH to access your Raspberry Pi</a></h1>
+<p>If you don't want to plug in a monitor and keyboard into your Raspberry Pi every time you need to use it, you can remotely access using a tool called <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>.</p>
+<p>To do this, you first need to find out your Raspberry Pi's IP address. </p>
+<ol>
+<li>
+<p>Make sure your Raspberry Pi is turned on </p>
+</li>
+<li>
+<p>Go to your router's admin settings and look for your connected devices. Your device should be named &quot;raspberrypi.&quot;</p>
+</li>
+<li>
+<p>Take note of its IP address. Its format might look like &quot;192.168.0.4.&quot;</p>
+</li>
+<li>
+<p>(<em>Optional, but recommended</em>) Next, while still in your router settings, look for &quot;Address Reservations&quot;. This may also be called &quot;Static IP Addresses.&quot; Sometimes, when your router or device reboots, your Pi will get assigned a different IP address. We want to assign it an IP so you can have a predictable address in case you need to log back into your Pi. Assign it the IP address it currently has and give it a descriptive name.</p>
+<ul>
+<li>All routers are different, so look at the manufacturer's instructions if you can't find the settings.</li>
+<li>For <strong>Netgear routers</strong>, try the <em>Advanced tab &gt; Setup &gt; LAN Setup &gt; Address Reservations &gt; Add</em>.</li>
+<li>For <strong>TP-Link routers</strong>, try <em>Advanced &gt; DHCP Server &gt; Address Reservation &gt; Add</em>.</li>
+</ul>
+</li>
+<li>
+<p>Now that you know your Rasberry Pi's IP address, over on another computer, open your Terminal and log in to your Pi using SSH:</p>
+<pre><code>ssh pi@&lt;IP-address&gt;
+</code></pre>
+</li>
+</ol>
+<p>Once you enter your password, you should be able to run Terminal commands as if you were on your Raspberry Pi. Convenient!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-an-existing-email-account"><a class="header" href="#using-an-existing-email-account">Using an existing email account</a></h1>
+<p>In our installation process, you created a new email account for Hush Line to use. </p>
+<p>We acknowledge that you may wish to use an existing email account for Hush Line. Maybe you even already have a PGP key-pair associated with an existing email address and you want Hush Line to use that. That's possible, but here are some things to consider.</p>
+<h2 id="something-to-consider-the-email-accounts-password"><a class="header" href="#something-to-consider-the-email-accounts-password">Something to consider: The email account's password</a></h2>
+<p>As you may remember from the Hush Line installation process, you generated an &quot;app password&quot; so that Hush Line could send emails from (and to) your Hush Line email account. Currently, this app password is stored (unencrypted) on your Raspberry Pi. This means that if an attacker were to be able to gain physical or network access to your Raspberry PI, they could read and steal this app password.</p>
+<p>Crucially, your Hush Line messages would remain safely unreadable to this attacker, since all Hush Line messages are encrypted with PGP, the private key for which is not on your Raspberry Pi. </p>
+<p>However, if you want to use an email account for Hush Line that has other, unencrypted sensitive information in its inbox, this might be an issue.</p>
+<h2 id="a-way-to-mitigate-this-password-issue"><a class="header" href="#a-way-to-mitigate-this-password-issue">A way to mitigate this password issue</a></h2>
+<p>If you find yourself in this situation, here a setup you can take to protect your email account.</p>
+<p>In this example, let's say that you want to use JSmith@gmail.com to read your Hush Line messages. </p>
+<ol>
+<li>Create a new email account for Hush Line, just as instructed in the typical installation process. In our example, let's say it's smith.tipline@gmail.com</li>
+<li>When installing Hush Line and the prompt asks your for email address, enter &quot;smith.tipline@gmail.com&quot;. Generate an app password for smith.tipline@gmail.com and provide that to Hush Line.</li>
+<li>BUT, when Hush Line asks you for the URL of your public PGP key, provide the public key associated with JSmith@gmail.com.</li>
+<li>Use GMail to have smith.tipline@gmail.com forward all messages to JSmith@gmail.com.</li>
+</ol>
+<p>With this setup in place, here's how Hush Line will work:</p>
+<ul>
+<li>On your Hush Line form, Hush Line will display JSmith@gmail.com to community members.</li>
+<li>When a community member submits a Hush Line message, Hush Line will encrypt the message using the PGP key for JSmith@gmail.com, BUT Hush Line will send an email to smith.tipline@gmail.com.</li>
+<li>GMail will automatically forward this email to JSmith@gmail.com, where you can decrypt and read the message.</li>
+</ul>
+<p>Again, the benefit here is that the app password you provided to Hush Line is for your new tipline account (an inbox where all emails are encrypted), NOT your more important JSmith@gmail.com account.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="glossary"><a class="header" href="#glossary">Glossary</a></h1>
+<p><strong>Hush Line site</strong>: The website that your Hush Line form is available at. If you're running Hush Line in &quot;Tor-only&quot; mode, your Hush Line site will have a URL like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code> and will be only accessible through the <a href="https://torproject.org/download">Tor Browser</a>.</p>
+<p><strong>Hush Line form</strong>: The text box form that occupies your Hush Line site. Community members may choose to type and submit a message through this form (thus becoming a source).</p>
+<p><strong>community</strong>: The pool of people who know your Hush Line site's URL. If you only share your Hush Line site's URL with a team of employees, that's your community. If you promote your Hush Line address publicly, your community may be very large.</p>
+<p><strong>community member</strong>: A member of your community. A person who is a potential source.</p>
+<p><strong>source</strong>: The community member who has written and submitted a given message</p>
+<p><strong>message</strong>: The text that a source submits to your Hush Line form. Hush Line only accepts text messages (no multimedia or file attachments). All Hush Line messages are encrypted and thus private. Also note that Hush Line messages only go one-way: from source to user.</p>
+<p><strong>Hush Line user</strong>: The person who runs the Hush Line. We assume the user has access to the Hush Line email address and Hush Line PGP key.</p>
+<p><strong>Hush Line email address</strong>: The email address that receives your Hush Line messages from your sources</p>
+<p><strong>Hush Line PGP Public Key</strong>: The PGP public key that Hushline uses to encrypt all messages before sending emails to your Hush Line email address. </p>
+<p><strong>Hush Line PGP Private Key</strong>: The private PGP key the user uses to decrypt Hush Line messages. The PGP password is also needed to decrypt messages.</p>
+<p><strong>Hush Line PGP password</strong>: The password needed, in combination with the Hush Line PGP Private Key, to decrypt and read messages. (Keep this secret.)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
