@@ -31,6 +31,15 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+	display: none;
+}
+
 h2, h3 {
 	margin-top: 2.5rem !important;
 	margin-bottom: 1.5rem !important;
@@ -78,6 +87,10 @@ p {
 	padding: 1rem 0;
 	top: 0 !important;
 	position: sticky;
+}
+
+#search-wrapper {
+	margin-top: 6rem;
 }
 
 .searchbar-outer,
