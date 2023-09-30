@@ -63,6 +63,11 @@ p {
 	max-width: 640px;
 }
 
+.searchbar-outer,
+.searchresults-outer {
+	margin-left: 10rem;
+}
+
 #menu-bar-hover-placeholder {
 	height: 64px;
 }
