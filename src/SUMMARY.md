@@ -2,7 +2,7 @@
 
 - [Introduction](./intro.md)
 - [What is Hush Line?](./what-is-hush-line.md)
-- [Prerequisites](./prereqs/prereqs.md)
+- [Prerequisites](./prereqs/index.md)
 - [Installation](./installation/index.md)
     - [Required hardware](./installation/hardware.md)
     - [Set up Raspberry Pi](./installation/raspberry-pi.md)
