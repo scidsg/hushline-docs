@@ -97,7 +97,7 @@ p {
 
 .sidebar {
 	border-right: 1px solid rgba(0,0,0,0.05);
-	font-size: .825rem;
+	font-size: .825em;
 }
 
 #menu-bar.bordered {
