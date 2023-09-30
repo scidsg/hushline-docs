@@ -50,7 +50,7 @@ main h1 {
 
 .content {
 	overflow-y: initial;
-	padding: 5rem 2.5rem 1rem 2.5rem;
+	padding: 5rem 2.5rem 1rem .5rem;
 }
 
 .content main {
