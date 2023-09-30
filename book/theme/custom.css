@@ -31,12 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
-h1::before,
-h2::before,
-h3::before,
-h4::before,
-h5::before,
-h6::before {
+h1:target::before, h2:target::before, h3:target::before, h4:target::before, h5:target::before, h6:target::before {
 	display: none;
 }
 
