@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -371,59 +371,6 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 </li>
 </ol>
 <img width="350" src="https://github.com/scidsg/hushline/assets/28545431/8fd840d2-c2b9-4ba3-b0f8-bbe105c1baa2">
-<div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-set-up"><a class="header" href="#advanced-set-up">Advanced set up</a></h1>
-<p>This section contains some more advanced things you can do to make your Hush Line a bit more convenient to maintain.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="using-ssh-to-access-your-raspberry-pi"><a class="header" href="#using-ssh-to-access-your-raspberry-pi">Using SSH to access your Raspberry Pi</a></h1>
-<p>If you don't want to plug in a monitor and keyboard into your Raspberry Pi every time you need to use it, you can remotely access using a tool called <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>.</p>
-<p>To do this, you first need to find out your Raspberry Pi's IP address. </p>
-<ol>
-<li>
-<p>Make sure your Raspberry Pi is turned on </p>
-</li>
-<li>
-<p>Go to your router's admin settings and look for your connected devices. Your device should be named &quot;raspberrypi.&quot;</p>
-</li>
-<li>
-<p>Take note of its IP address. Its format might look like &quot;192.168.0.4.&quot;</p>
-</li>
-<li>
-<p>(<em>Optional, but recommended</em>) Next, while still in your router settings, look for &quot;Address Reservations&quot;. This may also be called &quot;Static IP Addresses.&quot; Sometimes, when your router or device reboots, your Pi will get assigned a different IP address. We want to assign it an IP so you can have a predictable address in case you need to log back into your Pi. Assign it the IP address it currently has and give it a descriptive name.</p>
-<ul>
-<li>All routers are different, so look at the manufacturer's instructions if you can't find the settings.</li>
-<li>For <strong>Netgear routers</strong>, try the <em>Advanced tab &gt; Setup &gt; LAN Setup &gt; Address Reservations &gt; Add</em>.</li>
-<li>For <strong>TP-Link routers</strong>, try <em>Advanced &gt; DHCP Server &gt; Address Reservation &gt; Add</em>.</li>
-</ul>
-</li>
-<li>
-<p>Now that you know your Rasberry Pi's IP address, over on another computer, open your Terminal and log in to your Pi using SSH:</p>
-<pre><code>ssh pi@&lt;IP-address&gt;
-</code></pre>
-</li>
-</ol>
-<p>Once you enter your password, you should be able to run Terminal commands as if you were on your Raspberry Pi. Convenient!</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="using-an-existing-email-account"><a class="header" href="#using-an-existing-email-account">Using an existing email account</a></h1>
-<p>In our installation process, you created a new email account for Hush Line to use. </p>
-<p>We acknowledge that you may wish to use an existing email account for Hush Line. Maybe you even already have a PGP key-pair associated with an existing email address and you want Hush Line to use that. That's possible, but here are some things to consider.</p>
-<h2 id="something-to-consider-the-email-accounts-password"><a class="header" href="#something-to-consider-the-email-accounts-password">Something to consider: The email account's password</a></h2>
-<p>As you may remember from the Hush Line installation process, you generated an &quot;app password&quot; so that Hush Line could send emails from (and to) your Hush Line email account. Currently, this app password is stored (unencrypted) on your Raspberry Pi. This means that if an attacker were to be able to gain physical or network access to your Raspberry PI, they could read and steal this app password.</p>
-<p>Crucially, your Hush Line messages would remain safely unreadable to this attacker, since all Hush Line messages are encrypted with PGP, the private key for which is not on your Raspberry Pi. </p>
-<p>However, if you want to use an email account for Hush Line that has other, unencrypted sensitive information in its inbox, this might be an issue.</p>
-<h2 id="a-way-to-mitigate-this-password-issue"><a class="header" href="#a-way-to-mitigate-this-password-issue">A way to mitigate this password issue</a></h2>
-<p>If you find yourself in this situation, here a setup you can take to protect your email account.</p>
-<p>In this example, let's say that you want to use JSmith@gmail.com to read your Hush Line messages. </p>
-<ol>
-<li>Create a new email account for Hush Line, just as instructed in the typical installation process. In our example, let's say it's smith.tipline@gmail.com</li>
-<li>When installing Hush Line and the prompt asks your for email address, enter &quot;smith.tipline@gmail.com&quot;. Generate an app password for smith.tipline@gmail.com and provide that to Hush Line.</li>
-<li>BUT, when Hush Line asks you for the URL of your public PGP key, provide the public key associated with JSmith@gmail.com.</li>
-<li>Use GMail to have smith.tipline@gmail.com forward all messages to JSmith@gmail.com.</li>
-</ol>
-<p>With this setup in place, here's how Hush Line will work:</p>
-<ul>
-<li>On your Hush Line form, Hush Line will display JSmith@gmail.com to community members.</li>
-<li>When a community member submits a Hush Line message, Hush Line will encrypt the message using the PGP key for JSmith@gmail.com, BUT Hush Line will send an email to smith.tipline@gmail.com.</li>
-<li>GMail will automatically forward this email to JSmith@gmail.com, where you can decrypt and read the message.</li>
-</ul>
-<p>Again, the benefit here is that the app password you provided to Hush Line is for your new tipline account (an inbox where all emails are encrypted), NOT your more important JSmith@gmail.com account.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="glossary"><a class="header" href="#glossary">Glossary</a></h1>
 <p><strong>Hush Line site</strong>: The website that your Hush Line form is available at. If you're running Hush Line in &quot;Tor-only&quot; mode, your Hush Line site will have a URL like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code> and will be only accessible through the <a href="https://torproject.org/download">Tor Browser</a>.</p>
 <p><strong>Hush Line form</strong>: The text box form that occupies your Hush Line site. Community members may choose to type and submit a message through this form (thus becoming a source).</p>

@@ -13,9 +13,6 @@
     - [Send a test message](./installation/test-message.md)
     - [Regular use](./installation/regular-use.md)
     - [Optional e-ink display](./installation/epaper-display.md)
-- [Advanced](./advanced/index.md)
-    - [SSH](./advanced/ssh.md)
-    - [Using existing email account](./advanced/use-existing-email.md)
 - [Glossary](./glossary.md)
 <!-- - [Reading messages](./reading-messages.md) -->
 <!-- - [Troubleshooting](./troubleshooting.md) -->
