@@ -63,6 +63,11 @@ p {
 	max-width: 640px;
 }
 
+.searchbar-outer,
+.searchresults-outer {
+	margin-left: 10rem;
+}
+
 #menu-bar-hover-placeholder {
 	height: 64px;
 }
@@ -72,8 +77,8 @@ p {
 }
 
 .sidebar .sidebar-scrollbox {
-	padding-left: 2rem;
-	padding-right: 2rem;
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
 }
 
 .chapter li.chapter-item {
@@ -92,6 +97,7 @@ p {
 
 .sidebar {
 	border-right: 1px solid rgba(0,0,0,0.05);
+	font-size: .825rem;
 }
 
 #menu-bar.bordered {
