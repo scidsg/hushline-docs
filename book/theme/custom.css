@@ -41,7 +41,7 @@ h2, h3 {
 
 main h1 {
 	margin-top: 4rem;
-	margin-bottom: 4rem;
+	margin-bottom: 2rem;
 	transform: scale(1.2);
 	transform-origin: left;
 }
@@ -52,9 +52,15 @@ main h1 {
 }
 
 .menu-title {
-	font-family: 'Mono', monospace; 
 	font-weight: inherit;
-	font-size: 1.325rem;
+	font-size: 1.625rem;
+	text-align: left;
+	margin-left: 2rem;
+	color: #333;
+}
+
+p {
+	max-width: 640px;
 }
 
 #menu-bar-hover-placeholder {
