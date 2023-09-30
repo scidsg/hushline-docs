@@ -31,8 +31,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2, h3 {
-	margin-top: 2.5rem;
-	margin-bottom: 1.5rem;
+	margin-top: 2.5rem !imporant;
+	margin-bottom: 1.5rem !imporant;
 }
 
 .content .header:link {
