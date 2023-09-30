@@ -100,6 +100,12 @@ p {
 	font-size: .825em;
 }
 
+.sidebar h2 {
+	margin-top: 0 !important;
+	font-size: 1.625rem;
+	margin-bottom: .5rem !important;
+}
+
 #menu-bar.bordered {
 	border-bottom: none;
 }
