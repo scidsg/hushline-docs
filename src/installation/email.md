@@ -29,7 +29,7 @@ Now let's say we want to receive secret messages from your friend Bob. First, yo
 
 IMPORTANT: These next steps you'll need to do on the computer than you want to be able to read your Hush Line messages on. We're here going to assume it's a Mac. 
 
-To create our envelopes and letter opener,we're going to use some software called [GPG tools](https://gpgtools.org/). 
+To create our envelopes and letter opener,we're going to use some software called [Mailvelope](https://gpgtools.org/). 
 
 As you can probably guess, the envelopes and letter opener have more technical names in the PGP system. Anyone who knows your **public key** can make your envelopes and the letter opener is called your **private key**. A public key and a private key is called a key-pair.
 

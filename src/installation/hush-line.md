@@ -1,50 +1,55 @@
 # Installing Hush Line
 
-Now go back to your Raspberry. You'll need a monitor and keyboard plugged in for this step.
-
 ## What you'll need to know for this step
 
 Here is the information you'll need (all of which you should have at this point):
 * Your Hush Line email address
-* An [app password](https://support.google.com/accounts/answer/185833?hl=en) for that email address
-* The URL of your public PGP key
-* The password for your Raspberry Pi
+* Your app password
+* Your public PGP key
 
-## Installing Hush Line
-Over on your Raspberry Pi, you'll need to now open an app called Terminal. Into that app you're going to type this exactly: 
+### 1. Open The Terminal
 
-```bash
-sudo su
-```
-and hit enter. You'll be asked for the password for your Raspberry Pi you set earlier (don't worry if nothing happens as you type, just hit enter when you're done typing the password).
+On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and select the application with the same name. 
 
-Next, type or paste (command+shift+v) this exactly:
-```bash
-curl -sSL https://install.hushline.app | bash
-```
+Enter `ssh hush@hushline.local`, and when prompted, enter the password you created in the first step.
 
-and then hit enter. You should see a flurry of white-on-black text, and then a series of prompts will ask you questions. Here are the answers you should use: 
+![21-terminal-login](https://github.com/scidsg/project-info/assets/28545431/013192bc-3046-40ce-8335-7021d562a64c)
 
-1. We want to set up Hush Line as "Tor Only"
-2. Enter your Hush Line email address we created earlier
-3. For SMTP server address, enter `smtp.gmail.com`
-4. For password of your email address, enter the App Password you created
-5. For SMTP server port, enter `465`
-6. For address of your PGP key, enter the keys.openpgp.org URL we saved earlier, which should look like `https://keys.openpgp.org/vks/v1/by-fingerprint/D278DD437B275C8668989A4B425C6C74405C3EB1`.
+### 2. Start the script
 
-Once you're finished with the prompts, Hush Line will then be installed on your Raspberry Pi. If all went well, you should see a message similar to this in your Terminal.
+Once logged in, enter `sudo su` then `curl -sSL https://install.hushline.app | bash` to start the installation.
 
+![21-terminal](https://github.com/scidsg/project-info/assets/28545431/e2729634-6ee7-42bd-8736-d10ef1c4896c)
+![22-install-hushline](https://github.com/scidsg/project-info/assets/28545431/1c4b9fa3-758f-4305-ad98-335d761ba508)
+![23-prompt](https://github.com/scidsg/project-info/assets/28545431/ed5bf0d1-5a0b-4fa8-8bfa-870504dfc271)
+
+### 3. Add your information
+
+The installer will walk you through everything needed to get Hush Line working. We'll need the following information:
+
+- Gmail address
+- SMTP address: smtp.gmail.com
+- App password (from prerequisites)
+- Port: 465
+- Public PGP key (from prerequisites)
+
+When you reach the step to enter your PGP key, after pasting make sure to type "END" on a new line, then press Enter.
+
+![23-key](https://github.com/scidsg/project-info/assets/28545431/920453e9-8bf9-4a40-bb1c-b9f2be095519)
+
+Once the installation completes, you'll see a message that looks like this:
 ```
 ✅ Installation complete!
-                                            
-Hush Line is a product by Science & Design. 
+
+Hush Line is a product by Science & Design.
 Learn more about us at https://scidsg.org.
 Have feedback? Send us an email at hushline@scidsg.org.
 
-● Hush Line is running
-http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion
+• Hush Line is running
+http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 ```
 
-To visit your Hush Line, over on your computer [download the Tor Browser](https://torproject.org/download) and enter the `.onion` address that you see. You should see your new Hush Line form to submit information privately and securely.
+![24-finished](https://github.com/scidsg/project-info/assets/28545431/63625c47-a4cf-4195-ba6a-3930c4592fbb)
 
-Note that you can now unplug the keyboard and monitor from your Raspberry Pi.
+
+
