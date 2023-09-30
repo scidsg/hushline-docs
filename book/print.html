@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/prereqs.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prereqs/mac.html"><strong aria-hidden="true">3.1.</strong> Mac</a></li></ol></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/email.html"><strong aria-hidden="true">4.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">4.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">4.5.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">4.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">4.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/prereqs.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -187,55 +187,63 @@
 <p>Have you ever used Google Forms? You create a form, say a text box, and send the URL to people to fill out. When a person fills in your form and hits submit, their response gets automatically put into a Google Spreadsheet. </p>
 <p>This is convenient for things like, surveying food choices or picking a date that works for most people. But what if you're asking people to share more sensitive information? To make them feel as safe as possible, we would want a system such that only you can read the responses. Not other users, not your company's IT department, not even Google. Furthermore, we really don't even want to know anything about the submitter that they don't choose to reveal.</p>
 <p>This is what Hush Line provides. </p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
-<p>Before installing Hush Line, we need to set up a couple of things so that everything goes according to plan. We'll configure your SMTP settings, PGP keys, and mail client.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="macos"><a class="header" href="#macos">MacOS</a></h1>
-<h2 id="software-in-this-guide"><a class="header" href="#software-in-this-guide">Software in this guide</a></h2>
-<ul>
-<li><a href="https://gpgtools.org">GPGTools</a></li>
-<li><a href="https://torproject.org/download">Tor Browser</a></li>
-<li><a href="https://gmail.com">Gmail</a></li>
-</ul>
-<h2 id="gpgtools"><a class="header" href="#gpgtools">GPGTools</a></h2>
-<p>Hush Line uses PGP to protect your messages. The GPG Suite desktop application contains all the tools you need to create keys and decrypt your messages.</p>
-<h3 id="step-1-download-and-install-gpg-suite"><a class="header" href="#step-1-download-and-install-gpg-suite">Step 1: Download and Install GPG Suite</a></h3>
-<p>Go to <code>https://gpgtools.org</code> and download the GPG Suite. Run the downloaded files to install the suite.</p>
-<img width="640px" src="prereqs/../img/pgp-installer.png">
-<h3 id="step-2-create-and-upload-your-keys"><a class="header" href="#step-2-create-and-upload-your-keys">Step 2: Create and Upload Your Keys</a></h3>
-<ul>
-<li>Press Command + Spacebar to open Spotlight and search for GPG Keychain.</li>
-<li>Click &quot;New&quot; at the top of the window. Enter the email address you want messages to be encrypted to, then create a strong password.</li>
-<li>After creating the keys, you'll see a dialog with the option to upload your public key. Choose this so Hush Line can find your key to encrypt incoming messages.</li>
-<li>Before it's discoverable online, you'll need to verify your email address. Go to the email account you entered and look for a message from <code>keyserver@keys.openpgp.org</code>. </li>
-<li>After verifying your address, you'll be brought to a site confirming that your key has been published. Click your email address to get your key's URL. You'll see an address that looks like this:  <code>https://keys.openpgp.org/vks/v1/by-fingerprint/F75C5CEF4E358AE820AA75C9A3CCE90F2B08CA39</code>. Copy this address into a notepad.</li>
-<li>Now, anyone can send an encrypted message to you with your public key, and the only way to decrypt and read the message is to have your computer, private key, and the key's password.</li>
-</ul>
-<img src="prereqs/../img/new-key.png">
-<h2 id="email-setup"><a class="header" href="#email-setup">Email Setup</a></h2>
-<h3 id="step-3-gmail-app-password"><a class="header" href="#step-3-gmail-app-password">Step 3: Gmail App-Password</a></h3>
-<p>For Hush Line to send your message, it needs an SMTP-compatible email address. We'll use Google's Gmail.</p>
-<ul>
-<li>So that we don't leak our real password, we will create an app-password. Click on your avatar, then &quot;Manage your Google Account.&quot;</li>
-<li>On the left column, click &quot;Security,&quot; then scroll to 2-Step Verification.</li>
-<li>You'll need to configure 2-Step Verification to get an app 
-password.</li>
-<li>Next, back on the Security tab, find and click on 2-Step Verification again. </li>
-<li>Scroll to the bottom and look for &quot;App passwords.&quot; Create a new password for Hush Line and copy it to a notepad.</li>
-</ul>
-<img src="prereqs/../img/gmail.png">
-<h3 id="step-4-apple-mail"><a class="header" href="#step-4-apple-mail">Step 4: Apple Mail</a></h3>
-<p>GPG Suite integrates with Apple Mail so you can seamlessly and automatically decrypt your Hush Line messages.</p>
-<ul>
-<li>Press Command + Spacebar to use Spotlight to search for Mail. </li>
-<li>Click on Google and log in to receive messages sent to your Gmail account.</li>
-</ul>
-<img src="prereqs/../img/apple-mail.png">
-<h2 id="tor"><a class="header" href="#tor">Tor</a></h2>
-<h3 id="step-5-tor-browser"><a class="header" href="#step-5-tor-browser">Step 5: Tor Browser</a></h3>
-<p>In order to access your Hush Line for a Tor-only install, you'll need Tor Browser. Head to <a href="https://torproject.org/download">https://torproject.org/download</a> to download it. </p>
-<img src="prereqs/../img/tor.png">
-<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>🎉 Congratulations! You just set up everything you need to prepare to install Hush Line!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-raspberry-pi-prerequisites"><a class="header" href="#hush-line-raspberry-pi-prerequisites">Hush Line Raspberry Pi Prerequisites</a></h1>
+<p>In this section you'll need the following things to get Hush Line ready to install:</p>
+<ol>
+<li><a href="prereqs/prereqs.html#1-raspberry-pi-imager">Raspberry Pi Imager</a></li>
+<li><a href="prereqs/prereqs.html#2-tor-browser">Tor Browser</a></li>
+<li><a href="prereqs/prereqs.html#3-gmail">Gmail</a></li>
+<li><a href="prereqs/prereqs.html#4-mailvelope">Mailvelope</a></li>
+<li><a href="prereqs/prereqs.html#8-create-an-app-password">App Password</a></li>
+</ol>
+<h2 id="software-downloads"><a class="header" href="#software-downloads">Software Downloads</a></h2>
+<h3 id="1-raspberry-pi-imager"><a class="header" href="#1-raspberry-pi-imager">1. Raspberry Pi Imager</a></h3>
+<p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD cardc where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/a426639b-a1ce-47eb-859b-c5c6d7ee5f9e" alt="1-rpi-imager" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/e821ace5-4828-45fc-bf58-75d25444573d" alt="2-rpi-imager" /></p>
+<h3 id="2-tor-browser"><a class="header" href="#2-tor-browser">2. Tor Browser</a></h3>
+<p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/dba5de25-383c-443d-b31e-8e55fc5dd8a1" alt="3-tor-browser" /></p>
+<h3 id="3-gmail"><a class="header" href="#3-gmail">3. Gmail</a></h3>
+<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. It's also not a bad idea to have an email address separate from your personal account.</p>
+<h3 id="4-mailvelope"><a class="header" href="#4-mailvelope">4. Mailvelope</a></h3>
+<p>To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality. You can add the extension to your browser here: https://addons.mozilla.org/en-US/firefox/addon/mailvelope/</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/eabf6c60-50ca-40ce-b217-30fe0451cda1" alt="4-mailvelope" /></p>
+<p>Open the extension in your browser and click &quot;Let's Start.&quot;</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/dd630fae-ad1e-4b0e-8760-5d3e85707f44" alt="5-mailvelope" /></p>
+<h2 id="creating-your-keys"><a class="header" href="#creating-your-keys">Creating Your Keys</a></h2>
+<h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
+<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
+<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
+<h3 id="5-create-your-keys"><a class="header" href="#5-create-your-keys">5. Create your keys</a></h3>
+<p>To create our envelopes and letter opener, we're going to use our Mailvelope extension. </p>
+<p>Click on &quot;Generate Keys.&quot; Give your key a name, enter your Gmail address, and create a strong password.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/1f12555c-bf2f-4f54-8826-22460384e2cf" alt="6-mailvelope-setup" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/73eb943b-5e0a-4fcd-a159-b2b688b3ab89" alt="7-generate-key" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/c4450938-4ab5-4446-9202-a0c2c148838d" alt="8-key-created" /></p>
+<h3 id="6-verify-your-email-address"><a class="header" href="#6-verify-your-email-address">6. Verify your email address</a></h3>
+<p>Before using your key, you'll have to verify your email address. Look for a message from <code>Mailvelope Key Server</code> in your Gmail inbox.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/65e11fb4-9788-4cd2-bfe3-bebed1a1d0a1" alt="9-verify-email" /></p>
+<p>The message is encrypted, and when opened, you'll be prompted for your Mailvelope password to read the email. After entering your password, click the link.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/6cfc1efa-ddc1-4109-b7ce-72cf996e6441" alt="10-decrypt-message" /></p>
+<h3 id="7-copy-your-pgp-key"><a class="header" href="#7-copy-your-pgp-key">7. Copy your PGP key</a></h3>
+<p>After confirming that your email was verified, click on the supplied URL.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/e3a55242-d5f1-47db-947b-f75d6a55809f" alt="11-confirmation" /></p>
+<p>Your PGP Key is in the grey box, beginning with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ending with <code>-----END PGP PUBLIC KEY BLOCK-----</code>. Copy your entire key into a notepad for easy access.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/6ba01973-8fdc-43e1-83a4-5f9152d77a66" alt="12-public-key" />
+<img src="https://github.com/scidsg/project-info/assets/28545431/fe400d7a-8dbd-44e4-b360-4f92839caf83" alt="13-copy-key" /></p>
+<h2 id="app-password"><a class="header" href="#app-password">App Password</a></h2>
+<h3 id="8-create-an-app-password"><a class="header" href="#8-create-an-app-password">8. Create an app password</a></h3>
+<p>Hush Line has a mail server installed to encrypted send messages to your email address. You'll need SMTP information, as well as a password. You should never use your main account password; instead, create app-specific passwords. These are essentially purpose-made for single applications. </p>
+<p>From your Gmail account, click on your avatar to access your account-level options. Select <code>Manage Google Account</code>.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/bc6f8df3-313b-404d-8911-5fa66785eccb" alt="14-profile-menu" /></p>
+<p>Next, click on the Security tab on the left, then scroll to the bottom of the page to find App Passwords.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/21cc352e-dc8d-468c-8e98-affe3a382193" alt="15-security" />
+<img src="https://github.com/scidsg/project-info/assets/28545431/ecc35f89-c513-4ac3-8e1e-65504ede406f" alt="16-app-passwords" /></p>
+<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specfic password. Copy it to a notepad for easy access.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/9136b863-f24c-495d-9ffa-32adfe15fa05" alt="17-create-password" />
+<img src="https://github.com/scidsg/project-info/assets/28545431/b448db84-78e5-4194-a23e-aa62b8449661" alt="18-copy-password" /></p>
+<p>🎉 Congratulations, you're now ready to install Hush Line!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line"><a class="header" href="#installing-hush-line">Installing Hush Line</a></h1>
 <p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="required-hardware"><a class="header" href="#required-hardware">Required Hardware</a></h1>
@@ -245,111 +253,85 @@ password.</li>
 <li>One <a href="https://www.amazon.com/gp/product/B07TYQRXTK/ref=ox_sc_act_title_7?smid=A30ZYR2W3VAJ0A&amp;psc=1">Raspberry Pi 4 power supply</a></li>
 <li>A <a href="https://www.amazon.com/gp/product/B073JYC4XM/ref=ox_sc_act_title_6?smid=A2TWIRHLRS9O1T&amp;psc=1">MicroSD card</a>, which will serve as the Raspberry Pi's hard drive.</li>
 <li>A MicroSD card <strong>reader</strong> will be needed for initial set up. You might have one already, but if not <a href="https://www.amazon.com/SanDisk-MobileMate-microSD-Card-Reader/dp/B07G5JV2B5/ref=sr_1_3?keywords=SanDisk-MobileMate-microSD-Card-Reader&amp;qid=1695826928&amp;sr=8-3">here's one on Amazon</a>.</li>
-<li>Optional: <a href="https://www.amazon.com/gp/product/B075FQKSZ9/ref=ox_sc_act_title_5?smid=A50C560NZEBBE&amp;psc=1">An e-ink display</a> to show the status of your Hush Line. </li>
 </ul>
-<p>When setting up your Raspberry Pi to be your Hush Line, you'll need need access to a keyboard and <strong>a computer monitor</strong>. You'll have to be able to plug the Raspberry Pi into that computer monitor. If you have a monitor with an HDMI port, you'll need an HDMI-to-Micro HDMI cable like <a href="https://www.amazon.com/gp/product/B07KSDB25X/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&amp;psc=1">this one</a>.</p>
 <p>Once you've rounded all that up, it's time to set up your Raspberry Pi.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-your-raspberry-pi"><a class="header" href="#setting-up-your-raspberry-pi">Setting up your Raspberry Pi</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="install-hush-line-on-a-raspberry-pi"><a class="header" href="#install-hush-line-on-a-raspberry-pi">Install Hush Line on a Raspberry Pi</a></h1>
 <p>If you didn't know, your Raspberry Pi doesn't come with an operating system. Don't panic! We're going to install one now called Raspberry Pi OS.</p>
-<p>The way this works is we're going to put Raspberry Pi OS onto your microSD card. To do this, you need a program called Raspberry Pi Imager and a computer (not your Raspberry Pi).</p>
-<ol>
-<li>On a computer, <a href="https://www.raspberrypi.com/software/">download Raspberry Pi Imager here</a> and install it.</li>
-<li>Insert your MicroSD card into your computer.</li>
-<li>Start the Raspberry Pi Imager program.</li>
-<li>In the Imager program, click &quot;CHOOSE OS&quot;. We want &quot;Raspberry Pi OS (64-bit)&quot; (it may be under &quot;Raspberry Pi OS (other)&quot;.</li>
-<li>Click &quot;CHOOSE STORAGE&quot; and select your MicroSD card.</li>
-<li>Click the gear button in the bottom-right of the window. Enter your wi-fi network information. Also, choose to &quot;Enable SSH&quot; and create a strong password for your Raspberry Pi. Save this password some safe. e.g. by writing it down or in a password manager.</li>
-<li>Click the &quot;WRITE&quot; button and wait a moment. This will &quot;write&quot; Raspberry Pi OS to your MicroSD card.</li>
-</ol>
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ntaXWS8Lk34?si=U5zZuFSYd1-MNRpO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-<h2 id="starting-up-your-raspberry-pi-for-the-first-time"><a class="header" href="#starting-up-your-raspberry-pi-for-the-first-time">Starting up your Raspberry Pi for the first time</a></h2>
-<p>Now we're ready to turn on our Raspberry Pi. </p>
-<ol>
-<li>Eject your microSD from your computer. Place it in to the Raspberry Pi.</li>
-<li>Plug your Raspberry Pi into a computer monitor, using a Micro HDMI cable.</li>
-<li>Plug a keyboard into your Raspberry Pi.</li>
-<li>Plug your Raspberry Pi power supply into your Raspberry and into an outlet.</li>
-</ol>
-<p>Your Raspberry Pi should turn on once you plug it in. </p>
-<p>Next, we're going to set up an email address for Hush Line to use.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-an-email-address-for-your-hush-line"><a class="header" href="#setting-up-an-email-address-for-your-hush-line">Setting up an email address for your Hush Line</a></h1>
-<p>Let's learn a little more about what Hush Line actually does. </p>
-<p>When a community member hits the Submit button on your Hush Line form, Hush Line does two things: It encrypts their message, and then it emails it to your Hush Line email address, which we're about to set up.</p>
-<p>We recommend making a dedicated email account for Hush Line. You can use your organization email system, GMail, or another provider. (Note that this email address will be publicly displayed on your Hush Line site.)</p>
-<p>Either way, we need to take some careful steps to ensure Hush Line can use it and that your messages will be properly encrypted. In the steps below, we'll use GMail. We'll also assume you're using a Mac computer.</p>
-<h2 id="create-a-new-gmail-account-for-hush-line"><a class="header" href="#create-a-new-gmail-account-for-hush-line">Create a new GMail account for Hush Line</a></h2>
-<ol>
-<li>In your browser, head over to <a href="installation/mail.google.com/">mail.google.com</a> to create a new GMail account.</li>
-<li>Once created, turn on 2-factor authentication.</li>
-<li>Create an <a href="https://support.google.com/accounts/answer/185833?hl=en">&quot;app password&quot;</a> for Hush Line to use. Write this down for later use.</li>
-<li>Open Apple Mail and add this new GMail account.</li>
-</ol>
-<h2 id="create-a-pgp-key-for-this-email-account-to-use"><a class="header" href="#create-a-pgp-key-for-this-email-account-to-use">Create a PGP key for this email account to use</a></h2>
-<p>Next, we need to give Hush Line a way to encrypt our sources' emails so that only we can read messages submitted to Hush Line (and not even Google can read them). To do that, we're going to use an encryption system called PGP, which stands for &quot;Pretty Good Privacy&quot;. </p>
-<h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
-<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
-<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
-<h3 id="creating-our-envelopes-and-letter-opener-on-a-mac"><a class="header" href="#creating-our-envelopes-and-letter-opener-on-a-mac">Creating our envelopes and letter opener (on a Mac)</a></h3>
-<p>IMPORTANT: These next steps you'll need to do on the computer than you want to be able to read your Hush Line messages on. We're here going to assume it's a Mac. </p>
-<p>To create our envelopes and letter opener,we're going to use some software called <a href="https://gpgtools.org/">GPG tools</a>. </p>
-<p>As you can probably guess, the envelopes and letter opener have more technical names in the PGP system. Anyone who knows your <strong>public key</strong> can make your envelopes and the letter opener is called your <strong>private key</strong>. A public key and a private key is called a key-pair.</p>
-<p>Once you've installed GPG Tools, open a tool called GPG Keychain. Click &quot;New&quot; at the top of the window to create a key-pair (a public and private key) for our new Hush Line email address. Enter your Hush Line email address. Then choose a strong password or passphrase for your PGP password -- this will protect your private key (letter opener).</p>
-<p>Your private key (letter opener) will be stored on the computer you're using to set up this email account. As mentioned above, this means that only someone using this computer will be able to read the messages sent to your Hush Line.</p>
-<p>If you or someone else logged in to your Hush Line email address on a different computer (and thus did not have your private key), all your Hush Line messages would remain encrypted and unreadable.</p>
-<h3 id="uploading-our-public-key-the-envelopes"><a class="header" href="#uploading-our-public-key-the-envelopes">Uploading our public key (the envelopes)</a></h3>
-<p>Next, we need to upload our public key to a website.</p>
-<p>You can do this with GPG Keychain by clicking &quot;Upload Public Key&quot;. (Remember, it's fine to share your envelopes, but never share the letter opener [the private key].) You'll receive a confirmation email. Click the link to verify that you indeed have access to the new Hush Line email address.</p>
-<p>This address verification process will take you to a URL that you will need later. It should look something like <code>https://keys.openpgp.org/vks/v1/by-fingerprint/D278DD437B275C8668989A4B425C6C74405C3EB1</code>. This is essentially the URL for your public PGP key. For now, paste it into a note or text file. (If you didn't save it, you can visit <a href="https://keys.openpgp.org/">https://keys.openpgp.org</a> and search for your Hush Line email address and find it that way).</p>
-<p>Next, we get to install Hush Line back on our Raspberry Pi.</p>
+<p>In this section, we'll need the following:</p>
+<ul>
+<li>Raspberry Pi Imager (from prerequisites)</li>
+<li>Raspberry Pi</li>
+<li>microSD Card</li>
+<li>Power Supply</li>
+</ul>
+<h2 id="prep-your-card"><a class="header" href="#prep-your-card">Prep Your Card</a></h2>
+<h3 id="1-raspberry-pi-imager-1"><a class="header" href="#1-raspberry-pi-imager-1">1. Raspberry Pi Imager</a></h3>
+<p>Open the Raspberry Pi Imager and click <code>Choose OS &gt; Raspberry Pi OS (other) &gt; Raspberry Pi OS (64-Bit)</code>.</p>
+<p>Insert your microSD card into your computer, and then click <code>Choose Storage</code> and select your card.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/4a05a403-45c8-4a70-be4a-78aac27fea0c" alt="19-rpi-imager" /></p>
+<p>Before clicking Write, click on the Settings gear in the bottom right of the window. Configure the following settings:</p>
+<ul>
+<li>Hostname = hushline</li>
+<li>Enable SSH with password authentication</li>
+<li>User = Hush</li>
+<li>Set a strong password</li>
+<li>Wifi settings</li>
+</ul>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/46a822c8-bf5e-40c0-9c45-fcbc19a1c9ad" alt="20-advanced" /></p>
+<h2 id="boot-up-and-log-in-to-your-pi"><a class="header" href="#boot-up-and-log-in-to-your-pi">Boot up and log in to Your Pi</a></h2>
+<h3 id="2-insert-microsd-card"><a class="header" href="#2-insert-microsd-card">2. Insert microSD Card</a></h3>
+<p>Take your SD card and insert it into your Raspberry Pi. You'll find the SD card slide on the bottom of the board, opposite the ethernet ports.</p>
+<p>Plug the power supply into the device and let it boot up.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line-1"><a class="header" href="#installing-hush-line-1">Installing Hush Line</a></h1>
-<p>Now go back to your Raspberry. You'll need a monitor and keyboard plugged in for this step.</p>
 <h2 id="what-youll-need-to-know-for-this-step"><a class="header" href="#what-youll-need-to-know-for-this-step">What you'll need to know for this step</a></h2>
 <p>Here is the information you'll need (all of which you should have at this point):</p>
 <ul>
 <li>Your Hush Line email address</li>
-<li>An <a href="https://support.google.com/accounts/answer/185833?hl=en">app password</a> for that email address</li>
-<li>The URL of your public PGP key</li>
-<li>The password for your Raspberry Pi</li>
+<li>Your app password</li>
+<li>Your public PGP key</li>
 </ul>
-<h2 id="installing-hush-line-2"><a class="header" href="#installing-hush-line-2">Installing Hush Line</a></h2>
-<p>Over on your Raspberry Pi, you'll need to now open an app called Terminal. Into that app you're going to type this exactly: </p>
-<pre><code class="language-bash">sudo su
-</code></pre>
-<p>and hit enter. You'll be asked for the password for your Raspberry Pi you set earlier (don't worry if nothing happens as you type, just hit enter when you're done typing the password).</p>
-<p>Next, type or paste (command+shift+v) this exactly:</p>
-<pre><code class="language-bash">curl -sSL https://install.hushline.app | bash
-</code></pre>
-<p>and then hit enter. You should see a flurry of white-on-black text, and then a series of prompts will ask you questions. Here are the answers you should use: </p>
-<ol>
-<li>We want to set up Hush Line as &quot;Tor Only&quot;</li>
-<li>Enter your Hush Line email address we created earlier</li>
-<li>For SMTP server address, enter <code>smtp.gmail.com</code></li>
-<li>For password of your email address, enter the App Password you created</li>
-<li>For SMTP server port, enter <code>465</code></li>
-<li>For address of your PGP key, enter the keys.openpgp.org URL we saved earlier, which should look like <code>https://keys.openpgp.org/vks/v1/by-fingerprint/D278DD437B275C8668989A4B425C6C74405C3EB1</code>.</li>
-</ol>
-<p>Once you're finished with the prompts, Hush Line will then be installed on your Raspberry Pi. If all went well, you should see a message similar to this in your Terminal.</p>
+<h3 id="1-open-the-terminal"><a class="header" href="#1-open-the-terminal">1. Open The Terminal</a></h3>
+<p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
+<p>Enter <code>ssh hush@hushline.local</code>, and when prompted, enter the password you created in the first step.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/013192bc-3046-40ce-8335-7021d562a64c" alt="21-terminal-login" /></p>
+<h3 id="2-start-the-script"><a class="header" href="#2-start-the-script">2. Start the script</a></h3>
+<p>Once logged in, enter <code>sudo su</code> then <code>curl -sSL https://install.hushline.app | bash</code> to start the installation.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/e2729634-6ee7-42bd-8736-d10ef1c4896c" alt="21-terminal" />
+<img src="https://github.com/scidsg/project-info/assets/28545431/1c4b9fa3-758f-4305-ad98-335d761ba508" alt="22-install-hushline" />
+<img src="https://github.com/scidsg/project-info/assets/28545431/ed5bf0d1-5a0b-4fa8-8bfa-870504dfc271" alt="23-prompt" /></p>
+<h3 id="3-add-your-information"><a class="header" href="#3-add-your-information">3. Add your information</a></h3>
+<p>The installer will walk you through everything needed to get Hush Line working. We'll need the following information:</p>
+<ul>
+<li>Gmail address</li>
+<li>SMTP address: smtp.gmail.com</li>
+<li>App password (from prerequisites)</li>
+<li>Port: 465</li>
+<li>Public PGP key (from prerequisites)</li>
+</ul>
+<p>When you reach the step to enter your PGP key, after pasting make sure to type &quot;END&quot; on a new line, then press Enter.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/920453e9-8bf9-4a40-bb1c-b9f2be095519" alt="23-key" /></p>
+<p>Once the installation completes, you'll see a message that looks like this:</p>
 <pre><code>✅ Installation complete!
-                                            
-Hush Line is a product by Science &amp; Design. 
+
+Hush Line is a product by Science &amp; Design.
 Learn more about us at https://scidsg.org.
 Have feedback? Send us an email at hushline@scidsg.org.
 
-● Hush Line is running
-http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion
+• Hush Line is running
+http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 </code></pre>
-<p>To visit your Hush Line, over on your computer <a href="https://torproject.org/download">download the Tor Browser</a> and enter the <code>.onion</code> address that you see. You should see your new Hush Line form to submit information privately and securely.</p>
-<p>Note that you can now unplug the keyboard and monitor from your Raspberry Pi.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-a-test-message-using-hush-line"><a class="header" href="#sending-a-test-message-using-hush-line">Sending a test message using Hush Line</a></h1>
-<p>Now that Hush Line is set up, let's send a test message. </p>
-<ol>
-<li>In Tor Browser, visit your Hush Line site URL (it will look something like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code>). You should see your Hush Line form.</li>
-<li>Enter a test message like &quot;Here's a secret message!&quot;</li>
-<li>Click the submit button.</li>
-<li>Open Apple Mail. In a moment you should receive an email with the subject line &quot;🤫 New Hush Line Message Received&quot;. </li>
-<li>When you try to read the email, Apple Mail should prompt you to enter your Hush Line PGP password. Once that's entered, you should be able to read your test message.</li>
-</ol>
-<p>Congratulations! Your Hush Line is now ready for regular, day-to-day use.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/63625c47-a4cf-4195-ba6a-3930c4592fbb" alt="24-finished" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="send-a-message"><a class="header" href="#send-a-message">Send a Message</a></h1>
+<h2 id="using-your-hush-line"><a class="header" href="#using-your-hush-line">Using Your Hush Line</a></h2>
+<h3 id="1-open-tor-browser"><a class="header" href="#1-open-tor-browser">1. Open Tor Browser</a></h3>
+<p>Copy your onion address, open Tor Browser, paste it in, and press Enter. In a moment, your Hush Line site will load. Enter a message and click &quot;Submit.&quot;</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/0ecdc349-464d-4707-bd79-1551ddda3777" alt="25-tor" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/38dbf8d1-da2f-4620-855c-f76392617d85" alt="26-message-submitted" /></p>
+<h2 id="reading-your-messages"><a class="header" href="#reading-your-messages">Reading Your Messages</a></h2>
+<h3 id="7-open-gmail"><a class="header" href="#7-open-gmail">7. Open Gmail</a></h3>
+<p>Back in the Gmail account you configured during the Hush Line installation, look for a message with the subject &quot;🤫 New Hush Line Message Received.&quot; When you click on the message you'll briefly see the encrypted contents and may be prompted to enter your Mailvelope password. Your decrypted message will display.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/a715443d-9843-497b-9200-6d8cd1f1f898" alt="27-encrypted-message" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/928e6e02-886f-4098-972c-11b30159f399" alt="28-decrypted-message" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="regular-use"><a class="header" href="#regular-use">Regular use</a></h1>
 <p>Now you're ready for day-to-day Hush Line use. </p>
 <h2 id="how-to-leave-your-raspberry-pi"><a class="header" href="#how-to-leave-your-raspberry-pi">How to leave your Raspberry Pi</a></h2>
@@ -464,22 +446,6 @@ http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

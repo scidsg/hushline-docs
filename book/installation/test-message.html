@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/prereqs.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/mac.html"><strong aria-hidden="true">3.1.</strong> Mac</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/email.html"><strong aria-hidden="true">4.3.</strong> Set up email address</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">4.4.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html" class="active"><strong aria-hidden="true">4.5.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.6.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">4.7.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/prereqs.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html" class="active"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,16 +171,17 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="sending-a-test-message-using-hush-line"><a class="header" href="#sending-a-test-message-using-hush-line">Sending a test message using Hush Line</a></h1>
-<p>Now that Hush Line is set up, let's send a test message. </p>
-<ol>
-<li>In Tor Browser, visit your Hush Line site URL (it will look something like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code>). You should see your Hush Line form.</li>
-<li>Enter a test message like &quot;Here's a secret message!&quot;</li>
-<li>Click the submit button.</li>
-<li>Open Apple Mail. In a moment you should receive an email with the subject line &quot;🤫 New Hush Line Message Received&quot;. </li>
-<li>When you try to read the email, Apple Mail should prompt you to enter your Hush Line PGP password. Once that's entered, you should be able to read your test message.</li>
-</ol>
-<p>Congratulations! Your Hush Line is now ready for regular, day-to-day use.</p>
+                        <h1 id="send-a-message"><a class="header" href="#send-a-message">Send a Message</a></h1>
+<h2 id="using-your-hush-line"><a class="header" href="#using-your-hush-line">Using Your Hush Line</a></h2>
+<h3 id="1-open-tor-browser"><a class="header" href="#1-open-tor-browser">1. Open Tor Browser</a></h3>
+<p>Copy your onion address, open Tor Browser, paste it in, and press Enter. In a moment, your Hush Line site will load. Enter a message and click &quot;Submit.&quot;</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/0ecdc349-464d-4707-bd79-1551ddda3777" alt="25-tor" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/38dbf8d1-da2f-4620-855c-f76392617d85" alt="26-message-submitted" /></p>
+<h2 id="reading-your-messages"><a class="header" href="#reading-your-messages">Reading Your Messages</a></h2>
+<h3 id="7-open-gmail"><a class="header" href="#7-open-gmail">7. Open Gmail</a></h3>
+<p>Back in the Gmail account you configured during the Hush Line installation, look for a message with the subject &quot;🤫 New Hush Line Message Received.&quot; When you click on the message you'll briefly see the encrypted contents and may be prompted to enter your Mailvelope password. Your decrypted message will display.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/a715443d-9843-497b-9200-6d8cd1f1f898" alt="27-encrypted-message" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/928e6e02-886f-4098-972c-11b30159f399" alt="28-decrypted-message" /></p>
 
                     </main>
 
@@ -211,22 +212,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
