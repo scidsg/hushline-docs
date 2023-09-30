@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Optional e-ink display - Hush Line Field Manual</title>
+        <title>Raspberry Pi - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html" class="active"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html" class="active"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,38 +171,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="add-an-e-ink-display-optional"><a class="header" href="#add-an-e-ink-display-optional">Add an e-ink display (optional)</a></h1>
-<p>This isn't necessary to run your Hush Line, but if you'd like to be able to check the status of your Hush Line at a glance, or if you'd like your Hush Line Raspberry Pi to display your Hush Line URL, you might want to add an e-ink display to your Hush Line.</p>
-<ol>
-<li>
-<p>Purchase a Waveshare 2.7inch E-Ink Display. Here's <a href="https://www.amazon.com/gp/product/B075FQKSZ9/ref=ox_sc_act_title_5?smid=A50C560NZEBBE&amp;psc=1">an Amazon link</a>.</p>
-</li>
-<li>
-<p>With your Raspberry Pi off, attach the Waveshare display to your Pi's GPIO pins. Make sure it's attached securely.</p>
-</li>
-<li>
-<p>Plug in and start up your Raspberry Pi. On your Raspberry Pi, open the Terminal app. Type or paste this command and then hit enter:</p>
-<pre><code>curl -sSL https://raw.githubusercontent.com/scidsg/hushline/main/scripts/waveshare-2_7in-eink-display.sh | bash
-</code></pre>
-</li>
-<li>
-<p>Follow the prompts to enable the SPI interface.</p>
-</li>
-<li>
-<p>When the installation completes, the device will reboot. You should see the Hush Line splash screen, followed by information about your tip line. When everything is running smoothly, you'll see something like this:</p>
-</li>
-</ol>
-<img width="350" src="https://github.com/scidsg/hushline/assets/28545431/8fd840d2-c2b9-4ba3-b0f8-bbe105c1baa2">
+                        <h1 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h1>
+<h2 id="hardware"><a class="header" href="#hardware">Hardware</a></h2>
+<ul>
+<li><strong>Hardware:</strong> <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=ee402e41cd98b8767ed54b1531ed1666&amp;camp=1789&amp;creative=9325">Raspberry Pi 4</a>/<a href="https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=d76c1db453c42244fe465c9c56601303&amp;camp=1789&amp;creative=9325">3B+</a></li>
+<li><strong>Power:</strong> <a href="https://www.amazon.com/Raspberry-Pi-USB-C-Power-Supply?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=1b23995f6048ad84182dca1f160656e9&amp;camp=1789&amp;creative=9325">Raspberry Pi USB-C Power Supply</a></li>
+<li><strong>Storage:</strong> <a href="https://www.amazon.com/SanDisk-128GB-MicroSDXC-Memory-Adapter/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=fd8f40cfc6e84e328e3246af7159eb40&amp;camp=1789&amp;creative=9325">Micro SD Card</a></li>
+<li><strong>SD Card Adapter:</strong> <a href="https://www.amazon.com/SanDisk-MobileMate-microSD-Card-Reader?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=40c1d3e78e132a951b46e61aab13e4e7&amp;camp=1789&amp;creative=9325">SD Card Reader</a> </li>
+</ul>
+<h2 id="software-downloads"><a class="header" href="#software-downloads">Software Downloads</a></h2>
+<h3 id="1-raspberry-pi-imager"><a class="header" href="#1-raspberry-pi-imager">1. Raspberry Pi Imager</a></h3>
+<p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD cardc where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/a426639b-a1ce-47eb-859b-c5c6d7ee5f9e" alt="1-rpi-imager" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/e821ace5-4828-45fc-bf58-75d25444573d" alt="2-rpi-imager" /></p>
+<p>🎉 That's it, you're ready to get started with Raspberry Pi!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/regular-use.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../prereqs/general.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../advanced/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../installation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -212,11 +204,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/regular-use.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../prereqs/general.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../advanced/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../installation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
