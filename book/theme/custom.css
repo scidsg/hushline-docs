@@ -50,7 +50,7 @@ main h1 {
 
 .content {
 	overflow-y: initial;
-	padding-right: 2.5rem;
+	padding: 5rem 2.5rem 1rem 2.5rem;
 }
 
 .content main {
@@ -71,8 +71,13 @@ p {
 }
 
 .page {
-		padding: 0 2rem;
-	}
+	padding: 0 2rem;
+}
+
+#menu-bar {
+	padding: 1rem 0;
+	top: 0 !important;
+}
 
 .searchbar-outer,
 .searchresults-outer {
@@ -93,7 +98,7 @@ p {
 }
 
 #menu-bar-hover-placeholder {
-	height: 64px;
+	height: 0;
 }
 
 #theme-toggle {
