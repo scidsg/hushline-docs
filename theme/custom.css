@@ -59,6 +59,10 @@ main h1 {
 	color: #333;
 }
 
+p {
+	max-width: 640px;
+}
+
 #menu-bar-hover-placeholder {
 	height: 64px;
 }
