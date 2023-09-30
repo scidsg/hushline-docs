@@ -16,10 +16,6 @@
     	 url('fonts/mono/IBMPlexMono-Regular.woff') format('woff'); 
 }
 
-:target {
-  scroll-margin-top: 3rem;
- }
-
 /* Use the custom font in your styles, for example: */
 body {
     font-family: 'Sans', sans-serif;
