@@ -1,6 +1,6 @@
 # Summary
 
-- ## CONTENTS
+## CONTENTS
 - [Introduction](./intro.md)
 - [What is Hush Line?](./what-is-hush-line.md)
 - [Prerequisites](./prereqs/index.md)
