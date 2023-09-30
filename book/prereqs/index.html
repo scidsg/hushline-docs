@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html" class="active"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html" class="active"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../advanced/index.html"><strong aria-hidden="true">5.</strong> Advanced</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../advanced/ssh.html"><strong aria-hidden="true">5.1.</strong> SSH</a></li><li class="chapter-item expanded "><a href="../advanced/use-existing-email.html"><strong aria-hidden="true">5.2.</strong> Using existing email account</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,63 +171,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="hush-line-raspberry-pi-prerequisites"><a class="header" href="#hush-line-raspberry-pi-prerequisites">Hush Line Raspberry Pi Prerequisites</a></h1>
-<p>In this section you'll need the following things to get Hush Line ready to install:</p>
-<ol>
-<li><a href="#1-raspberry-pi-imager">Raspberry Pi Imager</a></li>
-<li><a href="#2-tor-browser">Tor Browser</a></li>
-<li><a href="#3-gmail">Gmail</a></li>
-<li><a href="#4-mailvelope">Mailvelope</a></li>
-<li><a href="#8-create-an-app-password">App Password</a></li>
-</ol>
-<h2 id="software-downloads"><a class="header" href="#software-downloads">Software Downloads</a></h2>
-<h3 id="1-raspberry-pi-imager"><a class="header" href="#1-raspberry-pi-imager">1. Raspberry Pi Imager</a></h3>
-<p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD cardc where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/a426639b-a1ce-47eb-859b-c5c6d7ee5f9e" alt="1-rpi-imager" /></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/e821ace5-4828-45fc-bf58-75d25444573d" alt="2-rpi-imager" /></p>
-<h3 id="2-tor-browser"><a class="header" href="#2-tor-browser">2. Tor Browser</a></h3>
-<p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/dba5de25-383c-443d-b31e-8e55fc5dd8a1" alt="3-tor-browser" /></p>
-<h3 id="3-gmail"><a class="header" href="#3-gmail">3. Gmail</a></h3>
-<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. It's also not a bad idea to have an email address separate from your personal account.</p>
-<h3 id="4-mailvelope"><a class="header" href="#4-mailvelope">4. Mailvelope</a></h3>
-<p>To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality. You can add the extension to your browser here: https://addons.mozilla.org/en-US/firefox/addon/mailvelope/</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/eabf6c60-50ca-40ce-b217-30fe0451cda1" alt="4-mailvelope" /></p>
-<p>Open the extension in your browser and click &quot;Let's Start.&quot;</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/dd630fae-ad1e-4b0e-8760-5d3e85707f44" alt="5-mailvelope" /></p>
-<h2 id="creating-your-keys"><a class="header" href="#creating-your-keys">Creating Your Keys</a></h2>
-<h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
-<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
-<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
-<h3 id="5-create-your-keys"><a class="header" href="#5-create-your-keys">5. Create your keys</a></h3>
-<p>To create our envelopes and letter opener, we're going to use our Mailvelope extension. </p>
-<p>Click on &quot;Generate Keys.&quot; Give your key a name, enter your Gmail address, and create a strong password.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/1f12555c-bf2f-4f54-8826-22460384e2cf" alt="6-mailvelope-setup" /></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/73eb943b-5e0a-4fcd-a159-b2b688b3ab89" alt="7-generate-key" /></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/c4450938-4ab5-4446-9202-a0c2c148838d" alt="8-key-created" /></p>
-<h3 id="6-verify-your-email-address"><a class="header" href="#6-verify-your-email-address">6. Verify your email address</a></h3>
-<p>Before using your key, you'll have to verify your email address. Look for a message from <code>Mailvelope Key Server</code> in your Gmail inbox.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/65e11fb4-9788-4cd2-bfe3-bebed1a1d0a1" alt="9-verify-email" /></p>
-<p>The message is encrypted, and when opened, you'll be prompted for your Mailvelope password to read the email. After entering your password, click the link.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/6cfc1efa-ddc1-4109-b7ce-72cf996e6441" alt="10-decrypt-message" /></p>
-<h3 id="7-copy-your-pgp-key"><a class="header" href="#7-copy-your-pgp-key">7. Copy your PGP key</a></h3>
-<p>After confirming that your email was verified, click on the supplied URL.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/e3a55242-d5f1-47db-947b-f75d6a55809f" alt="11-confirmation" /></p>
-<p>Your PGP Key is in the grey box, beginning with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ending with <code>-----END PGP PUBLIC KEY BLOCK-----</code>. Copy your entire key into a notepad for easy access.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/6ba01973-8fdc-43e1-83a4-5f9152d77a66" alt="12-public-key" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/fe400d7a-8dbd-44e4-b360-4f92839caf83" alt="13-copy-key" /></p>
-<h2 id="app-password"><a class="header" href="#app-password">App Password</a></h2>
-<h3 id="8-create-an-app-password"><a class="header" href="#8-create-an-app-password">8. Create an app password</a></h3>
-<p>Hush Line has a mail server installed to encrypted send messages to your email address. You'll need SMTP information, as well as a password. You should never use your main account password; instead, create app-specific passwords. These are essentially purpose-made for single applications. </p>
-<p>From your Gmail account, click on your avatar to access your account-level options. Select <code>Manage Google Account</code>.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/bc6f8df3-313b-404d-8911-5fa66785eccb" alt="14-profile-menu" /></p>
-<p>Next, click on the Security tab on the left, then scroll to the bottom of the page to find App Passwords.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/21cc352e-dc8d-468c-8e98-affe3a382193" alt="15-security" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/ecc35f89-c513-4ac3-8e1e-65504ede406f" alt="16-app-passwords" /></p>
-<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specfic password. Copy it to a notepad for easy access.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/9136b863-f24c-495d-9ffa-32adfe15fa05" alt="17-create-password" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/b448db84-78e5-4194-a23e-aa62b8449661" alt="18-copy-password" /></p>
-<p>🎉 Congratulations, you're now ready to install Hush Line!</p>
+                        <h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
 
                     </main>
 
@@ -237,7 +181,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../installation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../prereqs/general.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -251,7 +195,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../installation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../prereqs/general.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
