@@ -94,6 +94,9 @@ p {
 .searchbar-outer,
 .searchresults-outer {
 	margin-left: 10rem;
+}
+
+.searchbar-outer {
 	width: 360px;
 }
 
