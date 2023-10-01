@@ -37,9 +37,9 @@ Insert your microSD card into your computer, and then click `Choose Storage` and
 
 Before clicking Write, click on the Settings gear in the bottom right of the window. Configure the following settings:
 
-- Hostname = hushline
+- Hostname = `hushline`
 - Enable SSH with password authentication
-- User = Hush
+- User = `hush`
 - Set a strong password
 - Wifi settings
 
