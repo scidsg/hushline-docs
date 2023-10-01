@@ -6,13 +6,11 @@
 - [Prerequisites](./prereqs/index.md)
    - [General](./prereqs/general.md)
    - [Raspberry Pi](./prereqs/raspberrypi.md)
+   - [VPS](./prereqs/vps.md)
 - [Installation](./installation/index.md)
-    - [Required hardware](./installation/hardware.md)
-    - [Set up Raspberry Pi](./installation/raspberry-pi.md)
-    - [Install Hush Line](./installation/hush-line.md)
-    - [Send a test message](./installation/test-message.md)
-    - [Regular use](./installation/regular-use.md)
-    - [Optional e-ink display](./installation/epaper-display.md)
+    - [Tor-Only](./installation/tor-only.md)
+    - [Tor + Public Website](./installation/public-web.md)
+- [Using Hush Line](./usage/index.md)
 - [Glossary](./glossary.md)
 <!-- - [Reading messages](./reading-messages.md) -->
 <!-- - [Troubleshooting](./troubleshooting.md) -->

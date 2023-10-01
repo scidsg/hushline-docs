@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Install Hush Line - Hush Line Field Manual</title>
+        <title>VPS - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/hardware.html"><strong aria-hidden="true">4.1.</strong> Required hardware</a></li><li class="chapter-item expanded "><a href="../installation/raspberry-pi.html"><strong aria-hidden="true">4.2.</strong> Set up Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../installation/hush-line.html" class="active"><strong aria-hidden="true">4.3.</strong> Install Hush Line</a></li><li class="chapter-item expanded "><a href="../installation/test-message.html"><strong aria-hidden="true">4.4.</strong> Send a test message</a></li><li class="chapter-item expanded "><a href="../installation/regular-use.html"><strong aria-hidden="true">4.5.</strong> Regular use</a></li><li class="chapter-item expanded "><a href="../installation/epaper-display.html"><strong aria-hidden="true">4.6.</strong> Optional e-ink display</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html" class="active"><strong aria-hidden="true">3.3.</strong> VPS</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,55 +171,45 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installing-hush-line"><a class="header" href="#installing-hush-line">Installing Hush Line</a></h1>
-<h2 id="what-youll-need-to-know-for-this-step"><a class="header" href="#what-youll-need-to-know-for-this-step">What you'll need to know for this step</a></h2>
-<p>Here is the information you'll need (all of which you should have at this point):</p>
+                        <h1 id="vps-prerequisites"><a class="header" href="#vps-prerequisites">VPS Prerequisites</a></h1>
+<p>In this section you'll need the following things to get Hush Line ready to install:</p>
+<ol>
+<li>Debit or credit card</li>
+<li>Digital Ocean, or any other VPS provider</li>
+</ol>
+<h2 id="digital-ocean"><a class="header" href="#digital-ocean">Digital Ocean</a></h2>
+<p>Digital Ocean is an infrastructure service provider that provides a cost-effective way to create your first virtual private server (VPS).</p>
+<h3 id="1-create-an-account"><a class="header" href="#1-create-an-account">1. Create an Account</a></h3>
+<p>Go to <a href="digitalocean.com">digitalocean.com</a> and create an account. You'll need to enter payment information before you can create a VPS.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/b92d130a-94d5-4184-a340-0c596ec68de1" alt="29-digital-ocean" /></p>
+<h3 id="2-create-a-vps"><a class="header" href="#2-create-a-vps">2. Create a VPS</a></h3>
+<p>Digital Ocean calls their VPS option Droplets. To create a droplet click the green &quot;Create&quot; button at the top of the screen, the click &quot;Droplet.&quot;</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/d46c934d-4917-486d-9845-67628b713bd6" alt="30-new-droplet" /></p>
+<p>You can configure your server to your desired specifications, but for this guide, we'll choose the following options:</p>
 <ul>
-<li>Your Hush Line email address</li>
-<li>Your app password</li>
-<li>Your public PGP key</li>
+<li>Location: San Francisco</li>
+<li>Image: Debian 12</li>
+<li>Size: Basic</li>
+<li>CPU: Regular SSD @ $4/mo</li>
 </ul>
-<h3 id="1-open-the-terminal"><a class="header" href="#1-open-the-terminal">1. Open The Terminal</a></h3>
+<p>Create a strong password, then click &quot;Create Droplet.&quot;</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/361ccb67-65c4-4da1-85bb-b1988405d70e" alt="31-create-droplet" /></p>
+<p>After a minute or two your Droplet should be ready. The &quot;Resources&quot; tab should be visible, and just below you'll see the IP address for your Droplet.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/d4b148de-0324-4f43-9872-3e17e39115a4" alt="32-droplet" /></p>
+<h3 id="3-log-in"><a class="header" href="#3-log-in">3. Log In</a></h3>
 <p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
-<p>Enter <code>ssh hush@hushline.local</code>, and when prompted, enter the password you created in the first step.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/013192bc-3046-40ce-8335-7021d562a64c" alt="21-terminal-login" /></p>
-<h3 id="2-start-the-script"><a class="header" href="#2-start-the-script">2. Start the script</a></h3>
-<p>Once logged in, enter <code>sudo su</code> then <code>curl -sSL https://install.hushline.app | bash</code> to start the installation.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/e2729634-6ee7-42bd-8736-d10ef1c4896c" alt="21-terminal" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/1c4b9fa3-758f-4305-ad98-335d761ba508" alt="22-install-hushline" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/ed5bf0d1-5a0b-4fa8-8bfa-870504dfc271" alt="23-prompt" /></p>
-<h3 id="3-add-your-information"><a class="header" href="#3-add-your-information">3. Add your information</a></h3>
-<p>The installer will walk you through everything needed to get Hush Line working. We'll need the following information:</p>
-<ul>
-<li>Gmail address</li>
-<li>SMTP address: smtp.gmail.com</li>
-<li>App password (from prerequisites)</li>
-<li>Port: 465</li>
-<li>Public PGP key (from prerequisites)</li>
-</ul>
-<p>When you reach the step to enter your PGP key, after pasting make sure to type &quot;END&quot; on a new line, then press Enter.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/0a5a1c11-c45b-454b-83d3-932ddf658398" alt="23-key" /></p>
-<p>Once the installation completes, you'll see a message that looks like this:</p>
-<pre><code>✅ Installation complete!
-
-Hush Line is a product by Science &amp; Design.
-Learn more about us at https://scidsg.org.
-Have feedback? Send us an email at hushline@scidsg.org.
-
-• Hush Line is running
-http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
-</code></pre>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/63625c47-a4cf-4195-ba6a-3930c4592fbb" alt="24-finished" /></p>
+<p>Enter <code>ssh root@&lt;IP Address&gt;</code>, and when prompted, enter the password you created in the second step.</p>
+<p>🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/raspberry-pi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../prereqs/raspberrypi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../installation/test-message.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../installation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -229,11 +219,11 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/raspberry-pi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../prereqs/raspberrypi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../installation/test-message.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../installation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
