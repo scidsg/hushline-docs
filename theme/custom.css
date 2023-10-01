@@ -153,6 +153,7 @@ p {
 
 strong {
 	font-weight: initial;
+	font-family: 'Sans Bold', sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
