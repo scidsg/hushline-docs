@@ -82,6 +82,9 @@ p {
 	padding: 1rem 0;
 	top: 0 !important;
 	position: sticky;
+	background-color: rgba(255, 255, 255, .8);
+	backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
 }
 
 #search-wrapper {
