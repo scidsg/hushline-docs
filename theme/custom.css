@@ -35,7 +35,7 @@ h1:target::before, h2:target::before, h3:target::before, h4:target::before, h5:t
 	display: none;
 }
 
-h2, h3 {
+h2, h3, h4, h5, h6 {
 	margin-top: 2.5rem !important;
 	margin-bottom: 1.5rem !important;
 }
