@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>VPS - Hush Line Field Manual</title>
+        <title>Threat Modeling - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html" class="active"><strong aria-hidden="true">3.3.</strong> VPS</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html"><strong aria-hidden="true">3.4.</strong> Threat Modeling</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html" class="active"><strong aria-hidden="true">3.4.</strong> Threat Modeling</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,46 +171,40 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="vps-prerequisites"><a class="header" href="#vps-prerequisites">VPS Prerequisites</a></h1>
-<p>In this section you'll need the following things to get Hush Line ready to install:</p>
-<ol>
-<li>Debit or credit card</li>
-<li>Digital Ocean, or any other VPS provider</li>
-</ol>
-<h2 id="digital-ocean"><a class="header" href="#digital-ocean">Digital Ocean</a></h2>
-<p>Digital Ocean is an infrastructure service provider that provides a cost-effective way to create your first virtual private server (VPS).</p>
-<h3 id="1-create-an-account"><a class="header" href="#1-create-an-account">1. Create an Account</a></h3>
-<p>Go to <a href="digitalocean.com">digitalocean.com</a> and create an account. You'll need to enter payment information before you can create a VPS.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/b92d130a-94d5-4184-a340-0c596ec68de1" alt="29-digital-ocean" /></p>
-<h3 id="2-create-a-vps"><a class="header" href="#2-create-a-vps">2. Create a VPS</a></h3>
-<p>Digital Ocean calls their VPS option Droplets. To create a droplet click the green &quot;Create&quot; button at the top of the screen, the click &quot;Droplets.&quot;</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/d46c934d-4917-486d-9845-67628b713bd6" alt="30-new-droplet" /></p>
-<p>You can configure your server to your desired specifications, but for this guide, we'll choose the following options:</p>
+                        <h1 id="threat-modeling"><a class="header" href="#threat-modeling">Threat Modeling</a></h1>
+<p>To determine the kind of install to proceed with, first think about your use case. Are you a journalist? Educator? Employer? Is your source's physical safety in danger, or are they reporting issues including government corruption? Or will your community members just provide feedback about a product or service? </p>
+<h2 id="low-threat"><a class="header" href="#low-threat">Low Threat</a></h2>
+<p>If you need a tip line and it's a relatively low-risk scenario, we recommend making it easy for your community to access your Hush Line. For example, a business owner may want to deploy to a subdomain of their primary website so that users know it's officially associated with their brand. </p>
+<p>A real example is Investigative Data, who's official URL is investigativedata.io with Hush Line reachable at hello.investigativedata.org.</p>
 <ul>
-<li>Location: San Francisco</li>
-<li>Image: Debian 12</li>
-<li>Size: Basic</li>
-<li>CPU: Regular SSD @ $4/mo</li>
+<li>Small Businesses</li>
+<li>Schoolhouses</li>
+<li>Conference Organizers</li>
 </ul>
-<p>Create a strong password, then click &quot;Create Droplet.&quot;</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/361ccb67-65c4-4da1-85bb-b1988405d70e" alt="31-create-droplet" /></p>
-<p>After a minute or two your Droplet should be ready. The &quot;Resources&quot; tab should be visible, and just below you'll see the IP address for your Droplet.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/d4b148de-0324-4f43-9872-3e17e39115a4" alt="32-droplet" /></p>
-<h3 id="3-log-in"><a class="header" href="#3-log-in">3. Log In</a></h3>
-<p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
-<p>Enter <code>ssh root@&lt;IP Address&gt;</code>, and when prompted, enter the password you created in the second step.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/670f4db0-273e-40d8-949d-bb2cfa958138" alt="33-terminal" /></p>
-<p>🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!</p>
+<h2 id="medium-threat"><a class="header" href="#medium-threat">Medium Threat</a></h2>
+<p>Medium threats include higher priority scenarios, but might not be at the level of requiring advanced censorship circumvention techniques. In this case, you might also want to deploy to a public domain. Since every deployment includes an onion address, you'll always have the option for higher-risk scenarios like public companies or government contractors.</p>
+<ul>
+<li>Publicly traded businesses</li>
+<li>Law or doctors offices</li>
+<li>Domestic abuse hotlines</li>
+</ul>
+<h2 id="high-threat"><a class="header" href="#high-threat">High Threat</a></h2>
+<p>High threats are where someone's physical safety can be in danger. Consider a whistleblower leaking evidence of nation-state abuses, or a journalist dedicated to reporting on corruption in authoritarian governments. For these cases, we recommend using a Tor-only deployment. </p>
+<ul>
+<li>Journalists</li>
+<li>Government Whistleblowers</li>
+<li>Locations with internet censorship</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../prereqs/raspberrypi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../prereqs/vps.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../prereqs/threat-modeling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../installation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -220,11 +214,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../prereqs/raspberrypi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../prereqs/vps.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../prereqs/threat-modeling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../installation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
