@@ -8,9 +8,9 @@ If you need a tip line and it's a relatively low-risk scenario, we recommend mak
 
 A real example is Investigative Data, whose official URL is investigativedata.io with Hush Line reachable at hello.investigativedata.org.
 
-- Small Businesses
+- Small to medium businesses
 - Schoolhouses
-- Conference Organizers
+- Conference organizers
 
 ## Medium Threats
 
@@ -25,5 +25,5 @@ Medium threats include higher priority scenarios but might not be at the level o
 High threats are where someone's physical safety can be in danger. Consider a whistleblower leaking evidence of nation-state abuses or a journalist dedicated to reporting on corruption in authoritarian governments. For these cases, we recommend using a Tor-only deployment. Rather than a VPS, someone may wish to deploy to a physical device they possess, like a Raspberry Pi.
 
 - Journalists
-- Government Whistleblowers
+- Government whistleblowers
 - Locations with internet censorship
