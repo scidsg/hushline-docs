@@ -6,7 +6,7 @@ The deployment of an anonymous tip line, like Hush Line, requires an understandi
 ## Understanding the Threats
 To select the right Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:
 
-### Low Threats
+### ❕ Low Threats
 These scenarios typically involve situations where the primary risk is non-targeted threats or generic cyber threats. The fallout from a security breach is minimal. 
 
 We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`.
@@ -16,7 +16,7 @@ We recommend using a VPS and deploying Hush Line as a public domain to a URL lik
 - 🏫 Schoolhouses
 - 🎈 Conference organizers
 
-### Medium Threats
+### ❗️ Medium Threats
 Here, the risks escalate. They include targeted threats but might not require advanced defense measures. 
 
 We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`. When sharing your Hush Line address, include the onion address for people that require higher levels of anonymity.
@@ -26,7 +26,7 @@ We recommend using a VPS and deploying Hush Line as a public domain to a URL lik
 - 🩺 Law or doctor's offices
 - 🚨 Domestic abuse hotlines
 
-### High Threats
+### ‼️ High Threats
 These are scenarios where targeted threats are likely, and consequences can be severe, like endangering someone's physical safety.
 
 Depending on risks to your physical location, we recommend either using a VPS or local device like a Raspberry Pi and choosing an onion-only deployment. This will provide the greatest protection for your community and your tip line.
