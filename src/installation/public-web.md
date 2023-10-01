@@ -8,11 +8,11 @@ After logging in to either your Raspberry Pi or VPS, enter the follow command to
 
 `curl -sSL https://install.hushline.app | bash`
 
-![34-install](https://github.com/scidsg/project-info/assets/28545431/b5563f02-5a49-42d2-bd7b-3e1cee3b15c6)
+<img src="./img/34-install.png">
 
 Choose "Tor + Public Domain" at the first prompt for the installation type.
 
-![35-public](https://github.com/scidsg/project-info/assets/28545431/299aba44-9636-466d-aa20-7cb4e444cfb6)
+<img src="./img/35-public.png">
 
 ## 2. Add Information
 
@@ -25,13 +25,13 @@ Hush Line will send an email with the encrypted Hush Line message to the account
 - Port: 465
 - Public PGP Key (from prerequisites)
 
-![36-key](https://github.com/scidsg/project-info/assets/28545431/7af7d0e6-0d06-4cbf-8794-263685b43584)
+<img src="./img/36-key.png">
 
 ## 3. Configure DNS
 
 Now we need to point your domain name to your new Droplet. When the installer gets to the final step, it will display the exact information that you need to enter in your domain's DNS settings.
 
-![38-dns-settings](https://github.com/scidsg/project-info/assets/28545431/4fd3edbd-b50d-4a42-80c9-d263e2e32944)
+<img src="./img/38-dns-settings.png">
 
 Once the installation completes, you'll see a message that looks like this:
 
@@ -48,6 +48,6 @@ http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
 https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.app
 ```
 
-![39-https-complete-1](https://github.com/scidsg/project-info/assets/28545431/3710b96a-a630-47b2-a88e-07da40c5a4ba)
+<img src="./img/39-https-complete-1.png">
 
 🎉 Congratulations! You've successfully set up your own public anonymous tip line! 
