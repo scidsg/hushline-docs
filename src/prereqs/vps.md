@@ -17,7 +17,7 @@ Go to [digitalocean.com](digitalocean.com) and create an account. You'll need to
 
 ### 2. Create a VPS
 
-Digital Ocean calls their VPS option Droplets. To create a droplet click the green "Create" button at the top of the screen, the click "Droplet."
+Digital Ocean calls their VPS option Droplets. To create a droplet click the green "Create" button at the top of the screen, the click "Droplets."
 
 ![30-new-droplet](https://github.com/scidsg/project-info/assets/28545431/d46c934d-4917-486d-9845-67628b713bd6)
 
