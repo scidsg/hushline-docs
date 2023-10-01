@@ -171,30 +171,71 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="threat-modeling"><a class="header" href="#threat-modeling">Threat Modeling</a></h1>
-<p>To determine the kind of installation to proceed with, first think about your use case. Are you a journalist? Educator? Employer? Is your source's physical safety in danger, or are they reporting issues, including government corruption? Or will your community members provide feedback about a product or service? </p>
-<h2 id="low-threats"><a class="header" href="#low-threats">Low Threats</a></h2>
-<p>If you need a tip line and it's a relatively low-risk scenario, we recommend making it easy for your community to access your Hush Line. For example, a business owner may want to deploy to a subdomain of their primary website so that users know it's officially associated with their brand. </p>
-<p>A real example is Investigative Data, whose official URL is investigativedata.io with Hush Line reachable at hello.investigativedata.org.</p>
+                        <h1 id="threat-modeling-for-hush-line-deployment"><a class="header" href="#threat-modeling-for-hush-line-deployment">Threat Modeling for Hush Line Deployment</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>The deployment of an anonymous tip line, like Hush Line, requires an understanding of the environment in which it will be used. Different organizations and individuals face unique threats, and the purpose of this guide is to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.</p>
+<h2 id="understanding-the-threats"><a class="header" href="#understanding-the-threats">Understanding the Threats</a></h2>
+<p>To select the right Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:</p>
+<h3 id="low-threats"><a class="header" href="#low-threats">Low Threats</a></h3>
+<p>These scenarios typically involve situations where the primary risk is non-targeted threats or generic cyber threats. The fallout from a security breach is minimal. </p>
+<p>We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: <code>tips.acme.com</code>.</p>
+<h4 id="examples"><a class="header" href="#examples">Examples</a></h4>
 <ul>
 <li>💼 Small to medium businesses</li>
 <li>🏫 Schoolhouses</li>
 <li>🎈 Conference organizers</li>
 </ul>
-<h2 id="medium-threats"><a class="header" href="#medium-threats">Medium Threats</a></h2>
-<p>Medium threats include higher priority scenarios but might not be at the level of requiring advanced censorship circumvention techniques. In this case, you might want to deploy to a public domain. Since every deployment includes an onion address, you'll always have the option for higher-risk scenarios like public companies or government contractors.</p>
+<h3 id="medium-threats"><a class="header" href="#medium-threats">Medium Threats</a></h3>
+<p>Here, the risks escalate. They include targeted threats but might not require advanced defense measures. </p>
+<p>We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: <code>tips.acme.com</code>. When sharing your Hush Line address, include the onion address for people that require higher levels of anonymity.</p>
+<h4 id="examples-1"><a class="header" href="#examples-1">Examples</a></h4>
 <ul>
 <li>📈 Publicly traded businesses</li>
 <li>🩺 Law or doctor's offices</li>
 <li>🚨 Domestic abuse hotlines</li>
 </ul>
-<h2 id="high-threats"><a class="header" href="#high-threats">High Threats</a></h2>
-<p>High threats are where someone's physical safety can be in danger. Consider a whistleblower leaking evidence of nation-state abuses or a journalist dedicated to reporting on corruption in authoritarian governments. For these cases, we recommend using a Tor-only deployment. Rather than a VPS, someone may wish to deploy to a physical device they possess, like a Raspberry Pi.</p>
+<h3 id="high-threats"><a class="header" href="#high-threats">High Threats</a></h3>
+<p>These are scenarios where targeted threats are likely, and consequences can be severe, like endangering someone's physical safety.</p>
+<p>Depending on risks to your physical location, we recommend either using a VPS or local device like a Raspberry Pi and choosing an onion-only deployment. This will provide the greatest protection for your community and your tip line.</p>
+<h4 id="examples-2"><a class="header" href="#examples-2">Examples</a></h4>
 <ul>
 <li>📰 Journalists</li>
 <li>🆘 Government whistleblowers</li>
 <li>🚔 Locations with internet censorship</li>
 </ul>
+<h2 id="malicious-actors--misinformation"><a class="header" href="#malicious-actors--misinformation">Malicious Actors &amp; Misinformation</a></h2>
+<p>Always be aware that anonymity can be a double-edged sword. While it provides protection for genuine whistleblowers, it can also shield malicious actors. Regularly vet and verify the tips you receive to guard against misinformation campaigns, especially in high-risk scenarios.</p>
+<h2 id="deployment-options"><a class="header" href="#deployment-options">Deployment Options</a></h2>
+<p>Given Hush Line's range of deployment choices, weigh the pros and cons of each:</p>
+<ul>
+<li>
+<p><strong>Onion-only</strong>: Best for high-threat environments, offering maximum anonymity. However, it might be less accessible for non-technical users.</p>
+</li>
+<li>
+<p><strong>Tor + Public Web</strong>: Offers a balance of accessibility and security. Useful for medium-threat scenarios.</p>
+</li>
+<li>
+<p><strong>Physical Device</strong>: This option, like deploying on a Raspberry Pi, gives you more control but could be at risk if the physical location is compromised. Ideal for high-risk scenarios where control over the infrastructure is crucial.</p>
+</li>
+</ul>
+<p>It's important for all deployment types to share your addresses with your community openly and clearly, and reinforce to your users to <em>only</em> use the addresses that you've shared.</p>
+<h2 id="boosting-security"><a class="header" href="#boosting-security">Boosting Security</a></h2>
+<p>To further bolster security:</p>
+<ol>
+<li>Use dedicated devices to check emails from Hush Line.</li>
+<li>Employ secondary verification methods for significant tips.</li>
+<li>Enhance anonymity with tools like VPNs or secure browsing techniques.</li>
+</ol>
+<h2 id="maintenance--updates"><a class="header" href="#maintenance--updates">Maintenance &amp; Updates</a></h2>
+<p>While Hush Line offers automatic updates, it's vital to:</p>
+<ul>
+<li>Regularly review the system for potential threats.</li>
+<li>Stay informed about the latest security updates and patches.</li>
+<li>Engage in regular security training and awareness for all staff involved.</li>
+</ul>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>Deploying Hush Line is a step towards fostering open communication while safeguarding anonymity. By understanding the threats, choosing the right deployment option, and following security best practices, you can ensure a secure and effective platform for your community.</p>
+<p><em>For organizations seeking in-depth threat analysis and tailored advice, please send an email to hushline@scidsg.org.</em></p>
 
                     </main>
 
