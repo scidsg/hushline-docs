@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Using Hush Line - Hush Line Field Manual</title>
+        <title>Sending Messages - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html" class="active"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html" class="active"><strong aria-hidden="true">6.</strong> Using Hush Line</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending.html" class="active"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">6.</strong> Using Hush Line</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,18 +171,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installing-hush-line"><a class="header" href="#installing-hush-line">Installing Hush Line</a></h1>
-<p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
+                        <h1 id="sending-messages"><a class="header" href="#sending-messages">Sending Messages</a></h1>
+<p>For someone in your community to send you a Hush Line message, they just need to go to one of your addresses. </p>
+<h2 id="1-tor"><a class="header" href="#1-tor">1. Tor</a></h2>
+<p>If you chose a Tor-only deployment you should have seen an output like this after installation completed:</p>
+<pre><code>✅ Installation complete!
+
+Hush Line is a product by Science &amp; Design.
+Learn more about us at https://scidsg.org.
+Have feedback? Send us an email at hushline@scidsg.org.
+
+• Hush Line is running
+http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
+</code></pre>
+<p>Open up Tor Browser and paste your onion address in the addess bar. Tor is a little slower than regular internet, so it'll take a few seconds before your site loads.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/9f7171aa-2c9d-4e43-97fa-e2530dd15a7b" alt="25-tor" /></p>
+<h2 id="2-public-websites"><a class="header" href="#2-public-websites">2. Public Websites</a></h2>
+<p>If you deployed Hush Line to a public website, you shouldh have seen an output like this:</p>
+<pre><code>✅ Installation complete!
+
+Hush Line is a product by Science &amp; Design.
+Learn more about us at https://scidsg.org.
+Have feedback? Send us an email at hushline@scidsg.org.
+
+● Hush Line is running
+https://ourdemo.app
+http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
+https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.app
+</code></pre>
+<p>In the example above, the first and the last address can load in regular browsers like Chrome, Firefox, or Safari. The onion-only address needs Tor Browser to load.</p>
+<p>The first address should be easy to recognize, but the last might look different. It's called an onion-bound address, and it's a new way of making your onion address discoverable through HTTPS logs. During the installation we requested and configured automatically renewing Let's Encrypt certificates for your domain name. This provides a secure connection from the user's browser to your server. When a certifiate is issued, it's logged in publicly discoverable certificate logs. Now, if someone searches for your domain, they'll see all of the domain names issued a HTTPS certificate. One of them will include your onion address, making it's discovery more resistant to censorship! Learn more at <a href="sauteed-onions.org">sauteed-onions.org</a>.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/75ad4f1f-73e5-4d12-91fe-5d5007a63087" alt="40-public-domain" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/public-web.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../usage/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../usage/sending.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../usage/reading.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +221,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/public-web.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../usage/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../usage/sending.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../usage/reading.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

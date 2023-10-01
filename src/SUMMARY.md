@@ -11,6 +11,9 @@
     - [Tor-Only](./installation/tor-only.md)
     - [Tor + Public Website](./installation/public-web.md)
 - [Using Hush Line](./usage/index.md)
+    - [Sending Messages](./usage/sending.md)
+    - [Reading Messages](./usage/reading.md)
+- [Using Hush Line](./usage/index.md)
 - [Glossary](./glossary.md)
 <!-- - [Reading messages](./reading-messages.md) -->
 <!-- - [Troubleshooting](./troubleshooting.md) -->

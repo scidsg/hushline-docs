@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li></ol></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="prereqs/index.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li></ol></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="usage/sending.html"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="usage/index.html"><strong aria-hidden="true">6.</strong> Using Hush Line</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -382,6 +382,45 @@ https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.a
 <p><img src="https://github.com/scidsg/project-info/assets/28545431/098a886b-ac2a-4050-a146-5270876c5113" alt="39-https-complete" /></p>
 <p>🎉 Congratulations! You've successfully set up your own public anonymous tip line! </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line-1"><a class="header" href="#installing-hush-line-1">Installing Hush Line</a></h1>
+<p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-messages"><a class="header" href="#sending-messages">Sending Messages</a></h1>
+<p>For someone in your community to send you a Hush Line message, they just need to go to one of your addresses. </p>
+<h2 id="1-tor"><a class="header" href="#1-tor">1. Tor</a></h2>
+<p>If you chose a Tor-only deployment you should have seen an output like this after installation completed:</p>
+<pre><code>✅ Installation complete!
+
+Hush Line is a product by Science &amp; Design.
+Learn more about us at https://scidsg.org.
+Have feedback? Send us an email at hushline@scidsg.org.
+
+• Hush Line is running
+http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
+</code></pre>
+<p>Open up Tor Browser and paste your onion address in the addess bar. Tor is a little slower than regular internet, so it'll take a few seconds before your site loads.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/9f7171aa-2c9d-4e43-97fa-e2530dd15a7b" alt="25-tor" /></p>
+<h2 id="2-public-websites"><a class="header" href="#2-public-websites">2. Public Websites</a></h2>
+<p>If you deployed Hush Line to a public website, you shouldh have seen an output like this:</p>
+<pre><code>✅ Installation complete!
+
+Hush Line is a product by Science &amp; Design.
+Learn more about us at https://scidsg.org.
+Have feedback? Send us an email at hushline@scidsg.org.
+
+● Hush Line is running
+https://ourdemo.app
+http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
+https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.app
+</code></pre>
+<p>In the example above, the first and the last address can load in regular browsers like Chrome, Firefox, or Safari. The onion-only address needs Tor Browser to load.</p>
+<p>The first address should be easy to recognize, but the last might look different. It's called an onion-bound address, and it's a new way of making your onion address discoverable through HTTPS logs. During the installation we requested and configured automatically renewing Let's Encrypt certificates for your domain name. This provides a secure connection from the user's browser to your server. When a certifiate is issued, it's logged in publicly discoverable certificate logs. Now, if someone searches for your domain, they'll see all of the domain names issued a HTTPS certificate. One of them will include your onion address, making it's discovery more resistant to censorship! Learn more at <a href="usage/sauteed-onions.org">sauteed-onions.org</a>.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/75ad4f1f-73e5-4d12-91fe-5d5007a63087" alt="40-public-domain" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reading-messages"><a class="header" href="#reading-messages">Reading Messages</a></h1>
+<p>When someone sends you a Hush Line message, it'll get delivered to the email account you configured during installation. Messages will have the subject line &quot;🤫 New Hush Line Message Received.&quot;</p>
+<h2 id="gmail--mailvelope"><a class="header" href="#gmail--mailvelope">Gmail + Mailvelope</a></h2>
+<p>When you click on your Hush Line message you might be prompted to enter your Mailvelope password. Recall that this is the password we set up in our prerequisites.</p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/3e24799b-8112-494f-9e86-5e2a02ac9b4f" alt="28-password" /></p>
+<p><img src="https://github.com/scidsg/project-info/assets/28545431/d4df1049-1672-46cd-99e2-9693d4ea43b2" alt="28-decrypted-message" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line-2"><a class="header" href="#installing-hush-line-2">Installing Hush Line</a></h1>
 <p>Let's learn how to get your very own Hush Line up and running so you can receive private information from your community.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="glossary"><a class="header" href="#glossary">Glossary</a></h1>
 <p><strong>Hush Line site</strong>: The website that your Hush Line form is available at. If you're running Hush Line in &quot;Tor-only&quot; mode, your Hush Line site will have a URL like <code>http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion</code> and will be only accessible through the <a href="https://torproject.org/download">Tor Browser</a>.</p>
