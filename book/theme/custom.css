@@ -120,6 +120,10 @@ p {
 	color: #444;
 }
 
+.hljs {
+  background: #f6f7f6 !important;
+ }
+
 ul#searchresults span.teaser em {
 	font-weight: normal;
 	font-family: 'Sans Bold', sans-serif;
