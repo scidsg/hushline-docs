@@ -13,13 +13,13 @@ Digital Ocean is an infrastructure service provider that provides a cost-effecti
 
 Go to [digitalocean.com](digitalocean.com) and create an account. You'll need to enter payment information before you can create a VPS.
 
-![29-digital-ocean](https://github.com/scidsg/project-info/assets/28545431/b92d130a-94d5-4184-a340-0c596ec68de1)
+<img src="../img/29-digital-ocean.png">
 
 ### 2. Create a VPS
 
 Digital Ocean calls their VPS option Droplets. To create a droplet click the green "Create" button at the top of the screen, the click "Droplets."
 
-![30-new-droplet](https://github.com/scidsg/project-info/assets/28545431/d46c934d-4917-486d-9845-67628b713bd6)
+<img src="../img/30-new-droplet.png">
 
 You can configure your server to your desired specifications, but for this guide, we'll choose the following options:
 
@@ -30,11 +30,11 @@ You can configure your server to your desired specifications, but for this guide
 
 Create a strong password, then click "Create Droplet."
 
-![31-create-droplet](https://github.com/scidsg/project-info/assets/28545431/361ccb67-65c4-4da1-85bb-b1988405d70e)
+<img src="../img/31-create-droplet.png">
 
 After a minute or two your Droplet should be ready. The "Resources" tab should be visible, and just below you'll see the IP address for your Droplet.
 
-![32-droplet](https://github.com/scidsg/project-info/assets/28545431/d4b148de-0324-4f43-9872-3e17e39115a4)
+<img src="../img/32-droplet.png">
 
 ### 3. Log In
 
@@ -42,6 +42,6 @@ On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and se
 
 Enter `ssh root@<IP Address>`, and when prompted, enter the password you created in the second step.
 
-![33-terminal](https://github.com/scidsg/project-info/assets/28545431/670f4db0-273e-40d8-949d-bb2cfa958138)
+<img src="../img/33-terminal.png">
 
 🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!

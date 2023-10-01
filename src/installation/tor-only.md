@@ -8,11 +8,11 @@ After logging in to either your Raspberry Pi or VPS, enter the follow command to
 
 `curl -sSL https://install.hushline.app | bash`
 
-![22-install-hushline](https://github.com/scidsg/project-info/assets/28545431/fa1b19b1-6893-4197-b314-92e44701922b)
+<img src="../img/22-install-hushline.png">
 
 Choose "Tor-Only" at the first prompt for the installation type.
 
-![23-tor-only](https://github.com/scidsg/project-info/assets/28545431/89ab37a1-8a55-444d-b414-d03aae739c92)
+<img src="../img/23-tor-only.png">
 
 ## 2. Add Email Information
 
@@ -24,7 +24,7 @@ Hush Line will send an email with the encrypted Hush Line message to the account
 - Port: 465
 - Public PGP Key (from prerequisites)
   
-![23-key](https://github.com/scidsg/project-info/assets/28545431/4c5649d8-940f-4490-b9f3-522ed477e43b)
+<img src="../img/23-key.png">
 
 Once the installation completes, you'll see a message that looks like this:
 
@@ -39,6 +39,6 @@ Have feedback? Send us an email at hushline@scidsg.org.
 http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 ```
 
-![24-finished](https://github.com/scidsg/project-info/assets/28545431/63625c47-a4cf-4195-ba6a-3930c4592fbb)
+<img src="../img/24-finished.png">
 
 🎉 Congratulations! You've successfully set up your own anonymous tip line! 

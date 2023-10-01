@@ -22,9 +22,8 @@ In this section, we'll need the following:
 
 Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD cardc where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.
 
-![1-rpi-imager](https://github.com/scidsg/project-info/assets/28545431/a426639b-a1ce-47eb-859b-c5c6d7ee5f9e)
-
-![2-rpi-imager](https://github.com/scidsg/project-info/assets/28545431/e821ace5-4828-45fc-bf58-75d25444573d)
+<img src="../img/1-rpi-imager.png">
+<img src="../img/2-rpi-imager.png">
 
 ## Prep Your Card
 
@@ -33,7 +32,7 @@ Open the Raspberry Pi Imager and click `Choose OS > Raspberry Pi OS (other) > Ra
 
 Insert your microSD card into your computer, and then click `Choose Storage` and select your card.
 
-![19-rpi-imager](https://github.com/scidsg/project-info/assets/28545431/4a05a403-45c8-4a70-be4a-78aac27fea0c)
+<img src="../img/19-rpi-imager.png">
 
 Before clicking Write, click on the Settings gear in the bottom right of the window. Configure the following settings:
 
@@ -43,7 +42,7 @@ Before clicking Write, click on the Settings gear in the bottom right of the win
 - Set a strong password
 - Wifi settings
 
-![20-advanced](https://github.com/scidsg/project-info/assets/28545431/46a822c8-bf5e-40c0-9c45-fcbc19a1c9ad)
+<img src="../img/20-advanced.png">
 
 ## Boot up and log in to Your Pi
 
@@ -59,6 +58,6 @@ On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and se
 
 Enter `ssh hush@hushline.local`, and when prompted, enter the password you created in the first step.
 
-![21-terminal-login](https://github.com/scidsg/project-info/assets/28545431/013192bc-3046-40ce-8335-7021d562a64c)
+<img src="../img/21-terminal-login.png">
 
 🎉 That's it, you're ready to get started with Raspberry Pi!

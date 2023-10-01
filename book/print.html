@@ -174,7 +174,7 @@
                     <main>
                         <h1 id="hush-line-field-manual"><a class="header" href="#hush-line-field-manual">Hush Line Field Manual</a></h1>
 <p><a href="https://hushline.app/">Hush Line</a> is a lightweight, secure, and anonymous tip line. It's easy to install and to use.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/863da5ef-8605-407b-b4fa-e7a42bedba8d" alt="0-cover" /></p>
+<img src="../img/0-cover.png">
 <p>Think of a box in your office or school in which people can slip in anonymous messages, with a lock on it that only you have the key to open.</p>
 <p>It's intended for journalists and newsrooms to offer a public tip line, by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers for anonymous employee reporting.</p>
 <p>This guide will show you to set up your own Hush Line. </p>
@@ -200,14 +200,14 @@
 <h2 id="software"><a class="header" href="#software">Software</a></h2>
 <h3 id="1-tor-browser"><a class="header" href="#1-tor-browser">1. Tor Browser</a></h3>
 <p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/dba5de25-383c-443d-b31e-8e55fc5dd8a1" alt="3-tor-browser" /></p>
+<img src="prereqs/../img/3-tor-browser.png">
 <h3 id="2-gmail"><a class="header" href="#2-gmail">2. Gmail</a></h3>
 <p>We'll use Gmail for its high reliability. If you don't already have an account, create one. It's also not a bad idea to have an email address separate from your personal account.</p>
 <h3 id="3-mailvelope"><a class="header" href="#3-mailvelope">3. Mailvelope</a></h3>
 <p>To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality; add the extension to <a href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Firefox</a> or <a href="https://chrome.google.com/webstore/detail/mailvelope/kajibbejlbohfaggdiogboambcijhkke">Chrome</a>.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/eabf6c60-50ca-40ce-b217-30fe0451cda1" alt="4-mailvelope" /></p>
+<img src="prereqs/../img/4-mailvelope.png">
 <p>Open the extension in your browser and click &quot;Let's Start.&quot;</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/dd630fae-ad1e-4b0e-8760-5d3e85707f44" alt="5-mailvelope" /></p>
+<img src="prereqs/../img/5-mailvelope.png">
 <h2 id="creating-keys"><a class="header" href="#creating-keys">Creating Keys</a></h2>
 <h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
 <p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
@@ -215,31 +215,31 @@
 <h3 id="4-create-your-keys"><a class="header" href="#4-create-your-keys">4. Create your keys</a></h3>
 <p>To create our envelopes and letter opener, we're going to use our Mailvelope extension. </p>
 <p>Click on &quot;Generate Keys.&quot; Give your key a name, enter your Gmail address, and create a strong password.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/1f12555c-bf2f-4f54-8826-22460384e2cf" alt="6-mailvelope-setup" /></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/73eb943b-5e0a-4fcd-a159-b2b688b3ab89" alt="7-generate-key" /></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/c4450938-4ab5-4446-9202-a0c2c148838d" alt="8-key-created" /></p>
+<img src="prereqs/../img/6-mailvelope-setup.png">
+<img src="prereqs/../img/7-generate-key.png">
+<img src="prereqs/../img/8-key-created.png">
 <h3 id="5-verify-your-email-address"><a class="header" href="#5-verify-your-email-address">5. Verify your email address</a></h3>
 <p>Before using your key, you'll have to verify your email address. Look for a message from <code>Mailvelope Key Server</code> in your Gmail inbox.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/65e11fb4-9788-4cd2-bfe3-bebed1a1d0a1" alt="9-verify-email" /></p>
+<img src="prereqs/../img/9-verify-email.png">
 <p>The message is encrypted, and when opened, you'll be prompted for your Mailvelope password to read the email. After entering your password, click the link.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/6cfc1efa-ddc1-4109-b7ce-72cf996e6441" alt="10-decrypt-message" /></p>
+<img src="prereqs/../img/10-decrypt-message.png">
 <h3 id="6-copy-your-pgp-key"><a class="header" href="#6-copy-your-pgp-key">6. Copy your PGP key</a></h3>
 <p>After confirming that your email was verified, click on the supplied URL.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/e3a55242-d5f1-47db-947b-f75d6a55809f" alt="11-confirmation" /></p>
+<img src="prereqs/../img/11-confirmation.png">
 <p>Your PGP Key is in the grey box, beginning with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ending with <code>-----END PGP PUBLIC KEY BLOCK-----</code>. Copy your entire key into a notepad for easy access.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/6ba01973-8fdc-43e1-83a4-5f9152d77a66" alt="12-public-key" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/fe400d7a-8dbd-44e4-b360-4f92839caf83" alt="13-copy-key" /></p>
+<img src="prereqs/../img/12-public-key.png">
+<img src="prereqs/../img/13-copy-key.png">
 <h2 id="app-password"><a class="header" href="#app-password">App Password</a></h2>
 <h3 id="7-create-an-app-password"><a class="header" href="#7-create-an-app-password">7. Create an app password</a></h3>
 <p>Hush Line has a mail server installed to encrypted send messages to your email address. You'll need SMTP information, as well as a password. You should never use your main account password; instead, create app-specific passwords. These are essentially purpose-made for single applications. </p>
 <p>From your Gmail account, click on your avatar to access your account-level options. Select <code>Manage Google Account</code>.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/bc6f8df3-313b-404d-8911-5fa66785eccb" alt="14-profile-menu" /></p>
+<img src="prereqs/../img/14-profile-menu.png">
 <p>Next, click on the Security tab on the left, then scroll to the bottom of the page to find App Passwords.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/21cc352e-dc8d-468c-8e98-affe3a382193" alt="15-security" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/ecc35f89-c513-4ac3-8e1e-65504ede406f" alt="16-app-passwords" /></p>
+<img src="prereqs/../img/15-security.png">
+<img src="prereqs/../img/16-app-passwords.png">
 <p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specfic password. Copy it to a notepad for easy access.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/9136b863-f24c-495d-9ffa-32adfe15fa05" alt="17-create-password" />
-<img src="https://github.com/scidsg/project-info/assets/28545431/b448db84-78e5-4194-a23e-aa62b8449661" alt="18-copy-password" /></p>
+<img src="prereqs/../img/17-create-password.png">
+<img src="prereqs/../img/18-copy-password.png">
 <p>🎉 Congratulations, you're now ready to install Hush Line!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h1>
 <h2 id="hardware"><a class="header" href="#hardware">Hardware</a></h2>
@@ -260,13 +260,13 @@
 </ul>
 <h3 id="1-raspberry-pi-imager"><a class="header" href="#1-raspberry-pi-imager">1. Raspberry Pi Imager</a></h3>
 <p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD cardc where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/a426639b-a1ce-47eb-859b-c5c6d7ee5f9e" alt="1-rpi-imager" /></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/e821ace5-4828-45fc-bf58-75d25444573d" alt="2-rpi-imager" /></p>
+<img src="prereqs/../img/1-rpi-imager.png">
+<img src="prereqs/../img/2-rpi-imager.png">
 <h2 id="prep-your-card"><a class="header" href="#prep-your-card">Prep Your Card</a></h2>
 <h3 id="2-install-raspberry-pi-os"><a class="header" href="#2-install-raspberry-pi-os">2. Install Raspberry Pi OS</a></h3>
 <p>Open the Raspberry Pi Imager and click <code>Choose OS &gt; Raspberry Pi OS (other) &gt; Raspberry Pi OS (64-Bit)</code>.</p>
 <p>Insert your microSD card into your computer, and then click <code>Choose Storage</code> and select your card.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/4a05a403-45c8-4a70-be4a-78aac27fea0c" alt="19-rpi-imager" /></p>
+<img src="prereqs/../img/19-rpi-imager.png">
 <p>Before clicking Write, click on the Settings gear in the bottom right of the window. Configure the following settings:</p>
 <ul>
 <li>Hostname = hushline</li>
@@ -275,7 +275,7 @@
 <li>Set a strong password</li>
 <li>Wifi settings</li>
 </ul>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/46a822c8-bf5e-40c0-9c45-fcbc19a1c9ad" alt="20-advanced" /></p>
+<img src="prereqs/../img/20-advanced.png">
 <h2 id="boot-up-and-log-in-to-your-pi"><a class="header" href="#boot-up-and-log-in-to-your-pi">Boot up and log in to Your Pi</a></h2>
 <h3 id="3-insert-microsd-card"><a class="header" href="#3-insert-microsd-card">3. Insert microSD Card</a></h3>
 <p>Take your SD card and insert it into your Raspberry Pi. You'll find the SD card slide on the bottom of the board, opposite the ethernet ports.</p>
@@ -283,7 +283,7 @@
 <h3 id="4-log-in"><a class="header" href="#4-log-in">4. Log In</a></h3>
 <p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
 <p>Enter <code>ssh hush@hushline.local</code>, and when prompted, enter the password you created in the first step.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/013192bc-3046-40ce-8335-7021d562a64c" alt="21-terminal-login" /></p>
+<img src="prereqs/../img/21-terminal-login.png">
 <p>🎉 That's it, you're ready to get started with Raspberry Pi!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vps-prerequisites"><a class="header" href="#vps-prerequisites">VPS Prerequisites</a></h1>
 <p>In this section you'll need the following things to get Hush Line ready to install:</p>
@@ -295,10 +295,10 @@
 <p>Digital Ocean is an infrastructure service provider that provides a cost-effective way to create your first virtual private server (VPS).</p>
 <h3 id="1-create-an-account"><a class="header" href="#1-create-an-account">1. Create an Account</a></h3>
 <p>Go to <a href="prereqs/digitalocean.com">digitalocean.com</a> and create an account. You'll need to enter payment information before you can create a VPS.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/b92d130a-94d5-4184-a340-0c596ec68de1" alt="29-digital-ocean" /></p>
+<img src="prereqs/../img/29-digital-ocean.png">
 <h3 id="2-create-a-vps"><a class="header" href="#2-create-a-vps">2. Create a VPS</a></h3>
 <p>Digital Ocean calls their VPS option Droplets. To create a droplet click the green &quot;Create&quot; button at the top of the screen, the click &quot;Droplets.&quot;</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/d46c934d-4917-486d-9845-67628b713bd6" alt="30-new-droplet" /></p>
+<img src="prereqs/../img/30-new-droplet.png">
 <p>You can configure your server to your desired specifications, but for this guide, we'll choose the following options:</p>
 <ul>
 <li>Location: San Francisco</li>
@@ -307,13 +307,13 @@
 <li>CPU: Regular SSD @ $4/mo</li>
 </ul>
 <p>Create a strong password, then click &quot;Create Droplet.&quot;</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/361ccb67-65c4-4da1-85bb-b1988405d70e" alt="31-create-droplet" /></p>
+<img src="prereqs/../img/31-create-droplet.png">
 <p>After a minute or two your Droplet should be ready. The &quot;Resources&quot; tab should be visible, and just below you'll see the IP address for your Droplet.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/d4b148de-0324-4f43-9872-3e17e39115a4" alt="32-droplet" /></p>
+<img src="prereqs/../img/32-droplet.png">
 <h3 id="3-log-in"><a class="header" href="#3-log-in">3. Log In</a></h3>
 <p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
 <p>Enter <code>ssh root@&lt;IP Address&gt;</code>, and when prompted, enter the password you created in the second step.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/670f4db0-273e-40d8-949d-bb2cfa958138" alt="33-terminal" /></p>
+<img src="prereqs/../img/33-terminal.png">
 <p>🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="threat-modeling-for-hush-line-deployment"><a class="header" href="#threat-modeling-for-hush-line-deployment">Threat Modeling for Hush Line Deployment</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
@@ -387,9 +387,9 @@
 <h2 id="1-run-the-installer"><a class="header" href="#1-run-the-installer">1. Run The Installer</a></h2>
 <p>After logging in to either your Raspberry Pi or VPS, enter the follow command to start the installation process:</p>
 <p><code>curl -sSL https://install.hushline.app | bash</code></p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/fa1b19b1-6893-4197-b314-92e44701922b" alt="22-install-hushline" /></p>
+<img src="installation/../img/22-install-hushline.png">
 <p>Choose &quot;Tor-Only&quot; at the first prompt for the installation type.</p>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/89ab37a1-8a55-444d-b414-d03aae739c92" alt="23-tor-only" /></p>
+<img src="installation/../img/23-tor-only.png">
 <h2 id="2-add-email-information"><a class="header" href="#2-add-email-information">2. Add Email Information</a></h2>
 <p>Hush Line will send an email with the encrypted Hush Line message to the account you configure here. Since we're using Gmail, we'll need the following information:</p>
 <ul>
@@ -399,7 +399,7 @@
 <li>Port: 465</li>
 <li>Public PGP Key (from prerequisites)</li>
 </ul>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/4c5649d8-940f-4490-b9f3-522ed477e43b" alt="23-key" /></p>
+<img src="installation/../img/23-key.png">
 <p>Once the installation completes, you'll see a message that looks like this:</p>
 <pre><code>✅ Installation complete!
 
@@ -410,7 +410,7 @@ Have feedback? Send us an email at hushline@scidsg.org.
 • Hush Line is running
 http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 </code></pre>
-<p><img src="https://github.com/scidsg/project-info/assets/28545431/63625c47-a4cf-4195-ba6a-3930c4592fbb" alt="24-finished" /></p>
+<img src="installation/../img/24-finished.png">
 <p>🎉 Congratulations! You've successfully set up your own anonymous tip line! </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tor--public-web-install"><a class="header" href="#tor--public-web-install">Tor + Public Web Install</a></h1>
 <p>If you're someone using Hush Line for non-life-threatening scenarios - educators running a Hush Line for student reporting, or an employer for anonymous employee reporting - you might want to deploy to a public URL - one that will work in browsers like Chrome, Firefox, or Safari. We'll exclusively use a VPS. </p>
