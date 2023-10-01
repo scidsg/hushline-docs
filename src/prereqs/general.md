@@ -18,7 +18,7 @@ We'll use Gmail for its high reliability. If you don't already have an account, 
 
 ### 3. Mailvelope
 
-To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality. You can add the extension to Firefox here https://addons.mozilla.org/en-US/firefox/addon/mailvelope/ or Chrome here https://chrome.google.com/webstore/detail/mailvelope/kajibbejlbohfaggdiogboambcijhkke.
+To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality; add the extension to [Firefox](https://addons.mozilla.org/en-US/firefox/addon/mailvelope/) or [Chrome](https://chrome.google.com/webstore/detail/mailvelope/kajibbejlbohfaggdiogboambcijhkke).
 
 ![4-mailvelope](https://github.com/scidsg/project-info/assets/28545431/eabf6c60-50ca-40ce-b217-30fe0451cda1)
 
