@@ -11,7 +11,7 @@ These scenarios typically involve situations where the primary risk is non-targe
 
 We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`.
 
-#### Examples
+#### Example Use Cases
 - 💼 Small to medium businesses
 - 🏫 Schoolhouses
 - 🎈 Conference organizers
@@ -21,7 +21,7 @@ Here, the risks escalate. They include targeted threats but might not require ad
 
 We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`. When sharing your Hush Line address, include the onion address for people that require higher levels of anonymity.
 
-#### Examples
+#### Example Use Cases
 - 📈 Publicly traded businesses
 - 🩺 Law or doctor's offices
 - 🚨 Domestic abuse hotlines
@@ -31,7 +31,7 @@ These are scenarios where targeted threats are likely, and consequences can be s
 
 Depending on risks to your physical location, we recommend either using a VPS or local device like a Raspberry Pi and choosing an onion-only deployment. This will provide the greatest protection for your community and your tip line.
 
-#### Examples
+#### Example Use Cases
 - 📰 Journalists
 - 🆘 Government whistleblowers
 - 🚔 Locations with internet censorship
