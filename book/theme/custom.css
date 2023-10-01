@@ -122,6 +122,7 @@ p {
 
 .hljs {
   background: #f6f7f6 !important;
+  color: #333;
  }
 
 ul#searchresults span.teaser em {
