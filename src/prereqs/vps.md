@@ -42,4 +42,6 @@ On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and se
 
 Enter `ssh root@<IP Address>`, and when prompted, enter the password you created in the second step.
 
+![33-terminal](https://github.com/scidsg/project-info/assets/28545431/670f4db0-273e-40d8-949d-bb2cfa958138)
+
 🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!
