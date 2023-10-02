@@ -17,6 +17,12 @@
 }
 
 /* Use the custom font in your styles, for example: */
+
+html,
+body {
+    background-color: white;
+}
+
 body {
     font-family: 'Sans', sans-serif;
     color: #333 !important; 
@@ -188,20 +194,6 @@ ul#searchresults li {
 strong {
 	font-weight: initial;
 	font-family: 'Sans Bold', sans-serif;
-}
-
-/* Force light theme */
-body {
-    --fg: #333;
-    --bg: #fff;
-    --fg-light: #666;
-    --bg-light: #f3f3f3;
-    --border: #ccc;
-}
-
-body img.emoji,
-body span.emoji {
-    filter: invert(0);
 }
 
 @media only screen and (max-width: 768px) {
