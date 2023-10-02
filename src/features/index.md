@@ -1,31 +1,31 @@
 # Hush Line's Features
 
-## **1. PGP Email Encryption**:
+## **1. PGP Email Encryption**
 To enhance the security of communications, Hush Line integrates the PGP (Pretty Good Privacy) protocol. This ensures that every email message is encrypted, offering a secure channel even if the message's content becomes intercepted.
 
-## **2. Automatic Config**:
+## **2. Automatic Config**
 Ease of setup is paramount, and Hush Line’s installation script automates the configuration process. From package installations to system settings, the script takes care of the nuances, ensuring a hassle-free experience.
 
-## **3. Tor-Ready**:
+## **3. Tor-Ready**
 For users who prioritize anonymity, Hush Line is equipped to function seamlessly over the Tor network. Upon setup, a hidden Tor service is established, directing traffic to the local server. This provides an onion address, allowing users to access the platform anonymously.
 
-## **4. Automatic HTTPS Certificates**:
+## **4. Automatic HTTPS Certificates**
 With cyber threats on the rise, secure connections are crucial. Hush Line integrates `certbot`, automatically fetching and installing HTTPS certificates. This ensures encrypted communication between the user's browser and the Hush Line server.
 
-## **5. Fail2Ban**:
+## **5. Fail2Ban**
 This intrusion prevention software tool is integrated into the system, designed to scan log files for malicious activity. If any is detected, `fail2ban` imposes a temporary ban on the suspicious IP, thereby fortifying the platform against brute-force attacks.
 
-## **6. UFW**:
+## **6. UFW**
 The Uncomplicated Firewall (UFW) is incorporated into Hush Line's framework. This firewall tool simplifies the process of managing iptables, ensuring that only approved traffic can access the server.
 
-## **7. Automatic Updates**:
+## **7. Automatic Updates**
 Outdated systems are a breeding ground for vulnerabilities. Hush Line leverages the `unattended-upgrades` package to automate system updates. This ensures that the system always runs the latest security patches and software versions.
 
-## **8. IP Address Scrubbing**:
+## **8. IP Address Scrubbing**
 Respecting user privacy, Hush Line has provisions to scrub IP addresses from incoming requests. This means that user location and network information are not stored or logged, enhancing user anonymity.
 
-## **9. Hardened Nginx Security Headers**:
+## **9. Hardened Nginx Security Headers**
 The platform is served using `nginx`, and the server is configured with security-hardened headers. These headers protect users from various web vulnerabilities like cross-site scripting and clickjacking, ensuring a secure browsing experience.
 
-## **10. No Account Needed**:
+## **10. No Account Needed**
 Emphasizing ease of use and privacy, Hush Line eliminates the need for account creation. Users can immediately start messaging without the burden of sign-ups or the risk of personal data storage.
