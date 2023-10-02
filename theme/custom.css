@@ -206,6 +206,10 @@ strong {
 	font-family: 'Sans Bold', sans-serif;
 }
 
+.nav-chapters {
+	background-color: #fafafa !important;
+}
+
 /* Force light theme */
 body {
     --fg: #333;
