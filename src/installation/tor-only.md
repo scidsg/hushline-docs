@@ -41,4 +41,10 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 
 <img src="../img/24-finished.png">
 
+## 3. Confirmation Email
+
+You'll receive an encrypted email confirming your Hush Line's successful installation which includes your address and a link to download Tor Browser.
+
+<img src="../img/28-confirmation.png">
+
 🎉 Congratulations! You've successfully set up your own anonymous tip line! 
