@@ -3,7 +3,7 @@
 ## CONTENTS
 - [Introduction](./intro.md)
 - [What is Hush Line?](./what-is-hush-line.md)
-- [Prerequisites](./prereqs/index.md)
+- [Prerequisites](./prereqs/general.md)
    - [General](./prereqs/general.md)
    - [Raspberry Pi](./prereqs/raspberrypi.md)
    - [VPS](./prereqs/vps.md)
@@ -14,6 +14,7 @@
 - [Using Hush Line](./usage/index.md)
     - [Sending Messages](./usage/sending.md)
     - [Reading Messages](./usage/reading.md)
+- [Features](./features/index.md)
 - [Glossary](./glossary.md)
 <!-- - [Reading messages](./reading-messages.md) -->
 <!-- - [Troubleshooting](./troubleshooting.md) -->

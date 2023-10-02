@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Prerequisites - Hush Line Field Manual</title>
+        <title>Features - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html" class="active"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html"><strong aria-hidden="true">3.4.</strong> Threat Modeling</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../what-is-hush-line.html"><strong aria-hidden="true">2.</strong> What is Hush Line?</a></li><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.</strong> Prerequisites</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">3.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">3.2.</strong> Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">3.3.</strong> VPS</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html"><strong aria-hidden="true">3.4.</strong> Threat Modeling</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">4.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">4.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">4.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.1.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.2.</strong> Reading Messages</a></li></ol></li><li class="chapter-item expanded "><a href="../features/index.html" class="active"><strong aria-hidden="true">6.</strong> Features</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,18 +171,37 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="hush-line-raspberry-pi-prerequisites"><a class="header" href="#hush-line-raspberry-pi-prerequisites">Hush Line Raspberry Pi Prerequisites</a></h1>
-<p>In this section we'll get everything ready before installing Hush Line.</p>
+                        <h1 id="hush-lines-features"><a class="header" href="#hush-lines-features">Hush Line's Features</a></h1>
+<h2 id="1-pgp-email-encryption"><a class="header" href="#1-pgp-email-encryption"><strong>1. PGP Email Encryption</strong>:</a></h2>
+<p>To enhance the security of communications, Hush Line integrates the PGP (Pretty Good Privacy) protocol. This ensures that every email message is encrypted, offering a secure channel even if the message's content becomes intercepted.</p>
+<h2 id="2-automatic-config"><a class="header" href="#2-automatic-config"><strong>2. Automatic Config</strong>:</a></h2>
+<p>Ease of setup is paramount, and Hush Line’s installation script automates the configuration process. From package installations to system settings, the script takes care of the nuances, ensuring a hassle-free experience.</p>
+<h2 id="3-tor-ready"><a class="header" href="#3-tor-ready"><strong>3. Tor-Ready</strong>:</a></h2>
+<p>For users who prioritize anonymity, Hush Line is equipped to function seamlessly over the Tor network. Upon setup, a hidden Tor service is established, directing traffic to the local server. This provides an onion address, allowing users to access the platform anonymously.</p>
+<h2 id="4-automatic-https-certificates"><a class="header" href="#4-automatic-https-certificates"><strong>4. Automatic HTTPS Certificates</strong>:</a></h2>
+<p>With cyber threats on the rise, secure connections are crucial. Hush Line integrates <code>certbot</code>, automatically fetching and installing HTTPS certificates. This ensures encrypted communication between the user's browser and the Hush Line server.</p>
+<h2 id="5-fail2ban"><a class="header" href="#5-fail2ban"><strong>5. Fail2Ban</strong>:</a></h2>
+<p>This intrusion prevention software tool is integrated into the system, designed to scan log files for malicious activity. If any is detected, <code>fail2ban</code> imposes a temporary ban on the suspicious IP, thereby fortifying the platform against brute-force attacks.</p>
+<h2 id="6-ufw"><a class="header" href="#6-ufw"><strong>6. UFW</strong>:</a></h2>
+<p>The Uncomplicated Firewall (UFW) is incorporated into Hush Line's framework. This firewall tool simplifies the process of managing iptables, ensuring that only approved traffic can access the server.</p>
+<h2 id="7-automatic-updates"><a class="header" href="#7-automatic-updates"><strong>7. Automatic Updates</strong>:</a></h2>
+<p>Outdated systems are a breeding ground for vulnerabilities. Hush Line leverages the <code>unattended-upgrades</code> package to automate system updates. This ensures that the system always runs the latest security patches and software versions.</p>
+<h2 id="8-ip-address-scrubbing"><a class="header" href="#8-ip-address-scrubbing"><strong>8. IP Address Scrubbing</strong>:</a></h2>
+<p>Respecting user privacy, Hush Line has provisions to scrub IP addresses from incoming requests. This means that user location and network information are not stored or logged, enhancing user anonymity.</p>
+<h2 id="9-hardened-nginx-security-headers"><a class="header" href="#9-hardened-nginx-security-headers"><strong>9. Hardened Nginx Security Headers</strong>:</a></h2>
+<p>The platform is served using <code>nginx</code>, and the server is configured with security-hardened headers. These headers protect users from various web vulnerabilities like cross-site scripting and clickjacking, ensuring a secure browsing experience.</p>
+<h2 id="10-no-account-needed"><a class="header" href="#10-no-account-needed"><strong>10. No Account Needed</strong>:</a></h2>
+<p>Emphasizing ease of use and privacy, Hush Line eliminates the need for account creation. Users can immediately start messaging without the burden of sign-ups or the risk of personal data storage.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../what-is-hush-line.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../usage/reading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../prereqs/general.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../glossary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +211,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../what-is-hush-line.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../usage/reading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../prereqs/general.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../glossary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
