@@ -7,16 +7,9 @@
 - **Storage:** [Micro SD Card](https://www.amazon.com/SanDisk-128GB-MicroSDXC-Memory-Adapter/?&_encoding=UTF8&tag=scidsg-20&linkCode=ur2&linkId=fd8f40cfc6e84e328e3246af7159eb40&camp=1789&creative=9325)
 - **SD Card Adapter:** [SD Card Reader](https://www.amazon.com/SanDisk-MobileMate-microSD-Card-Reader?&_encoding=UTF8&tag=scidsg-20&linkCode=ur2&linkId=40c1d3e78e132a951b46e61aab13e4e7&camp=1789&creative=9325) 
 
-## Software Downloads
+## Prepping Your Pi
 
 If you didn't know, your Raspberry Pi doesn't come with an operating system. Don't panic! We're going to install one now called Raspberry Pi OS.
-
-In this section, we'll need the following:
-
-- Raspberry Pi Imager (from prerequisites)
-- Raspberry Pi
-- microSD Card
-- Power Supply
 
 ### 1. Raspberry Pi Imager
 
