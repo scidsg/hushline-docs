@@ -35,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: initial;
 	color: #333 !important;
 	width: 100%;
+	line-height: 1.2;
 }
 
 h1:target::before, h2:target::before, h3:target::before, h4:target::before, h5:target::before, h6:target::before {
@@ -55,7 +56,6 @@ main h1 {
 	margin-bottom: 2rem;
 	transform-origin: left;
 	font-size: 2.25em;
-	line-height: 1.1;
 }
 
 .content {
