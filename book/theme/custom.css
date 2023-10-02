@@ -60,12 +60,16 @@ main h1 {
 
 .content {
 	overflow-y: initial;
-	padding: 5rem 2.5rem 1rem .5rem;
+	padding: 5rem 2.5rem 1rem 0rem;
 }
 
 .content main {
 	margin-left: 10rem;
 	margin-right: inherit;
+}
+
+.content img {
+	border-radius: .5rem;
 }
 
 .menu-title {
@@ -231,5 +235,8 @@ body span.emoji {
 	.page {
 		padding: 0 2.5rem;
 	}
+
+	.content {
+  		padding: 5rem 0rem 1rem 0rem;
 
 }
