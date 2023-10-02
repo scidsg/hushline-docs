@@ -193,7 +193,8 @@ ul#searchresults li {
 	margin-bottom: .5rem !important;
 }
 
-.chapter li a {
+.chapter li a,
+:not(pre):not(a) > .hljs {
 	color: #333 !important;
 }
 
