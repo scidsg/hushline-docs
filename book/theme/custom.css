@@ -190,6 +190,20 @@ strong {
 	font-family: 'Sans Bold', sans-serif;
 }
 
+/* Force light theme */
+body {
+    --fg: #333;
+    --bg: #fff;
+    --fg-light: #666;
+    --bg-light: #f3f3f3;
+    --border: #ccc;
+}
+
+body img.emoji,
+body span.emoji {
+    filter: invert(0);
+}
+
 @media only screen and (max-width: 768px) {
 
 	.content main {
