@@ -540,9 +540,9 @@ https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.a
 <p>For users who prioritize anonymity, Hush Line is equipped to function seamlessly over the Tor network. Upon setup, a hidden Tor service is established, directing traffic to the local server. This provides an onion address, allowing users to access the platform anonymously.</p>
 <h2 id="4-automatic-https-certificates"><a class="header" href="#4-automatic-https-certificates"><strong>4. Automatic HTTPS Certificates</strong></a></h2>
 <p>With cyber threats on the rise, secure connections are crucial. Hush Line integrates <code>certbot</code>, automatically fetching and installing HTTPS certificates. This ensures encrypted communication between the user's browser and the Hush Line server.</p>
-<h2 id="5-fail2ban"><a class="header" href="#5-fail2ban"><strong>5. Fail2Ban</strong></a></h2>
-<p>This intrusion prevention software tool is integrated into the system, designed to scan log files for malicious activity. If any is detected, <code>fail2ban</code> imposes a temporary ban on the suspicious IP, thereby fortifying the platform against brute-force attacks.</p>
-<h2 id="6-ufw"><a class="header" href="#6-ufw"><strong>6. UFW</strong></a></h2>
+<h2 id="5-intrusion-detection"><a class="header" href="#5-intrusion-detection"><strong>5. Intrusion Detection</strong></a></h2>
+<p>Hush Line integrates Fail2Ban, an intrusion prevention tool, designed to scan log files for malicious activity. If any is detected, <code>fail2ban</code> imposes a temporary ban on the suspicious IP, thereby fortifying the platform against brute-force attacks.</p>
+<h2 id="6-firewall"><a class="header" href="#6-firewall"><strong>6. Firewall</strong></a></h2>
 <p>The Uncomplicated Firewall (UFW) is incorporated into Hush Line's framework. This firewall tool simplifies the process of managing iptables, ensuring that only approved traffic can access the server.</p>
 <h2 id="7-automatic-updates"><a class="header" href="#7-automatic-updates"><strong>7. Automatic Updates</strong></a></h2>
 <p>Outdated systems are a breeding ground for vulnerabilities. Hush Line leverages the <code>unattended-upgrades</code> package to automate system updates. This ensures that the system always runs the latest security patches and software versions.</p>

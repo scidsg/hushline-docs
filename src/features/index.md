@@ -12,10 +12,10 @@ For users who prioritize anonymity, Hush Line is equipped to function seamlessly
 ## **4. Automatic HTTPS Certificates**
 With cyber threats on the rise, secure connections are crucial. Hush Line integrates `certbot`, automatically fetching and installing HTTPS certificates. This ensures encrypted communication between the user's browser and the Hush Line server.
 
-## **5. Fail2Ban**
-This intrusion prevention software tool is integrated into the system, designed to scan log files for malicious activity. If any is detected, `fail2ban` imposes a temporary ban on the suspicious IP, thereby fortifying the platform against brute-force attacks.
+## **5. Intrusion Detection**
+Hush Line integrates Fail2Ban, an intrusion prevention tool, designed to scan log files for malicious activity. If any is detected, `fail2ban` imposes a temporary ban on the suspicious IP, thereby fortifying the platform against brute-force attacks.
 
-## **6. UFW**
+## **6. Firewall**
 The Uncomplicated Firewall (UFW) is incorporated into Hush Line's framework. This firewall tool simplifies the process of managing iptables, ensuring that only approved traffic can access the server.
 
 ## **7. Automatic Updates**
