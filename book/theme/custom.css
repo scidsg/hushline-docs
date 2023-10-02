@@ -188,6 +188,10 @@ ul#searchresults li {
 	margin-bottom: .5rem !important;
 }
 
+.chapter li a {
+	color: #333 !important;
+}
+
 #menu-bar.bordered {
 	border-bottom: none;
 }
