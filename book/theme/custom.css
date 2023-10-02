@@ -104,7 +104,7 @@ p {
 }
 
 .searchbar-outer {
-	width: 360px;
+	max-width: 360px;
 }
 
 #searchbar {
