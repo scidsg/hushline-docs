@@ -39,3 +39,9 @@ Standard email services, akin to SMS, aren't ideal for sensitive information. En
 
 ## Conclusion
 These steps represent the foundational blocks of operational security. Always stay updated on the evolving landscape of cybersecurity threats and continually seek ways to bolster your opsec.
+
+## Learn More
+
+- [Freedom of the Press - Training Guides](https://freedom.press/training/)
+- [EFF Surveillance Self-Defense Guide](https://ssd.eff.org/)
+- [Privacy Guides](https://www.privacyguides.org/en/)
