@@ -12,7 +12,7 @@ Data breaches are frequent, often leading to leaked passwords. Notable figures, 
 ### Signal
 Our cellular infrastructure is broken. Look up "[SS7 Vulnerability](https://duckduckgo.com/?va=n&t=hs&q=ss7+vulnerability&ia=web)." Never rely on traditional cellular networks for transmitting confidential information.
 
-Enter [Signal](https://signal.org). Widely recognized as one of the most secure private messengers available, it's the only one we wholeheartedly recommend. Journalists, governments, and military organizations worldwide trust it.
+Enter [Signal](https://signal.org). Widely recognized as one of the most secure private messengers available, it's the only one we'll recommend here. Journalists, governments, and military organizations worldwide trust it.
 
 It's free, open-source, backed by a non-profit, and stands out as a leader in the secure messaging landscape.
 
