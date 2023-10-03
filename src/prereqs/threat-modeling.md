@@ -29,7 +29,7 @@ We recommend using a VPS and deploying Hush Line as a public domain to a URL lik
 ### High Threats
 These are scenarios where targeted threats are likely, and consequences can be severe, like endangering someone's physical safety.
 
-Depending on risks to your physical location, we recommend either using a VPS or local device like a Raspberry Pi and choosing an onion-only deployment. This will provide the greatest protection for your community and your tip line.
+We recommend an onion-only deployment for high-threat environments using a VPS or a local device like a Raspberry Pi. If your physical safety isn't guaranteed and device confiscation is possible, you should only use a VPS, as this will provide the greatest protection for your community, tip line, and yourself.
 
 #### Example Use Cases
 - 📰 Journalists
