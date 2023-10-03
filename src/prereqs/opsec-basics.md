@@ -17,7 +17,7 @@ Enter [Signal](https://signal.org). Widely recognized as one of the most secure 
 It's free, open-source, backed by a non-profit, and stands out as a leader in the secure messaging landscape.
 
 ### Tor and VPNs
-Both Tor and VPNs offer online anonymity by hiding your IP address. 
+Both [Tor](https://torproject.org) and VPNs offer online anonymity by hiding your IP address. 
 
 Think back to your preschool days when you wanted to send a secret "I <3 U" note to a crush. You asked your bestie to deliver it, ensuring your crush remained clueless about the admirer. In this analogy, your friend acts as the VPN. Though the receiver is unaware of your identity, there's someone in between who knows the secret.
 
