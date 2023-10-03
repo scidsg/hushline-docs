@@ -8,7 +8,6 @@
    - [Raspberry Pi](./prereqs/raspberrypi.md)
    - [VPS](./prereqs/vps.md)
    - [Threat Modeling](./prereqs/threat-modeling.md)
-   - [OpSec Basics](./prereqs/opsec-basics.md)
 - [Installation](./installation/index.md)
     - [Tor-Only](./installation/tor-only.md)
     - [Tor + Public Website](./installation/public-web.md)
