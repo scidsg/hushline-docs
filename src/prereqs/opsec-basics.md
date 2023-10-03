@@ -7,7 +7,7 @@ If there's one foundational recommendation for operational security, it's to use
 
 With a password manager like [Bitwarden](https://bitwarden.com), you should create strong, unique passwords for all your accounts. There is no need to remember them, as the app fills out login forms for you.
 
-Data breaches are frequent, often leading to leaked passwords. Notable figures, including Donald Trump, have faced hacking incidents due to using passwords exposed in breaches and reused elsewhere. By adopting strong, unique passwords, you can avoid such pitfalls.
+Data breaches are frequent, often leading to leaked passwords. Notable figures, [including Donald Trump, have faced hacking incidents](https://darknetdiaries.com/episode/87/) due to using passwords exposed in breaches and reused elsewhere. By adopting strong, unique passwords, you can avoid such pitfalls.
 
 ### Signal
 Our cellular infrastructure is broken. Look up "[SS7 Vulnerability](https://duckduckgo.com/?va=n&t=hs&q=ss7+vulnerability&ia=web)." Never rely on traditional cellular networks for transmitting confidential information.
