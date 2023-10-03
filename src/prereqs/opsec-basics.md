@@ -19,7 +19,7 @@ It's free, open-source, backed by a non-profit, and stands out as a leader in th
 ### Tor and VPNs
 Both Tor and VPNs offer online anonymity by hiding your IP address. 
 
-Think back to your preschool days when you wanted to send a secret "I <3 U" note to a crush. You asked your bestie to deliver it, ensuring your crush remained clueless about the admirer. In this analogy, your friend acts as the VPN. Though the message reaches its destination, there's someone in between who knows the secret.
+Think back to your preschool days when you wanted to send a secret "I <3 U" note to a crush. You asked your bestie to deliver it, ensuring your crush remained clueless about the admirer. In this analogy, your friend acts as the VPN. Though the receiver is unaware of your identity, there's someone in between who knows the secret.
 
 Tor is a network of thousands of random people willing to pass the message for you, but they don't know who you are or its contents. And instead of it going from you to your bestie to your crush, it goes from you to three random volunteers worldwide, who you don't know but will deliver the message.
 
