@@ -38,33 +38,3 @@ We recommend an onion-only deployment for high-threat environments using a VPS o
 
 ## Malicious Actors & Misinformation
 Always be aware that anonymity can be a double-edged sword. While it provides protection for genuine whistleblowers, it can also shield malicious actors. Regularly vet and verify the tips you receive to guard against misinformation campaigns, especially in high-risk scenarios.
-
-## Deployment Options
-Given Hush Line's range of deployment choices, weigh the pros and cons of each:
-
-- **Onion-only**: Best for high-threat environments, offering maximum anonymity. However, it might be less accessible for non-technical users.
-  
-- **Tor + Public Web**: Offers a balance of accessibility and security. Useful for medium-threat scenarios.
-
-- **Physical Device**: This option, like deploying on a Raspberry Pi, gives you more control but could be at risk if the physical location is compromised. Ideal for high-risk scenarios where control over the infrastructure is crucial.
-
-It's important for all deployment types to share your addresses with your community openly and clearly, and reinforce to your users to _only_ use the addresses that you've shared.
-
-## Boosting Security
-To further bolster security:
-
-1. Use dedicated devices to check emails from Hush Line.
-2. Employ secondary verification methods for significant tips.
-3. Enhance anonymity with tools like VPNs or secure browsing techniques.
-
-## Maintenance & Updates
-While Hush Line offers automatic updates, it's vital to:
-
-- Regularly review the system for potential threats.
-- Stay informed about the latest security updates and patches.
-- Engage in regular security training and awareness for all staff involved.
-
-## Conclusion
-Deploying Hush Line is a step towards fostering open communication while safeguarding anonymity. By understanding the threats, choosing the right deployment option, and following security best practices, you can ensure a secure and effective platform for your community.
-
-*For organizations seeking in-depth threat analysis and tailored advice, please send an email to hushline@scidsg.org.*
