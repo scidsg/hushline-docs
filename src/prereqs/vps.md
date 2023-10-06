@@ -1,6 +1,6 @@
 # VPS Prerequisites 
 
-In this section you'll need the following things to get Hush Line ready to install:
+In this section, you'll need the following things to get Hush Line ready to install:
 
 1. Debit or credit card
 2. Digital Ocean, or any other VPS provider
@@ -32,7 +32,7 @@ Create a strong password, then click "Create Droplet."
 
 <img src="../img/31-create-droplet.png">
 
-After a minute or two your Droplet should be ready. The "Resources" tab should be visible, and just below you'll see the IP address for your Droplet.
+After a minute or two, your Droplet should be ready. The "Resources" tab should be visible, and just below, you'll see the IP address for your Droplet.
 
 <img src="../img/32-droplet.png">
 

@@ -12,11 +12,11 @@ Given Hush Line's range of deployment choices, weigh the pros and cons of each:
 
 ## Where to install Hush Line 
 
-- **Virtual Private Server (VPS)**: - Deploying to a virtual private server (VPS) like [Njalla](https://njal.la) or [Digital Ocean](digitalocean.com) is easy and cost effective. You should use a VPS if you're deploying to a public website.
+- **Virtual Private Server (VPS)**: - Deploying to a virtual private server (VPS) like [Njalla](https://njal.la) or [Digital Ocean](digitalocean.com) is easy and cost-effective. You should use a VPS if you're deploying to a public website.
 
-- **Physical Device**: This option, like deploying on a Raspberry Pi, gives you more control but could be at risk if the physical location is compromised. Ideal for high-risk scenarios where control over the infrastructure is crucial.
+- **Physical Device**: A physical device like a Raspberry Pi gives you more control but could be at risk if the physical location is compromised. It is ideal for high-risk scenarios where control over the infrastructure is crucial.
 
-It's important for all deployment types to share your addresses with your community openly and clearly, and reinforce to your users to _only_ use the addresses that you've shared.
+It's important for all deployment types that you share your addresses with your community openly and clearly and reinforce to your users _only to use the addresses you've shared_.
 
 ## Boosting Security
 To further bolster security:
@@ -34,6 +34,6 @@ While Hush Line offers automatic updates, it's vital to:
 - Engage in regular security training and awareness for all staff involved.
 
 ## Conclusion
-Deploying Hush Line is a step towards fostering open communication while safeguarding anonymity. By understanding the threats, choosing the right deployment option, and following security best practices, you can ensure a secure and effective platform for your community.
+Deploying Hush Line is a step towards fostering open communication while safeguarding anonymity. Understanding the threats, choosing the right deployment option, and following security best practices can ensure a secure and effective platform for your community.
 
 *For organizations seeking in-depth threat analysis and tailored advice, please send an email to hushline@scidsg.org.*

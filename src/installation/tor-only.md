@@ -1,10 +1,10 @@
 # Tor-Only Install
 
-A Tor-only install is a great option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.
+A Tor-only install is an excellent option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.
 
 ## 1. Run The Installer
 
-After logging in to either your Raspberry Pi or VPS, enter the follow command to start the installation process:
+After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:
 
 `curl -sSL https://install.hushline.app | bash`
 
@@ -43,7 +43,7 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 
 ## 3. Confirmation Email
 
-You'll receive an encrypted email confirming your Hush Line's successful installation which includes your address and a link to download Tor Browser.
+You'll receive an encrypted email confirming your Hush Line's successful installation, which includes your address and a link to download Tor Browser.
 
 <img src="../img/28-confirmation.png">
 

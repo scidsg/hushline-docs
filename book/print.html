@@ -173,20 +173,20 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="hush-line-field-manual"><a class="header" href="#hush-line-field-manual">Hush Line Field Manual</a></h1>
-<p><a href="https://hushline.app/">Hush Line</a> is a lightweight, secure, and anonymous tip line. It's easy to install and to use.</p>
+<p><a href="https://hushline.app/">Hush Line</a> is a lightweight, secure, and anonymous tip line. It's easy to install and use.</p>
 <img src="./img/0-cover.png">
-<p>Think of a box in your office or school in which people can slip in anonymous messages, with a lock on it that only you have the key to open.</p>
+<p>Think of a box in your office or school where people can slip in anonymous messages, with a lock on it that only you have the key to open.</p>
 <p>It's intended for journalists and newsrooms to offer a public tip line, by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers for anonymous employee reporting.</p>
-<p>This guide will show you to set up your own Hush Line. </p>
+<p>This guide will show you how to set up your own Hush Line. </p>
 <p>The source files for this guide are <a href="https://github.com/scidsg/hushline-docs">available on GitHub</a>. See that repo for licensing information.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-does-hush-line-do"><a class="header" href="#what-does-hush-line-do">What does Hush Line do?</a></h1>
 <p>Hush Line provides a safe way to receive private messages from your community when confidentiality is a must.</p>
 <img src="./img/41-demo-domain.png">
 <p>Hush Line is a website with a form.</p>
-<p>When a member of your community writes a message into the form and clicks the submit button, Hush Line encrypts their message in such a way that only you can read it, then emails it to you.</p>
+<p>When a member of your community writes a message into the form and clicks the submit button, Hush Line encrypts their message so that only you can read it, then emails it to you.</p>
 <h2 id="i-still-dont-get-it-conceptually"><a class="header" href="#i-still-dont-get-it-conceptually">I still don't get it, conceptually</a></h2>
 <p>Have you ever used Google Forms? You create a form, say a text box, and send the URL to people to fill out. When a person fills in your form and hits submit, their response gets automatically put into a Google Spreadsheet. </p>
-<p>This is convenient for things like, surveying food choices or picking a date that works for most people. But what if you're asking people to share more sensitive information? To make them feel as safe as possible, we would want a system such that only you can read the responses. Not other users, not your company's IT department, not even Google. Furthermore, we really don't even want to know anything about the submitter that they don't choose to reveal.</p>
+<p>This is convenient for things like, surveying food choices or picking a date that works for most people. But what if you're asking people to share more sensitive information? To make them feel as safe as possible, we want a system where only you can read the responses. Not other users, not your company's IT department, not even Google. Furthermore, we don't even want to know anything about the submitter they don't choose to reveal.</p>
 <p>This is what Hush Line provides. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="general-prerequisites"><a class="header" href="#general-prerequisites">General Prerequisites</a></h1>
 <h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
@@ -200,7 +200,7 @@
 <p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
 <img src="prereqs/../img/3-tor-browser.png">
 <h3 id="2-gmail"><a class="header" href="#2-gmail">2. Gmail</a></h3>
-<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. It's also not a bad idea to have an email address separate from your personal account.</p>
+<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. Having an email address separate from your personal account is a good practice.</p>
 <h3 id="3-mailvelope"><a class="header" href="#3-mailvelope">3. Mailvelope</a></h3>
 <p>To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality; add the extension to <a href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Firefox</a> or <a href="https://chrome.google.com/webstore/detail/mailvelope/kajibbejlbohfaggdiogboambcijhkke">Chrome</a>.</p>
 <img src="prereqs/../img/4-mailvelope.png">
@@ -208,8 +208,8 @@
 <img src="prereqs/../img/5-mailvelope.png">
 <h2 id="creating-keys"><a class="header" href="#creating-keys">Creating Keys</a></h2>
 <h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
-<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
-<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
+<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope where people can put their messages inside. These envelopes are so special that they can only be opened by one specific letter opener.</p>
+<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confident that no one else can read its contents along the way.</p>
 <h3 id="4-create-your-keys"><a class="header" href="#4-create-your-keys">4. Create your keys</a></h3>
 <p>To create our envelopes and letter opener, we're going to use our Mailvelope extension. </p>
 <p>Click on &quot;Generate Keys.&quot; Give your key a name, enter your Gmail address, and create a strong password.</p>
@@ -229,13 +229,13 @@
 <img src="prereqs/../img/13-copy-key.png">
 <h2 id="app-password"><a class="header" href="#app-password">App Password</a></h2>
 <h3 id="7-create-an-app-password"><a class="header" href="#7-create-an-app-password">7. Create an app password</a></h3>
-<p>Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your main account password; instead, create app-specific passwords. These are purpose-made for single applications.</p>
+<p>Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your primary account password; instead, create app-specific passwords. These are purpose-made for single applications.</p>
 <p>From your Gmail account, click on your avatar to access your account-level options. Select <code>Manage Google Account</code>.</p>
 <img src="prereqs/../img/14-profile-menu.png">
 <p>Next, click on the Security tab on the left, then scroll to the bottom of the page to find App Passwords.</p>
 <img src="prereqs/../img/15-security.png">
 <img src="prereqs/../img/16-app-passwords.png">
-<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specfic password. Copy it to a notepad for easy access.</p>
+<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specific password. Copy it to a notepad for easy access.</p>
 <img src="prereqs/../img/17-create-password.png">
 <img src="prereqs/../img/18-copy-password.png">
 <p>🎉 Congratulations, you're now ready to install Hush Line!</p>
@@ -251,7 +251,7 @@
 <p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
 <img src="prereqs/../img/3-tor-browser.png">
 <h3 id="2-gmail-1"><a class="header" href="#2-gmail-1">2. Gmail</a></h3>
-<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. It's also not a bad idea to have an email address separate from your personal account.</p>
+<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. Having an email address separate from your personal account is a good practice.</p>
 <h3 id="3-mailvelope-1"><a class="header" href="#3-mailvelope-1">3. Mailvelope</a></h3>
 <p>To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality; add the extension to <a href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Firefox</a> or <a href="https://chrome.google.com/webstore/detail/mailvelope/kajibbejlbohfaggdiogboambcijhkke">Chrome</a>.</p>
 <img src="prereqs/../img/4-mailvelope.png">
@@ -259,8 +259,8 @@
 <img src="prereqs/../img/5-mailvelope.png">
 <h2 id="creating-keys-1"><a class="header" href="#creating-keys-1">Creating Keys</a></h2>
 <h3 id="what-is-pgp-lets-use-a-non-technical-metaphor-1"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor-1">What is PGP? Let's use a non-technical metaphor</a></h3>
-<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. </p>
-<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. </p>
+<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope where people can put their messages inside. These envelopes are so special that they can only be opened by one specific letter opener.</p>
+<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confident that no one else can read its contents along the way.</p>
 <h3 id="4-create-your-keys-1"><a class="header" href="#4-create-your-keys-1">4. Create your keys</a></h3>
 <p>To create our envelopes and letter opener, we're going to use our Mailvelope extension. </p>
 <p>Click on &quot;Generate Keys.&quot; Give your key a name, enter your Gmail address, and create a strong password.</p>
@@ -280,13 +280,13 @@
 <img src="prereqs/../img/13-copy-key.png">
 <h2 id="app-password-1"><a class="header" href="#app-password-1">App Password</a></h2>
 <h3 id="7-create-an-app-password-1"><a class="header" href="#7-create-an-app-password-1">7. Create an app password</a></h3>
-<p>Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your main account password; instead, create app-specific passwords. These are purpose-made for single applications.</p>
+<p>Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your primary account password; instead, create app-specific passwords. These are purpose-made for single applications.</p>
 <p>From your Gmail account, click on your avatar to access your account-level options. Select <code>Manage Google Account</code>.</p>
 <img src="prereqs/../img/14-profile-menu.png">
 <p>Next, click on the Security tab on the left, then scroll to the bottom of the page to find App Passwords.</p>
 <img src="prereqs/../img/15-security.png">
 <img src="prereqs/../img/16-app-passwords.png">
-<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specfic password. Copy it to a notepad for easy access.</p>
+<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specific password. Copy it to a notepad for easy access.</p>
 <img src="prereqs/../img/17-create-password.png">
 <img src="prereqs/../img/18-copy-password.png">
 <p>🎉 Congratulations, you're now ready to install Hush Line!</p>
@@ -302,7 +302,7 @@
 <h2 id="prepping-your-pi"><a class="header" href="#prepping-your-pi">Prepping Your Pi</a></h2>
 <p>If you didn't know, your Raspberry Pi doesn't come with an operating system. Don't panic! We're going to install one now called Raspberry Pi OS.</p>
 <h3 id="1-raspberry-pi-imager"><a class="header" href="#1-raspberry-pi-imager">1. Raspberry Pi Imager</a></h3>
-<p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD cardc where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
+<p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD card, where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
 <img src="prereqs/../img/1-rpi-imager.png">
 <img src="prereqs/../img/2-rpi-imager.png">
 <h2 id="prep-your-card"><a class="header" href="#prep-your-card">Prep Your Card</a></h2>
@@ -329,7 +329,7 @@
 <img src="prereqs/../img/21-terminal-login.png">
 <p>🎉 That's it, you're ready to get started with Raspberry Pi!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vps-prerequisites"><a class="header" href="#vps-prerequisites">VPS Prerequisites</a></h1>
-<p>In this section you'll need the following things to get Hush Line ready to install:</p>
+<p>In this section, you'll need the following things to get Hush Line ready to install:</p>
 <ol>
 <li>Debit or credit card</li>
 <li>Digital Ocean, or any other VPS provider</li>
@@ -351,7 +351,7 @@
 </ul>
 <p>Create a strong password, then click &quot;Create Droplet.&quot;</p>
 <img src="prereqs/../img/31-create-droplet.png">
-<p>After a minute or two your Droplet should be ready. The &quot;Resources&quot; tab should be visible, and just below you'll see the IP address for your Droplet.</p>
+<p>After a minute or two, your Droplet should be ready. The &quot;Resources&quot; tab should be visible, and just below, you'll see the IP address for your Droplet.</p>
 <img src="prereqs/../img/32-droplet.png">
 <h3 id="3-log-in"><a class="header" href="#3-log-in">3. Log In</a></h3>
 <p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
@@ -360,11 +360,11 @@
 <p>🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="threat-modeling-for-hush-line-deployment"><a class="header" href="#threat-modeling-for-hush-line-deployment">Threat Modeling for Hush Line Deployment</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>The deployment of an anonymous tip line, like Hush Line, requires an understanding of the environment in which it will be used. Different organizations and individuals face unique threats, and the purpose of this guide is to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.</p>
+<p>Deploying an anonymous tip line, like Hush Line, requires understanding the environment in which it will be used. Different organizations and individuals face unique threats, and this guide aims to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.</p>
 <h2 id="understanding-the-threats"><a class="header" href="#understanding-the-threats">Understanding the Threats</a></h2>
-<p>To select the right Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:</p>
+<p>To select the correct Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:</p>
 <h3 id="low-threats"><a class="header" href="#low-threats">Low Threats</a></h3>
-<p>These scenarios typically involve situations where the primary risk is non-targeted threats or generic cyber threats. The fallout from a security breach is minimal. </p>
+<p>These scenarios typically involve the primary risk of non-targeted or generic cyber threats. The fallout from a security breach is minimal. </p>
 <p>We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: <code>tips.acme.com</code>.</p>
 <h4 id="example-use-cases"><a class="header" href="#example-use-cases">Example Use Cases</a></h4>
 <ul>
@@ -374,7 +374,7 @@
 </ul>
 <h3 id="medium-threats"><a class="header" href="#medium-threats">Medium Threats</a></h3>
 <p>Here, the risks escalate. They include targeted threats but might not require advanced defense measures. </p>
-<p>We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: <code>tips.acme.com</code>. When sharing your Hush Line address, include the onion address for people that require higher levels of anonymity.</p>
+<p>We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: <code>tips.acme.com</code>. When sharing your Hush Line address, include the onion address for people who require higher levels of anonymity.</p>
 <h4 id="example-use-cases-1"><a class="header" href="#example-use-cases-1">Example Use Cases</a></h4>
 <ul>
 <li>📈 Publicly traded businesses</li>
@@ -407,13 +407,13 @@
 <h2 id="where-to-install-hush-line"><a class="header" href="#where-to-install-hush-line">Where to install Hush Line</a></h2>
 <ul>
 <li>
-<p><strong>Virtual Private Server (VPS)</strong>: - Deploying to a virtual private server (VPS) like <a href="https://njal.la">Njalla</a> or <a href="installation/digitalocean.com">Digital Ocean</a> is easy and cost effective. You should use a VPS if you're deploying to a public website.</p>
+<p><strong>Virtual Private Server (VPS)</strong>: - Deploying to a virtual private server (VPS) like <a href="https://njal.la">Njalla</a> or <a href="installation/digitalocean.com">Digital Ocean</a> is easy and cost-effective. You should use a VPS if you're deploying to a public website.</p>
 </li>
 <li>
-<p><strong>Physical Device</strong>: This option, like deploying on a Raspberry Pi, gives you more control but could be at risk if the physical location is compromised. Ideal for high-risk scenarios where control over the infrastructure is crucial.</p>
+<p><strong>Physical Device</strong>: A physical device like a Raspberry Pi gives you more control but could be at risk if the physical location is compromised. It is ideal for high-risk scenarios where control over the infrastructure is crucial.</p>
 </li>
 </ul>
-<p>It's important for all deployment types to share your addresses with your community openly and clearly, and reinforce to your users to <em>only</em> use the addresses that you've shared.</p>
+<p>It's important for all deployment types that you share your addresses with your community openly and clearly and reinforce to your users <em>only to use the addresses you've shared</em>.</p>
 <h2 id="boosting-security"><a class="header" href="#boosting-security">Boosting Security</a></h2>
 <p>To further bolster security:</p>
 <ol>
@@ -430,12 +430,12 @@
 <li>Engage in regular security training and awareness for all staff involved.</li>
 </ul>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>Deploying Hush Line is a step towards fostering open communication while safeguarding anonymity. By understanding the threats, choosing the right deployment option, and following security best practices, you can ensure a secure and effective platform for your community.</p>
+<p>Deploying Hush Line is a step towards fostering open communication while safeguarding anonymity. Understanding the threats, choosing the right deployment option, and following security best practices can ensure a secure and effective platform for your community.</p>
 <p><em>For organizations seeking in-depth threat analysis and tailored advice, please send an email to hushline@scidsg.org.</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tor-only-install"><a class="header" href="#tor-only-install">Tor-Only Install</a></h1>
-<p>A Tor-only install is a great option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.</p>
+<p>A Tor-only install is an excellent option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.</p>
 <h2 id="1-run-the-installer"><a class="header" href="#1-run-the-installer">1. Run The Installer</a></h2>
-<p>After logging in to either your Raspberry Pi or VPS, enter the follow command to start the installation process:</p>
+<p>After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
 <p><code>curl -sSL https://install.hushline.app | bash</code></p>
 <img src="installation/../img/22-install-hushline.png">
 <p>Choose &quot;Tor-Only&quot; at the first prompt for the installation type.</p>
@@ -462,19 +462,19 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 </code></pre>
 <img src="installation/../img/24-finished.png">
 <h2 id="3-confirmation-email"><a class="header" href="#3-confirmation-email">3. Confirmation Email</a></h2>
-<p>You'll receive an encrypted email confirming your Hush Line's successful installation which includes your address and a link to download Tor Browser.</p>
+<p>You'll receive an encrypted email confirming your Hush Line's successful installation, which includes your address and a link to download Tor Browser.</p>
 <img src="installation/../img/28-confirmation.png">
 <p>🎉 Congratulations! You've successfully set up your own anonymous tip line! </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tor--public-web-install"><a class="header" href="#tor--public-web-install">Tor + Public Web Install</a></h1>
 <p>If you're someone using Hush Line for non-life-threatening scenarios - educators running a Hush Line for student reporting, or an employer for anonymous employee reporting - you might want to deploy to a public URL - one that will work in browsers like Chrome, Firefox, or Safari. We'll exclusively use a VPS. </p>
 <h2 id="1-run-the-installer-1"><a class="header" href="#1-run-the-installer-1">1. Run The Installer</a></h2>
-<p>After logging in to either your Raspberry Pi or VPS, enter the follow command to start the installation process:</p>
+<p>After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
 <p><code>curl -sSL https://install.hushline.app | bash</code></p>
 <img src="installation/../img/34-install.png">
 <p>Choose &quot;Tor + Public Domain&quot; at the first prompt for the installation type.</p>
 <img src="installation/../img/35-public.png">
 <h2 id="2-add-information"><a class="header" href="#2-add-information">2. Add Information</a></h2>
-<p>Hush Line will send an email with the encrypted Hush Line message to the account you configure here. You'll also need to purchase a domain name for your Hush Line. We'll need the following information:</p>
+<p>Hush Line will email the encrypted Hush Line message to the account you configure here. You'll also need to purchase a domain name for your Hush Line. We'll need the following information:</p>
 <ul>
 <li>Domain name</li>
 <li>Gmail address</li>
@@ -485,7 +485,7 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 </ul>
 <img src="installation/../img/36-key.png">
 <h2 id="3-configure-dns"><a class="header" href="#3-configure-dns">3. Configure DNS</a></h2>
-<p>Now we need to point your domain name to your new Droplet. When the installer gets to the final step, it will display the exact information that you need to enter in your domain's DNS settings.</p>
+<p>Now, we need to point your domain name to your new Droplet. When the installer reaches the final step, it will display the exact information that you need to enter in your domain's DNS settings.</p>
 <img src="installation/../img/38-dns-settings.png">
 <p>Once the installation completes, you'll see a message that looks like this:</p>
 <pre><code>✅ Installation complete!
@@ -501,7 +501,7 @@ https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.a
 </code></pre>
 <img src="installation/../img/39-https-complete-1.png">
 <h2 id="4-confirmation-email"><a class="header" href="#4-confirmation-email">4. Confirmation Email</a></h2>
-<p>You'll receive an encrypted email confirming your Hush Line's successful installation which includes your addresses and a link to download Tor Browser.</p>
+<p>You'll receive an encrypted email confirming your Hush Line's successful installation which, includes your addresses and a link to download Tor Browser.</p>
 <img src="installation/../img/42-confirmation.png">
 <p>🎉 Congratulations! You've successfully set up your own public anonymous tip line! </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-hush-line-1"><a class="header" href="#installing-hush-line-1">Installing Hush Line</a></h1>
@@ -509,7 +509,7 @@ https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.a
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sending-messages"><a class="header" href="#sending-messages">Sending Messages</a></h1>
 <p>For someone in your community to send you a Hush Line message, they just need to go to one of your addresses. </p>
 <h2 id="1-tor"><a class="header" href="#1-tor">1. Tor</a></h2>
-<p>If you chose a Tor-only deployment you should have seen an output like this after installation completed:</p>
+<p>If you chose a Tor-only deployment, you should have seen an output like this after installation was completed:</p>
 <pre><code>✅ Installation complete!
 
 Hush Line is a product by Science &amp; Design.
@@ -519,10 +519,10 @@ Have feedback? Send us an email at hushline@scidsg.org.
 • Hush Line is running
 http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 </code></pre>
-<p>Open up Tor Browser and paste your onion address in the addess bar. Tor is a little slower than regular internet, so it'll take a few seconds before your site loads.</p>
+<p>Open up Tor Browser and paste your onion address in the address bar. Tor is a little slower than regular internet, so it'll take a few seconds before your site loads.</p>
 <img src="usage/../img/25-tor.png">
 <h2 id="2-public-websites"><a class="header" href="#2-public-websites">2. Public Websites</a></h2>
-<p>If you deployed Hush Line to a public website, you shouldh have seen an output like this:</p>
+<p>If you deployed Hush Line to a public website, you should have seen an output like this:</p>
 <pre><code>✅ Installation complete!
 
 Hush Line is a product by Science &amp; Design.
@@ -532,10 +532,8 @@ Have feedback? Send us an email at hushline@scidsg.org.
 ● Hush Line is running
 https://ourdemo.app
 http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
-https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.app
 </code></pre>
-<p>In the example above, the first and the last address can load in regular browsers like Chrome, Firefox, or Safari. The onion-only address needs Tor Browser to load.</p>
-<p>The first address should be easy to recognize, but the last might look different. It's called an onion-bound address, and it's a new way of making your onion address discoverable through HTTPS logs. During the installation we requested and configured automatically renewing Let's Encrypt certificates for your domain name. This provides a secure connection from the user's browser to your server. When a certifiate is issued, it's logged in publicly discoverable certificate logs. Now, if someone searches for your domain, they'll see all of the domain names issued a HTTPS certificate. One of them will include your onion address, making it's discovery more resistant to censorship! Learn more at <a href="usage/sauteed-onions.org">sauteed-onions.org</a>.</p>
+<p>In the example above, the first and last addresses can load in regular browsers like Chrome, Firefox, or Safari. The onion-only address needs Tor Browser to load.</p>
 <img src="usage/../img/40-public-domain.png">
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reading-messages"><a class="header" href="#reading-messages">Reading Messages</a></h1>
 <p>When someone sends you a Hush Line message, it'll get delivered to the email account you configured during installation. Messages will have the subject line &quot;🤫 New Hush Line Message Received.&quot;</p>
@@ -565,6 +563,8 @@ https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.a
 <p>The platform is served using <code>nginx</code>, and the server is configured with security-hardened headers. These headers protect users from various web vulnerabilities like cross-site scripting and clickjacking, ensuring a secure browsing experience.</p>
 <h2 id="10-no-account-needed"><a class="header" href="#10-no-account-needed"><strong>10. No Account Needed</strong></a></h2>
 <p>Emphasizing ease of use and privacy, Hush Line eliminates the need for account creation. Users can immediately start messaging without the burden of sign-ups or the risk of personal data storage.</p>
+<h2 id="11-sauteed-onions"><a class="header" href="#11-sauteed-onions"><strong>11. Sauteed Onions</strong></a></h2>
+<p>Hush Line configures a <a href="features/sauteed-onions.org">sauteed onions</a> domain when deploying to a public website like a .com, .org, etc. Sauteed Onions is a new method for making your onion address more censorship resistant by binding it to your domain name using HTTPS certificates, creating a new domain that looks like: <code>unqiueonionaddress.acme.com address</code> Now, when someone uses a certificate search tool like <a href="https://crt.sh/">crt.sh</a> and looks for your domain name, they'll find your onion address, too.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="more-resources"><a class="header" href="#more-resources">More Resources</a></h1>
 <ul>
 <li><a href="https://whistleblower.org/wp-content/uploads/2020/01/WhistleblowingJournalismGuide.pdf">Working with Whistleblowers</a>, Government Accountability Project</li>

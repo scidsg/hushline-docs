@@ -4,7 +4,7 @@ If you're someone using Hush Line for non-life-threatening scenarios - educators
 
 ## 1. Run The Installer
 
-After logging in to either your Raspberry Pi or VPS, enter the follow command to start the installation process:
+After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:
 
 `curl -sSL https://install.hushline.app | bash`
 
@@ -16,7 +16,7 @@ Choose "Tor + Public Domain" at the first prompt for the installation type.
 
 ## 2. Add Information
 
-Hush Line will send an email with the encrypted Hush Line message to the account you configure here. You'll also need to purchase a domain name for your Hush Line. We'll need the following information:
+Hush Line will email the encrypted Hush Line message to the account you configure here. You'll also need to purchase a domain name for your Hush Line. We'll need the following information:
 
 - Domain name
 - Gmail address
@@ -29,7 +29,7 @@ Hush Line will send an email with the encrypted Hush Line message to the account
 
 ## 3. Configure DNS
 
-Now we need to point your domain name to your new Droplet. When the installer gets to the final step, it will display the exact information that you need to enter in your domain's DNS settings.
+Now, we need to point your domain name to your new Droplet. When the installer reaches the final step, it will display the exact information that you need to enter in your domain's DNS settings.
 
 <img src="../img/38-dns-settings.png">
 
@@ -52,7 +52,7 @@ https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.a
 
 ## 4. Confirmation Email
 
-You'll receive an encrypted email confirming your Hush Line's successful installation which includes your addresses and a link to download Tor Browser.
+You'll receive an encrypted email confirming your Hush Line's successful installation which, includes your addresses and a link to download Tor Browser.
 
 <img src="../img/42-confirmation.png">
 

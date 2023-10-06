@@ -1,13 +1,13 @@
 # Threat Modeling for Hush Line Deployment
 
 ## Introduction
-The deployment of an anonymous tip line, like Hush Line, requires an understanding of the environment in which it will be used. Different organizations and individuals face unique threats, and the purpose of this guide is to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.
+Deploying an anonymous tip line, like Hush Line, requires understanding the environment in which it will be used. Different organizations and individuals face unique threats, and this guide aims to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.
 
 ## Understanding the Threats
-To select the right Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:
+To select the correct Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:
 
 ### Low Threats
-These scenarios typically involve situations where the primary risk is non-targeted threats or generic cyber threats. The fallout from a security breach is minimal. 
+These scenarios typically involve the primary risk of non-targeted or generic cyber threats. The fallout from a security breach is minimal. 
 
 We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`.
 
@@ -19,7 +19,7 @@ We recommend using a VPS and deploying Hush Line as a public domain to a URL lik
 ### Medium Threats
 Here, the risks escalate. They include targeted threats but might not require advanced defense measures. 
 
-We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`. When sharing your Hush Line address, include the onion address for people that require higher levels of anonymity.
+We recommend using a VPS and deploying Hush Line as a public domain to a URL like this: `tips.acme.com`. When sharing your Hush Line address, include the onion address for people who require higher levels of anonymity.
 
 #### Example Use Cases
 - 📈 Publicly traded businesses

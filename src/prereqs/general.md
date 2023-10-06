@@ -16,7 +16,7 @@ Your Hush Line has the option to only be reachable via the Tor Browser. It's not
 
 ### 2. Gmail
 
-We'll use Gmail for its high reliability. If you don't already have an account, create one. It's also not a bad idea to have an email address separate from your personal account.
+We'll use Gmail for its high reliability. If you don't already have an account, create one. Having an email address separate from your personal account is a good practice.
 
 ### 3. Mailvelope
 
@@ -32,9 +32,9 @@ Open the extension in your browser and click "Let's Start."
 
 ### What is PGP? Let's use a non-technical metaphor
 
-Here's how I like to think of PGP: Once set up, you'll have a very special envelope that people can put their messages inside of. What makes these envelopes so special is that it can only be opened by one specific letter opener. 
+Here's how I like to think of PGP: Once set up, you'll have a very special envelope where people can put their messages inside. These envelopes are so special that they can only be opened by one specific letter opener.
 
-Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener, since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confidence that no one else was able to read its contents along the way. 
+Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confident that no one else can read its contents along the way.
 
 ### 4. Create your keys
 
@@ -71,7 +71,7 @@ Your PGP Key is in the grey box, beginning with `-----BEGIN PGP PUBLIC KEY BLOCK
 
 ### 7. Create an app password
 
-Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your main account password; instead, create app-specific passwords. These are purpose-made for single applications.
+Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your primary account password; instead, create app-specific passwords. These are purpose-made for single applications.
 
 From your Gmail account, click on your avatar to access your account-level options. Select `Manage Google Account`.
 
@@ -82,7 +82,7 @@ Next, click on the Security tab on the left, then scroll to the bottom of the pa
 <img src="../img/15-security.png">
 <img src="../img/16-app-passwords.png">
 
-Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specfic password. Copy it to a notepad for easy access.
+Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specific password. Copy it to a notepad for easy access.
 
 <img src="../img/17-create-password.png">
 <img src="../img/18-copy-password.png">
