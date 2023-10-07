@@ -2,6 +2,12 @@
 
 If you're someone using Hush Line for non-life-threatening scenarios - educators running a Hush Line for student reporting, or an employer for anonymous employee reporting - you might want to deploy to a public URL - one that will work in browsers like Chrome, Firefox, or Safari. We'll exclusively use a VPS. 
 
+## Prereqs
+
+First, we'll give ourselves admin priviledges, then update our system:
+
+If you aren't an admin or root yet, enter `sudo su`, then `apt update && apt -y dist-upgrade && apt -y autoremove`.
+
 ## 1. Run The Installer
 
 After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:
