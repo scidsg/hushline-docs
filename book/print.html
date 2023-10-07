@@ -434,6 +434,9 @@
 <p><em>For organizations seeking in-depth threat analysis and tailored advice, please send an email to hushline@scidsg.org.</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tor-only-install"><a class="header" href="#tor-only-install">Tor-Only Install</a></h1>
 <p>A Tor-only install is an excellent option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.</p>
+<h2 id="prereqs"><a class="header" href="#prereqs">Prereqs</a></h2>
+<p>First, we'll give ourselves admin priviledges, then update our system:</p>
+<p>If you aren't an admin or root yet, enter <code>sudo su</code>, then <code>apt update &amp;&amp; apt -y dist-upgrade &amp;&amp; apt -y autoremove</code>.</p>
 <h2 id="1-run-the-installer"><a class="header" href="#1-run-the-installer">1. Run The Installer</a></h2>
 <p>After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
 <p><code>curl -sSL https://install.hushline.app | bash</code></p>
