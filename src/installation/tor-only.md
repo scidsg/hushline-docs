@@ -8,9 +8,11 @@ First, we'll give ourselves admin priviledges, then update our system:
 
 If you aren't an admin or root yet, enter `sudo su`, then `apt update && apt -y dist-upgrade && apt -y autoremove`.
 
+<img src="../img/21-update.png">
+
 ## 1. Run The Installer
 
-After logging in to either your Raspberry Pi or VPS, enter the following command to start the installation process:
+After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:
 
 `curl -sSL https://install.hushline.app | bash`
 
