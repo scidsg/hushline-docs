@@ -10,7 +10,7 @@ OnionShare is a free and open-source tool facilitating anonymous peer-to-peer fi
 
 Simply select the files you want to share, click "Start Sharing," and share that address in your Hush Line message. 
 
-<img src="../img/43-onionshare.png">
+<img src="../img/44-onionshare.png">
 
 ## Security
 
