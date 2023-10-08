@@ -3,6 +3,7 @@
 In this section we'll get everything ready before installing Hush Line.
 
 ## General
+- Download Tor Browser
 - Create a Gmail account
 - Create PGP keys using Mailvelope
 
