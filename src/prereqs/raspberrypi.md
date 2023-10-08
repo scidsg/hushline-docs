@@ -50,7 +50,7 @@ Plug the power supply into the device and let it boot up.
 
 On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and select the application with the same name. 
 
-Enter `ssh hush@hushline.local`, and when prompted, enter the password you created in the first step.
+Enter `ssh hush@hushline.local`, and when prompted, enter the password you created in the second step.
 
 <img src="../img/21-terminal-login.png">
 
