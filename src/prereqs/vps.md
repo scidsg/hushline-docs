@@ -44,4 +44,10 @@ Enter `ssh root@<IP Address>`, and when prompted, enter the password you created
 
 <img src="../img/33-terminal.png">
 
+### 4. Update your system
+
+The last thing we need to do is to update our system. Enter `apt update && apt -y dist-upgrade && apt -y autoremove`.
+
+<img src="../img/33-update.png">
+
 🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!

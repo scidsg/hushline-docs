@@ -32,9 +32,9 @@ Before clicking Write, click on the Settings gear in the bottom right of the win
 
 - Hostname = hushline
 - Enable SSH with password authentication
-- User = Hush
+- User = hush
 - Set a strong password
-- Wifi settings
+- Add wifi settings
 
 <img src="../img/20-advanced.png">
 
@@ -53,5 +53,13 @@ On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and se
 Enter `ssh hush@hushline.local`, and when prompted, enter the password you created in the first step.
 
 <img src="../img/21-terminal-login.png">
+
+### 5. Update your system
+
+The last thing we need to do is to update our system. First, we'll give ourselves admin priviledges, then perform the update:
+
+Enter `sudo su`, then `apt update && apt -y dist-upgrade && apt -y autoremove`.
+
+<img src="../img/21-update.png">
 
 🎉 That's it, you're ready to get started with Raspberry Pi!
