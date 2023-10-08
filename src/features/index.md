@@ -3,7 +3,7 @@
 ## **1. PGP Email Encryption**
 To enhance the security of communications, Hush Line integrates the PGP (Pretty Good Privacy) protocol. This ensures that every email message is encrypted, offering a secure channel even if the message's content becomes intercepted.
 
-## **2. Automatic Config**
+## **2. Simple, Guided Setup**
 Ease of setup is paramount, and Hush Line’s installation script automates the configuration process. From package installations to system settings, the script takes care of the nuances, ensuring a hassle-free experience.
 
 ## **3. Tor-Ready**
