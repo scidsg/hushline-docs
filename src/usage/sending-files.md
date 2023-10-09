@@ -13,7 +13,7 @@ OnionShare is a free and open-source tool facilitating anonymous peer-to-peer fi
 
 Simply select the files you want to share, click "Start Sharing," and share that address in your Hush Line message. 
 
-Since the files are being shared directly from the computer running OnionShare, you'll have to keep the app open and the device powered on, otherwise your data will be unavailable. Choose the option to stop sharing after the files have been sent, and keep in mind that the person you're trying to send a message to may not be able check their email daily, but when they receive the files the connection will automatically close. 
+Since the files are being shared directly from the computer running OnionShare, you'll have to keep the app open and the device powered on, otherwise your data will be unavailable. Choose the option to stop sharing after the files have been sent, and keep in mind that the person you're trying to send a message to may not be able to check their email daily, but when they receive the files, the connection will automatically close. 
 
 ### Private Key
 
