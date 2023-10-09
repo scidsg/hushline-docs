@@ -30,5 +30,5 @@ The platform is served using `nginx`, and the server is configured with security
 ## **10. No Account Needed**
 Emphasizing ease of use and privacy, Hush Line eliminates the need for account creation. Users can immediately start messaging without the burden of sign-ups or the risk of personal data storage.
 
-## **11. New Censorship Resistant Research**
+## **11. New Censorship-Resistance Research**
 Hush Line configures a [sauteed onions](sauteed-onions.org) domain when deploying to a public website like a .com, .org, etc. Sauteed Onions is a new method for making your onion address more censorship resistant by binding it to your domain name using HTTPS certificates, creating a new domain that looks like: `addressforyouronion.acme.com`. Now, when someone uses a certificate search tool like [crt.sh](https://crt.sh/) and looks for your domain name, they'll find your onion address, too.
