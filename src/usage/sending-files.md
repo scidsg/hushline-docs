@@ -19,7 +19,7 @@ Since the files are being shared directly from the computer running OnionShare, 
 
 By default, OnionShare will use a private key to protect the data you want to share - it's basically a strong password that someone will need in order to access your files.
 
-Remember to include your private key in your Hush Line message.
+🧠 Remember to include your OnionShare address and private key in your Hush Line message.
 
 <img src="../img/44-onionshare.png">
 
