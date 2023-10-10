@@ -1,6 +1,8 @@
-# VPS Prerequisites 
+# VPS Prerequisites
 
-In this section, you'll need the following things to get Hush Line ready to install:
+In this section, we'll prepare to install Hush Line on a virtual private server (VPS). This means your Hush Line will run on a rented, private server owned by a company like [Digital Ocean](https://www.digitalocean.com/).
+
+You'll need the following things:
 
 1. Debit or credit card
 2. Digital Ocean, or any other VPS provider
@@ -11,7 +13,7 @@ Digital Ocean is an infrastructure service provider that provides a cost-effecti
 
 ### 1. Create an Account
 
-Go to [digitalocean.com](digitalocean.com) and create an account. You'll need to enter payment information before you can create a VPS.
+Go to [digitalocean.com](https://www.digitalocean.com/) and create an account. You'll need to enter payment information before you can create a VPS.
 
 <img src="../img/29-digital-ocean.png">
 
@@ -38,7 +40,7 @@ After a minute or two, your Droplet should be ready. The "Resources" tab should 
 
 ### 3. Log In
 
-On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and select the application with the same name. 
+On a Mac, open Spotlight search by pressing CMD + Space. Enter "Terminal" and select the application with the same name.
 
 Enter `ssh root@<IP Address>`, and when prompted, enter the password you created in the second step.
 
