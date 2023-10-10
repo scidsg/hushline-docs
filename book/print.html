@@ -410,7 +410,7 @@
 <p>A Tor-only install is an excellent option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.</p>
 <h2 id="1-run-the-installer"><a class="header" href="#1-run-the-installer">1. Run The Installer</a></h2>
 <p>After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
-<p><code>curl -sSL https://install.hushline.app | bash</code></p>
+<p><code>curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | bash</code></p>
 <img src="installation/../img/22-install-hushline.png">
 <p>Choose &quot;Tor-Only&quot; at the first prompt for the installation type.</p>
 <img src="installation/../img/23-tor-only.png">
@@ -443,7 +443,7 @@ http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 <p>If you're someone using Hush Line for non-life-threatening scenarios - educators running a Hush Line for student reporting, or an employer for anonymous employee reporting - you might want to deploy to a public URL - one that will work in browsers like Chrome, Firefox, or Safari. We'll exclusively use a VPS. </p>
 <h2 id="1-run-the-installer-1"><a class="header" href="#1-run-the-installer-1">1. Run The Installer</a></h2>
 <p>After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
-<p><code>curl -sSL https://install.hushline.app | bash</code></p>
+<p><code>curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | bash</code></p>
 <img src="installation/../img/34-install.png">
 <p>Choose &quot;Tor + Public Domain&quot; at the first prompt for the installation type.</p>
 <img src="installation/../img/35-public.png">
