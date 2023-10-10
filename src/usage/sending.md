@@ -1,6 +1,6 @@
 # Sending Messages
 
-For someone in your community to send you a Hush Line message, they just need to go to one of your addresses. 
+For someone in your community to send you a Hush Line message, they just need to go to one of your addresses and enter their message.
 
 ## 1. Tor
 
@@ -16,6 +16,8 @@ Have feedback? Send us an email at hushline@scidsg.org.
 • Hush Line is running
 http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
 ```
+
+This information should also be in the confirmation email you received upon successfully setting up your Hush Line.
 
 Open up Tor Browser and paste your onion address in the address bar. Tor is a little slower than regular internet, so it'll take a few seconds before your site loads.
 
