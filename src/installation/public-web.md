@@ -6,7 +6,7 @@ If you're someone using Hush Line for non-life-threatening scenarios - educators
 
 After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:
 
-`curl -sSL https://install.hushline.app | bash`
+`curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | bash`
 
 <img src="../img/34-install.png">
 
