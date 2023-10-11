@@ -19,7 +19,7 @@ Choose "Tor-Only" at the first prompt for the installation type.
 Hush Line will send an email with the encrypted Hush Line message to the account you configure here. Since we're using Gmail, we'll need the following information:
 
 - Gmail address
-- SMTP Address: smtp.gmail.com
+- SMTP Address: `smtp.gmail.com`
 - App Password (from prerequisites)
 - Port: 465
 - Public PGP Key (from prerequisites)
