@@ -6,7 +6,7 @@ A Tor-only install is an excellent option for someone requiring anonymity and a 
 
 After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:
 
-`curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | bash`
+`curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | sudo bash`
 
 <img src="../img/22-install-hushline.png">
 
