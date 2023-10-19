@@ -2,7 +2,7 @@
 
 Hush Line deploys with an information page that provides the sender with additional information that might be helpful before submitting a message.
 
-<img src="./img/info.png" alt="Hush Line information page">
+<img src="../img/info.png" alt="Hush Line information page">
 
 ## When to use Hush Line
 
