@@ -45,7 +45,6 @@ Have feedback? Send us an email at hushline@scidsg.org.
 ● Hush Line is running
 https://ourdemo.app
 http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
-https://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion.ourdemo.app
 ```
 
 <img src="../img/39-https-complete-1.png">
