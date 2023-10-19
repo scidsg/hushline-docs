@@ -20,5 +20,4 @@
 - [Features](./features/index.md)
 - [Resources](./resources/index.md)
 - [Glossary](./glossary.md)
-<!-- - [Troubleshooting](./troubleshooting.md) -->
 
