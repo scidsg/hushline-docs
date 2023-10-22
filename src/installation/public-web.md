@@ -19,11 +19,11 @@ Choose "Tor + Public Domain" at the first prompt for the installation type.
 Hush Line will email the encrypted Hush Line message to the account you configure here. You'll also need to purchase a domain name for your Hush Line. We'll need the following information:
 
 - Domain name
-- Gmail address
-- SMTP Address: smtp.gmail.com
-- App Password (from prerequisites)
+- SMTP email address
+- SMTP address: smtp.gmail.com
+- App password (from prerequisites)
 - Port: 465
-- Public PGP Key (from prerequisites)
+- Public PGP key (from prerequisites)
 
 <img src="../img/36-key.png">
 
