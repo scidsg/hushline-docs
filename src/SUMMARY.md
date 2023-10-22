@@ -4,7 +4,7 @@
 - [Introduction](./intro.md)
 - [What is Hush Line?](./what-is-hush-line.md)
 - [Prerequisites](./prereqs/index.md)
-   - [General](./prereqs/general.md)
+   - [👉 Start Here](./prereqs/general.md)
    - [Option 1: Raspberry Pi](./prereqs/raspberrypi.md)
    - [Option 2: VPS](./prereqs/vps.md)
    - [Threat Modeling](./prereqs/threat-modeling.md)
