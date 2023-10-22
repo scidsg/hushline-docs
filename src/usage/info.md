@@ -20,8 +20,13 @@ If you deployed to a public domain, you'll find both your onion address and publ
 
 ## Share it!
 
-This is a great page to print out and place where it's easily discoverable. If you're using Hush Line for a school or workplace, you can print it, place it in common areas, copy the info, and email it broadly. If you're a journalist, this can be the page you share publicly so people using your Hush Line have more context before sending a message.  
+The information on this page can be shared and the link to the page itself should be posted in multiple locations to make it easy to verify. You can:
+
+- print the page and place it in common areas,
+- copy the info and email it broadly,
+- add the info link on your website and social channels, and
+- add the link in your email signature.
 
 ## Verify your address!
 
-Before you trust any link, whether an onion domain or a public website, you should verify its address. We encourage Hush Line operators to post their address in at least three different locations - social media, website, and email signature, for example - so individuals sending a message can verify they have the correct address before visiting and sharing potentially sensitive information.
+Before you trust any link, whether an onion domain or a public website, you should verify its address. We encourage Hush Line operators to post their address in _at least three different locations_ - social media, website, and email signature, for example - so individuals sending a message can verify they have the correct address before visiting and sharing potentially sensitive information.
