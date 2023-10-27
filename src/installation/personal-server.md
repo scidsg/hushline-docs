@@ -14,8 +14,6 @@ The setup process will begin once an internet connection is detected.
 
 Your server optimizes the setup time by coming with all of the necessary software preloaded on the device. When you power up the server, we update your software and Hush Line repository.
 
-<img src="../img/24-finished.png">
-
 ## 3. Wait ~5 mins for a setup code to display.
 
 After the updates, your device's screen will display a QR code that links to a locally hosted web form.
