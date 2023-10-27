@@ -26,7 +26,7 @@ Scan the code or visit https://hushline.local/setup from a device on the same ne
 
 The form will ask for five pieces of information that we set up in the [prerequisites](./prereqs/general.md). 
 
-👉 Make sure your public PGP is unmodified beginning with `---- BEGIN PGP PUBLIC KEY BLOCK -----` and ending with `----- END PGP PUBLIC KEY BLOCK ----`.
+👉 Make sure your public PGP is unmodified beginning with `-----BEGIN PGP PUBLIC KEY BLOCK-----` and ending with `-----END PGP PUBLIC KEY BLOCK-----`.
 
 The information you'll need: 
 
