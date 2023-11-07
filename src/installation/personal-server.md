@@ -1,6 +1,6 @@
 # Hush Line Personal Server
 
-The Personal Server is a physical device running a Tor-only version of Hush Line. This is our customer-facing product that doesn't require a user to use the terminal or SSH to configure their tip line. It uses an e-paper display and web form to guide the user through the set up process and in a matter of minutes, you can have an anonymous tip line deployed and ready to use.
+The Personal Server is a physical device running a Tor-only version of Hush Line. This is our customer-facing product that doesn't require a user to use the terminal or SSH to configure their tip line. It uses an e-paper display and web form to guide the user through the setup process, and in a matter of minutes, you can have an anonymous tip line deployed and ready to use.
 
 <img src="../img/personal-server-cover.png">
 
