@@ -1,6 +1,6 @@
 # Hush Line Field Manual
 
-[Hush Line](https://hushline.app/) is a lightweight, secure, and anonymous tip line. It's easy to install and use.
+[Hush Line](https://hushline.app/) is the first anonymous-tip-line-as-a-service! 
 
 <img src="img/hosted-hushline.png">
 
