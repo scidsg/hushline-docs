@@ -2,7 +2,7 @@
 
 [Hush Line](https://hushline.app/) is a lightweight, secure, and anonymous tip line. It's easy to install and use.
 
-<img src="./img/0-cover.png">
+<img src="../img/hosted-hushline.png">
 
 Think of a box in your office or school where people can slip in anonymous messages, with a lock on it that only you have the key to open.
 

@@ -2,7 +2,7 @@
 
 <img src="../img/hosted-hushline.png">
 
-This document outlines the core components of a robust Flask web application designed for secure communication and user management. Built with Python, this application leverages Flask, a lightweight and powerful web framework, to create a user-friendly interface and backend logic. The application's features are diverse, including user authentication, secure message handling, PGP encryption for privacy, SMTP integration for email communication, and two-factor authentication (2FA) for enhanced security.
+This document outlines the core components of Hush Line, a robust Flask web application designed for secure communication and user management. Built with Python, this application leverages Flask, a lightweight and powerful web framework, to create a user-friendly interface and backend logic. The application's features are diverse, including user authentication, secure message handling, PGP encryption for privacy, SMTP integration for email communication, and two-factor authentication (2FA) for enhanced security.
 
 At its heart, the application centers around user interactions, allowing for account creation, login, and settings customization. Users can securely manage their profiles, including changing usernames, passwords, and setting up email configurations. The integration of PGP keys adds a layer of encryption to user communications, ensuring that messages remain confidential and secure. Additionally, the application includes functionality for sending emails directly from the user's account, which is essential for notifications and communications within the app.
 
