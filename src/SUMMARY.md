@@ -5,7 +5,7 @@
 - [What is Hush Line?](./what-is-hush-line.md)
 - [Prereqs](./prereqs/general.md)
    - [Threat Modeling](./prereqs/threat-modeling.md)
-- [Hosted](./hosted/index.md)
+- [Hosted](./hosted/getting-started.md)
     - [Getting Started](./hosted/getting-started.md)
     - [Technical Walkthrough](./hosted/index.md)
 - [Personal Server](./installation/personal-server.md)
