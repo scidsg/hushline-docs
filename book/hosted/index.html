@@ -3159,7 +3159,7 @@ def delete_account():
 <pre><code>if __name__ == &quot;__main__&quot;:
     with app.app_context():
         db.create_all()
-    app.run(port=5000)
+    app.run(debug=True, host=&quot;0.0.0.0&quot;, port=5000)
 </code></pre>
 <h2 id="conclusion-and-overview"><a class="header" href="#conclusion-and-overview">Conclusion and Overview</a></h2>
 <p>In conclusion, this Flask application stands as a testament to the versatility and power of Python and Flask in building secure and feature-rich web applications. The careful structuring of routes and functions ensures a seamless user experience, with an emphasis on security and privacy. From account management to secure messaging, each feature is thoughtfully implemented, showcasing best practices in web development, such as thorough validation, error handling, and user feedback.</p>
