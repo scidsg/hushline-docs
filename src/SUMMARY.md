@@ -2,7 +2,6 @@
 
 ## CONTENTS
 - [Introduction](./intro.md)
-- [What is Hush Line?](./what-is-hush-line.md)
 - [Prereqs](./prereqs/general.md)
    - [Threat Modeling](./prereqs/threat-modeling.md)
 - [Hosted](./hosted/getting-started.md)
