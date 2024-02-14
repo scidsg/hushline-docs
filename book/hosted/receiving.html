@@ -171,12 +171,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="receiving-messages"><a class="header" href="#receiving-messages">Receiving Messages</a></h1>
-<p>When someone submits a message, you can view them in your Inbox. If you're using Mailvelope, you can decrypt messages directly in the app.</p>
-<img src="../img/Inbox.1.png">
-<img src="../img/Read.1.png">
-<img src="../img/Read.2.png">
-<img src="../img/Read.3.png">
+                        <h1 id="reading-messages"><a class="header" href="#reading-messages">Reading Messages</a></h1>
+<p>New users are greeted by their empty inbox.</p>
+<img src="../img/inbox.empty.png">
+<p>When you receive a message, they'll appear here. </p>
+<img src="../img/inbox.unencrypted.png">
+<h2 id="message-encryption"><a class="header" href="#message-encryption">Message Encryption</a></h2>
+<p>By default, Hush Line doesn't require a PGP key, but it's strongly encouraged. After adding your PGP key, only you can read the messages you receive. </p>
+<p>As a baseline security measure, we encrypt your message content by default on our server. While this protects the contents of our database, if the encryption key becomes compromised, it can be decrypted. But if you add your PGP key, any message received will only be able to be decrypted by you. If you expect to receive messages containing sensitive content, enabling this feature is strongly encouraged.</p>
+<img src="../img/inbox.encrypted.png">
+<h3 id="mailvelope"><a class="header" href="#mailvelope">Mailvelope</a></h3>
+<p>After installing the Mailvelope extension in your browser, you can decrypt your messages directly in the app. This is highly recommended, as it's one of the easiest and most straightforward methods of decrypting your messages. </p>
+<img src="../img/inbox.mailvelope.png">
+<p>You'll see a new interface where the encrypted message was. Click &quot;Show message&quot; to decrypt. You'll enter the password you created when setting up your PGP key, and the contents will be visible. </p>
+<img src="../img/inbox.decrypted.png">
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
