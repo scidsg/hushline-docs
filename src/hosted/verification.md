@@ -34,7 +34,7 @@ To ensure your account is recognized as authentic, users belonging to the catego
 | Journalists                     | Art Vandelay, The Daily Worker                  |
 | Independent Journalists         | Art Vandelay, Ind.                              |
 | Politicians                     | Sen. Art Vandelay, D-CA, 🇺🇸                     |
-|                                 | Gob Bluth, Liberal Party, Prime Minister of Canada 🇨🇦 |
+|                                 | Gob Bluth, PM, 🇨🇦                               |
 
 Once your Display Name matches the format above, we'll promptly verify your account!
 
