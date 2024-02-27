@@ -226,6 +226,25 @@ body span.emoji {
     filter: invert(0);
 }
 
+table {
+	background-color: white;
+	margin-left: 4rem;
+}
+
+table td {
+	border: 1px solid #ccc;
+}
+
+table thead {
+	background-color: rgb(236, 236, 236);
+  border: 1px solid #ccc;
+	text-align: left;
+}
+
+table th {
+	border: 1px solid #ccc;
+}
+
 @media only screen and (max-width: 768px) {
 
 	.content main {

@@ -24,7 +24,7 @@ To ensure your account is recognized as authentic, users belonging to the catego
 
    These documents help us ensure that verified accounts are granted to the rightful individuals or representatives of organizations.
 
-3. Prepare Your Account: Verified accounts are required to use their public name or official organization name. For example:
+3. **Prepare Your Account:** Verified accounts are required to use their public name or official organization name. For example:
 
 | Category                        | Example                                         |
 |---------------------------------|-------------------------------------------------|
