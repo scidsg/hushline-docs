@@ -7,6 +7,7 @@
    - [Threat Modeling](./prereqs/threat-modeling.md)
 - [Hosted](./hosted/getting-started.md)
     - [Getting Started](./hosted/getting-started.md)
+    - [Verification System](./hosted/verification.md)
     - [Sending Messages](./hosted/sending.md)
     - [Receiving Messages](./hosted/receiving.md)
     - [Settings](./hosted/settings.md)
