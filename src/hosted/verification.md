@@ -28,11 +28,12 @@ To ensure your account is recognized as authentic, users belonging to the catego
 
 | Category                        | Example                                         |
 |---------------------------------|-------------------------------------------------|
+| Individuals				 	  | Art Vandelay
 | Organizations                   | Vandelay Industries                             |
-| Departments within an organization | Vandelay Industries, HR Dept.                  |
+| Departments within an organization | Vandelay Industries, HR Dept.                |
 | Journalists                     | Art Vandelay, The Daily Worker                  |
 | Independent Journalists         | Art Vandelay, Ind.                              |
-| Politicians                     | Sen. Art Vandelay, D-CA, 🇺🇸                    |
+| Politicians                     | Sen. Art Vandelay, D-CA, 🇺🇸                     |
 |                                 | Gob Bluth, Liberal Party, Prime Minister of Canada 🇨🇦 |
 
 Once your Display Name matches the format above, we'll promptly verify your account!
