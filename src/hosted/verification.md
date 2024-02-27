@@ -2,11 +2,11 @@
 
 We're proud to offer verified accounts to help fortify trust in the community that messages are going to the person or organization they intend. Verified accounts are available for users including:
 
-- Journalists
-- Newsrooms
-- Activists
-- Public Figures
-- Businesses 
+- 🕵️ Journalists
+- 📰 Newsrooms
+- ✊ Activists
+- 📸 Public Figures
+- 📊 Businesses 
 
 <img src="../img/verified-account.png">
 
