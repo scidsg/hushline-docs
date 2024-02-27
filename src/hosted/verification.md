@@ -35,6 +35,8 @@ To ensure your account is recognized as authentic, users belonging to the catego
 | Politicians                     | Sen. Art Vandelay, D-CA, 🇺🇸                    |
 |                                 | Gob Bluth, Liberal Party, Prime Minister of Canada 🇨🇦 |
 
+Once your Display Name matches the format above, we'll promptly verify your account!
+
 ## Safeguards
 
 To help guard against abuse, our verification system is built so that if a verified user changes their username or display name, they'll lose their verified status and need to initiate the process again. This feature is intended to eliminate the risk of a user with a verified account changing their information to impersonate another person or organization.
