@@ -24,6 +24,24 @@ To ensure your account is recognized as authentic, users belonging to the catego
 
 These documents help us ensure that verified accounts are granted to the rightful individuals or representatives of organizations.
 
+3. Prepare Your Account: Verified accounts are required to use their public name or official organization name. For example:
+
+**Organizations:**
+- Vandelay Industries
+
+**Departments within an organization:**
+- Vandelay Industries, HR Dept.
+
+**Journalists:**
+- Art Vandelay, The Daily Worker
+
+**Independent Journalists:**
+- Art Vandelay, Ind.
+
+**Politicians:**
+- Sen. Art Vandelay, D-CA, 🇺🇸
+- Gob Bluth, Liberal Party, Prime Minister of Canada 🇨🇦
+
 ## Safeguards
 
 To help guard against abuse, our verification system is built so that if a verified user changes their username or display name, they'll lose their verified status and need to initiate the process again. This feature is intended to eliminate the risk of a user with a verified account changing their information to impersonate another person or organization.
