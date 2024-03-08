@@ -67,11 +67,19 @@ Your PGP Key is in the grey box, beginning with `-----BEGIN PGP PUBLIC KEY BLOCK
 <img src="../img/12-public-key.png">
 <img src="../img/13-copy-key.png">
 
-## App Password
-
-### 7. Create an app password
+## SMTP Settings and App Passwords
 
 Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your primary account password; instead, create app-specific passwords. These are purpose-made for single applications.
+
+### Gmail SMTP
+- Server: `smtp.gmail.com`
+- Port: `587` or `465`
+
+### Riseup.net SMTP
+- Server: `mail.riseup.net`
+- Port: `587` or `465`
+
+### 7. Create an app password
 
 From your Gmail account, click on your avatar to access your account-level options. Select `Manage Google Account`.
 
