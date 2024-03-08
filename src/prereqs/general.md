@@ -4,7 +4,7 @@
 
 1. [Software](#software)
 2. [Creating Keys](#creating-keys)
-3. [SMTP Settings and App Password](#smtp-settings-and-app-passwords)
+3. [SMTP Settings and App Passwords](#smtp-settings-and-app-passwords)
 
 ## Software
 
