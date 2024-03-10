@@ -1,6 +1,6 @@
 # Hush Line Self-Hosted Prerequisites 
 
-<img src="./img/0-cover.png">
+<img src="../img/0-cover.png">
 
 In this section we'll get everything ready before installing Hush Line.
 
