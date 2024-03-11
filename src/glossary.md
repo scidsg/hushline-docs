@@ -1,6 +1,6 @@
 # Glossary
 
-**Hush Line site**: The website that your Hush Line form is available at. If you're running Hush Line in "Tor-only" mode, your Hush Line site will have a URL like `http://vfalkrrucjb7pztjskfumnqytpze5iimu4i2t2ygwv6ntylvylt2flad.onion` and will be only accessible through the [Tor Browser](https://torproject.org/download).
+**Hush Line site**: The website that your Hush Line form is available at. If you're running Hush Line in "Tor-only" mode, your Hush Line site will have a URL like `http://kf3rrek5a3v3euien6tc5y2vrhanhkogrkuw35zqnzkuv2xavnc3eiid.onion` and will be only accessible through the [Tor Browser](https://torproject.org/download).
 
 **Hush Line form**: The text box form that occupies your Hush Line site. Community members may choose to type and submit a message through this form (thus becoming a source).
 
