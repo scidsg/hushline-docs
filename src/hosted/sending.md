@@ -13,3 +13,9 @@ When you share the address, someone sending a message will see slightly differen
 If you haven't added a PGP key, you and any visitor will see a warning that messages will not be encrypted.
 
 <img src="../img/submit.unencrypted.png">
+
+## Your IP Address
+
+You notice an IP address at the bottom of the submit message form. If you ARE NOT using Tor Browser or an anonymizing VPN and you're browsing from home, the address you see is likely yours. WHILE WE DO NOT LOG ANY IP ADDRESSES, if an attacker were actively monitoring connections to the site, they'd be able to see your address. In some cases, this might be enough to de-anonymize yourself. If you ARE using Tor, the observable IP address will belong to one of the thousands of possible exit nodes on the Tor network. And since there is no predictable way to determine the origin of a Tor connection, the IP address connecting to the site can not be linked back to you.
+
+<img src="../img/submit.ip.png">
