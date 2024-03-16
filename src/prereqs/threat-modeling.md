@@ -1,53 +1,70 @@
-# Threat Modeling for Hush Line Deployment
+# Hush Line Threat Model
 
 ## Introduction
 
-Deploying an anonymous tip line, like Hush Line, requires understanding the environment in which it will be used. Different organizations and individuals face unique threats, and this guide aims to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.
+Hush Line is a secure communication platform designed with a strong focus on privacy and anonymity. This document outlines the threat model for Hush Line, highlighting potential threats, the data Hush Line collects, how it is secured, and what users can expect in terms of privacy and security.
 
-## Understanding the Threats
+## Data Collection and Encryption
 
-To select the correct Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:
+Hush Line collects minimal data to maintain the functionality of the service while prioritizing user privacy. Here's a detailed look at the data handling mechanisms:
 
-### Low Threats
+### User Data
 
-These scenarios typically involve the primary risk of non-targeted or generic cyber threats. The fallout from a security breach is minimal. 
+- **Usernames and Display Names:** Stored and encrypted using symmetric encryption. These identifiers allow users to interact within the platform while preserving their anonymity.
+- **Password Hashes:** User passwords are hashed using bcrypt, ensuring that even if data is compromised, actual passwords are not exposed.
+- **Two-Factor Authentication (2FA) Secrets:** For users opting for 2FA, these secrets are encrypted and stored securely. 2FA provides an additional layer of security, mitigating the risk of unauthorized account access.
+- **Email and SMTP Settings:** For users who choose to receive notifications or use email-based functionalities, these settings are encrypted and stored. Users are encouraged to use email addresses not linked to their real identity for enhanced privacy.
+- **PGP Keys:** For end-to-end encrypted communication, users can provide their PGP keys. These keys are stored in an encrypted format, enabling secure message exchange without exposing the content to Hush Line servers.
 
-We recommend the hosted version of Hush Line, providing an address like: `https://beta.hushline.app/submit_message/scidsg`.
+### Communication Data
 
-#### Example Use Cases
+- **Messages:** All messages are encrypted end-to-end. Hush Line servers only store encrypted blobs, making it impossible to access the content without the corresponding decryption keys, which are held by the end users.
 
-- 💼 Small to medium businesses
-- 🏫 Schoolhouses
-- 🎈 Conference organizers
+### Logs and Metadata
 
-### Medium Threats
+- **Access Logs:** Hush Line minimizes logging to essential operational data, which is anonymized to prevent linking back to users. IP addresses are obfuscated, and logs are rotated regularly to ensure that historical data cannot be exploited to compromise user privacy.
+- **Rate Limiting and Security Measures:** The platform employs rate limiting and other security measures to protect against abuse and DoS attacks. These mechanisms are designed to be privacy-preserving and do not log personally identifiable information.
 
-Here, the risks escalate. They include targeted threats but might not require advanced defense measures. 
+## Threats and Mitigations
 
-We recommend the hosted version of Hush Line, and prominently displaying both public and onion addresses: `https://beta.hushline.app/submit_message/scidsg` and `http://fx3ewfwnufrfqbqdrbyeb6xwl736olvsfczyv5oqruehwnvk67kthsqd.onion/submit_message/scidsg`.
+### Network Observers and Global Adversaries
 
-#### Example Use Cases
+- **Mitigation:** All data in transit is encrypted using TLS, and users are encouraged to access Hush Line via Tor for additional anonymity. This prevents network observers from deciphering the content or metadata of communications.
 
-- 📈 Publicly traded businesses
-- 🩺 Law or doctor's offices
-- 🚨 Domestic abuse hotlines
+### Account Compromise
 
-### High Threats
+- **Mitigation:** Strong password policies, optional 2FA, and secure password reset mechanisms are in place to protect user accounts. Users are educated on best practices for maintaining account security.
 
-These are scenarios where targeted threats are likely, and consequences can be severe, like endangering someone's physical safety.
+### Legal and Coercive Pressure
 
-We recommend an onion-only deployment for high-threat environments using a VPS or a local device like a Raspberry Pi. If your physical safety isn't guaranteed and device confiscation is possible, you should only use a VPS, as this will provide the greatest protection for your community, tip line, and yourself. VPS providers like [Njalla](https://njal.la) works seamlessly on Tor Browser, and accepts payments in private cryptocurrencies like ZCash and Monero.
+- **Mitigation:** Hush Line is designed to hold minimal information that could be of interest in legal contexts. Furthermore, the use of encryption for stored data ensures that, even under pressure, Hush Line cannot divulge meaningful user data.
 
-#### Example Use Cases
+### Phishing and Social Engineering
 
-- 📰 Journalists
-- 🆘 Government whistleblowers
-- 🚔 Locations with internet censorship
+- **Mitigation:** User education and secure design principles minimize the risk of phishing. Features like displaying the last login time and alerting users to new logins from unfamiliar devices help users detect unauthorized access attempts.
 
-## Malicious Actors & Misinformation
+## Verification System
 
-If you sign up with our hosted service, we provide human-verified accounts for journalists and newsrooms, so you can have confidence that you're talking to the intended person.
+Hush Line employs a verification system to ensure that users can trust the source of communication. This system is particularly important for users who are public figures or have a wide audience. The verification system includes:
 
-For our self-hosted option, the anonymity it provides can be a double-edged sword. While it provides protection for both journalist and whistleblower, it can also shield malicious actors, as the verification system is only available on the self-hosted version. 
+### Verified Accounts
 
-Whistleblowers should always verify the addresses they click on or enter into a browser, and journalists should vet the tips they receive to guard against misinformation campaigns, especially in high-risk scenarios.
+- **Display of Verification Status:** Hush Line indicates verified accounts with a distinctive badge (⭐️ Verified Account). This visual indicator helps users distinguish authentic accounts from potential impersonators, reducing the risk of phishing attacks.
+
+## User Education
+
+### Encryption Awareness
+
+- **Encryption Indicators:** The platform informs users whether their messages will be encrypted. For accounts with a public PGP key, messages are encrypted, ensuring that only the intended recipient can decrypt and read them. This feature is highlighted through messages on the submission form, emphasizing the importance of encryption for sensitive information.
+
+### User Guidance
+
+- **Informative Messages for Senders and Receivers:** Hush Line educates its users about the significance of encryption and the steps required to ensure message confidentiality. This includes prompts for receivers to add a public PGP key if they haven't already, and notifications for senders about the encryption status of their message.
+
+### IP Address Disclosure
+
+- **Transparency about IP Visibility:** The platform informs users about the visibility of their IP addresses when submitting a message. This disclosure encourages the use of privacy-enhancing tools like Tor Browser for users seeking additional anonymity.
+
+## Conclusion
+
+Hush Line's threat model acknowledges the variety of adversaries that users may face and implements a robust security architecture to mitigate these risks. By encrypting data at rest, minimizing data collection, and educating users on security practices, Hush Line aims to offer a secure and private platform for communication.

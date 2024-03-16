@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">2.</strong> Prereqs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">2.1.</strong> General Prereqs</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html" class="active"><strong aria-hidden="true">2.2.</strong> Threat Modeling</a></li></ol></li><li class="chapter-item expanded "><a href="../hosted/getting-started.html"><strong aria-hidden="true">3.</strong> Hosted</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hosted/getting-started.html"><strong aria-hidden="true">3.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../hosted/verification.html"><strong aria-hidden="true">3.2.</strong> Verification System</a></li><li class="chapter-item expanded "><a href="../hosted/sending.html"><strong aria-hidden="true">3.3.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../hosted/receiving.html"><strong aria-hidden="true">3.4.</strong> Receiving Messages</a></li><li class="chapter-item expanded "><a href="../hosted/settings.html"><strong aria-hidden="true">3.5.</strong> Settings</a></li><li class="chapter-item expanded "><a href="../hosted/admin.html"><strong aria-hidden="true">3.6.</strong> Admin</a></li><li class="chapter-item expanded "><a href="../hosted/paid.html"><strong aria-hidden="true">3.7.</strong> Paid Features</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/personal-server.html"><strong aria-hidden="true">4.</strong> Personal Server</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">5.</strong> Self-Hosted</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">5.1.</strong> Option 1: Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">5.2.</strong> Option 2: VPS</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">5.3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">5.3.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">5.3.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.4.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/info.html"><strong aria-hidden="true">5.4.1.</strong> Information Page</a></li><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.4.2.</strong> Sending Messages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending-files.html"><strong aria-hidden="true">5.4.2.1.</strong> Sending Files</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.4.3.</strong> Reading Messages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/handling-files.html"><strong aria-hidden="true">5.4.3.1.</strong> Handling Files</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">5.5.</strong> Features</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">5.6.</strong> Resources</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.7.</strong> Glossary</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../prereqs/general.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html" class="active"><strong aria-hidden="true">2.</strong> Threat Modeling</a></li><li class="chapter-item expanded "><a href="../hosted/getting-started.html"><strong aria-hidden="true">3.</strong> Managed Service</a></li><li class="chapter-item expanded "><a href="../installation/personal-server.html"><strong aria-hidden="true">4.</strong> Personal Server</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">5.</strong> Self-Hosted</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,42 +171,66 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="threat-modeling-for-hush-line-deployment"><a class="header" href="#threat-modeling-for-hush-line-deployment">Threat Modeling for Hush Line Deployment</a></h1>
+                        <h1 id="hush-line-threat-model"><a class="header" href="#hush-line-threat-model">Hush Line Threat Model</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>Deploying an anonymous tip line, like Hush Line, requires understanding the environment in which it will be used. Different organizations and individuals face unique threats, and this guide aims to help you navigate these challenges. By understanding your threat landscape, you can choose the appropriate deployment method that balances accessibility and security for your needs.</p>
-<h2 id="understanding-the-threats"><a class="header" href="#understanding-the-threats">Understanding the Threats</a></h2>
-<p>To select the correct Hush Line deployment, consider the potential risks and consequences you or your tipsters might face:</p>
-<h3 id="low-threats"><a class="header" href="#low-threats">Low Threats</a></h3>
-<p>These scenarios typically involve the primary risk of non-targeted or generic cyber threats. The fallout from a security breach is minimal. </p>
-<p>We recommend the hosted version of Hush Line, providing an address like: <code>https://beta.hushline.app/submit_message/scidsg</code>.</p>
-<h4 id="example-use-cases"><a class="header" href="#example-use-cases">Example Use Cases</a></h4>
+<p>Hush Line is a secure communication platform designed with a strong focus on privacy and anonymity. This document outlines the threat model for Hush Line, highlighting potential threats, the data Hush Line collects, how it is secured, and what users can expect in terms of privacy and security.</p>
+<h2 id="data-collection-and-encryption"><a class="header" href="#data-collection-and-encryption">Data Collection and Encryption</a></h2>
+<p>Hush Line collects minimal data to maintain the functionality of the service while prioritizing user privacy. Here's a detailed look at the data handling mechanisms:</p>
+<h3 id="user-data"><a class="header" href="#user-data">User Data</a></h3>
 <ul>
-<li>💼 Small to medium businesses</li>
-<li>🏫 Schoolhouses</li>
-<li>🎈 Conference organizers</li>
+<li><strong>Usernames and Display Names:</strong> Stored and encrypted using symmetric encryption. These identifiers allow users to interact within the platform while preserving their anonymity.</li>
+<li><strong>Password Hashes:</strong> User passwords are hashed using bcrypt, ensuring that even if data is compromised, actual passwords are not exposed.</li>
+<li><strong>Two-Factor Authentication (2FA) Secrets:</strong> For users opting for 2FA, these secrets are encrypted and stored securely. 2FA provides an additional layer of security, mitigating the risk of unauthorized account access.</li>
+<li><strong>Email and SMTP Settings:</strong> For users who choose to receive notifications or use email-based functionalities, these settings are encrypted and stored. Users are encouraged to use email addresses not linked to their real identity for enhanced privacy.</li>
+<li><strong>PGP Keys:</strong> For end-to-end encrypted communication, users can provide their PGP keys. These keys are stored in an encrypted format, enabling secure message exchange without exposing the content to Hush Line servers.</li>
 </ul>
-<h3 id="medium-threats"><a class="header" href="#medium-threats">Medium Threats</a></h3>
-<p>Here, the risks escalate. They include targeted threats but might not require advanced defense measures. </p>
-<p>We recommend the hosted version of Hush Line, and prominently displaying both public and onion addresses: <code>https://beta.hushline.app/submit_message/scidsg</code> and <code>http://fx3ewfwnufrfqbqdrbyeb6xwl736olvsfczyv5oqruehwnvk67kthsqd.onion/submit_message/scidsg</code>.</p>
-<h4 id="example-use-cases-1"><a class="header" href="#example-use-cases-1">Example Use Cases</a></h4>
+<h3 id="communication-data"><a class="header" href="#communication-data">Communication Data</a></h3>
 <ul>
-<li>📈 Publicly traded businesses</li>
-<li>🩺 Law or doctor's offices</li>
-<li>🚨 Domestic abuse hotlines</li>
+<li><strong>Messages:</strong> All messages are encrypted end-to-end. Hush Line servers only store encrypted blobs, making it impossible to access the content without the corresponding decryption keys, which are held by the end users.</li>
 </ul>
-<h3 id="high-threats"><a class="header" href="#high-threats">High Threats</a></h3>
-<p>These are scenarios where targeted threats are likely, and consequences can be severe, like endangering someone's physical safety.</p>
-<p>We recommend an onion-only deployment for high-threat environments using a VPS or a local device like a Raspberry Pi. If your physical safety isn't guaranteed and device confiscation is possible, you should only use a VPS, as this will provide the greatest protection for your community, tip line, and yourself. VPS providers like <a href="https://njal.la">Njalla</a> works seamlessly on Tor Browser, and accepts payments in private cryptocurrencies like ZCash and Monero.</p>
-<h4 id="example-use-cases-2"><a class="header" href="#example-use-cases-2">Example Use Cases</a></h4>
+<h3 id="logs-and-metadata"><a class="header" href="#logs-and-metadata">Logs and Metadata</a></h3>
 <ul>
-<li>📰 Journalists</li>
-<li>🆘 Government whistleblowers</li>
-<li>🚔 Locations with internet censorship</li>
+<li><strong>Access Logs:</strong> Hush Line minimizes logging to essential operational data, which is anonymized to prevent linking back to users. IP addresses are obfuscated, and logs are rotated regularly to ensure that historical data cannot be exploited to compromise user privacy.</li>
+<li><strong>Rate Limiting and Security Measures:</strong> The platform employs rate limiting and other security measures to protect against abuse and DoS attacks. These mechanisms are designed to be privacy-preserving and do not log personally identifiable information.</li>
 </ul>
-<h2 id="malicious-actors--misinformation"><a class="header" href="#malicious-actors--misinformation">Malicious Actors &amp; Misinformation</a></h2>
-<p>If you sign up with our hosted service, we provide human-verified accounts for journalists and newsrooms, so you can have confidence that you're talking to the intended person.</p>
-<p>For our self-hosted option, the anonymity it provides can be a double-edged sword. While it provides protection for both journalist and whistleblower, it can also shield malicious actors, as the verification system is only available on the self-hosted version. </p>
-<p>Whistleblowers should always verify the addresses they click on or enter into a browser, and journalists should vet the tips they receive to guard against misinformation campaigns, especially in high-risk scenarios.</p>
+<h2 id="threats-and-mitigations"><a class="header" href="#threats-and-mitigations">Threats and Mitigations</a></h2>
+<h3 id="network-observers-and-global-adversaries"><a class="header" href="#network-observers-and-global-adversaries">Network Observers and Global Adversaries</a></h3>
+<ul>
+<li><strong>Mitigation:</strong> All data in transit is encrypted using TLS, and users are encouraged to access Hush Line via Tor for additional anonymity. This prevents network observers from deciphering the content or metadata of communications.</li>
+</ul>
+<h3 id="account-compromise"><a class="header" href="#account-compromise">Account Compromise</a></h3>
+<ul>
+<li><strong>Mitigation:</strong> Strong password policies, optional 2FA, and secure password reset mechanisms are in place to protect user accounts. Users are educated on best practices for maintaining account security.</li>
+</ul>
+<h3 id="legal-and-coercive-pressure"><a class="header" href="#legal-and-coercive-pressure">Legal and Coercive Pressure</a></h3>
+<ul>
+<li><strong>Mitigation:</strong> Hush Line is designed to hold minimal information that could be of interest in legal contexts. Furthermore, the use of encryption for stored data ensures that, even under pressure, Hush Line cannot divulge meaningful user data.</li>
+</ul>
+<h3 id="phishing-and-social-engineering"><a class="header" href="#phishing-and-social-engineering">Phishing and Social Engineering</a></h3>
+<ul>
+<li><strong>Mitigation:</strong> User education and secure design principles minimize the risk of phishing. Features like displaying the last login time and alerting users to new logins from unfamiliar devices help users detect unauthorized access attempts.</li>
+</ul>
+<h2 id="verification-system"><a class="header" href="#verification-system">Verification System</a></h2>
+<p>Hush Line employs a verification system to ensure that users can trust the source of communication. This system is particularly important for users who are public figures or have a wide audience. The verification system includes:</p>
+<h3 id="verified-accounts"><a class="header" href="#verified-accounts">Verified Accounts</a></h3>
+<ul>
+<li><strong>Display of Verification Status:</strong> Hush Line indicates verified accounts with a distinctive badge (⭐️ Verified Account). This visual indicator helps users distinguish authentic accounts from potential impersonators, reducing the risk of phishing attacks.</li>
+</ul>
+<h2 id="user-education"><a class="header" href="#user-education">User Education</a></h2>
+<h3 id="encryption-awareness"><a class="header" href="#encryption-awareness">Encryption Awareness</a></h3>
+<ul>
+<li><strong>Encryption Indicators:</strong> The platform informs users whether their messages will be encrypted. For accounts with a public PGP key, messages are encrypted, ensuring that only the intended recipient can decrypt and read them. This feature is highlighted through messages on the submission form, emphasizing the importance of encryption for sensitive information.</li>
+</ul>
+<h3 id="user-guidance"><a class="header" href="#user-guidance">User Guidance</a></h3>
+<ul>
+<li><strong>Informative Messages for Senders and Receivers:</strong> Hush Line educates its users about the significance of encryption and the steps required to ensure message confidentiality. This includes prompts for receivers to add a public PGP key if they haven't already, and notifications for senders about the encryption status of their message.</li>
+</ul>
+<h3 id="ip-address-disclosure"><a class="header" href="#ip-address-disclosure">IP Address Disclosure</a></h3>
+<ul>
+<li><strong>Transparency about IP Visibility:</strong> The platform informs users about the visibility of their IP addresses when submitting a message. This disclosure encourages the use of privacy-enhancing tools like Tor Browser for users seeking additional anonymity.</li>
+</ul>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>Hush Line's threat model acknowledges the variety of adversaries that users may face and implements a robust security architecture to mitigate these risks. By encrypting data at rest, minimizing data collection, and educating users on security practices, Hush Line aims to offer a secure and private platform for communication.</p>
 
                     </main>
 

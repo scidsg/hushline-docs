@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>General Prereqs - Hush Line Field Manual</title>
+        <title>Getting Started - Hush Line Field Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../prereqs/general.html" class="active"><strong aria-hidden="true">2.</strong> Prereqs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/general.html" class="active"><strong aria-hidden="true">2.1.</strong> General Prereqs</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html"><strong aria-hidden="true">2.2.</strong> Threat Modeling</a></li></ol></li><li class="chapter-item expanded "><a href="../hosted/getting-started.html"><strong aria-hidden="true">3.</strong> Hosted</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hosted/getting-started.html"><strong aria-hidden="true">3.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../hosted/verification.html"><strong aria-hidden="true">3.2.</strong> Verification System</a></li><li class="chapter-item expanded "><a href="../hosted/sending.html"><strong aria-hidden="true">3.3.</strong> Sending Messages</a></li><li class="chapter-item expanded "><a href="../hosted/receiving.html"><strong aria-hidden="true">3.4.</strong> Receiving Messages</a></li><li class="chapter-item expanded "><a href="../hosted/settings.html"><strong aria-hidden="true">3.5.</strong> Settings</a></li><li class="chapter-item expanded "><a href="../hosted/admin.html"><strong aria-hidden="true">3.6.</strong> Admin</a></li><li class="chapter-item expanded "><a href="../hosted/paid.html"><strong aria-hidden="true">3.7.</strong> Paid Features</a></li></ol></li><li class="chapter-item expanded "><a href="../installation/personal-server.html"><strong aria-hidden="true">4.</strong> Personal Server</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">5.</strong> Self-Hosted</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prereqs/raspberrypi.html"><strong aria-hidden="true">5.1.</strong> Option 1: Raspberry Pi</a></li><li class="chapter-item expanded "><a href="../prereqs/vps.html"><strong aria-hidden="true">5.2.</strong> Option 2: VPS</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">5.3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/tor-only.html"><strong aria-hidden="true">5.3.1.</strong> Tor-Only</a></li><li class="chapter-item expanded "><a href="../installation/public-web.html"><strong aria-hidden="true">5.3.2.</strong> Tor + Public Website</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/index.html"><strong aria-hidden="true">5.4.</strong> Using Hush Line</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/info.html"><strong aria-hidden="true">5.4.1.</strong> Information Page</a></li><li class="chapter-item expanded "><a href="../usage/sending.html"><strong aria-hidden="true">5.4.2.</strong> Sending Messages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/sending-files.html"><strong aria-hidden="true">5.4.2.1.</strong> Sending Files</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/reading.html"><strong aria-hidden="true">5.4.3.</strong> Reading Messages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/handling-files.html"><strong aria-hidden="true">5.4.3.1.</strong> Handling Files</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">5.5.</strong> Features</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">5.6.</strong> Resources</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">5.7.</strong> Glossary</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../prereqs/general.html" class="active"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../prereqs/threat-modeling.html"><strong aria-hidden="true">2.</strong> Threat Modeling</a></li><li class="chapter-item expanded "><a href="../hosted/getting-started.html"><strong aria-hidden="true">3.</strong> Managed Service</a></li><li class="chapter-item expanded "><a href="../installation/personal-server.html"><strong aria-hidden="true">4.</strong> Personal Server</a></li><li class="chapter-item expanded "><a href="../prereqs/index.html"><strong aria-hidden="true">5.</strong> Self-Hosted</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,13 +171,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="general-prerequisites"><a class="header" href="#general-prerequisites">General Prerequisites</a></h1>
+                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
 <h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
 <ol>
+<li><a href="#about-hush-line">About Hush Line</a></li>
 <li><a href="#software">Software</a></li>
 <li><a href="#creating-keys">Creating Keys</a></li>
 <li><a href="#smtp-settings-and-app-passwords">SMTP Settings and App Passwords</a></li>
 </ol>
+<h2 id="about-hush-line"><a class="header" href="#about-hush-line">About Hush Line</a></h2>
+<p>Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organizations or individuals. It's intended for journalists and newsrooms to offer a public tip line; by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers, Board rooms, and C-suites for anonymous employee reporting.</p>
 <h2 id="software"><a class="header" href="#software">Software</a></h2>
 <h3 id="1-tor-browser"><a class="header" href="#1-tor-browser">1. Tor Browser</a></h3>
 <p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
@@ -237,11 +240,8 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
 
-                            <a rel="next" href="../prereqs/general.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../prereqs/threat-modeling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -251,11 +251,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
 
-                    <a rel="next" href="../prereqs/general.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../prereqs/threat-modeling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
