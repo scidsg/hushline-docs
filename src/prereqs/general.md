@@ -1,17 +1,14 @@
 # Getting Started
 
+Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organizations or individuals. It's intended for journalists and newsrooms to offer a public tip line; by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers, Board rooms, and C-suites for anonymous employee reporting.
+
 ## Contents
 
-1. [About Hush Line](#about-hush-line)
-2. [Software](#software)
-3. [Creating Keys](#creating-keys)
-4. [SMTP Settings and App Passwords](#smtp-settings-and-app-passwords)
+1. [Software](#software)
+2. [Creating Keys](#creating-keys)
+3. [SMTP Settings and App Passwords](#smtp-settings-and-app-passwords)
 
 <img src="../img/hosted-hushline.png">
-
-## About Hush Line
-
-Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organizations or individuals. It's intended for journalists and newsrooms to offer a public tip line; by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers, Board rooms, and C-suites for anonymous employee reporting.
 
 ## Software
 
