@@ -173,9 +173,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
-<h2 id="about-hush-line"><a class="header" href="#about-hush-line">About Hush Line</a></h2>
 <p>Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organizations or individuals. It's intended for journalists and newsrooms to offer a public tip line; by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers, Board rooms, and C-suites for anonymous employee reporting.</p>
-<img src="prereqs/../img/hosted-hushline.png">
 <h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
 <ol>
 <li><a href="prereqs/general.html#about-hush-line">About Hush Line</a></li>
@@ -183,6 +181,7 @@
 <li><a href="prereqs/general.html#creating-keys">Creating Keys</a></li>
 <li><a href="prereqs/general.html#smtp-settings-and-app-passwords">SMTP Settings and App Passwords</a></li>
 </ol>
+<img src="prereqs/../img/hosted-hushline.png">
 <h2 id="software"><a class="header" href="#software">Software</a></h2>
 <h3 id="1-tor-browser"><a class="header" href="#1-tor-browser">1. Tor Browser</a></h3>
 <p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
@@ -300,16 +299,16 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started-1"><a class="header" href="#getting-started-1">Getting Started</a></h1>
 <p>The hosted version of Hush Line is the first free and open-source anonymous tip-line-as-a-service and the easiest way to get started. It's as simple as signing up, and you'll have a way for anyone to send you a private message. It's for those needing one or more tip lines without worrying about managing and maintaining technical infrastructure.</p>
 <h2 id="contents-1"><a class="header" href="#contents-1">Contents</a></h2>
-<ul>
-<li><a href="hosted/getting-started.html#register">1. Register</a></li>
-<li><a href="hosted/getting-started.html#log-in">2. Log In</a></li>
-<li><a href="hosted/getting-started.html#verified-accounts">3. Verified Accounts</a></li>
-<li><a href="hosted/getting-started.html#sending-messages">4. Sending Messages</a></li>
-<li><a href="hosted/getting-started.html#reading-messages">5. Reading Messages</a></li>
-<li><a href="hosted/getting-started.html#settings">6. Settings</a></li>
-<li><a href="hosted/getting-started.html#admin-view">7. Admin View</a></li>
-<li><a href="hosted/getting-started.html#paid-features">8. Paid Features</a></li>
-</ul>
+<ol>
+<li><a href="hosted/getting-started.html#register">Register</a></li>
+<li><a href="hosted/getting-started.html#log-in">Log In</a></li>
+<li><a href="hosted/getting-started.html#verified-accounts">Verified Accounts</a></li>
+<li><a href="hosted/getting-started.html#sending-messages">Sending Messages</a></li>
+<li><a href="hosted/getting-started.html#reading-messages">Reading Messages</a></li>
+<li><a href="hosted/getting-started.html#settings">Settings</a></li>
+<li><a href="hosted/getting-started.html#admin-view">Admin View</a></li>
+<li><a href="hosted/getting-started.html#paid-features">Paid Features</a></li>
+</ol>
 <img src="hosted/../img/home.png">
 <h2 id="register"><a class="header" href="#register">Register</a></h2>
 <p>You'll need an invite code to register for a Hush Line account. To get one, send a message to https://beta.hushline.app/submit_message/hushline-beta. Once you have the invite code, register your account at https://beta.hushline.app/register.</p>
@@ -460,26 +459,22 @@
 <h2 id="7-using-hush-line"><a class="header" href="#7-using-hush-line">7. Using Hush Line</a></h2>
 <p>Your screen will reset and display a QR code linking to a local information page intended for use by individuals interested in using your tip line. You can print this page, copy the content, email it, and post your Hush Line address on your social channels and website.</p>
 <p>🎉 Congratulations! You've successfully set up your own anonymous tip line! </p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-self-hosted-prerequisites"><a class="header" href="#hush-line-self-hosted-prerequisites">Hush Line Self-Hosted Prerequisites</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-self-hosted"><a class="header" href="#hush-line-self-hosted">Hush Line Self-Hosted</a></h1>
+<ol>
+<li><a href="prereqs/index.html#raspberry-pi">Raspberry Pi</a></li>
+<li><a href="prereqs/index.html#vps">VPS</a></li>
+<li><a href="prereqs/index.html#information-page">Information Page</a></li>
+<li><a href="prereqs/index.html#sending-messages">Sending Messages</a></li>
+<li><a href="prereqs/index.html#reading-messages">Reading Messages</a></li>
+</ol>
 <img src="prereqs/../img/0-cover.png">
 <p>In this section we'll get everything ready before installing Hush Line.</p>
-<h2 id="general"><a class="header" href="#general">General</a></h2>
-<ul>
-<li>Download Tor Browser</li>
-<li>Create a Gmail account</li>
-<li>Create PGP keys using Mailvelope</li>
-</ul>
 <h2 id="raspberry-pi"><a class="header" href="#raspberry-pi">Raspberry Pi</a></h2>
 <ul>
 <li>Download the Raspberry Pi Imager</li>
 <li>Flash a microSD card with Raspberry Pi OS (64-bit)</li>
 </ul>
-<h2 id="vps"><a class="header" href="#vps">VPS</a></h2>
-<ul>
-<li>Create a Digital Ocean account</li>
-<li>Create a new server</li>
-</ul>
-<h2 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h2>
+<h3 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h3>
 <h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
 <ul>
 <li><strong>Hardware:</strong> <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=ee402e41cd98b8767ed54b1531ed1666&amp;camp=1789&amp;creative=9325">Raspberry Pi 4</a>/<a href="https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=d76c1db453c42244fe465c9c56601303&amp;camp=1789&amp;creative=9325">3B+</a></li>
@@ -521,7 +516,8 @@
 <p>Enter <code>sudo su</code>, then <code>apt update &amp;&amp; apt -y dist-upgrade &amp;&amp; apt -y autoremove</code>.</p>
 <img src="prereqs/../img/21-update.png">
 <p>🎉 That's it, you're ready to get started with Raspberry Pi!</p>
-<h2 id="vps-prerequisites"><a class="header" href="#vps-prerequisites">VPS Prerequisites</a></h2>
+<h2 id="vps"><a class="header" href="#vps">VPS</a></h2>
+<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
 <p>In this section, we'll prepare to install Hush Line on a virtual private server (VPS). This means your Hush Line will run on a rented, private server owned by a company like <a href="https://www.digitalocean.com/">Digital Ocean</a>.</p>
 <p>You'll need the following things:</p>
 <ol>

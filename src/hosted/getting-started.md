@@ -4,14 +4,14 @@ The hosted version of Hush Line is the first free and open-source anonymous tip-
 
 ## Contents
 
-- [1. Register](#register)
-- [2. Log In](#log-in)
-- [3. Verified Accounts](#verified-accounts)
-- [4. Sending Messages](#sending-messages)
-- [5. Reading Messages](#reading-messages)
-- [6. Settings](#settings)
-- [7. Admin View](#admin-view)
-- [8. Paid Features](#paid-features)
+1. [Register](#register)
+2. [Log In](#log-in)
+3. [Verified Accounts](#verified-accounts)
+4. [Sending Messages](#sending-messages)
+5. [Reading Messages](#reading-messages)
+6. [Settings](#settings)
+7. [Admin View](#admin-view)
+8. [Paid Features](#paid-features)
 
 <img src="../img/home.png">
 

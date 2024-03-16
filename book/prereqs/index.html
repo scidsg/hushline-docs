@@ -171,26 +171,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="hush-line-self-hosted-prerequisites"><a class="header" href="#hush-line-self-hosted-prerequisites">Hush Line Self-Hosted Prerequisites</a></h1>
+                        <h1 id="hush-line-self-hosted"><a class="header" href="#hush-line-self-hosted">Hush Line Self-Hosted</a></h1>
+<ol>
+<li><a href="#raspberry-pi">Raspberry Pi</a></li>
+<li><a href="#vps">VPS</a></li>
+<li><a href="#information-page">Information Page</a></li>
+<li><a href="#sending-messages">Sending Messages</a></li>
+<li><a href="#reading-messages">Reading Messages</a></li>
+</ol>
 <img src="../img/0-cover.png">
 <p>In this section we'll get everything ready before installing Hush Line.</p>
-<h2 id="general"><a class="header" href="#general">General</a></h2>
-<ul>
-<li>Download Tor Browser</li>
-<li>Create a Gmail account</li>
-<li>Create PGP keys using Mailvelope</li>
-</ul>
 <h2 id="raspberry-pi"><a class="header" href="#raspberry-pi">Raspberry Pi</a></h2>
 <ul>
 <li>Download the Raspberry Pi Imager</li>
 <li>Flash a microSD card with Raspberry Pi OS (64-bit)</li>
 </ul>
-<h2 id="vps"><a class="header" href="#vps">VPS</a></h2>
-<ul>
-<li>Create a Digital Ocean account</li>
-<li>Create a new server</li>
-</ul>
-<h2 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h2>
+<h3 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h3>
 <h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
 <ul>
 <li><strong>Hardware:</strong> <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=ee402e41cd98b8767ed54b1531ed1666&amp;camp=1789&amp;creative=9325">Raspberry Pi 4</a>/<a href="https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=d76c1db453c42244fe465c9c56601303&amp;camp=1789&amp;creative=9325">3B+</a></li>
@@ -232,7 +228,8 @@
 <p>Enter <code>sudo su</code>, then <code>apt update &amp;&amp; apt -y dist-upgrade &amp;&amp; apt -y autoremove</code>.</p>
 <img src="../img/21-update.png">
 <p>🎉 That's it, you're ready to get started with Raspberry Pi!</p>
-<h2 id="vps-prerequisites"><a class="header" href="#vps-prerequisites">VPS Prerequisites</a></h2>
+<h2 id="vps"><a class="header" href="#vps">VPS</a></h2>
+<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
 <p>In this section, we'll prepare to install Hush Line on a virtual private server (VPS). This means your Hush Line will run on a rented, private server owned by a company like <a href="https://www.digitalocean.com/">Digital Ocean</a>.</p>
 <p>You'll need the following things:</p>
 <ol>

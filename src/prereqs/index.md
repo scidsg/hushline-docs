@@ -1,23 +1,20 @@
-# Hush Line Self-Hosted Prerequisites 
+# Hush Line Self-Hosted 
+
+1. [Raspberry Pi](#raspberry-pi)
+2. [VPS](#vps)
+3. [Information Page](#information-page)
+4. [Sending Messages](#sending-messages)
+5. [Reading Messages](#reading-messages)
 
 <img src="../img/0-cover.png">
 
 In this section we'll get everything ready before installing Hush Line.
 
-## General
-- Download Tor Browser
-- Create a Gmail account
-- Create PGP keys using Mailvelope
-
 ## Raspberry Pi
 - Download the Raspberry Pi Imager
 - Flash a microSD card with Raspberry Pi OS (64-bit)
 
-## VPS
-- Create a Digital Ocean account
-- Create a new server
-
-## Raspberry Pi Prerequisites 
+### Raspberry Pi Prerequisites 
 
 ### Hardware
 
@@ -83,7 +80,9 @@ Enter `sudo su`, then `apt update && apt -y dist-upgrade && apt -y autoremove`.
 
 🎉 That's it, you're ready to get started with Raspberry Pi!
 
-## VPS Prerequisites
+## VPS
+
+### Prerequisites
 
 In this section, we'll prepare to install Hush Line on a virtual private server (VPS). This means your Hush Line will run on a rented, private server owned by a company like [Digital Ocean](https://www.digitalocean.com/).
 
@@ -248,7 +247,6 @@ You'll receive an encrypted email confirming your Hush Line's successful install
 <img src="../img/42-confirmation.png">
 
 🎉 Congratulations! You've successfully set up your own public anonymous tip line! 
-
 
 ## Information Page
 
