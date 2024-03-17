@@ -1,11 +1,11 @@
-# Getting Started
+# Getting Started With Hush Line
 
 Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organizations or individuals. It's intended for journalists and newsrooms to offer a public tip line; by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers, Board rooms, and C-suites for anonymous employee reporting.
 
 ## Contents
 
 1. [Software](#software)
-2. [Creating Keys](#creating-keys)
+2. [Email Encryption](#email-encryption)
 3. [SMTP Settings and App Passwords](#smtp-settings-and-app-passwords)
 
 <img src="../img/family.cover.png">
@@ -32,7 +32,7 @@ Open the extension in your browser and click "Let's Start."
 
 <img src="../img/5-mailvelope.png">
 
-## Creating Keys
+## Email Encryption
 
 ### What is PGP? Let's use a non-technical metaphor
 
