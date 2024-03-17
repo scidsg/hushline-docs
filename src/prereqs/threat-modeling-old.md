@@ -12,7 +12,7 @@ To select the correct Hush Line deployment, consider the potential risks and con
 
 These scenarios typically involve the primary risk of non-targeted or generic cyber threats. The fallout from a security breach is minimal. 
 
-We recommend the hosted version of Hush Line, providing an address like: `https://beta.hushline.app/submit_message/scidsg`.
+We recommend the hosted version of Hush Line, providing an address like: `https://tips.hushline.app/submit_message/scidsg`.
 
 #### Example Use Cases
 
@@ -24,7 +24,7 @@ We recommend the hosted version of Hush Line, providing an address like: `https:
 
 Here, the risks escalate. They include targeted threats but might not require advanced defense measures. 
 
-We recommend the hosted version of Hush Line, and prominently displaying both public and onion addresses: `https://beta.hushline.app/submit_message/scidsg` and `http://fx3ewfwnufrfqbqdrbyeb6xwl736olvsfczyv5oqruehwnvk67kthsqd.onion/submit_message/scidsg`.
+We recommend the hosted version of Hush Line, and prominently displaying both public and onion addresses: `https://tips.hushline.app/submit_message/scidsg` and `http://fx3ewfwnufrfqbqdrbyeb6xwl736olvsfczyv5oqruehwnvk67kthsqd.onion/submit_message/scidsg`.
 
 #### Example Use Cases
 

@@ -17,7 +17,7 @@ The hosted version of Hush Line is the first free and open-source anonymous tip-
 
 ## Register
 
-You'll need an invite code to register for a Hush Line account. To get one, send a message to https://beta.hushline.app/submit_message/hushline-beta. Once you have the invite code, register your account at https://beta.hushline.app/register.
+You'll need an invite code to register for a Hush Line account. To get one, send a message to https://tips.hushline.app/submit_message/hushline-beta. Once you have the invite code, register your account at https://tips.hushline.app/register.
 
 <img src="../img/auth.register.png">
 
