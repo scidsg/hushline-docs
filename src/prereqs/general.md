@@ -99,4 +99,4 @@ Click on App Passwords, then enter a name, then click Create. A dialog will pop 
 <img src="../img/17-create-password.png">
 <img src="../img/18-copy-password.png">
 
-🎉 Congratulations, you're now ready to install Hush Line!
+🎉 Congratulations, you're now ready to continue with Hush Line!
