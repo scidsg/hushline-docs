@@ -8,7 +8,7 @@ Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organiz
 2. [Creating Keys](#creating-keys)
 3. [SMTP Settings and App Passwords](#smtp-settings-and-app-passwords)
 
-<img src="../img/hosted-hushline.png">
+<img src="../img/family.cover.png">
 
 ## Software
 
