@@ -1,5 +1,7 @@
 # Hush Line Threat Model
 
+Adapted from the threat/risk models published by [Cwtch](https://docs.cwtch.im/security/risk/), [SecureDrop](https://docs.securedrop.org/en/latest/threat_model/threat_model.html), and [Pond](https://web.archive.org/web/20150326154506/https://pond.imperialviolet.org/threat.html).
+
 ## Introduction
 
 Hush Line is a secure communication platform designed with a strong focus on privacy and anonymity. This document outlines the threat model for Hush Line, highlighting potential threats, the data Hush Line collects, how it is secured, and what users can expect in terms of privacy and security.
@@ -64,6 +66,51 @@ Hush Line employs a verification system to ensure that users can trust the sourc
 ### IP Address Disclosure
 
 - **Transparency about IP Visibility:** The platform informs users about the visibility of their IP addresses when submitting a message. This disclosure encourages the use of privacy-enhancing tools like Tor Browser for users seeking additional anonymity.
+
+## Assumptions
+
+The following assumptions are accepted in the threat model of the Hush Line product:
+
+### Assumptions About the Individual Submitting a Message
+
+- The individual submitting a message does so in good faith.
+- The individual submitting a message wants to remain anonymous, against a network observer, forensic analysis, or to Hush Line servers.
+- The individual submitting a message is accessing the official Hush Line site.
+
+### Assumptions About the Person or Organization Receiving a Message
+
+- The receiver operates Hush Line in good faith.
+
+### Assumptions About the Hush Line Server
+
+- The server is operated in good faith.
+- The server is single-use and configured with the official scripts on the GitHub main repo.
+- The server has no other software other than what is required for the operation of Hush Line.
+
+### Assumptions About the Source’s Computer
+
+- The computer has an updated version of a popular browser including Chrome, Firefox, or Safari, and for anonymous connections, an updated version of Tor Browser.
+- The computer is not compromised by malware.
+
+### Assumptions About Science & Design
+
+- Science & Design wants to preserve the anonymity of its sources.
+- Science & Design acts in the interest of allowing sources to submit messages, regardless of the contents of their contents.
+- The users of the system, and those with physical access to the servers, can be trusted to uphold the previous assumptions unless the entire organization has been compromised.
+- Science & Design is prepared to push back on any and all requests to compromise the integrity of the system and its users, including requests to deanonymize sources, block document submissions, or hand over encrypted or decrypted submissions.
+
+### Assumptions About the World
+
+- The security assumptions of RSA (4096-bit GPG and SSH keys) are valid.
+- The security assumptions of bcrypt with randomly-generated salts are valid.
+- The security/anonymity assumptions of Tor and the onion service protocol are valid.
+- The security assumptions of the Tails operating system are valid.
+- The security assumptions of Hush Line dependencies, specifically Debian, the Linux kernel, application packages, application dependencies are valid.
+
+### Other Assumptions or Factors
+
+- The level of press freedom may vary in both geography and time.
+- The number of daily Tor users in a country can greatly vary.
 
 ## Conclusion
 

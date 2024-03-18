@@ -236,6 +236,7 @@
 <img src="prereqs/../img/18-copy-password.png">
 <p>🎉 Congratulations, you're now ready to continue with Hush Line!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-threat-model"><a class="header" href="#hush-line-threat-model">Hush Line Threat Model</a></h1>
+<p>Adapted from the threat/risk models published by <a href="https://docs.cwtch.im/security/risk/">Cwtch</a>, <a href="https://docs.securedrop.org/en/latest/threat_model/threat_model.html">SecureDrop</a>, and <a href="https://web.archive.org/web/20150326154506/https://pond.imperialviolet.org/threat.html">Pond</a>.</p>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p>Hush Line is a secure communication platform designed with a strong focus on privacy and anonymity. This document outlines the threat model for Hush Line, highlighting potential threats, the data Hush Line collects, how it is secured, and what users can expect in terms of privacy and security.</p>
 <h2 id="data-collection-and-encryption"><a class="header" href="#data-collection-and-encryption">Data Collection and Encryption</a></h2>
@@ -292,6 +293,49 @@
 <h3 id="ip-address-disclosure"><a class="header" href="#ip-address-disclosure">IP Address Disclosure</a></h3>
 <ul>
 <li><strong>Transparency about IP Visibility:</strong> The platform informs users about the visibility of their IP addresses when submitting a message. This disclosure encourages the use of privacy-enhancing tools like Tor Browser for users seeking additional anonymity.</li>
+</ul>
+<h2 id="assumptions"><a class="header" href="#assumptions">Assumptions</a></h2>
+<p>The following assumptions are accepted in the threat model of the Hush Line product:</p>
+<h3 id="assumptions-about-the-individual-submitting-a-message"><a class="header" href="#assumptions-about-the-individual-submitting-a-message">Assumptions About the Individual Submitting a Message</a></h3>
+<ul>
+<li>The individual submitting a message does so in good faith.</li>
+<li>The individual submitting a message wants to remain anonymous, against a network observer, forensic analysis, or to Hush Line servers.</li>
+<li>The individual submitting a message is accessing the official Hush Line site.</li>
+</ul>
+<h3 id="assumptions-about-the-person-or-organization-receiving-a-message"><a class="header" href="#assumptions-about-the-person-or-organization-receiving-a-message">Assumptions About the Person or Organization Receiving a Message</a></h3>
+<ul>
+<li>The receiver operates Hush Line in good faith.</li>
+</ul>
+<h3 id="assumptions-about-the-hush-line-server"><a class="header" href="#assumptions-about-the-hush-line-server">Assumptions About the Hush Line Server</a></h3>
+<ul>
+<li>The server is operated in good faith.</li>
+<li>The server is single-use and configured with the official scripts on the GitHub main repo.</li>
+<li>The server has no other software other than what is required for the operation of Hush Line.</li>
+</ul>
+<h3 id="assumptions-about-the-sources-computer"><a class="header" href="#assumptions-about-the-sources-computer">Assumptions About the Source’s Computer</a></h3>
+<ul>
+<li>The computer has an updated version of a popular browser including Chrome, Firefox, or Safari, and for anonymous connections, an updated version of Tor Browser.</li>
+<li>The computer is not compromised by malware.</li>
+</ul>
+<h3 id="assumptions-about-science--design"><a class="header" href="#assumptions-about-science--design">Assumptions About Science &amp; Design</a></h3>
+<ul>
+<li>Science &amp; Design wants to preserve the anonymity of its sources.</li>
+<li>Science &amp; Design acts in the interest of allowing sources to submit messages, regardless of the contents of their contents.</li>
+<li>The users of the system, and those with physical access to the servers, can be trusted to uphold the previous assumptions unless the entire organization has been compromised.</li>
+<li>Science &amp; Design is prepared to push back on any and all requests to compromise the integrity of the system and its users, including requests to deanonymize sources, block document submissions, or hand over encrypted or decrypted submissions.</li>
+</ul>
+<h3 id="assumptions-about-the-world"><a class="header" href="#assumptions-about-the-world">Assumptions About the World</a></h3>
+<ul>
+<li>The security assumptions of RSA (4096-bit GPG and SSH keys) are valid.</li>
+<li>The security assumptions of bcrypt with randomly-generated salts are valid.</li>
+<li>The security/anonymity assumptions of Tor and the onion service protocol are valid.</li>
+<li>The security assumptions of the Tails operating system are valid.</li>
+<li>The security assumptions of Hush Line dependencies, specifically Debian, the Linux kernel, application packages, application dependencies are valid.</li>
+</ul>
+<h3 id="other-assumptions-or-factors"><a class="header" href="#other-assumptions-or-factors">Other Assumptions or Factors</a></h3>
+<ul>
+<li>The level of press freedom may vary in both geography and time.</li>
+<li>The number of daily Tor users in a country can greatly vary.</li>
 </ul>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
 <p>Hush Line's threat model acknowledges the variety of adversaries that users may face and implements a robust security architecture to mitigate these risks. By encrypting data at rest, minimizing data collection, and educating users on security practices, Hush Line aims to offer a secure and private platform for communication.</p>
