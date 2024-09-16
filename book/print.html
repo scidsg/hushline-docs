@@ -94,7 +94,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro/index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro/index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="threat-model/index.html"><strong aria-hidden="true">3.</strong> Threat Model</a></li><li class="chapter-item expanded "><a href="managed-service/index.html"><strong aria-hidden="true">4.</strong> Managed Service</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -226,6 +226,202 @@
 <p>Go to "Inbox" to see the message in the app. You may have to enter the password you set when creating your key in Mailvelope.</p>
 <p><img src="https://github.com/user-attachments/assets/1cd81ba0-4c54-49e4-8352-2008436984fd" alt="step4_2" /></p>
 <p>🎉 Congratulations, you're ready to start receiving encrypted and anonymous Hush Line messages!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-threat-model"><a class="header" href="#hush-line-threat-model">Hush Line Threat Model</a></h1>
+<p>ℹ️ <em>This is a living document and is subject to change as the app evolves.</em></p>
+<p>Adapted from the threat/risk models published by <a href="https://docs.cwtch.im/security/risk/">Cwtch</a>, <a href="https://docs.securedrop.org/en/latest/threat_model/threat_model.html">SecureDrop</a>, and <a href="https://web.archive.org/web/20150326154506/https://pond.imperialviolet.org/threat.html">Pond</a>.</p>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Hush Line is a secure communication platform designed with a strong focus on privacy and anonymity. This document outlines the threat model for Hush Line, highlighting potential threats, the data Hush Line collects, how it is secured, and what users can expect in terms of privacy and security.</p>
+<h2 id="users"><a class="header" href="#users">Users</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>User Type</th><th>Goal</th></tr></thead><tbody>
+<tr><td>Submitter</td><td>Individual who sends a message.</td></tr>
+<tr><td>Receiver</td><td>Individual or organization representative who reads messages.</td></tr>
+<tr><td>Verifier</td><td>Staff member who verifies account owners (journalists, public figures, businesses).</td></tr>
+<tr><td>Service Provider</td><td>Individual or organization who provides Hush Line services.</td></tr>
+<tr><td>Server Admin</td><td>Individual who maintains the server operating Hush Line.</td></tr>
+</tbody></table>
+</div>
+<h2 id="adversaries"><a class="header" href="#adversaries">Adversaries</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>User Type</th><th>Goal</th></tr></thead><tbody>
+<tr><td>Passive Observer</td><td>Passively logs client IP addresses and their corresponding inbound/outbound connections (school/work networks, ISPs, DNS providers).</td></tr>
+<tr><td>Active Observer</td><td>Targets specific connections.</td></tr>
+<tr><td>Passive Attacker</td><td>Scans the internet for vulnerabilities to take advantage of.</td></tr>
+<tr><td>Active Attacker</td><td>Seeks persistence, exploitation of known vulnerabilities, and seizure of physical equipment.</td></tr>
+</tbody></table>
+</div>
+<h2 id="assumptions"><a class="header" href="#assumptions">Assumptions</a></h2>
+<p>The following assumptions are accepted in the threat model of the Hush Line product:</p>
+<h3 id="assumptions-about-the-individual-submitting-a-message"><a class="header" href="#assumptions-about-the-individual-submitting-a-message">Assumptions About the Individual Submitting a Message</a></h3>
+<ul>
+<li>The individual submitting a message does so in good faith.</li>
+<li>The individual submitting a message wants to remain anonymous against a network observer, forensic analysis, or to Hush Line servers.</li>
+<li>The individual submitting a message is accessing the official Hush Line site.</li>
+</ul>
+<h3 id="assumptions-about-the-person-or-organization-receiving-a-message"><a class="header" href="#assumptions-about-the-person-or-organization-receiving-a-message">Assumptions About the Person or Organization Receiving a Message</a></h3>
+<ul>
+<li>The receiver operates Hush Line in good faith.</li>
+</ul>
+<h3 id="assumptions-about-the-hush-line-server"><a class="header" href="#assumptions-about-the-hush-line-server">Assumptions About the Hush Line Server</a></h3>
+<ul>
+<li>The server is operated in good faith.</li>
+<li>The server is single-use and configured with the official scripts on the GitHub main repo.</li>
+<li>The server has no other software other than what is required for the operation of Hush Line.</li>
+</ul>
+<h3 id="assumptions-about-the-sources-computer"><a class="header" href="#assumptions-about-the-sources-computer">Assumptions About the Source’s Computer</a></h3>
+<ul>
+<li>The computer has an updated version of a popular browser including Chrome, Firefox, or Safari, and for anonymous connections, an updated version of Tor Browser.</li>
+<li>The computer is not compromised by malware.</li>
+</ul>
+<h3 id="assumptions-about-science--design"><a class="header" href="#assumptions-about-science--design">Assumptions About Science &amp; Design</a></h3>
+<ul>
+<li>Science &amp; Design wants to preserve the anonymity of its sources.</li>
+<li>Science &amp; Design acts in the interest of allowing sources to submit messages, regardless of their contents.</li>
+<li>The users of the system, and those with physical access to the servers, can be trusted to uphold the previous assumptions unless the entire organization has been compromised.</li>
+<li>Science &amp; Design is prepared to push back on any and all requests to compromise the integrity of the system and its users, including requests to deanonymize sources, block message submissions, or hand over encrypted or decrypted submissions.</li>
+</ul>
+<h3 id="assumptions-about-the-world"><a class="header" href="#assumptions-about-the-world">Assumptions About the World</a></h3>
+<ul>
+<li>The security assumptions of <code>bcrypt</code> with randomly generated salts are valid.</li>
+<li>The security/anonymity assumptions of Tor and the Onion service protocol are valid.</li>
+<li>The security assumptions of Hush Line dependencies, specifically Debian, the Linux kernel, application packages, and application dependencies, are valid.</li>
+</ul>
+<h3 id="other-assumptions-or-factors"><a class="header" href="#other-assumptions-or-factors">Other Assumptions or Factors</a></h3>
+<ul>
+<li>The level of press freedom may vary in both geography and time.</li>
+<li>The number of daily Tor users in a country can greatly vary.</li>
+</ul>
+<h2 id="threats-and-mitigations"><a class="header" href="#threats-and-mitigations">Threats and Mitigations</a></h2>
+<h3 id="server-compromise"><a class="header" href="#server-compromise">Server Compromise</a></h3>
+<ul>
+<li><strong>Impacts:</strong> If an attacker obtains the database encryption key, its contents may be decrypted. Still, we do not require PII. If you have SMTP delivery configured, your forwarding address will be visible. If you haven't added your own public PGP key to your account, message content will be visible.</li>
+<li><strong>Mitigation:</strong> Hush Line does not require PII, including an email address, to use the service. To protect message content, users are encouraged to add their own PGP key. We store data encrypted in our database, remove IP addresses and country codes from access logs, and do not store timestamps or associate member data in any way. The database key is never hardcoded and is stored in environment variables, removing the chance of exposure to the source code.</li>
+</ul>
+<h3 id="network-observers"><a class="header" href="#network-observers">Network Observers</a></h3>
+<ul>
+<li><strong>Impacts:</strong> Adversaries who monitor network connections to our server can see your IP address and the domain you're visiting.</li>
+<li><strong>Mitigation:</strong> All data in transit is encrypted using TLS, and users are encouraged to access Hush Line via Tor for additional anonymity. This prevents network observers from deciphering the content or metadata of communications.</li>
+</ul>
+<h3 id="account-compromise"><a class="header" href="#account-compromise">Account Compromise</a></h3>
+<ul>
+<li><strong>Impacts:</strong> Disruption of Hush Line usage, impersonation which could lead to reputational harm or other damages.</li>
+<li><strong>Mitigation:</strong> Strong password policies, optional 2FA, and secure password reset mechanisms are in place to protect user accounts. Users are educated on best practices for maintaining account security.</li>
+</ul>
+<h3 id="legal-and-coercive-pressure"><a class="header" href="#legal-and-coercive-pressure">Legal and Coercive Pressure</a></h3>
+<ul>
+<li><strong>Impacts:</strong> Science &amp; Design, Inc. and Hush Line must comply with legitimate legal requests, which could result in the forfeiture of data that includes your username, SMTP information, public PGP key, or other information you provide to Hush Line. No PII is required to use the Hush Line service, but if you've donated to our Open Collective or purchased anything from our Shopify store, potentially identifying information, including your shipping and billing address, name, email address, and IP address, could be tied back to you with sufficient analysis.</li>
+<li><strong>Mitigation:</strong> Hush Line is designed to hold minimal information that could be of interest in legal contexts.</li>
+</ul>
+<h2 id="verification-system"><a class="header" href="#verification-system">Verification System</a></h2>
+<p>Hush Line employs a verification system to ensure that users can trust the source of communication. This system is particularly important for users who are public figures or have a wide audience. The verification system includes:</p>
+<h3 id="verified-accounts"><a class="header" href="#verified-accounts">Verified Accounts</a></h3>
+<ul>
+<li><strong>Display of Verification Status:</strong> Hush Line indicates verified accounts with a distinctive badge (⭐️ Verified Account). This visual indicator helps users distinguish authentic accounts from potential impersonators, reducing the risk of phishing attacks.</li>
+<li><strong>Data Retention:</strong> The information used to verify you is never saved, even temporarily.</li>
+</ul>
+<h2 id="user-education"><a class="header" href="#user-education">User Education</a></h2>
+<h3 id="encryption-awareness"><a class="header" href="#encryption-awareness">Encryption Awareness</a></h3>
+<ul>
+<li><strong>Encryption Indicators:</strong> The platform informs users whether their messages will be encrypted. For accounts with a public PGP key, messages are encrypted, ensuring that only the intended recipient can decrypt and read them. This feature is highlighted through messages on the submission form, emphasizing the importance of encryption for sensitive information.</li>
+</ul>
+<h3 id="user-guidance"><a class="header" href="#user-guidance">User Guidance</a></h3>
+<ul>
+<li><strong>Informative Messages for Senders and Receivers:</strong> Hush Line educates its users about the significance of encryption and the steps required to ensure message confidentiality. This includes prompts for receivers to add a public PGP key if they haven't already, and notifications for senders about the encryption status of their message.</li>
+</ul>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>Hush Line's threat model acknowledges the variety of adversaries that users may face and implements a robust security architecture to mitigate these risks. By encrypting data at rest, minimizing data collection, and educating users on security practices, Hush Line aims to offer a secure and private platform for communication.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-managed-service"><a class="header" href="#hush-line-managed-service">Hush Line Managed Service</a></h1>
+<p>The hosted version of Hush Line is the first free and open-source anonymous tip-line-as-a-service and the easiest way to get started. It's as simple as signing up, and you'll have a way for anyone to send you a private message. It's for those needing one or more tip lines without worrying about managing and maintaining technical infrastructure.</p>
+<h2 id="contents-1"><a class="header" href="#contents-1">Contents</a></h2>
+<ol>
+<li><a href="managed-service/index.html#register--login">Register &amp; Log In</a></li>
+<li><a href="managed-service/index.html#verified-accounts">Verified Accounts</a></li>
+<li><a href="managed-service/index.html#sending-messages">Sending Messages</a></li>
+<li><a href="managed-service/index.html#reading-messages">Reading Messages</a></li>
+<li><a href="managed-service/index.html#settings">Settings</a></li>
+</ol>
+<p><img src="https://github.com/user-attachments/assets/04ae835e-1caf-4da8-9871-7d274f67d8fc" alt="Homepage" /></p>
+<h2 id="register--login"><a class="header" href="#register--login">Register &amp; Login</a></h2>
+<p>First, register and log in to your account at https://tips.hushline.app/register.</p>
+<p>To protect your privacy, we don't require any PII, including your email address or phone number.</p>
+<p><img src="https://github.com/user-attachments/assets/f3846273-e475-42c2-aa86-806a54e32e72" alt="Register" /></p>
+<h2 id="verified-accounts-1"><a class="header" href="#verified-accounts-1">Verified Accounts</a></h2>
+<p>Our verified accounts feature is designed to ensure that messages reach their intended recipients. Verified accounts are specially available for:</p>
+<ul>
+<li>🕵️ <strong>Journalists</strong> - Reporters, correspondents, and investigative journalists.</li>
+<li>📰 <strong>Newsrooms</strong> - Official accounts for newspapers, TV stations, or online news portals.</li>
+<li>✊ <strong>Activists</strong> - Individuals or groups advocating for social, environmental, or political causes.</li>
+<li>📸 <strong>Public Figures</strong> - Politicians or other noteworthy public individuals.</li>
+<li>📊 <strong>Businesses</strong> - Companies, small businesses, or startups aiming to communicate with their audience.</li>
+</ul>
+<p><img src="https://github.com/user-attachments/assets/b34bb0c8-ad9e-4aef-a412-5085c61bb230" alt="Profile" /></p>
+<h3 id="requesting-verification"><a class="header" href="#requesting-verification">Requesting Verification</a></h3>
+<p>To ensure your account is recognized as authentic, users belonging to the categories listed above can apply for verification. Follow these steps to initiate the verification process:</p>
+<ol>
+<li>
+<p><strong>First, add a verified URL to your Hush Line profile:</strong> In Hush Line settings you can add up to four additional fields - a URL, Signal username, phone number, or anything else. To verify a URL, add it to your Hush Line extra fields using <code>https://</code> - <code>https://scidsg.org</code>, for example. Then, add a link to your Hush Line address on the page for that URL with <code>rel="me"</code> in the markup. For example:</p>
+<pre><code class="language-html">&lt;a href="https://tips.hushline.app/to/scidsg" rel="me"
+  &gt;Send an anonymous tip!&lt;/a
+&gt;
+</code></pre>
+<p><img src="https://github.com/user-attachments/assets/acd84800-f17e-4e25-a1bf-6315af235ccf" alt="verified-url" /></p>
+<p>a. <strong>Alternatively, verify a Hush Line address using Mastodon:</strong> Add your Mastodon address to your Hush Line profile, then add your Hush Line address to your Mastodon profile. You'll see your Hush Line address verify on Mastodon.</p>
+<p><img src="https://github.com/user-attachments/assets/cd1d25c2-d119-4f9b-9c31-472b0d29ad84" alt="verify-via-mastodon" /></p>
+</li>
+<li>
+<p><strong>Set your Display Name:</strong> To help guard against abuse, our verification system is built so that if a verified user changes their username or display name, they'll lose their verified status and need to initiate the process again. This feature is intended to eliminate the risk of a user with a verified account changing their information to impersonate another person or organization.</p>
+</li>
+<li>
+<p><strong>Send a Message:</strong> Use the contact form in the app to reach out to us to request verification!</p>
+</li>
+</ol>
+<h2 id="sending-messages"><a class="header" href="#sending-messages">Sending Messages</a></h2>
+<p>When you log in to your account, click on the <code>Profile</code> link at the top of the screen. You can publicly share the URL for this page wherever you're advertising your tip line. Whistleblowers will use this address to send anonymous messages. To send a message to the Hush Line admin account, someone would visit <code>https://tips.hushline.app/to/admin</code>.</p>
+<p><img src="https://github.com/user-attachments/assets/88ad5abb-001e-4884-908a-5798535e91d5" alt="Profile" /></p>
+<h2 id="reading-messages"><a class="header" href="#reading-messages">Reading Messages</a></h2>
+<p>New users are greeted by their empty inbox.</p>
+<p><img src="https://github.com/user-attachments/assets/a319acfb-59b4-4c37-8746-550156649e1b" alt="Inbox - Empty" /></p>
+<p>When you receive a message, they'll appear here.</p>
+<p><img src="https://github.com/user-attachments/assets/9a1c8216-24d9-4924-be24-4496e3d16fe0" alt="Inbox - Full" /></p>
+<h3 id="message-encryption"><a class="header" href="#message-encryption">Message Encryption</a></h3>
+<p>By default, Hush Line requires a PGP key to receive messages, making your messages only readable by you.</p>
+<h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
+<h3 id="profile-settings"><a class="header" href="#profile-settings">Profile Settings</a></h3>
+<p><img src="https://github.com/user-attachments/assets/54f18599-0f7f-41b7-ad6a-81166bd6cc6a" alt="Settings - Directory" /></p>
+<h4 id="display-name"><a class="header" href="#display-name">Display Name</a></h4>
+<p>Users can set a human-readable display name so that someone submitting a message can see "Submit a message to Science &amp; Design" rather than "Submit a message to scidsg". As a security measure, if a user changes their display name after verification, they'll lose that status and must re-verify their account.</p>
+<h4 id="public-directory"><a class="header" href="#public-directory">Public Directory</a></h4>
+<p>Users may opt in to being listed on our public directory, making it easy for anyone to find their Hush Line account.</p>
+<h4 id="verified-addresses"><a class="header" href="#verified-addresses">Verified Addresses</a></h4>
+<p>In Hush Line settings you can add up to four additional fields - a URL, Signal username, phone number, or anything else. To verify a URL, add it to your Hush Line extra fields using <code>https://</code> - <code>https://scidsg.org</code>, for example. Then, add a link to your Hush Line address on the page for that URL with <code>rel="me"</code> in the markup. For example:</p>
+<pre><code class="language-html">&lt;a href="https://tips.hushline.app/to/scidsg" rel="me"
+  &gt;Send an anonymous tip!&lt;/a
+&gt;
+</code></pre>
+<p><img src="https://github.com/user-attachments/assets/acd84800-f17e-4e25-a1bf-6315af235ccf" alt="verified-url" /></p>
+<h3 id="authentication"><a class="header" href="#authentication">Authentication</a></h3>
+<p><img src="https://github.com/user-attachments/assets/1b066ce0-d6c9-4224-afcb-d4dece6d8df5" alt="Settings - Authentication" /></p>
+<h4 id="two-factor-authentication"><a class="header" href="#two-factor-authentication">Two-Factor Authentication</a></h4>
+<p>To improve account security, users can enable two-factor authentication, making account compromises, even in the event of a password leak, impossible.</p>
+<h4 id="change-password"><a class="header" href="#change-password">Change Password</a></h4>
+<p>Users can change their password when needed.</p>
+<h4 id="change-username"><a class="header" href="#change-username">Change Username</a></h4>
+<p>Changing your username is easy but can lead to confusion for end-users, especially for well-known organizations.</p>
+<h5 id="verification"><a class="header" href="#verification">Verification</a></h5>
+<p>Like when changing your display name, when you change your username, you'll lose verification and need to go through the process again.</p>
+<h3 id="email--encryption"><a class="header" href="#email--encryption">Email &amp; Encryption</a></h3>
+<p>Before users can enable message forwading, a PGP key must be uploaded.</p>
+<h4 id="email-delivery"><a class="header" href="#email-delivery">Email Delivery</a></h4>
+<p>We use Riseup.net for our email forwarding provider. All you need to do is add an email address and you'll get new secure messages delivered directly to your email inbox.</p>
+<p><img src="https://github.com/user-attachments/assets/3865afea-ea24-499f-96b0-c6d680e7e3f3" alt="Settings - Email" /></p>
+<h4 id="encryption"><a class="header" href="#encryption">Encryption</a></h4>
+<h5 id="proton"><a class="header" href="#proton">Proton</a></h5>
+<p>Proton users can easily import their public PGP key by entering their email address. We do not store your email address.</p>
+<h5 id="pgp-key"><a class="header" href="#pgp-key">PGP Key</a></h5>
+<p>A user may manually add their PGP key if not a Proton user.</p>
+<p><img src="https://github.com/user-attachments/assets/09e63658-7959-4da6-8bd1-c27cedf494ed" alt="Settings - Encryption" /></p>
+<h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
+<h4 id="delete-account"><a class="header" href="#delete-account">Delete Account</a></h4>
+<p>Easily and permanently delete your account whenever you want.</p>
+<p><img src="https://github.com/user-attachments/assets/f65eccac-20bb-42f6-88c6-bd5e4d474231" alt="Settings - Advanced" /></p>
 
                     </main>
 

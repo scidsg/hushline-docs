@@ -23,6 +23,26 @@ body {
     background-color: #fbf3ff;
 }
 
+h2 {
+	margin-top: 4rem;
+	margin-bottom: .25rem;
+}
+
+h3 {
+	margin-top: 3rem;
+	margin-bottom: .25rem;
+}
+
+h4 {
+	margin-top: 2.5rem;
+	margin-bottom: .25rem;
+}
+
+h5 {
+	margin-top: 2rem;
+	margin-bottom: .25rem;
+}
+
 #searchbar {
 	font-size: .9125em;
 	padding-right: .5em;
@@ -74,10 +94,10 @@ h1:target::before, h2:target::before, h3:target::before, h4:target::before, h5:t
 	display: none;
 }
 
-h2, h3, h4, h5, h6 {
+/* h2, h3, h4, h5, h6 {
 	margin-top: 2.5rem !important;
 	margin-bottom: 1.5rem !important;
-}
+} */
 
 .content .header:link {
 	color: #333;
@@ -120,7 +140,7 @@ main h1 {
 .content img {
 	border-radius: .5rem;
 	width: 100%;
-	margin: 2rem 0;
+	margin: 0;
 }
 
 .menu-title {
@@ -133,8 +153,9 @@ main h1 {
 
 p,
 .content p {
-	line-height: 1.5
+	line-height: 1.5;
 	max-width: 640px;
+	margin: .8125rem 0;
 }
 
 a,
