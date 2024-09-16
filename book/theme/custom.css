@@ -35,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: initial;
 	color: #333 !important;
 	width: 100%;
+	max-width: 640px;
 	line-height: 1.2;
 }
 
@@ -70,18 +71,29 @@ main h1 {
 
 .content img {
 	border-radius: .5rem;
+	width: 100%;
+	margin: 2rem 0;
 }
 
 .menu-title {
 	font-weight: inherit;
 	font-size: 1.75rem;
 	text-align: left;
-	margin-left: 2rem;
+	margin-left: 1.5rem;
 	color: #333;
 }
 
-p {
+p,
+.content p {
+	line-height: 1.5
 	max-width: 640px;
+}
+
+a,
+.content a,
+#searchresults a, .content a:link, a:visited, a > .hljs {
+	color: #7D26C1;
+	text-decoration: underline;
 }
 
 .page {
@@ -183,7 +195,7 @@ ul#searchresults li {
 
 .sidebar {
 	border-right: 1px solid rgba(0,0,0,0.05);
-	font-size: .825em;
+	font-size: .9125em;
 	background-color: #fafafa !important;
 }
 
@@ -192,6 +204,10 @@ ul#searchresults li {
 	font-size: 1.625rem;
 	margin-bottom: .5rem !important;
 }
+
+.fa.fa-search {
+	font-size: 14px; 
+ }
 
 .chapter li a,
 :not(pre):not(a) > .hljs {

@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Hush Line Field Manual</title>
-        <meta name="robots" content="noindex" />
+        <title>Hush Line Documentation</title>
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -37,7 +37,7 @@
         <link rel="stylesheet" href="theme/fonts/sans/Atkinson-Hyperlegible-Bold.woff">
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -67,31 +67,38 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="prereqs/general.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="prereqs/threat-modeling.html"><strong aria-hidden="true">2.</strong> Threat Modeling</a></li><li class="chapter-item expanded "><a href="hosted/getting-started.html"><strong aria-hidden="true">3.</strong> Managed Service</a></li><li class="chapter-item expanded "><a href="installation/personal-server.html"><strong aria-hidden="true">4.</strong> Personal Server</a></li><li class="chapter-item expanded "><a href="prereqs/index.html"><strong aria-hidden="true">5.</strong> Self-Hosted</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro/index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -122,9 +129,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -140,7 +147,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Hush Line Field Manual</h1>
+                    <h1 class="menu-title">Hush Line Documentation</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -172,560 +179,53 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="getting-started-with-hush-line"><a class="header" href="#getting-started-with-hush-line">Getting Started With Hush Line</a></h1>
-<p>Hush Line is a free and open-source, anonymous-tip-line-as-a-service for organizations or individuals. It's intended for journalists and newsrooms to offer a public tip line; by educators and school administrators to provide students with a safe way to report potentially sensitive information, or employers, Board rooms, and C-suites for anonymous employee reporting.</p>
+                        <h1 id="welcome-to-hush-line"><a class="header" href="#welcome-to-hush-line">Welcome to Hush Line</a></h1>
+<p>Hush Line is a network of organizations and individuals who help whistleblowers and provides tip lines for secure and anonymous communication.</p>
+<p><img src="https://github.com/user-attachments/assets/32a4067d-ea94-4ff4-9e23-d93df1a77390" alt="ecosystem-diagram" /></p>
+<p>If you need a confidential reporting system—lawyers, journalists, employers, educators, or more—you can create a free account, and when you add an encryption key, you can start receiving secure messages!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started-with-hush-line"><a class="header" href="#getting-started-with-hush-line">Getting Started with Hush Line</a></h1>
+<p>Hush Line is intended to be a background service for you - add your key, then forward your messages to your desired email address, and never have to worry about logging back into the Hush Line platform again. We recommend using <a href="https://proton.me">Proton Mail</a> since we're built on the same encryption technology - PGP or <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">Pretty Good Privacy</a>. PGP is an open protocol providing strong encryption that's been around for decades and is trusted by governments and activists alike. When you use Proton Mail as described below, your anonymous Hush Line messages will be automatically delivered to and decrypted in your Inbox - no logging back into the Hush Line platform necessary. And since your messages are encrypted with a key to which only you have access, they are unreadable to anyone but you 💪.</p>
 <h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
-<ol>
-<li><a href="prereqs/general.html#software">Software</a></li>
-<li><a href="prereqs/general.html#email-encryption">Email Encryption</a></li>
-<li><a href="prereqs/general.html#smtp-settings-and-app-passwords">SMTP Settings and App Passwords</a></li>
-</ol>
-<img src="prereqs/../img/family.cover.png">
-<h2 id="software"><a class="header" href="#software">Software</a></h2>
-<h3 id="1-tor-browser"><a class="header" href="#1-tor-browser">1. Tor Browser</a></h3>
-<p>Your Hush Line has the option to only be reachable via the Tor Browser. It's not only the most private but also the easiest to set up and deploy.</p>
-<img src="prereqs/../img/3-tor-browser.png">
-<h3 id="2-gmail"><a class="header" href="#2-gmail">2. Gmail</a></h3>
-<p>We'll use Gmail for its high reliability. If you don't already have an account, create one. Having an email address separate from your personal account is a good practice.</p>
-<h3 id="3-mailvelope"><a class="header" href="#3-mailvelope">3. Mailvelope</a></h3>
-<p>To decrypt Hush Line messages, we'll use Mailvelope, which integrates with Gmail, adding PGP functionality; add the extension to <a href="https://addons.mozilla.org/en-US/firefox/addon/mailvelope/">Firefox</a> or <a href="https://chrome.google.com/webstore/detail/mailvelope/kajibbejlbohfaggdiogboambcijhkke">Chrome</a>.</p>
-<img src="prereqs/../img/4-mailvelope.png">
-<p>Open the extension in your browser and click &quot;Let's Start.&quot;</p>
-<img src="prereqs/../img/5-mailvelope.png">
-<h2 id="email-encryption"><a class="header" href="#email-encryption">Email Encryption</a></h2>
-<h3 id="what-is-pgp-lets-use-a-non-technical-metaphor"><a class="header" href="#what-is-pgp-lets-use-a-non-technical-metaphor">What is PGP? Let's use a non-technical metaphor</a></h3>
-<p>Here's how I like to think of PGP: Once set up, you'll have a very special envelope where people can put their messages inside. These envelopes are so special that they can only be opened by one specific letter opener.</p>
-<p>Now let's say we want to receive secret messages from your friend Bob. First, you give Bob plenty of your special envelopes. (We do not give Bob the letter opener since you don't want Bob to be able to open mail intended for you.) Bob writes his message, places it in one of your envelopes, and sends it to you. When you receive the sealed envelope, you use your letter opener to open it, confident that no one else can read its contents along the way.</p>
-<h3 id="4-create-your-keys"><a class="header" href="#4-create-your-keys">4. Create your keys</a></h3>
-<p>To create our envelopes and letter opener, we're going to use our Mailvelope extension. </p>
-<p>Click on &quot;Generate Keys.&quot; Give your key a name, enter your Gmail address, and create a strong password.</p>
-<img src="prereqs/../img/6-mailvelope-setup.png">
-<img src="prereqs/../img/7-generate-key.png">
-<img src="prereqs/../img/8-key-created.png">
-<h3 id="5-verify-your-email-address"><a class="header" href="#5-verify-your-email-address">5. Verify your email address</a></h3>
-<p>Before using your key, you'll have to verify your email address. Look for a message from <code>Mailvelope Key Server</code> in your Gmail inbox.</p>
-<img src="prereqs/../img/9-verify-email.png">
-<p>The message is encrypted, and when opened, you'll be prompted for your Mailvelope password to read the email. After entering your password, click the link.</p>
-<img src="prereqs/../img/10-decrypt-message.png">
-<h3 id="6-copy-your-pgp-key"><a class="header" href="#6-copy-your-pgp-key">6. Copy your PGP key</a></h3>
-<p>After confirming that your email was verified, click on the supplied URL.</p>
-<img src="prereqs/../img/11-confirmation.png">
-<p>Your PGP Key is in the grey box, beginning with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ending with <code>-----END PGP PUBLIC KEY BLOCK-----</code>. Copy your entire key into a notepad for easy access.</p>
-<img src="prereqs/../img/12-public-key.png">
-<img src="prereqs/../img/13-copy-key.png">
-<h2 id="smtp-settings-and-app-passwords"><a class="header" href="#smtp-settings-and-app-passwords">SMTP Settings and App Passwords</a></h2>
-<p>Hush Line has a mail server installed to send encrypted messages to your email address. You'll need SMTP information, as well as a password. You should never use your primary account password; instead, create app-specific passwords. These are purpose-made for single applications.</p>
-<h3 id="gmail-smtp"><a class="header" href="#gmail-smtp">Gmail SMTP</a></h3>
-<ul>
-<li>Server: <code>smtp.gmail.com</code></li>
-<li>Port: <code>587</code> or <code>465</code></li>
-</ul>
-<h3 id="riseupnet-smtp"><a class="header" href="#riseupnet-smtp">Riseup.net SMTP</a></h3>
-<ul>
-<li>Server: <code>mail.riseup.net</code></li>
-<li>Port: <code>587</code> or <code>465</code></li>
-</ul>
-<h3 id="7-create-an-app-password"><a class="header" href="#7-create-an-app-password">7. Create an app password</a></h3>
-<p>From your Gmail account, click on your avatar to access your account-level options. Select <code>Manage Google Account</code>.</p>
-<img src="prereqs/../img/14-profile-menu.png">
-<p>Next, click on the Security tab on the left, then scroll to the bottom of the page to find App Passwords.</p>
-<img src="prereqs/../img/15-security.png">
-<img src="prereqs/../img/16-app-passwords.png">
-<p>Click on App Passwords, then enter a name, then click Create. A dialog will pop up with your app-specific password. Copy it to a notepad for easy access.</p>
-<img src="prereqs/../img/17-create-password.png">
-<img src="prereqs/../img/18-copy-password.png">
-<p>🎉 Congratulations, you're now ready to continue with Hush Line!</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-threat-model"><a class="header" href="#hush-line-threat-model">Hush Line Threat Model</a></h1>
-<p>Adapted from the threat/risk models published by <a href="https://docs.cwtch.im/security/risk/">Cwtch</a>, <a href="https://docs.securedrop.org/en/latest/threat_model/threat_model.html">SecureDrop</a>, and <a href="https://web.archive.org/web/20150326154506/https://pond.imperialviolet.org/threat.html">Pond</a>.</p>
-<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>Hush Line is a secure communication platform designed with a strong focus on privacy and anonymity. This document outlines the threat model for Hush Line, highlighting potential threats, the data Hush Line collects, how it is secured, and what users can expect in terms of privacy and security.</p>
-<h2 id="data-collection-and-encryption"><a class="header" href="#data-collection-and-encryption">Data Collection and Encryption</a></h2>
-<p>Hush Line collects minimal data to maintain the functionality of the service while prioritizing user privacy. Here's a detailed look at the data handling mechanisms:</p>
-<h3 id="user-data"><a class="header" href="#user-data">User Data</a></h3>
-<ul>
-<li><strong>Usernames and Display Names:</strong> Stored and encrypted using symmetric encryption. These identifiers allow users to interact within the platform while preserving their anonymity.</li>
-<li><strong>Password Hashes:</strong> User passwords are hashed using bcrypt, ensuring that even if data is compromised, actual passwords are not exposed.</li>
-<li><strong>Two-Factor Authentication (2FA) Secrets:</strong> For users opting for 2FA, these secrets are encrypted and stored securely. 2FA provides an additional layer of security, mitigating the risk of unauthorized account access.</li>
-<li><strong>Email and SMTP Settings:</strong> For users who choose to receive notifications or use email-based functionalities, these settings are encrypted and stored. Users are encouraged to use email addresses not linked to their real identity for enhanced privacy.</li>
-<li><strong>PGP Keys:</strong> For end-to-end encrypted communication, users can provide their PGP keys. These keys are stored in an encrypted format, enabling secure message exchange without exposing the content to Hush Line servers.</li>
-</ul>
-<h3 id="communication-data"><a class="header" href="#communication-data">Communication Data</a></h3>
-<ul>
-<li><strong>Messages:</strong> All messages are encrypted end-to-end. Hush Line servers only store encrypted blobs, making it impossible to access the content without the corresponding decryption keys, which are held by the end users.</li>
-</ul>
-<h3 id="logs-and-metadata"><a class="header" href="#logs-and-metadata">Logs and Metadata</a></h3>
-<ul>
-<li><strong>Access Logs:</strong> Hush Line minimizes logging to essential operational data, which is anonymized to prevent linking back to users. IP addresses are obfuscated, and logs are rotated regularly to ensure that historical data cannot be exploited to compromise user privacy.</li>
-<li><strong>Rate Limiting and Security Measures:</strong> The platform employs rate limiting and other security measures to protect against abuse and DoS attacks. These mechanisms are designed to be privacy-preserving and do not log personally identifiable information.</li>
-</ul>
-<h2 id="threats-and-mitigations"><a class="header" href="#threats-and-mitigations">Threats and Mitigations</a></h2>
-<h3 id="network-observers-and-global-adversaries"><a class="header" href="#network-observers-and-global-adversaries">Network Observers and Global Adversaries</a></h3>
-<ul>
-<li><strong>Mitigation:</strong> All data in transit is encrypted using TLS, and users are encouraged to access Hush Line via Tor for additional anonymity. This prevents network observers from deciphering the content or metadata of communications.</li>
-</ul>
-<h3 id="account-compromise"><a class="header" href="#account-compromise">Account Compromise</a></h3>
-<ul>
-<li><strong>Mitigation:</strong> Strong password policies, optional 2FA, and secure password reset mechanisms are in place to protect user accounts. Users are educated on best practices for maintaining account security.</li>
-</ul>
-<h3 id="legal-and-coercive-pressure"><a class="header" href="#legal-and-coercive-pressure">Legal and Coercive Pressure</a></h3>
-<ul>
-<li><strong>Mitigation:</strong> Hush Line is designed to hold minimal information that could be of interest in legal contexts. Furthermore, the use of encryption for stored data ensures that, even under pressure, Hush Line cannot divulge meaningful user data.</li>
-</ul>
-<h3 id="phishing-and-social-engineering"><a class="header" href="#phishing-and-social-engineering">Phishing and Social Engineering</a></h3>
-<ul>
-<li><strong>Mitigation:</strong> User education and secure design principles minimize the risk of phishing. Features like displaying the last login time and alerting users to new logins from unfamiliar devices help users detect unauthorized access attempts.</li>
-</ul>
-<h2 id="verification-system"><a class="header" href="#verification-system">Verification System</a></h2>
-<p>Hush Line employs a verification system to ensure that users can trust the source of communication. This system is particularly important for users who are public figures or have a wide audience. The verification system includes:</p>
-<h3 id="verified-accounts"><a class="header" href="#verified-accounts">Verified Accounts</a></h3>
-<ul>
-<li><strong>Display of Verification Status:</strong> Hush Line indicates verified accounts with a distinctive badge (⭐️ Verified Account). This visual indicator helps users distinguish authentic accounts from potential impersonators, reducing the risk of phishing attacks.</li>
-</ul>
-<h2 id="user-education"><a class="header" href="#user-education">User Education</a></h2>
-<h3 id="encryption-awareness"><a class="header" href="#encryption-awareness">Encryption Awareness</a></h3>
-<ul>
-<li><strong>Encryption Indicators:</strong> The platform informs users whether their messages will be encrypted. For accounts with a public PGP key, messages are encrypted, ensuring that only the intended recipient can decrypt and read them. This feature is highlighted through messages on the submission form, emphasizing the importance of encryption for sensitive information.</li>
-</ul>
-<h3 id="user-guidance"><a class="header" href="#user-guidance">User Guidance</a></h3>
-<ul>
-<li><strong>Informative Messages for Senders and Receivers:</strong> Hush Line educates its users about the significance of encryption and the steps required to ensure message confidentiality. This includes prompts for receivers to add a public PGP key if they haven't already, and notifications for senders about the encryption status of their message.</li>
-</ul>
-<h3 id="ip-address-disclosure"><a class="header" href="#ip-address-disclosure">IP Address Disclosure</a></h3>
-<ul>
-<li><strong>Transparency about IP Visibility:</strong> The platform informs users about the visibility of their IP addresses when submitting a message. This disclosure encourages the use of privacy-enhancing tools like Tor Browser for users seeking additional anonymity.</li>
-</ul>
-<h2 id="assumptions"><a class="header" href="#assumptions">Assumptions</a></h2>
-<p>The following assumptions are accepted in the threat model of the Hush Line product:</p>
-<h3 id="assumptions-about-the-individual-submitting-a-message"><a class="header" href="#assumptions-about-the-individual-submitting-a-message">Assumptions About the Individual Submitting a Message</a></h3>
-<ul>
-<li>The individual submitting a message does so in good faith.</li>
-<li>The individual submitting a message wants to remain anonymous, against a network observer, forensic analysis, or to Hush Line servers.</li>
-<li>The individual submitting a message is accessing the official Hush Line site.</li>
-</ul>
-<h3 id="assumptions-about-the-person-or-organization-receiving-a-message"><a class="header" href="#assumptions-about-the-person-or-organization-receiving-a-message">Assumptions About the Person or Organization Receiving a Message</a></h3>
-<ul>
-<li>The receiver operates Hush Line in good faith.</li>
-</ul>
-<h3 id="assumptions-about-the-hush-line-server"><a class="header" href="#assumptions-about-the-hush-line-server">Assumptions About the Hush Line Server</a></h3>
-<ul>
-<li>The server is operated in good faith.</li>
-<li>The server is single-use and configured with the official scripts on the GitHub main repo.</li>
-<li>The server has no other software other than what is required for the operation of Hush Line.</li>
-</ul>
-<h3 id="assumptions-about-the-sources-computer"><a class="header" href="#assumptions-about-the-sources-computer">Assumptions About the Source’s Computer</a></h3>
-<ul>
-<li>The computer has an updated version of a popular browser including Chrome, Firefox, or Safari, and for anonymous connections, an updated version of Tor Browser.</li>
-<li>The computer is not compromised by malware.</li>
-</ul>
-<h3 id="assumptions-about-science--design"><a class="header" href="#assumptions-about-science--design">Assumptions About Science &amp; Design</a></h3>
-<ul>
-<li>Science &amp; Design wants to preserve the anonymity of its sources.</li>
-<li>Science &amp; Design acts in the interest of allowing sources to submit messages, regardless of the contents of their contents.</li>
-<li>The users of the system, and those with physical access to the servers, can be trusted to uphold the previous assumptions unless the entire organization has been compromised.</li>
-<li>Science &amp; Design is prepared to push back on any and all requests to compromise the integrity of the system and its users, including requests to deanonymize sources, block document submissions, or hand over encrypted or decrypted submissions.</li>
-</ul>
-<h3 id="assumptions-about-the-world"><a class="header" href="#assumptions-about-the-world">Assumptions About the World</a></h3>
-<ul>
-<li>The security assumptions of RSA (4096-bit GPG and SSH keys) are valid.</li>
-<li>The security assumptions of bcrypt with randomly-generated salts are valid.</li>
-<li>The security/anonymity assumptions of Tor and the onion service protocol are valid.</li>
-<li>The security assumptions of the Tails operating system are valid.</li>
-<li>The security assumptions of Hush Line dependencies, specifically Debian, the Linux kernel, application packages, application dependencies are valid.</li>
-</ul>
-<h3 id="other-assumptions-or-factors"><a class="header" href="#other-assumptions-or-factors">Other Assumptions or Factors</a></h3>
-<ul>
-<li>The level of press freedom may vary in both geography and time.</li>
-<li>The number of daily Tor users in a country can greatly vary.</li>
-</ul>
-<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>Hush Line's threat model acknowledges the variety of adversaries that users may face and implements a robust security architecture to mitigate these risks. By encrypting data at rest, minimizing data collection, and educating users on security practices, Hush Line aims to offer a secure and private platform for communication.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-managed-service"><a class="header" href="#hush-line-managed-service">Hush Line Managed Service</a></h1>
-<p>The hosted version of Hush Line is the first free and open-source anonymous tip-line-as-a-service and the easiest way to get started. It's as simple as signing up, and you'll have a way for anyone to send you a private message. It's for those needing one or more tip lines without worrying about managing and maintaining technical infrastructure.</p>
-<h2 id="contents-1"><a class="header" href="#contents-1">Contents</a></h2>
-<ol>
-<li><a href="hosted/getting-started.html#register">Register</a></li>
-<li><a href="hosted/getting-started.html#log-in">Log In</a></li>
-<li><a href="hosted/getting-started.html#verified-accounts">Verified Accounts</a></li>
-<li><a href="hosted/getting-started.html#sending-messages">Sending Messages</a></li>
-<li><a href="hosted/getting-started.html#reading-messages">Reading Messages</a></li>
-<li><a href="hosted/getting-started.html#settings">Settings</a></li>
-<li><a href="hosted/getting-started.html#admin-view">Admin View</a></li>
-<li><a href="hosted/getting-started.html#paid-features">Paid Features</a></li>
-</ol>
-<img src="hosted/../img/home.png">
-<h2 id="register"><a class="header" href="#register">Register</a></h2>
-<p>Before public launch of Hush Line, you'll need an invite code to create an account. Codes are distributed upon request. Once you have the invite code, register your account at https://tips.hushline.app/register.</p>
-<img src="hosted/../img/auth.register.png">
-<h2 id="log-in"><a class="header" href="#log-in">Log In</a></h2>
-<p>After creating your account, you'll be redirected to the login page. Enter the username and password you just created.</p>
-<p>Note: To protect your privacy, we don't require any PII, including your email address or phone number.</p>
-<img src="hosted/../img/auth.login.png">
-<h2 id="verified-accounts-1"><a class="header" href="#verified-accounts-1">Verified Accounts</a></h2>
-<p>At Hush Line, we're committed to building a trusted community where communication is secure and identities are verified. Our verified accounts feature is designed to ensure that messages reach their intended recipients, fostering a reliable environment for all users. Verified accounts are specially available for:</p>
-<ul>
-<li>🕵️ <strong>Journalists</strong> - Reporters, correspondents, and investigative journalists.</li>
-<li>📰 <strong>Newsrooms</strong> - Official accounts for newspapers, TV stations, or online news portals.</li>
-<li>✊ <strong>Activists</strong> - Individuals or groups advocating for social, environmental, or political causes.</li>
-<li>📸 <strong>Public Figures</strong> - Politicians or other noteworthy public individuals.</li>
-<li>📊 <strong>Businesses</strong> - Companies, small businesses, or startups aiming to communicate with their audience.</li>
-</ul>
-<img src="hosted/../img/verified-account.png">
-<h3 id="requesting-verification"><a class="header" href="#requesting-verification">Requesting Verification</a></h3>
-<p>To ensure your account is recognized as authentic, users belonging to the categories listed above can apply for verification. Follow these steps to initiate the verification process:</p>
-<ol>
-<li>
-<p><strong>Send a Message:</strong> Use the contact form in the app to reach out to us. Include your name or organization's name and a preferred method of contact (email or phone number). We'll get back to you to schedule a verification meeting.</p>
-</li>
-<li>
-<p><strong>Prepare Your Documents:</strong> To verify your identity or your authority to represent an organization, please include the relevant documents for your role:</p>
-<ul>
-<li><strong>A Valid ID:</strong> Government-issued identification that shows your full name and photo.</li>
-<li><strong>Proof of Employment or Association:</strong> A letter from your employer or organization confirming your role or a recent pay stub.</li>
-<li><strong>An Active Profile:</strong> A link to your profile on your employer's or organization's official website, verifying your position or role.</li>
-<li><strong>Published Articles:</strong> For journalists, links to your articles published on recognized news websites.</li>
-<li><strong>Proof of Authority:</strong> For those representing organizations, a document proving your authority to represent the organization, such as a power of attorney or a board resolution.</li>
-</ul>
-<p>These documents help us ensure that verified accounts are granted to the rightful individuals or representatives of organizations.</p>
-</li>
-<li>
-<p><strong>Prepare Your Account:</strong> Verified accounts are required to use their public name or official organization name. For example:</p>
-</li>
-</ol>
-<div class="table-wrapper"><table><thead><tr><th>Category</th><th>Example</th></tr></thead><tbody>
-<tr><td>Individuals</td><td>Art Vandelay</td></tr>
-<tr><td>Organizations</td><td>Vandelay Industries</td></tr>
-<tr><td>Departments within an organization</td><td>Vandelay Industries, HR Dept.</td></tr>
-<tr><td>Journalists</td><td>Art Vandelay, The Daily Worker</td></tr>
-<tr><td>Independent Journalists</td><td>Art Vandelay, Ind.</td></tr>
-<tr><td>Politicians</td><td>Sen. Art Vandelay, D-CA, 🇺🇸</td></tr>
-<tr><td></td><td>Gob Bluth, PM, 🇨🇦</td></tr>
-</tbody></table>
-</div>
-<p>Once your Display Name matches the format above, we'll promptly verify your account!</p>
-<h3 id="safeguards"><a class="header" href="#safeguards">Safeguards</a></h3>
-<p>To help guard against abuse, our verification system is built so that if a verified user changes their username or display name, they'll lose their verified status and need to initiate the process again. This feature is intended to eliminate the risk of a user with a verified account changing their information to impersonate another person or organization.</p>
-<img src="hosted/../img/settings.verified.png"> 
-<h2 id="sending-messages"><a class="header" href="#sending-messages">Sending Messages</a></h2>
-<p>When you log in to your account, click on the &quot;Submit Message&quot; link at the top of the screen. You can publicly share the URL for this page wherever you're advertising your tip line. You'll notice some instructional text is only visible to you with suggestions for sharing your address. </p>
-<p>You'll also see a message indicating if you've uploaded a PGP key. This will be visible to someone submitting a message, so if you'll receive sensitive information, it is advised to add your public PGP key in Settings. </p>
-<img src="hosted/../img/submit.encrypted.private.png">
-<p>When you share the address, someone sending a message will see slightly different text, with voice and tone directed at them.</p>
-<img src="hosted/../img/submit.encrypted.png">
-<p>If you haven't added a PGP key, you and any visitor will see a warning that messages will not be encrypted.</p>
-<img src="hosted/../img/submit.unencrypted.png">
-<h3 id="your-ip-address"><a class="header" href="#your-ip-address">Your IP Address</a></h3>
-<p>You'll notice an IP address displayed at the bottom of the submit message form. If you ARE NOT using <a href="https://torproject.org/download" target="_blank" rel="noopener noreferrer">Tor Browser</a> or an anonymizing VPN and you're browsing from home, the address you see is most likely yours. It's trivial for a law enforcement agency to learn your exact identity from your ISP by simply subpoenaing for that information.</p>
-<p>WHILE WE DO NOT LOG ANY IP ADDRESSES, if an attacker were actively monitoring connections to the site, they'd be able to see your address. In some cases, this might be enough to de-anonymize yourself. If you ARE using Tor, the observable IP address will belong to one of the thousands of possible addresses on the Tor network. And since there is no predictable way to determine the origin of a Tor connection, the IP address connecting to the site can not be linked back to you.</p>
-<p>For these reasons, we highly recommend using the Tor Browser to help ensure your privacy.</p>
-<img src="hosted/../img/submit.ip.png">
-<h2 id="reading-messages"><a class="header" href="#reading-messages">Reading Messages</a></h2>
-<p>New users are greeted by their empty inbox.</p>
-<img src="hosted/../img/inbox.empty.png">
-<p>When you receive a message, they'll appear here. </p>
-<img src="hosted/../img/inbox.unencrypted.png">
-<h3 id="message-encryption"><a class="header" href="#message-encryption">Message Encryption</a></h3>
-<p>By default, Hush Line doesn't require a PGP key, but it's strongly encouraged. After adding your PGP key, only you can read the messages you receive. </p>
-<p>As a baseline security measure, we encrypt your message content by default on our server. While this protects the contents of our database, if the encryption key becomes compromised, it can be decrypted. But if you add your PGP key, any message received will only be able to be decrypted by you. If you expect to receive messages containing sensitive content, enabling this feature is strongly encouraged.</p>
-<img src="hosted/../img/inbox.encrypted.png">
-<h3 id="mailvelope"><a class="header" href="#mailvelope">Mailvelope</a></h3>
-<p>After installing the Mailvelope extension in your browser, you can decrypt your messages directly in the app. This is highly recommended, as it's one of the easiest and most straightforward methods of decrypting your messages. </p>
-<img src="hosted/../img/inbox.mailvelope.png">
-<p>You'll see a new interface where the encrypted message was. Click &quot;Show message&quot; to decrypt. You'll enter the password you created when setting up your PGP key, and the contents will be visible. </p>
-<img src="hosted/../img/inbox.decrypted.png">
-<h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
-<h3 id="profile-settings"><a class="header" href="#profile-settings">Profile Settings</a></h3>
-<p>Users can tailor Hush Line to their needs, from adding a display name to adding multiple usernames.</p>
-<img src="hosted/../img/settings.profile.png">
-<h4 id="display-name"><a class="header" href="#display-name">Display Name</a></h4>
-<p>Users can set a human-readable display name so that someone submitting a message can see &quot;Submit a message to Science &amp; Design&quot; rather than &quot;Submit a message to scidsg&quot;.</p>
-<h5 id="verification"><a class="header" href="#verification">Verification</a></h5>
-<p>As a security measure, if a user changes their display name after verification, they'll lose that status and must re-verify their account.</p>
-<h3 id="authentication"><a class="header" href="#authentication">Authentication</a></h3>
-<img src="hosted/../img/settings.auth.png">
-<h4 id="two-factor-authentication"><a class="header" href="#two-factor-authentication">Two-Factor Authentication</a></h4>
-<p>To improve account security, users can enable two-factor authentication, making account compromises, even in the event of a password leak, impossible.</p>
-<img src="hosted/../img/settings.auth.2fa.png">
-<h4 id="change-password"><a class="header" href="#change-password">Change Password</a></h4>
-<p>Users can change their password when needed.</p>
-<h4 id="change-username"><a class="header" href="#change-username">Change Username</a></h4>
-<p>Changing your username is easy but can lead to confusion for end-users, especially for well-known organizations.</p>
-<h5 id="verification-1"><a class="header" href="#verification-1">Verification</a></h5>
-<p>Like when changing your display name, when you change your username, you'll lose verification and need to go through the process again.</p>
-<h3 id="email--pgp"><a class="header" href="#email--pgp">Email &amp; PGP</a></h3>
-<img src="hosted/../img/settings.email.png">
-<h4 id="email-delivery"><a class="header" href="#email-delivery">Email Delivery</a></h4>
-<p>Users can have messages delivered to an email address and with the SMTP service of their choosing.</p>
-<h4 id="pgp"><a class="header" href="#pgp">PGP</a></h4>
-<p>Users can opt to have their messages encrypted so they're only readable by them. This is a highly encouraged option, especially for journalists.</p>
-<h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
-<h4 id="delete-account"><a class="header" href="#delete-account">Delete Account</a></h4>
-<p>Easily and permanently delete your account whenever you want. </p>
-<img src="hosted/../img/settings.advanced.png">
-<h2 id="admin-view"><a class="header" href="#admin-view">Admin View</a></h2>
-<p>Admins can control certain aspects of user settings without having to log in to the server or manually modifying the database. This is where users are verified, where paid features can be manually enabled, or where admins can be created.</p>
-<p>A highlight panel displays the total number of users and how many have enabled 2fa or added a PGP key. This view helps with internal decision-making, like education campaigns for security best practices.</p>
-<img src="hosted/../img/settings.admin.png">
-<h2 id="paid-features"><a class="header" href="#paid-features">Paid Features</a></h2>
-<h3 id="additional-usernames"><a class="header" href="#additional-usernames">Additional Usernames</a></h3>
-<p>Paid users can add up to five additional usernames. This feature aims to make it easy for organizational users to manage multiple initiatives from the same account. Newsroom editors can have lines for politics, cybersecurity, or world news desks; an educational institution can have lines for students, faculty, or community channels.</p>
-<img src="hosted/../img/paid.settings.png">
-<h3 id="inbox"><a class="header" href="#inbox">Inbox</a></h3>
-<p>The account's primary inbox will aggregate and label messages in a single view.</p>
-<img src="hosted/../img/paid.primary.inbox.png">
-<h4 id="secondary-inboxes"><a class="header" href="#secondary-inboxes">Secondary Inboxes</a></h4>
-<p>Account owners can navigate to their secondary username's inboxes from the settings page.</p>
-<img src="hosted/../img/paid.secondary.inbox.png"><div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-personal-server"><a class="header" href="#hush-line-personal-server">Hush Line Personal Server</a></h1>
-<p>The Personal Server is a physical device running a Tor-only version of Hush Line. This is our customer-facing product that doesn't require a user to use the terminal or SSH to configure their tip line. It uses an e-paper display and web form to guide the user through the setup process, and in a matter of minutes, you can have an anonymous tip line deployed and ready to use.</p>
-<img src="installation/../img/personal-server.jpg">
-<h2 id="1-plug-in-ethernet"><a class="header" href="#1-plug-in-ethernet">1. Plug in ethernet</a></h2>
-<p>Before beginning, first plug in the ethernet. The Personal Server doesn't use wifi to help ensure high stability and availability.</p>
-<p>The setup process will begin once an internet connection is detected.</p>
-<h2 id="2-power-up-the-device"><a class="header" href="#2-power-up-the-device">2. Power up the device</a></h2>
-<p>Your server optimizes the setup time by coming with all of the necessary software preloaded on the device. When you power up the server, we update your software and Hush Line repository.</p>
-<h2 id="3-wait-5-mins-for-a-setup-code-to-display"><a class="header" href="#3-wait-5-mins-for-a-setup-code-to-display">3. Wait ~5 mins for a setup code to display.</a></h2>
-<p>After the updates, your device's screen will display a QR code that links to a locally hosted web form.</p>
-<h2 id="4-scan-the-code"><a class="header" href="#4-scan-the-code">4. Scan the code</a></h2>
-<p>Scan the code or visit https://hushline.local/setup from a device on the same network as your Hush Line Personal Server. </p>
-<h2 id="5-add-smtp--pgp-information"><a class="header" href="#5-add-smtp--pgp-information">5. Add SMTP &amp; PGP information</a></h2>
-<p>The form will ask for five pieces of information that we set up in the <a href="installation/../prereqs/general.html">prerequisites</a>. </p>
-<p>👉 Make sure your public PGP key is unmodified, beginning with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ending with <code>-----END PGP PUBLIC KEY BLOCK-----</code>.</p>
-<p>The information you'll need: </p>
-<ul>
-<li>SMTP email address</li>
-<li>SMTP address: <code>smtp.gmail.com</code></li>
-<li>App password (from prerequisites)</li>
-<li>Port: 465</li>
-<li>Public PGP key (from prerequisites)</li>
-</ul>
-<h2 id="6-email-confirmation"><a class="header" href="#6-email-confirmation">6. Email confirmation</a></h2>
-<p>You'll receive an encrypted email confirming your Hush Line Personal Server's successful installation. The email will include your address and a link to download Tor Browser.</p>
-<h2 id="7-using-hush-line"><a class="header" href="#7-using-hush-line">7. Using Hush Line</a></h2>
-<p>Your screen will reset and display a QR code linking to a local information page intended for use by individuals interested in using your tip line. You can print this page, copy the content, email it, and post your Hush Line address on your social channels and website.</p>
-<p>🎉 Congratulations! You've successfully set up your own anonymous tip line! </p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hush-line-self-hosted"><a class="header" href="#hush-line-self-hosted">Hush Line Self-Hosted</a></h1>
-<ol>
-<li><a href="prereqs/index.html#raspberry-pi">Raspberry Pi</a></li>
-<li><a href="prereqs/index.html#vps">VPS</a></li>
-<li><a href="prereqs/index.html#information-page">Information Page</a></li>
-<li><a href="prereqs/index.html#sending-messages">Sending Messages</a></li>
-<li><a href="prereqs/index.html#reading-messages">Reading Messages</a></li>
-</ol>
-<img src="prereqs/../img/0-cover.png">
-<p>In this section we'll get everything ready before installing Hush Line.</p>
-<h2 id="raspberry-pi"><a class="header" href="#raspberry-pi">Raspberry Pi</a></h2>
-<ul>
-<li>Download the Raspberry Pi Imager</li>
-<li>Flash a microSD card with Raspberry Pi OS (64-bit)</li>
-</ul>
-<h3 id="raspberry-pi-prerequisites"><a class="header" href="#raspberry-pi-prerequisites">Raspberry Pi Prerequisites</a></h3>
-<h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
-<ul>
-<li><strong>Hardware:</strong> <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=ee402e41cd98b8767ed54b1531ed1666&amp;camp=1789&amp;creative=9325">Raspberry Pi 4</a>/<a href="https://www.amazon.com/ELEMENT-Element14-Raspberry-Pi-Motherboard/dp/B07P4LSDYV/?&amp;_encoding=UTF8&amp;tag=scidsg-20&amp;linkCode=ur2&amp;linkId=d76c1db453c42244fe465c9c56601303&amp;camp=1789&amp;creative=9325">3B+</a></li>
-<li><strong>Power:</strong> <a href="https://www.amazon.com/Raspberry-Pi-USB-C-Power-Supply/dp/B07W8XHMJZ?crid=20ZD3IB2N877C&amp;keywords=raspberry%2Bpi%2Bpower%2Bsupply&amp;qid=1696270477&amp;sprefix=raspberry%2Bpi%2Bpower%2B%2Caps%2C140&amp;sr=8-5&amp;th=1&amp;linkCode=ll1&amp;tag=scidsg-20&amp;linkId=fa55eb4c089361952be8285bf67bfd22&amp;language=en_US&amp;ref_=as_li_ss_tl">Raspberry Pi USB-C Power Supply</a></li>
-<li><strong>Storage:</strong> <a href="https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073K14CVB?crid=1XCUWSKV8V2L1&amp;keywords=microSD+card&amp;qid=1696270565&amp;sprefix=microsd+car%2Caps%2C137&amp;sr=8-21&amp;linkCode=ll1&amp;tag=scidsg-20&amp;linkId=a2865a28ae852876a5a6d27512e9d7ef&amp;language=en_US&amp;ref_=as_li_ss_tl">Micro SD Card</a></li>
-<li><strong>SD Card Adapter:</strong> <a href="https://www.amazon.com/SanDisk-MobileMate-microSD-Card-Reader/dp/B07G5JV2B5?crid=3ESM9TOJBH8J7&amp;keywords=microsd+card+adaptor+usb+sandisk&amp;qid=1696270641&amp;sprefix=microsd+card+adaptor+usb+sandisk%2Caps%2C135&amp;sr=8-3&amp;linkCode=ll1&amp;tag=scidsg-20&amp;linkId=90d3bed4e490d29d84bcf86d9fe75290&amp;language=en_US&amp;ref_=as_li_ss_tl">SD Card Reader</a> </li>
-<li><em>Affiliate links</em></li>
-</ul>
-<h3 id="prepping-your-pi"><a class="header" href="#prepping-your-pi">Prepping Your Pi</a></h3>
-<p>If you didn't know, your Raspberry Pi doesn't come with an operating system. Don't panic! We're going to install one now called Raspberry Pi OS.</p>
-<h4 id="1-raspberry-pi-imager"><a class="header" href="#1-raspberry-pi-imager">1. Raspberry Pi Imager</a></h4>
-<p>Like a Macbook runs MacOS, and a Dell runs Windows, a Raspberry Pi runs Linux, which comes in many different flavors depending on your needs. Since we're using a Raspberry Pi, we'll use Raspberry Pi OS (64-bit), an operating system made just for the Pi. The Imager installs the operating system onto your microSD card, where we'll set up Hush Line. Download it from https://www.raspberrypi.com/software/.</p>
-<img src="prereqs/../img/1-rpi-imager.png">
-<img src="prereqs/../img/2-rpi-imager.png">
-<h3 id="prep-your-card"><a class="header" href="#prep-your-card">Prep Your Card</a></h3>
-<h4 id="2-install-raspberry-pi-os"><a class="header" href="#2-install-raspberry-pi-os">2. Install Raspberry Pi OS</a></h4>
-<p>Open the Raspberry Pi Imager and click <code>Choose OS &gt; Raspberry Pi OS (other) &gt; Raspberry Pi OS (64-Bit)</code>.</p>
-<p>Insert your microSD card into your computer, and then click <code>Choose Storage</code> and select your card.</p>
-<img src="prereqs/../img/19-rpi-imager.png">
-<p>Before clicking Write, click on the Settings gear in the bottom right of the window. Configure the following settings:</p>
-<ul>
-<li>Hostname = <code>hushline</code></li>
-<li>Enable SSH with password authentication</li>
-<li>User = <code>hush</code></li>
-<li>Set a strong password</li>
-<li>Add wifi settings</li>
-</ul>
-<img src="prereqs/../img/20-advanced.png">
-<h3 id="boot-up-and-log-in-to-your-pi"><a class="header" href="#boot-up-and-log-in-to-your-pi">Boot up and log in to Your Pi</a></h3>
-<h4 id="3-insert-microsd-card"><a class="header" href="#3-insert-microsd-card">3. Insert microSD Card</a></h4>
-<p>Take your SD card and insert it into your Raspberry Pi. You'll find the SD card slide on the bottom of the board, opposite the ethernet ports.</p>
-<p>Plug the power supply into the device and let it boot up.</p>
-<h4 id="4-log-in"><a class="header" href="#4-log-in">4. Log In</a></h4>
-<p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name. </p>
-<p>Enter <code>ssh hush@hushline.local</code>, and when prompted, enter the password you created in the second step.</p>
-<img src="prereqs/../img/21-terminal-login.png">
-<h4 id="5-update-your-system"><a class="header" href="#5-update-your-system">5. Update your system</a></h4>
-<p>The last thing we need to do is to update our system. First, we'll give ourselves admin priviledges, then perform the update:</p>
-<p>Enter <code>sudo su</code>, then <code>apt update &amp;&amp; apt -y dist-upgrade &amp;&amp; apt -y autoremove</code>.</p>
-<img src="prereqs/../img/21-update.png">
-<p>🎉 That's it, you're ready to get started with Raspberry Pi!</p>
-<h2 id="vps"><a class="header" href="#vps">VPS</a></h2>
-<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
-<p>In this section, we'll prepare to install Hush Line on a virtual private server (VPS). This means your Hush Line will run on a rented, private server owned by a company like <a href="https://www.digitalocean.com/">Digital Ocean</a>.</p>
-<p>You'll need the following things:</p>
-<ol>
-<li>Debit or credit card</li>
-<li>Digital Ocean, or any other VPS provider</li>
-</ol>
-<h3 id="digital-ocean"><a class="header" href="#digital-ocean">Digital Ocean</a></h3>
-<p>Digital Ocean is an infrastructure service provider that provides a cost-effective way to create your first virtual private server (VPS).</p>
-<h4 id="1-create-an-account"><a class="header" href="#1-create-an-account">1. Create an Account</a></h4>
-<p>Go to <a href="https://www.digitalocean.com/">digitalocean.com</a> and create an account. You'll need to enter payment information before you can create a VPS.</p>
-<img src="prereqs/../img/29-digital-ocean.png">
-<h4 id="2-create-a-vps"><a class="header" href="#2-create-a-vps">2. Create a VPS</a></h4>
-<p>Digital Ocean calls their VPS option Droplets. To create a droplet click the green &quot;Create&quot; button at the top of the screen, the click &quot;Droplets.&quot;</p>
-<img src="prereqs/../img/30-new-droplet.png">
-<p>You can configure your server to your desired specifications, but for this guide, we'll choose the following options:</p>
-<ul>
-<li>Location: San Francisco</li>
-<li>Image: Debian 12</li>
-<li>Size: Basic</li>
-<li>CPU: Regular SSD @ $4/mo</li>
-</ul>
-<p>Create a strong password, then click &quot;Create Droplet.&quot;</p>
-<img src="prereqs/../img/31-create-droplet.png">
-<p>After a minute or two, your Droplet should be ready. The &quot;Resources&quot; tab should be visible, and just below, you'll see the IP address for your Droplet.</p>
-<img src="prereqs/../img/32-droplet.png">
-<h4 id="3-log-in"><a class="header" href="#3-log-in">3. Log In</a></h4>
-<p>On a Mac, open Spotlight search by pressing CMD + Space. Enter &quot;Terminal&quot; and select the application with the same name.</p>
-<p>Enter <code>ssh root@&lt;IP Address&gt;</code>, and when prompted, enter the password you created in the second step.</p>
-<img src="prereqs/../img/33-terminal.png">
-<h4 id="4-update-your-system"><a class="header" href="#4-update-your-system">4. Update your system</a></h4>
-<p>The last thing we need to do is to update our system. Enter <code>apt update &amp;&amp; apt -y dist-upgrade &amp;&amp; apt -y autoremove</code>.</p>
-<img src="prereqs/../img/33-update.png">
-<p>🎉 Congratulations, you're now ready to install Hush Line on Digital Ocean!</p>
-<h2 id="tor-only-install"><a class="header" href="#tor-only-install">Tor-Only Install</a></h2>
-<p>A Tor-only install is an excellent option for someone requiring anonymity and a high level of security, a journalist or human rights activist, for example.</p>
-<h3 id="1-run-the-installer"><a class="header" href="#1-run-the-installer">1. Run The Installer</a></h3>
-<p>After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
-<p><code>curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | bash</code></p>
-<img src="prereqs/../img/22-install-hushline.png">
-<p>Choose &quot;Tor-Only&quot; at the first prompt for the installation type.</p>
-<img src="prereqs/../img/23-tor-only.png">
-<h3 id="2-add-email-information"><a class="header" href="#2-add-email-information">2. Add Email Information</a></h3>
-<p>Hush Line will send an email with the encrypted Hush Line message to the account you configure here. Since we're using Gmail, we'll need the following information:</p>
-<ul>
-<li>SMTP email address</li>
-<li>SMTP address: <code>smtp.gmail.com</code></li>
-<li>App password (from prerequisites)</li>
-<li>Port: 465</li>
-<li>Public PGP key (from prerequisites)</li>
-</ul>
-<img src="prereqs/../img/23-key.png">
-<p>Once the installation completes, you'll see a message that looks like this:</p>
-<pre><code>✅ Installation complete!
-
-Hush Line is a product by Science &amp; Design.
-Learn more about us at https://scidsg.org.
-Have feedback? Send us an email at hushline@scidsg.org.
-
-• Hush Line is running
-http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
-</code></pre>
-<img src="prereqs/../img/24-finished.png">
-<h3 id="3-confirmation-email"><a class="header" href="#3-confirmation-email">3. Confirmation Email</a></h3>
-<p>You'll receive an encrypted email confirming your Hush Line's successful installation, which includes your address and a link to download Tor Browser.</p>
-<img src="prereqs/../img/28-confirmation.png">
-<p>🎉 Congratulations! You've successfully set up your own anonymous tip line! </p>
-<h2 id="tor--public-web-install"><a class="header" href="#tor--public-web-install">Tor + Public Web Install</a></h2>
-<p>If you're someone using Hush Line for non-life-threatening scenarios - educators running a Hush Line for student reporting, or an employer for anonymous employee reporting - you might want to deploy to a public URL - one that will work in browsers like Chrome, Firefox, or Safari. We'll exclusively use a VPS. </p>
-<h3 id="1-run-the-installer-1"><a class="header" href="#1-run-the-installer-1">1. Run The Installer</a></h3>
-<p>After logging in to and updating either your Raspberry Pi or VPS, enter the following command to start the installation process:</p>
-<p><code>curl --proto '=https' --tlsv1.2 -sSfL https://install.hushline.app | bash</code></p>
-<img src="prereqs/../img/34-install.png">
-<p>Choose &quot;Tor + Public Domain&quot; at the first prompt for the installation type.</p>
-<img src="prereqs/../img/35-public.png">
-<h3 id="2-add-information"><a class="header" href="#2-add-information">2. Add Information</a></h3>
-<p>Hush Line will email the encrypted Hush Line message to the account you configure here. You'll also need to purchase a domain name for your Hush Line. We'll need the following information:</p>
-<ul>
-<li>Domain name</li>
-<li>SMTP email address</li>
-<li>SMTP address: smtp.gmail.com</li>
-<li>App password (from prerequisites)</li>
-<li>Port: 465</li>
-<li>Public PGP key (from prerequisites)</li>
-</ul>
-<img src="prereqs/../img/36-key.png">
-<h3 id="3-configure-dns"><a class="header" href="#3-configure-dns">3. Configure DNS</a></h3>
-<p>Now, we need to point your domain name to your new Droplet. When the installer reaches the final step, it will display the exact information that you need to enter in your domain's DNS settings.</p>
-<img src="prereqs/../img/38-dns-settings.png">
-<p>Once the installation completes, you'll see a message that looks like this:</p>
-<pre><code>✅ Installation complete!
-
-Hush Line is a product by Science &amp; Design.
-Learn more about us at https://scidsg.org.
-Have feedback? Send us an email at hushline@scidsg.org.
-
-● Hush Line is running
-https://ourdemo.app
-http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
-</code></pre>
-<img src="prereqs/../img/39-https-complete-1.png">
-<h3 id="4-confirmation-email"><a class="header" href="#4-confirmation-email">4. Confirmation Email</a></h3>
-<p>You'll receive an encrypted email confirming your Hush Line's successful installation which, includes your addresses and a link to download Tor Browser.</p>
-<img src="prereqs/../img/42-confirmation.png">
-<p>🎉 Congratulations! You've successfully set up your own public anonymous tip line! </p>
-<h2 id="information-page"><a class="header" href="#information-page">Information Page</a></h2>
-<p>Hush Line deploys with an information page that provides the sender with additional information that might be helpful before submitting a message.</p>
-<img src="prereqs/../img/info.png" alt="Hush Line information page">
-<h3 id="when-to-use-hush-line"><a class="header" href="#when-to-use-hush-line">When to use Hush Line</a></h3>
-<p>We've leaned on the guidance from <a href="https://whistleblower.org">Whistleblower.org</a> and included some information from their resources for when to use a tip line. They include when you have evidence of wrongdoing, including:</p>
-<ul>
-<li>a violation of law, rule, or regulation,</li>
-<li>gross mismanagement,</li>
-<li>a gross waste of funds,</li>
-<li>abuse of authority, or</li>
-<li>a substantial danger to public health or safety.</li>
-</ul>
-<h3 id="hush-line-addresses"><a class="header" href="#hush-line-addresses">Hush Line addresses</a></h3>
-<p>If you deployed to a public domain, you'll find both your onion address and public website listed here. </p>
-<h3 id="share-it"><a class="header" href="#share-it">Share it!</a></h3>
-<p>The information on this page can be shared and the link to the page itself should be posted in multiple locations to make it easy to verify. You can:</p>
-<ul>
-<li>print the page and place it in common areas,</li>
-<li>copy the info and email it broadly,</li>
-<li>add the info link on your website and social channels, and</li>
-<li>add the link in your email signature.</li>
-</ul>
-<h3 id="verify-your-address"><a class="header" href="#verify-your-address">Verify your address!</a></h3>
-<p>Before you trust any link, whether an onion domain or a public website, you should verify its address. We encourage Hush Line operators to post their address in <em>at least three different locations</em> - social media, website, and email signature, for example - so individuals sending a message can verify they have the correct address before visiting and sharing potentially sensitive information.</p>
-<h2 id="sending-messages-1"><a class="header" href="#sending-messages-1">Sending Messages</a></h2>
-<p>For someone in your community to send you a Hush Line message, they just need to go to one of your addresses and enter their message.</p>
-<h3 id="1-tor"><a class="header" href="#1-tor">1. Tor</a></h3>
-<p>If you chose a Tor-only deployment, you should have seen an output like this after installation was completed:</p>
-<pre><code>✅ Installation complete!
-
-Hush Line is a product by Science &amp; Design.
-Learn more about us at https://scidsg.org.
-Have feedback? Send us an email at hushline@scidsg.org.
-
-• Hush Line is running
-http://5450rww63n5yvp5xzojb41rcx63g3pwaig63ezwp×5x75igzh×4w6qyd…onion
-</code></pre>
-<p>This information should also be in the confirmation email you received upon successfully setting up your Hush Line.</p>
-<p>Open up Tor Browser and paste your onion address in the address bar. Tor is a little slower than regular internet, so it'll take a few seconds before your site loads.</p>
-<img src="prereqs/../img/25-tor.png">
-<h3 id="2-public-websites"><a class="header" href="#2-public-websites">2. Public Websites</a></h3>
-<p>If you deployed Hush Line to a public website, you should have seen an output like this:</p>
-<pre><code>✅ Installation complete!
-
-Hush Line is a product by Science &amp; Design.
-Learn more about us at https://scidsg.org.
-Have feedback? Send us an email at hushline@scidsg.org.
-
-● Hush Line is running
-https://ourdemo.app
-http://jnaoywuss3dbgrmroeoqtsjymzf46in7lzh3bx6nwv3bzvwmhdvqytad.onion
-</code></pre>
-<p>In the example above, the first and last addresses can load in regular browsers like Chrome, Firefox, or Safari. The onion-only address needs Tor Browser to load.</p>
-<img src="prereqs/../img/40-public-domain.png">
-<h2 id="reading-messages-1"><a class="header" href="#reading-messages-1">Reading Messages</a></h2>
-<p>When someone sends you a Hush Line message, it'll get delivered to the email account you configured during installation. Messages will have the subject line &quot;🤫 New Hush Line Message Received.&quot;</p>
-<h3 id="gmail--mailvelope"><a class="header" href="#gmail--mailvelope">Gmail + Mailvelope</a></h3>
-<p>When you click on your Hush Line message you might be prompted to enter your Mailvelope password. Recall that this is the password we set up in our prerequisites.</p>
-<img src="prereqs/../img/28-password.png">
-<img src="prereqs/../img/28-decrypted-message.png">
-<p>🎉 Congratulations! You're ready to go! If you have any questions, please send questions to hushline@scidsg.org.</p>
+<p><a href="getting-started/index.html#option-1-proton">Option 1: Proton <em>(Recommended)</em></a><br>
+<a href="getting-started/index.html#option-2-mailvelope">Option 2: Mailvelope</a></p>
+<h3 id="option-1-proton"><a class="header" href="#option-1-proton">Option 1: Proton</a></h3>
+<h4 id="step-1-sign-up-for-hush-line--proton"><a class="header" href="#step-1-sign-up-for-hush-line--proton">Step 1: Sign up for Hush Line &amp; Proton</a></h4>
+<p>Go to hushline.app and proton.me and sign up for your accounts if you haven't already.</p>
+<p><img src="https://github.com/user-attachments/assets/ae83a9a5-9dfb-47cb-9b78-9868aee0c2b2" alt="step1" /></p>
+<h4 id="step-2-import-your-key"><a class="header" href="#step-2-import-your-key">Step 2: Import Your Key</a></h4>
+<p>In your Hush Line settings, navigate to the Email &amp; Encryption tab. You'll notice that email forwarding is disabled until you add an encryption key.</p>
+<p>In the <code>Message Encryption</code> section, you'll see a Proton key search input. To import your key, add the email address you just created.</p>
+<p><img src="https://github.com/user-attachments/assets/74df8729-1aea-4925-871b-fd829af3e79f" alt="step2" /></p>
+<h4 id="step-3-mail-forwarding"><a class="header" href="#step-3-mail-forwarding">Step 3: Mail Forwarding</a></h4>
+<p>Now that you've added your PGP key from Proton you can add a forwarding address. Add your Proton email address.</p>
+<p><img src="https://github.com/user-attachments/assets/32f2f7be-0414-4da4-97cf-2629790ff690" alt="step3" /></p>
+<h4 id="step-4-send-a-message"><a class="header" href="#step-4-send-a-message">Step 4: Send a Message</a></h4>
+<p>Click on <code>Profile</code> in the Hush Line global navigation. Enter a message into your form, and when you submit it, you'll see it encrypted in your browser before it sends - this ensures your message is end-to-end encrypted!</p>
+<p><img src="https://github.com/user-attachments/assets/b4af8be5-fd9f-4a36-a7c3-3817e6bf6f56" alt="step4" /></p>
+<h4 id="step-5-check-your-email"><a class="header" href="#step-5-check-your-email">Step 5: Check Your Email</a></h4>
+<p>Go back to your Proton account and, if necessary, refresh your Inbox. You should see an email from <code>notifications@hushline.app</code> appear. Click on it, and you'll see your automatically decrypted message! If you go back to Hush Line and click <code>Inbox</code>, you'll see the same message, but it'll be encrypted and unreadable since your key to decrypt the message only exists on Proton.</p>
+<p><img src="https://github.com/user-attachments/assets/0b1dfb8e-21a2-42a7-9018-c63c5fdf3c69" alt="step5" /></p>
+<p>🎉 Congratulations, you're ready to start receiving encrypted and anonymous Hush Line messages!</p>
+<br>
+<hr />
+<br>
+<h3 id="option-2-mailvelope"><a class="header" href="#option-2-mailvelope">Option 2: Mailvelope</a></h3>
+<h4 id="step-1-get-the-extension"><a class="header" href="#step-1-get-the-extension">Step 1: Get the Extension</a></h4>
+<p>To set up Mailvelope for Chrome or Firefox, follow the instructions found here: https://mailvelope.com/en/help</p>
+<h4 id="step-2-create-a-key"><a class="header" href="#step-2-create-a-key">Step 2: Create a key</a></h4>
+<p>In the Setup dashboard, click on the "Generate key" button. Add a name for your key, your email address, and a strong password. Before clicking "Generate," click on the "Advanced" button. In the Algorithm picklist, choose "ECC - Curve25519". This algorithm is more efficient than traditional RSA encryption while providing a similar level of security. Now, generate your key!</p>
+<p>Once your key is created, click on it from the dashboard, then select "Export" in the "Public" tab and "Copy to clipboard."</p>
+<p>Select the <code>Email &amp; Encryption</code> tab in your Hush Line settings, and paste your key into the Public PGP Key textarea.</p>
+<p><img src="https://github.com/user-attachments/assets/f151eeb2-c567-4733-b90a-2fded08f9a55" alt="step2" /></p>
+<h4 id="step-3-authorize-the-hush-line-domain"><a class="header" href="#step-3-authorize-the-hush-line-domain">Step 3: Authorize the Hush Line domain</a></h4>
+<p>With Hush Line open, click the Mailvelope icon and select "Authorize this domain." Click "Ok" when the dialog opens. You'll be able to see <code>tips.hushline.app</code> in the authorized domains list.</p>
+<p><img src="https://github.com/user-attachments/assets/dd5dadbb-5afe-4ac3-a4f2-126f289ce6dc" alt="step3" /></p>
+<h4 id="step-4-send-and-read-a-message"><a class="header" href="#step-4-send-and-read-a-message">Step 4: Send and read a message!</a></h4>
+<p>Let's send a test message! In the header, click "Profile." Enter some text and click "Send Message." If you haven't disabled JavaScript, you'll see it encrypted in the browser before it submits.</p>
+<p><img src="https://github.com/user-attachments/assets/6f4b6c60-a331-4405-a094-46596bea330b" alt="step4" /></p>
+<p>Go to "Inbox" to see the message in the app. You may have to enter the password you set when creating your key in Mailvelope.</p>
+<p><img src="https://github.com/user-attachments/assets/1cd81ba0-4c54-49e4-8352-2008436984fd" alt="step4_2" /></p>
+<p>🎉 Congratulations, you're ready to start receiving encrypted and anonymous Hush Line messages!</p>
 
                     </main>
 
