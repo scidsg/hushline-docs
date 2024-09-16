@@ -174,15 +174,18 @@ a,
 }
 
 #menu-bar {
-	padding: 1rem 0;
-	top: 0 !important;
-	position: sticky;
-	background-color: rgba(255, 255, 255, .8);
-	backdrop-filter: blur(1rem);
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw;
+    padding: 1rem 0;
+    top: 0 !important;
+    position: sticky;
+    background-color: rgba(255, 255, 255, .8);
+    backdrop-filter: blur(1rem);
     -webkit-backdrop-filter: blur(1rem);
-	height: 65px;
-	display: flex;
-	align-items: center;
+    height: 65px;
+    display: flex;
+    align-items: center;
 }
 
 #search-wrapper {
@@ -354,7 +357,7 @@ table th {
 	}
 
 	.content {
-  		padding: 5rem 0rem 1rem 0rem;
+  		padding: .5em 2em 1em 2em;
   	}
 
   	.menu-title {
