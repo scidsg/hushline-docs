@@ -140,7 +140,7 @@ main h1 {
 .content img {
 	border-radius: .5rem;
 	width: 100%;
-	margin: 0;
+	margin: .75em 0;
 }
 
 .menu-title {
