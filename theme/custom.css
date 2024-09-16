@@ -20,7 +20,38 @@
 
 html,
 body {
-    background-color: white;
+    background-color: #fbf3ff;
+}
+
+#searchbar {
+	font-size: .9125em;
+	padding-right: .5em;
+}
+
+.searchresults-header {
+	font-size: .8125em !important;
+	font-weight: normal;
+	font-family: 'Sans Bold', sans-serif;
+}
+
+/* input[type="search"]::-webkit-search-cancel-button {
+	transform: scale(1.25);
+} */
+
+ul#searchresults span.teaser {
+	font-size: .9125em !important;
+}
+
+mark {
+	background-color: #7D26C1;
+	color: white;
+	border-radius: .125em;
+	padding: .15em .25em;
+}
+
+mark a {
+	text-decoration-color: white;
+	text-decoration: underline;
 }
 
 body {
@@ -61,12 +92,29 @@ main h1 {
 
 .content {
 	overflow-y: initial;
-	padding: 5rem 2.5rem 1rem 0rem;
+	padding: 1.5rem 3rem;
+	background-color: white;
+	box-shadow: 0px 4px 12px -4px rgba(0, 0, 0, 0.15);
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 8px;
+	margin: 7rem auto 2rem auto;
+	max-width: 768px;
 }
 
-.content main {
-	margin-left: 10rem;
-	margin-right: inherit;
+.page-wrapper {
+	background-color: #fbf3ff;
+}
+
+#menu-bar {
+	padding: 0 !important;
+}
+
+#print-button {
+	display: none;
+}
+
+.sidebar .sidebar-scrollbox {
+	background-color: white;
 }
 
 .content img {
@@ -77,7 +125,7 @@ main h1 {
 
 .menu-title {
 	font-weight: inherit;
-	font-size: 1.75rem;
+	font-size: 1.125em;
 	text-align: left;
 	margin-left: 1.5rem;
 	color: #333;
@@ -96,8 +144,12 @@ a,
 	text-decoration: underline;
 }
 
-.page {
-	padding: 0 2rem;
+.sidebar .sidebar-resize-handle {
+	background-color: white;
+}
+
+.sidebar-resize-handle .sidebar-resize-indicator {
+	width: 2px;
 }
 
 #menu-bar {
@@ -107,6 +159,9 @@ a,
 	background-color: rgba(255, 255, 255, .8);
 	backdrop-filter: blur(1rem);
     -webkit-backdrop-filter: blur(1rem);
+	height: 65px;
+	display: flex;
+	align-items: center;
 }
 
 #search-wrapper {
@@ -212,6 +267,7 @@ ul#searchresults li {
 .chapter li a,
 :not(pre):not(a) > .hljs {
 	color: #333 !important;
+	text-decoration: underline;
 }
 
 #menu-bar.bordered {
@@ -223,9 +279,8 @@ strong {
 	font-family: 'Sans Bold', sans-serif;
 }
 
-.nav-chapters,
-.mobile-nav-chapters {
-	background-color: #fff !important;
+.nav-chapters, .mobile-nav-chapters {
+	background-color: #fbf3ff !important;
 }
 
 /* Force light theme */
