@@ -94,7 +94,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro/index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="threat-model/index.html"><strong aria-hidden="true">3.</strong> Threat Model</a></li><li class="chapter-item expanded "><a href="managed-service/index.html"><strong aria-hidden="true">4.</strong> Managed Service</a></li><li class="chapter-item expanded "><a href="personal-server/index.html"><strong aria-hidden="true">5.</strong> Personal Server</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro/index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/create-hush-line-account.html"><strong aria-hidden="true">2.1.</strong> Create a Hush Line Account</a></li><li class="chapter-item expanded "><a href="getting-started/set-up-message-encryption.html"><strong aria-hidden="true">2.2.</strong> Set up Message Encryption</a></li></ol></li><li class="chapter-item expanded "><a href="threat-model/index.html"><strong aria-hidden="true">3.</strong> Threat Model</a></li><li class="chapter-item expanded "><a href="managed-service/index.html"><strong aria-hidden="true">4.</strong> Managed Service</a></li><li class="chapter-item expanded "><a href="personal-server/index.html"><strong aria-hidden="true">5.</strong> Personal Server</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -185,42 +185,55 @@
 <p>If you need a confidential reporting system—lawyers, journalists, employers, educators, or more—you can create a free account, and when you add an encryption key, you can start receiving secure messages!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started-with-hush-line"><a class="header" href="#getting-started-with-hush-line">Getting Started with Hush Line</a></h1>
 <p>Hush Line is intended to be a background service for you - add your key, then forward your messages to your desired email address, and never have to worry about logging back into the Hush Line platform again. We recommend using <a href="https://proton.me">Proton Mail</a> since we're built on the same encryption technology - PGP or <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">Pretty Good Privacy</a>. PGP is an open protocol providing strong encryption that's been around for decades and is trusted by governments and activists alike. When you use Proton Mail as described below, your anonymous Hush Line messages will be automatically delivered to and decrypted in your Inbox - no logging back into the Hush Line platform necessary. And since your messages are encrypted with a key to which only you have access, they are unreadable to anyone but you 💪.</p>
+<img src="getting-started/../img/family.png">
+<div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-hush-line-account"><a class="header" href="#create-a-hush-line-account">Create a Hush Line Account</a></h1>
+<p>Thank you for signing up for a Hush Line account! Together, we'll help guide whistleblowers to the most successful outcomes: anonymity, repairations, and change. Hush Line accounts are intended for individuals and organizations who need a safe tip line solution for their employees, sources, and communities.</p>
+<p>👉 To create an account head to <a href="https://tips.hushline.app/register">https://tips.hushline.app/register</a>.</p>
+<p>We require no personally identifiable infornation (PII) to create an account, including email address.</p>
+<h2 id="best-practices-for-your-password"><a class="header" href="#best-practices-for-your-password">Best Practices For Your Password</a></h2>
+<ul>
+<li>Use a "passphrase" for your password. For example, instead of using a password like <code>3p3mSq7T%Hr2dZ^rDTuW</code>, use random words you can easily remember mixed with special characters and a number like <code>Freestyle-Liqueur-Survival2</code>.</li>
+<li>Do not reuse passwords from other sites.</li>
+<li>Consider using a password manager to store your account credentials.</li>
+</ul>
+<img src="getting-started/../img/register.png">
+<div style="break-before: page; page-break-before: always;"></div><h1 id="set-up-message-encryption"><a class="header" href="#set-up-message-encryption">Set Up Message Encryption</a></h1>
 <h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
-<p><a href="getting-started/index.html#option-1-proton">Option 1: Proton <em>(Recommended)</em></a><br>
-<a href="getting-started/index.html#option-2-mailvelope">Option 2: Mailvelope</a></p>
-<h3 id="option-1-proton"><a class="header" href="#option-1-proton">Option 1: Proton</a></h3>
-<h4 id="step-1-sign-up-for-hush-line--proton"><a class="header" href="#step-1-sign-up-for-hush-line--proton">Step 1: Sign up for Hush Line &amp; Proton</a></h4>
+<p><a href="getting-started/set-up-message-encryption.html#option-1-proton">Option 1: Proton <em>(Recommended)</em></a><br>
+<a href="getting-started/set-up-message-encryption.html#option-2-mailvelope">Option 2: Mailvelope</a></p>
+<h2 id="option-1-proton"><a class="header" href="#option-1-proton">Option 1: Proton</a></h2>
+<h3 id="step-1-sign-up-for-hush-line--proton"><a class="header" href="#step-1-sign-up-for-hush-line--proton">Step 1: Sign up for Hush Line &amp; Proton</a></h3>
 <p>Go to hushline.app and proton.me and sign up for your accounts if you haven't already.</p>
 <p><img src="https://github.com/user-attachments/assets/ae83a9a5-9dfb-47cb-9b78-9868aee0c2b2" alt="step1" /></p>
-<h4 id="step-2-import-your-key"><a class="header" href="#step-2-import-your-key">Step 2: Import Your Key</a></h4>
+<h3 id="step-2-import-your-key"><a class="header" href="#step-2-import-your-key">Step 2: Import Your Key</a></h3>
 <p>In your Hush Line settings, navigate to the Email &amp; Encryption tab. You'll notice that email forwarding is disabled until you add an encryption key.</p>
 <p>In the <code>Message Encryption</code> section, you'll see a Proton key search input. To import your key, add the email address you just created.</p>
 <p><img src="https://github.com/user-attachments/assets/74df8729-1aea-4925-871b-fd829af3e79f" alt="step2" /></p>
-<h4 id="step-3-mail-forwarding"><a class="header" href="#step-3-mail-forwarding">Step 3: Mail Forwarding</a></h4>
+<h3 id="step-3-mail-forwarding"><a class="header" href="#step-3-mail-forwarding">Step 3: Mail Forwarding</a></h3>
 <p>Now that you've added your PGP key from Proton you can add a forwarding address. Add your Proton email address.</p>
 <p><img src="https://github.com/user-attachments/assets/32f2f7be-0414-4da4-97cf-2629790ff690" alt="step3" /></p>
-<h4 id="step-4-send-a-message"><a class="header" href="#step-4-send-a-message">Step 4: Send a Message</a></h4>
+<h3 id="step-4-send-a-message"><a class="header" href="#step-4-send-a-message">Step 4: Send a Message</a></h3>
 <p>Click on <code>Profile</code> in the Hush Line global navigation. Enter a message into your form, and when you submit it, you'll see it encrypted in your browser before it sends - this ensures your message is end-to-end encrypted!</p>
 <p><img src="https://github.com/user-attachments/assets/b4af8be5-fd9f-4a36-a7c3-3817e6bf6f56" alt="step4" /></p>
-<h4 id="step-5-check-your-email"><a class="header" href="#step-5-check-your-email">Step 5: Check Your Email</a></h4>
+<h3 id="step-5-check-your-email"><a class="header" href="#step-5-check-your-email">Step 5: Check Your Email</a></h3>
 <p>Go back to your Proton account and, if necessary, refresh your Inbox. You should see an email from <code>notifications@hushline.app</code> appear. Click on it, and you'll see your automatically decrypted message! If you go back to Hush Line and click <code>Inbox</code>, you'll see the same message, but it'll be encrypted and unreadable since your key to decrypt the message only exists on Proton.</p>
 <p><img src="https://github.com/user-attachments/assets/0b1dfb8e-21a2-42a7-9018-c63c5fdf3c69" alt="step5" /></p>
 <p>🎉 Congratulations, you're ready to start receiving encrypted and anonymous Hush Line messages!</p>
 <br>
 <hr />
 <br>
-<h3 id="option-2-mailvelope"><a class="header" href="#option-2-mailvelope">Option 2: Mailvelope</a></h3>
-<h4 id="step-1-get-the-extension"><a class="header" href="#step-1-get-the-extension">Step 1: Get the Extension</a></h4>
+<h2 id="option-2-mailvelope"><a class="header" href="#option-2-mailvelope">Option 2: Mailvelope</a></h2>
+<h3 id="step-1-get-the-extension"><a class="header" href="#step-1-get-the-extension">Step 1: Get the Extension</a></h3>
 <p>To set up Mailvelope for Chrome or Firefox, follow the instructions found here: https://mailvelope.com/en/help</p>
-<h4 id="step-2-create-a-key"><a class="header" href="#step-2-create-a-key">Step 2: Create a key</a></h4>
+<h3 id="step-2-create-a-key"><a class="header" href="#step-2-create-a-key">Step 2: Create a key</a></h3>
 <p>In the Setup dashboard, click on the "Generate key" button. Add a name for your key, your email address, and a strong password. Before clicking "Generate," click on the "Advanced" button. In the Algorithm picklist, choose "ECC - Curve25519". This algorithm is more efficient than traditional RSA encryption while providing a similar level of security. Now, generate your key!</p>
 <p>Once your key is created, click on it from the dashboard, then select "Export" in the "Public" tab and "Copy to clipboard."</p>
 <p>Select the <code>Email &amp; Encryption</code> tab in your Hush Line settings, and paste your key into the Public PGP Key textarea.</p>
 <p><img src="https://github.com/user-attachments/assets/f151eeb2-c567-4733-b90a-2fded08f9a55" alt="step2" /></p>
-<h4 id="step-3-authorize-the-hush-line-domain"><a class="header" href="#step-3-authorize-the-hush-line-domain">Step 3: Authorize the Hush Line domain</a></h4>
+<h3 id="step-3-authorize-the-hush-line-domain"><a class="header" href="#step-3-authorize-the-hush-line-domain">Step 3: Authorize the Hush Line domain</a></h3>
 <p>With Hush Line open, click the Mailvelope icon and select "Authorize this domain." Click "Ok" when the dialog opens. You'll be able to see <code>tips.hushline.app</code> in the authorized domains list.</p>
 <p><img src="https://github.com/user-attachments/assets/dd5dadbb-5afe-4ac3-a4f2-126f289ce6dc" alt="step3" /></p>
-<h4 id="step-4-send-and-read-a-message"><a class="header" href="#step-4-send-and-read-a-message">Step 4: Send and read a message!</a></h4>
+<h3 id="step-4-send-and-read-a-message"><a class="header" href="#step-4-send-and-read-a-message">Step 4: Send and read a message!</a></h3>
 <p>Let's send a test message! In the header, click "Profile." Enter some text and click "Send Message." If you haven't disabled JavaScript, you'll see it encrypted in the browser before it submits.</p>
 <p><img src="https://github.com/user-attachments/assets/6f4b6c60-a331-4405-a094-46596bea330b" alt="step4" /></p>
 <p>Go to "Inbox" to see the message in the app. You may have to enter the password you set when creating your key in Mailvelope.</p>
