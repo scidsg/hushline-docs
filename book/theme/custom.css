@@ -205,11 +205,6 @@ a,
 	margin-top: 1.5rem;
 }
 
-.searchbar-outer,
-.searchresults-outer {
-	margin-left: 0;
-}
-
 .searchbar-outer {
 	max-width: 360px;
 }
