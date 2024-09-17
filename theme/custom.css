@@ -115,9 +115,9 @@ main h1 {
 	padding: 1.5rem 3rem;
 	background-color: white;
 	box-shadow: 0px 4px 12px -4px rgba(0, 0, 0, 0.15);
-	border: 1px solid rgba(0,0,0,0.1);
+	border: 1px solid rgba(0,0,0,0.15);
 	border-radius: 8px;
-	margin: 7rem auto 2rem auto;
+	margin: 2rem auto 2rem auto;
 	max-width: 768px;
 }
 
@@ -176,7 +176,6 @@ a,
 #menu-bar {
     left: 0 !important;
     right: 0 !important;
-    width: 100vw;
     padding: 1rem 0;
     top: 0 !important;
     position: sticky;
@@ -186,16 +185,29 @@ a,
     height: 65px;
     display: flex;
     align-items: center;
+	margin: 6rem auto 0 auto;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 50vw;
+	box-shadow: 0 3px 12px -6px rgba(125,38,193,.5);
+	width: fit-content;
 }
 
 #search-wrapper {
-	margin-top: 6rem;
+	margin: 1rem auto 0 auto;
+}
+
+.searchresults-outer {
+	background-color: white;
+	padding: 1em 1.5em;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: .5em;
+	box-shadow: 0px 4px 12px -4px rgba(0, 0, 0, 0.15);
+	margin-top: 1.5rem;
 }
 
 .searchbar-outer,
 .searchresults-outer {
-	margin-left: 10rem;
-	padding-left: .25rem;
+	margin-left: 0;
 }
 
 .searchbar-outer {
@@ -216,7 +228,7 @@ a,
 
 .searchresults-header {
 	padding-left: 0;
-	padding-top: 3rem;
+	padding-top: 1rem;
 	font-size: .75em;
 	color: #444;
 }
