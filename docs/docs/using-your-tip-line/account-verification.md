@@ -1,7 +1,7 @@
 ---
 id: account-verification
 title: Account Verification
-sidebar_position: 5
+sidebar_position: 8
 ---
 
 ## Step 1. Add a Display Name
@@ -20,6 +20,6 @@ Add your LinkedIn, website, or other professional profiles in your bio’s extra
 
 When ready, contact us to begin verification. Businesses should have authorized officers available.
 
-[Verify Your Account](https://tips.hushline.app/to/hushline-verification)
+[Verify Your Account](https://tips.hushline.app/to/admin)
 
 ![Message verification](https://hushline.app/assets/img/docs/message-verify.webp)

@@ -8,10 +8,14 @@ sidebar_position: 4
 
 Opt into the public user directory in **Settings > Profile > Public User Directory** so visitors can find your account.
 
-![User Directory wireframe](https://hushline.app/assets/img/docs/directory.webp)
+![Settings](./settings-directory.png)
 
 ## Step 2. Share Your Address Widely
 
-Add a link to your tip line on your website, email signature, and social media.
+Add a link to your tip line on your website, email signature, and social media. To find your address go to your profile, and copy the URL in the browser's address bar:
 
-![Email signature example](https://hushline.app/assets/img/docs/email-signature.webp)
+![Hush Line profile address](./share.png)
+
+### Examples
+
+![Hush Line profile address](./share-examples.png)
