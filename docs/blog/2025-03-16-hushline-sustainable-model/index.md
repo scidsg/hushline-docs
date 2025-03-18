@@ -41,15 +41,19 @@ This is our opportunity with Hush Line. Anonymous reporting is a cross-industry 
 
 #### SaaS
 
-If you visit hushline.app to create an account, you're using our software as a service (SaaS) platform. A free tier offers most people everything they need for a secure, anonymous tip line. We have a low-cost paid tier or licensed managed single-tenant instances for businesses or professionals who require more features. For high-risk tip line owners who do not want to trust any third-party services, we offer a hardware device that runs Hush Line locally as an Onion Service. For developers, hobbyists, or businesses with technical proficiency, anyone can freely install and use all of Hush Line's features.
+If you visit `hushline.app` to create an account, you're using our software as a service (SaaS) platform. A free tier offers most people everything they need for a secure, anonymous tip line. We have a low-cost paid tier or licensed managed single-tenant instances for businesses or professionals who require more features. For developers, hobbyists, or businesses with technical proficiency, anyone can freely install and use all of Hush Line's features.
 
 #### PaaS
 
-Some organizations may want their own independent app and infrastructure instead of using `hushline.app`. In this case, we offer managed single-tenant instances that are perfect for all sizes of business.
+Some organizations may want their own independent app and infrastructure instead of using `hushline.app`. In this case, we offer managed single-tenant instances that are perfect for all sizes of business. We can rapidly deploy to the same infrastructure that the core Hush Line platform uses, or tailor any deployment to the needs of the organization. Costs are similar to ours, but end up being cheaper since only the main service uses a staging infrastructure.
+
+![Single Tenant Infrastructure](./architecture.png)
 
 ### Hardware
 
-Higher security and anonymity are critical for their work for a smaller audience—human rights defenders, investigative journalists, or high-profile lawyers. We offer devices for $500 that are fully self-contained, Tor-only Hush Line instances. If your threat model is one in which you cannot trust any third-party infrastructure, this is your best option.
+ For high-risk tip line owners who do not want to trust any third-party services, we offer a hardware device that runs Hush Line locally as an Onion Service; higher security and anonymity are critical for their work for a smaller audience — human rights defenders, investigative journalists, or high-profile lawyers. We offer devices for $500 that are fully self-contained, Tor-only Hush Line instances. If your threat model is one in which you cannot trust any third-party infrastructure, this is your best option.
+
+![Personal Server](./personal-server.png)
 
 ## The Opportunity
 
