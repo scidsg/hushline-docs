@@ -53,9 +53,13 @@ We already have received reports that users have received helpful messages from 
 
 Fun fact: I started contributing to OnionShare because I found Micah Lee's Signal contact on his Twitter bio and reached out, and we've continued collaborating on it for years. With Hush Line, the person sending a message doesn't need to be a user of the platform or download an app, as in the case with Signal.
 
+[Paige St. John](https://tips.hushline.app/to/Paige_St_John), a Pulitzer-awarded investigative journalist at the Los Angeles Times, adds a link to her Hush Line account on her LinkedIn profile:
+
+![Paige St. John](./paige.png)
+
 [Joshua Byrd](https://tips.hushline.app/to/phocks), a journalist at ABC News, adds a link to his Hush Line account on his Mastodon profile:
 
-![Mastodon](./mastodon.png)
+![Joshua Byrd](./josh.png)
 
 ### Add Yourself to the User Directory
 
