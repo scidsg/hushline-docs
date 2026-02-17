@@ -10,14 +10,12 @@ sidebar_position: 7
 
 Customize automatic responses when a tip is received (e.g., “✅ Accepted” or “⛔️ Declined”) to include additional contact details.
 
-![Custom replies example](./message-statuses.webp)
+![Custom replies example](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/artvandelay/auth-artvandelay-settings-replies-desktop-light-fold.png?raw=true)
 
 ## Step 2. A Good Accept Message
 
 An example of a good acceptance message includes clear next steps for your source
 to contact you. We recommend using [Signal](https://signal.org) for two-way communication.
-
-![Accepted Message Example](./accepted-message.webp)
 
 ```
 Thank you for contacting me! I’d like to speak directly to you at your earliest
@@ -32,4 +30,4 @@ When someone submits a message to you they'll receive a unique URL only known to
 them. When you update the status of a message in your inbox, the message on this
 page will update.
 
-![Status dropdown options](./message-status.webp)
+![Status dropdown options](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/guest/guest-message-status-desktop-light-fold.png?raw=true)

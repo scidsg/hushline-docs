@@ -4,7 +4,7 @@ title: The Hush Line Personal Server
 sidebar_position: 9
 ---
 
-![Personal Server](./cover.webp)
+![Personal Server](https://hushline.app/assets/img/social/social.png)
 
 ## Your Personal Tip Line Platform
 
@@ -17,7 +17,6 @@ Devices are [available for purchase now](https://shop.scidsg.org/products/hush-l
 Your Personal Server comes in a box sealed with a unique code. The device also has two tamper-evident, uniquely numbered tags that seal the lid to the case. When you open the box, you'll see a card with all three numbers printed on it. Confirm they match. If they don't, contact the [Hush Line Admin account](https://tips.hushline.app/to/admin) immediately.
 
 ![Personal Server  Securitry Tags](./tag-locations.png)
-
 
 ## Prerequisites
 

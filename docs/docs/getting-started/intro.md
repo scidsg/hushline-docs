@@ -16,7 +16,7 @@ First, create your account. When complete you'll redirect to the login page.
 
 [👉 Register](https://tips.hushline.app/register)
 
-![Register and Login](./register.png)
+![Register and Login](https://raw.githubusercontent.com/scidsg/hushline-screenshots/refs/heads/main/releases/latest/guest/guest-register-desktop-light-fold.png)
 
 ---
 

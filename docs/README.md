@@ -1,41 +1,50 @@
-# Website
+# Hush Line Docs Site
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This site is built with [Docusaurus](https://docusaurus.io/) and lives in this `docs/` directory.
 
-### Installation
+## Prerequisites
 
-```
-$ yarn
-```
+- Node.js `>=18`
+- npm
 
-### Local Development
+## Install
 
-```
-$ yarn start
-```
+Run from the `docs/` directory:
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
+```bash
+npm install
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Local Development (Hot Reload)
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
+```bash
+npm run start -- --host 127.0.0.1 --port 3001
 ```
 
-Not using SSH:
+Open:
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
+- `http://127.0.0.1:3001/library/`
+
+Notes:
+
+- The site base URL is `/library/`, so use `/library/` in local URLs.
+- If port `3000` is in use, keep using `3001` (or another free port).
+
+## Production Build + Local Serve
+
+Use this when you want to verify the exact generated output:
+
+```bash
+npm run build
+npm run serve -- --host 127.0.0.1 --port 3001
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Open:
+
+- `http://127.0.0.1:3001/library/`
+
+## Common Troubleshooting
+
+- `npm run start` fails at repo root: run commands from `docs/`, not the repository root.
+- `Something is already running on port 3000`: use `--port 3001` or stop the process on `3000`.
+- New blog image/content not showing: rebuild with `npm run build`, then run `npm run serve`, and hard refresh your browser.

@@ -55,7 +55,7 @@ Next, create a user. Use a different, strong password from your Disk Password. F
 
 The initial installation process typically takes around 15 to 20 minutes. When complete, click `Reboot System` and remove the USB drive.
 
-After rebooting, you'll be prompted to enter your disk password. Next, you'll see another installer screen. This time, click `QubesOS` on the first screen. The next screen gives options for configuring Qubes. The most important option here is to check `Enable system and template updates over the Tor anonymity network using Whonix`. 
+After rebooting, you'll be prompted to enter your disk password. Next, you'll see another installer screen. This time, click `QubesOS` on the first screen. The next screen gives options for configuring Qubes. The most important option here is to check `Enable system and template updates over the Tor anonymity network using Whonix`.
 
 ![Qubes configuration](./config.png)
 

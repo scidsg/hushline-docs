@@ -13,5 +13,3 @@ The easiest way to use Hush Line is in conjunction with Proton Mail. When you se
 ## Step 2. Reading Messages In-App Using Mailvelope
 
 If you want to read messages directly in the Hush Line app, you should have followed [Option 2.2 in the Account Setup section of Getting Started](https://hushline.app/library/docs/getting-started/account-setup#option-22-use-with-mailvelope). When you click "Go to Message" on a tip in your inbox, you should see the red Mailvelope seal. Each field is encrypted individually, so you should see multiple seals. When you click one of the seals you'll be prompted to enter the password you created when setting up your key.
-
-![Hush Line Message with Mailvelope](./mailvelope.webp)
