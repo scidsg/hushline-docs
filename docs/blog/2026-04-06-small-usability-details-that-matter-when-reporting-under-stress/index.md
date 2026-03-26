@@ -28,6 +28,14 @@ Dark mode is easy to dismiss as a preference feature. In higher-stress situation
 
 For people reading disclosures at night or in low-light environments, a bright interface can be uncomfortable, visually fatiguing, and harder to use discreetly. A darker presentation lowers visual intensity and can make it easier to review sensitive material without the screen feeling like a spotlight.
 
+<img
+  src={require('./img/profile-mobile-dark.png').default}
+  alt="Hush Line recipient profile shown in dark mode on a mobile screen."
+  width="320"
+/>
+
+<p><em>Dark mode helps keep the reading experience calmer and easier to manage on a phone.</em></p>
+
 That matters for:
 
 - organizers checking reports after long days
@@ -46,6 +54,14 @@ Hush Line's mobile-friendly flow matters because recipients are not always sitti
 - review the inbox from a small screen
 - identify whether a disclosure is urgent
 - change a message status so internal handling stays organized
+
+<img
+  src={require('./img/inbox-mobile-dark.png').default}
+  alt="Hush Line inbox shown in dark mode on a mobile screen."
+  width="320"
+/>
+
+<p><em>A mobile inbox view matters because sensitive triage work often starts away from a desk.</em></p>
 
 That is a very different need from a polished desktop-only experience designed for leisurely reading.
 
