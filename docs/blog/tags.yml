@@ -7,3 +7,13 @@ signal:
   label: Signal
   permalink: /signal
   description: Signal articles
+
+whistleblowing:
+  label: Whistleblowing
+  permalink: /whistleblowing
+  description: Whistleblowing articles
+
+qubes:
+  label: Qubes OS
+  permalink: /qubes
+  description: Qubes OS articles
