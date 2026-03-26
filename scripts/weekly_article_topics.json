@@ -1,0 +1,199 @@
+[
+  {
+    "id": "journalists-verified-directory",
+    "slug": "why-verified-tip-lines-matter-for-newsrooms",
+    "title_seed": "Why Verified Tip Lines Matter for Newsrooms",
+    "feature_key": "directory-verification",
+    "core_user_key": "journalists-newsrooms",
+    "core_user_label": "journalists and newsrooms",
+    "scenario": "A local newsroom wants sources to find the right public tip line without guessing which profile is legitimate.",
+    "feature_focus": [
+      "user directory",
+      "verified accounts",
+      "shareable profile links"
+    ],
+    "prompt_angle": "Explain how directory discovery and visible verification reduce first-contact trust problems for sources and reporters.",
+    "supporting_docs": [
+      "docs/docs/getting-started/share-your-tip-line.md",
+      "docs/docs/getting-started/account-setup.md",
+      "docs/docs/using-your-tip-line/account-verification.md"
+    ]
+  },
+  {
+    "id": "law-firms-inbox-statuses",
+    "slug": "how-law-firms-can-handle-sensitive-intake-without-losing-track",
+    "title_seed": "How Law Firms Can Handle Sensitive Intake Without Losing Track",
+    "feature_key": "inbox-message-statuses",
+    "core_user_key": "lawyers-law-offices",
+    "core_user_label": "lawyers and law offices",
+    "scenario": "A small law office needs a secure intake workflow for sensitive outreach that may arrive at odd hours and require careful triage.",
+    "feature_focus": [
+      "inbox",
+      "message statuses",
+      "one-way replies"
+    ],
+    "prompt_angle": "Show how inbox organization and message statuses support real legal intake work without forcing a chat-style workflow.",
+    "supporting_docs": [
+      "docs/docs/using-your-tip-line/inbox.md",
+      "docs/docs/using-your-tip-line/message-statuses.md",
+      "docs/docs/using-your-tip-line/message-replies.md"
+    ]
+  },
+  {
+    "id": "boards-guidance-branding",
+    "slug": "what-boards-and-ethics-offices-should-put-on-a-tip-line-before-launch",
+    "title_seed": "What Boards and Ethics Offices Should Put on a Tip Line Before Launch",
+    "feature_key": "guidance-branding",
+    "core_user_key": "employers-boards",
+    "core_user_label": "employers and boards",
+    "scenario": "A board or ethics office wants a public reporting channel that sets expectations clearly before a whistleblower types the first message.",
+    "feature_focus": [
+      "user guidance",
+      "profile setup",
+      "shareable tip line"
+    ],
+    "prompt_angle": "Center the practical importance of clear recipient guidance and profile setup before a public launch.",
+    "supporting_docs": [
+      "docs/docs/getting-started/account-setup.md",
+      "docs/docs/getting-started/share-your-tip-line.md",
+      "docs/docs/getting-started/new-user-onboarding.md"
+    ]
+  },
+  {
+    "id": "educators-aliases",
+    "slug": "why-schools-and-universities-need-separate-reporting-addresses",
+    "title_seed": "Why Schools and Universities Need Separate Reporting Addresses",
+    "feature_key": "aliases",
+    "core_user_key": "educators-administrators",
+    "core_user_label": "educators and administrators",
+    "scenario": "A university needs separate public intake paths for student safety concerns, Title IX-style reporting, and financial misconduct.",
+    "feature_focus": [
+      "aliases",
+      "profile setup",
+      "directory visibility"
+    ],
+    "prompt_angle": "Explain how aliases create clearer reporting lanes without forcing people to learn a complicated intake system.",
+    "supporting_docs": [
+      "docs/docs/getting-started/account-setup.md",
+      "docs/docs/getting-started/share-your-tip-line.md",
+      "docs/docs/getting-started/new-user-onboarding.md"
+    ]
+  },
+  {
+    "id": "activists-dark-mode-mobile",
+    "slug": "small-usability-details-that-matter-when-reporting-under-stress",
+    "title_seed": "Small Usability Details That Matter When Reporting Under Stress",
+    "feature_key": "dark-mode-mobile-usability",
+    "core_user_key": "organizers-activists",
+    "core_user_label": "organizers and activists",
+    "scenario": "An organizer is checking sensitive disclosures from a phone in low-light or high-stress environments where comfort and readability matter more than teams admit.",
+    "feature_focus": [
+      "dark mode",
+      "mobile inbox",
+      "low-friction account workflow"
+    ],
+    "prompt_angle": "Frame dark mode and mobile usability as operational details that affect whether high-stress users stick with a secure workflow.",
+    "supporting_docs": [
+      "docs/docs/getting-started/secure-your-account.md",
+      "docs/docs/using-your-tip-line/dark-mode.md",
+      "docs/docs/using-your-tip-line/inbox.md"
+    ]
+  },
+  {
+    "id": "developers-email-validation",
+    "slug": "how-security-teams-can-investigate-suspicious-email-with-better-context",
+    "title_seed": "How Security Teams Can Investigate Suspicious Email With Better Context",
+    "feature_key": "email-header-validation",
+    "core_user_key": "software-developers-bug-bounty",
+    "core_user_label": "software developers and bug bounty teams",
+    "scenario": "A security or bug bounty team receives suspicious forwarded material and needs a better first pass before escalating internally.",
+    "feature_focus": [
+      "email header validation",
+      "tools tab",
+      "message triage"
+    ],
+    "prompt_angle": "Connect Hush Line's email-validation tool to real bug bounty or incident-response intake work.",
+    "supporting_docs": [
+      "docs/docs/using-your-tip-line/tools/email-validation.md",
+      "docs/docs/using-your-tip-line/inbox.md",
+      "docs/docs/using-your-tip-line/message-statuses.md"
+    ]
+  },
+  {
+    "id": "journalists-vision-assistant",
+    "slug": "when-ocr-helps-reporters-handle-documents-faster",
+    "title_seed": "When OCR Helps Reporters Handle Documents Faster",
+    "feature_key": "vision-assistant",
+    "core_user_key": "journalists-newsrooms",
+    "core_user_label": "journalists and newsrooms",
+    "scenario": "A reporter receives photographed or scanned material and needs quick OCR to decide whether a disclosure is worth deeper follow-up.",
+    "feature_focus": [
+      "vision assistant",
+      "tools tab",
+      "inbox workflow"
+    ],
+    "prompt_angle": "Explain how OCR fits into the first-pass workflow for investigative reporting rather than treating it as a generic AI feature.",
+    "supporting_docs": [
+      "docs/docs/using-your-tip-line/tools/vision-assistant.md",
+      "docs/docs/using-your-tip-line/inbox.md"
+    ]
+  },
+  {
+    "id": "lawyers-data-export",
+    "slug": "why-data-export-matters-for-long-running-cases",
+    "title_seed": "Why Data Export Matters for Long-Running Cases",
+    "feature_key": "data-export",
+    "core_user_key": "lawyers-law-offices",
+    "core_user_label": "lawyers and law offices",
+    "scenario": "A legal team needs to preserve its own operational records and keep disclosures portable as matters stretch over months or years.",
+    "feature_focus": [
+      "data download",
+      "account management",
+      "long-term case handling"
+    ],
+    "prompt_angle": "Center continuity, portability, and recordkeeping instead of abstract privacy language.",
+    "supporting_docs": [
+      "docs/docs/using-your-tip-line/data-download.md",
+      "docs/docs/getting-started/secure-your-account.md"
+    ]
+  },
+  {
+    "id": "admins-proton-pgp",
+    "slug": "how-recipients-can-get-encryption-working-faster-with-proton-key-lookup",
+    "title_seed": "How Recipients Can Get Encryption Working Faster With Proton Key Lookup",
+    "feature_key": "proton-key-lookup",
+    "core_user_key": "journalists-lawyers-admins",
+    "core_user_label": "journalists, lawyers, and administrators setting up recipient accounts",
+    "scenario": "A new recipient wants to get a secure intake page live quickly without fumbling through manual key setup on day one.",
+    "feature_focus": [
+      "PGP setup",
+      "Proton key lookup",
+      "new user onboarding"
+    ],
+    "prompt_angle": "Show how faster encryption setup reduces launch friction for real recipients who still need strong defaults.",
+    "supporting_docs": [
+      "docs/docs/getting-started/new-user-onboarding.md",
+      "docs/docs/getting-started/secure-your-account.md",
+      "docs/docs/getting-started/account-setup.md"
+    ]
+  },
+  {
+    "id": "personal-server-high-risk",
+    "slug": "who-should-run-a-personal-server-tip-line",
+    "title_seed": "Who Should Run a Personal Server Tip Line",
+    "feature_key": "personal-server",
+    "core_user_key": "high-risk-independent-recipients",
+    "core_user_label": "high-risk independent recipients",
+    "scenario": "An independent journalist, lawyer, or organizer wants more direct control over their reporting system than a shared hosted service provides.",
+    "feature_focus": [
+      "personal server",
+      "self-hosting",
+      "high-risk deployment choices"
+    ],
+    "prompt_angle": "Explain who the personal server path is for, what tradeoffs it introduces, and when that extra control is worth it.",
+    "supporting_docs": [
+      "docs/docs/personal-server/the-device.md",
+      "docs/docs/personal-server/personal-server-specs.md"
+    ]
+  }
+]
