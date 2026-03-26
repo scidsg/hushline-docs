@@ -39,6 +39,7 @@ If you are new to this repo, read in this order:
 | `docs/docusaurus.config.js` | Global site config, navbar/footer, base URL, metadata |
 | `docs/sidebars.js` | Docs sidebar generation/configuration |
 | `docs/package.json` | Local scripts and dependency versions |
+| `scripts/` | Repo automation helpers and topic-selection logic |
 
 ## Local Commands
 
@@ -85,6 +86,7 @@ This repo may also contain unrelated in-progress local changes to doc pages or s
 | Change navbar/footer/metadata | `docs/docusaurus.config.js` |
 | Change sidebar behavior | `docs/sidebars.js` |
 | Debug local startup | `docs/README.md`, `docs/package.json` |
+| Weekly article automation | `docs/AGENT_WEEKLY_ARTICLE_RUNNER.md`, `scripts/agent_weekly_article_runner.sh`, `scripts/weekly_article_topics.json` |
 
 ## Validation
 
