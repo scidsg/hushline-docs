@@ -7,6 +7,7 @@ tags: [hushline]
 agent_topic_id: activists-dark-mode-mobile
 agent_feature_key: dark-mode-mobile-usability
 agent_core_user_key: organizers-activists
+agent_audience_key: whistleblowers
 ---
 
 When people evaluate secure reporting tools, they usually talk about encryption, anonymity, or whether a service supports Tor. Those things matter. But organizers and activists often run into a different problem first: if the interface is uncomfortable, confusing, or hard to use on a phone, people stop using it when the pressure is on.
