@@ -5,8 +5,12 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from 'prism-react-renderer';
+import { getBabelOptions } from '@docusaurus/babel';
+import { createRequire } from 'node:module';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+const require = createRequire(import.meta.url);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -27,6 +31,17 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+
+  // Avoid filesystem cache reads/writes in this iCloud-backed workspace.
+  webpack: {
+    jsLoader: (isServer) => ({
+      loader: require.resolve('babel-loader'),
+      options: {
+        ...getBabelOptions({ isServer }),
+        cacheDirectory: false,
+      },
+    }),
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -50,6 +65,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarCount: 'ALL',
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,

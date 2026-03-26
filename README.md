@@ -65,7 +65,6 @@ npm run serve -- --host 127.0.0.1 --port 3001
 
 - Weekly article runner: [`docs/AGENT_WEEKLY_ARTICLE_RUNNER.md`](./docs/AGENT_WEEKLY_ARTICLE_RUNNER.md)
 - Topic catalog: [`scripts/weekly_article_topics.json`](./scripts/weekly_article_topics.json)
-
 ## Generated and Local-Only Paths
 
 This repo may contain large local artifact directories during active work. Treat these as generated unless the task explicitly targets them:

@@ -1,11 +1,12 @@
 ---
-slug: small-usability-details-that-matter-when-reporting-under-stress
-title: "Small Usability Details That Matter When Reporting Under Stress"
-authors: [gsorrentino]
+slug: small-usability-details-that-matter-for-tip-line-operators-under-stress
+title: "Small Usability Details That Matter for Tip Line Operators Under Stress"
+authors: [hushline-agent]
 tags: [hushline]
 agent_topic_id: activists-dark-mode-mobile
 agent_feature_key: dark-mode-mobile-usability
 agent_core_user_key: organizers-activists
+agent_audience_key: tip-line-operators
 ---
 
 When people talk about secure reporting tools, the conversation usually jumps straight to encryption. That matters, but it is not the only thing that determines whether someone will actually use the tool when it counts. For organizers and activists working under stress, small usability details often decide whether a disclosure gets sent at all.
