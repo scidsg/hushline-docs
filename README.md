@@ -20,6 +20,7 @@ The actual Docusaurus app lives inside the [`docs/`](./docs) directory, so most 
 | [`docs/sidebars.js`](./docs/sidebars.js) | Docs sidebar configuration |
 | [`docs/package.json`](./docs/package.json) | Node scripts and Docusaurus dependency versions |
 | [`docs/README.md`](./docs/README.md) | Local development details for the Docusaurus app |
+| [`scripts/`](./scripts) | Repo automation helpers, including the weekly article agent |
 | [`AGENTS.md`](./AGENTS.md) | Agent-facing repo map, workflow rules, and do-not-touch guidance |
 
 ## Mental Model
@@ -60,6 +61,10 @@ npm run serve -- --host 127.0.0.1 --port 3001
 - For homepage or presentation work, start in `docs/src/` and `docs/src/css/`.
 - For navigation, links, metadata, or base path changes, inspect `docs/docusaurus.config.js` and `docs/sidebars.js`.
 
+## Automation
+
+- Weekly article runner: [`docs/AGENT_WEEKLY_ARTICLE_RUNNER.md`](./docs/AGENT_WEEKLY_ARTICLE_RUNNER.md)
+- Topic catalog: [`scripts/weekly_article_topics.json`](./scripts/weekly_article_topics.json)
 ## Generated and Local-Only Paths
 
 This repo may contain large local artifact directories during active work. Treat these as generated unless the task explicitly targets them:
