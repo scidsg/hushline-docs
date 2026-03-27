@@ -2,7 +2,7 @@
 
 Script: `scripts/agent_weekly_article_runner.sh`
 
-This runner creates one new blog article proposal in `hushline-docs` at a time. It is designed to be scheduled weekly on a server, similar to the local runners used in the main Hush Line repository.
+This runner creates one new blog article in `hushline-docs`, builds the docs site, and publishes the generated static output into `hushline-website/src/library`. It is designed to be scheduled weekly on a server, similar to the local runners used in the main Hush Line repository.
 
 ## Goal
 
@@ -33,17 +33,17 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
 
 ## Execution Flow
 
-1. Refresh the local checkout to `origin/main`.
-2. Exit early if any open human-authored PR exists.
-3. Exit early if any open bot-authored PR already exists.
-4. Configure signed-commit git identity for the bot user.
-5. Select the next article topic from the catalog.
-6. Create or reset the weekly work branch.
-7. Ask Codex to write exactly one new blog article under `docs/blog/<date>-<slug>/index.md`.
-8. Run local validation:
+1. Refresh the local `hushline-docs` checkout to `origin/main`.
+2. Refresh the local `hushline-website` checkout to `origin/main`.
+3. Configure signed-commit git identity for the bot user in both repositories.
+4. Select the next article topic from the catalog.
+5. Ask Codex to write exactly one new blog article under `docs/blog/<date>-<slug>/index.md`.
+6. Run local validation:
    - `npm install`
    - `npm run build`
-9. Commit, push, and open or update a PR.
+7. Delete the contents of `hushline-website/src/library`.
+8. Copy the new contents of `docs/build/` into `hushline-website/src/library`.
+9. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
 
 ## Output Conventions
 
@@ -94,10 +94,14 @@ Example cron entry for a Monday morning run:
 
 Adjust the time and checkout path to match the server environment.
 
+The default publish layout assumes sibling checkouts:
+
+- `/path/to/hushline-docs`
+- `/path/to/hushline-website`
+
 ## Required Commands
 
 - `git`
-- `gh`
 - `codex`
 - `node`
 - `npm`
@@ -107,20 +111,24 @@ Adjust the time and checkout path to match the server environment.
 - `HUSHLINE_DOCS_REPO_DIR` (default the checkout containing the runner)
 - `HUSHLINE_DOCS_REPO_SLUG` (default `scidsg/hushline-docs`)
 - `HUSHLINE_DOCS_BASE_BRANCH` (default `main`)
-- `HUSHLINE_DOCS_BOT_LOGIN` (default `hushline-dev`)
-- `HUSHLINE_DOCS_BOT_GIT_NAME` (default bot login)
+- `HUSHLINE_DOCS_BOT_GIT_NAME` (default `hushline-dev`)
 - `HUSHLINE_DOCS_BOT_GIT_EMAIL` (default `git-dev@scidsg.org`)
 - `HUSHLINE_DOCS_BOT_GIT_GPG_FORMAT` (default `ssh`)
 - `HUSHLINE_DOCS_BOT_GIT_SIGNING_KEY` (optional)
 - `HUSHLINE_DOCS_BOT_GIT_DEFAULT_SSH_SIGNING_KEY_PATH` (optional)
-- `HUSHLINE_DOCS_WEEKLY_BRANCH_PREFIX` (default `codex/weekly-article-`)
 - `HUSHLINE_DOCS_WEEKLY_TOPIC_CATALOG` (default `scripts/weekly_article_topics.json`)
 - `HUSHLINE_DOCS_WEEKLY_VERBOSE_CODEX_OUTPUT` (default `0`)
+- `HUSHLINE_DOCS_BUILD_DIR` (default `docs/build`)
+- `HUSHLINE_WEBSITE_REPO_DIR` (default sibling checkout `../hushline-website`)
+- `HUSHLINE_WEBSITE_REPO_SLUG` (default `scidsg/hushline-website`)
+- `HUSHLINE_WEBSITE_BASE_BRANCH` (default `main`)
+- `HUSHLINE_WEBSITE_LIBRARY_DIR` (default `src/library` inside `HUSHLINE_WEBSITE_REPO_DIR`)
 - `HUSHLINE_CODEX_MODEL` (default `gpt-5.4`)
 - `HUSHLINE_CODEX_REASONING_EFFORT` (default `high`)
 
 ## Notes
 
 - This runner is intentionally lighter than the Hush Line app runners because `hushline-docs` has no Docker runtime or app test matrix to bootstrap.
-- It assumes the docs repo is run from a dedicated automation checkout because it hard-resets the working tree to `origin/main`.
-- `--dry-run` is safe for local inspection because it only prints the selected topic JSON and exits before any git reset, PR check, or signing setup.
+- It assumes both `hushline-docs` and `hushline-website` are dedicated automation checkouts because it hard-resets both working trees to their configured base branches.
+- The publish step is destructive by design: it removes the existing contents of `src/library` only after `npm run build` succeeds, then copies the fresh build output into place.
+- `--dry-run` is safe for local inspection because it only prints the selected topic JSON and exits before any git reset, signing setup, or publish work.
