@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)"
-DEFAULT_WEBSITE_REPO_DIR="$(CDPATH= cd -- "$REPO_DIR/../hushline-website" && pwd)"
+DEFAULT_WEBSITE_REPO_DIR="$REPO_DIR/../hushline-website"
 LOCK_DIR="$REPO_DIR/.tmp/weekly-article.lock"
 ENV_FILE="${HUSHLINE_DOCS_ENV_FILE:-$REPO_DIR/.env.launchd}"
 
@@ -72,4 +72,4 @@ else
 fi
 
 cd "$HUSHLINE_DOCS_REPO_DIR"
-exec ./scripts/agent_weekly_article_runner.sh "$@"
+./scripts/agent_weekly_article_runner.sh "$@"
