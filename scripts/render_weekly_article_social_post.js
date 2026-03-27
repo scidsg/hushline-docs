@@ -186,6 +186,10 @@ function lcFirst(value) {
   return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
+function lowerWords(value) {
+  return String(value || "").toLowerCase();
+}
+
 function ucFirst(value) {
   if (!value) {
     return "";
@@ -210,6 +214,10 @@ function leadingQuestion(title, summary) {
   const cleanTitle = stripTrailingPunctuation(String(title || "").trim());
   const trimmed = stripTrailingPunctuation(firstSentence(summary));
   let match;
+
+  if (/^why\b/i.test(cleanTitle)) {
+    return `Why do ${lowerWords(removeLead(cleanTitle, "why"))}?`;
+  }
 
   if (!trimmed) {
     return "What does this look like in practice?";
@@ -267,10 +275,6 @@ function leadingQuestion(title, summary) {
 
   if (/^(what|how|why|when|where|who|should|can|does|do|is|are)\b/i.test(trimmed)) {
     return `${ucFirst(trimmed)}?`;
-  }
-
-  if (/^why\b/i.test(cleanTitle)) {
-    return `Why do ${lcFirst(removeLead(cleanTitle, "why"))}?`;
   }
 
   return "What should teams make clear before they publish a public reporting page?";
