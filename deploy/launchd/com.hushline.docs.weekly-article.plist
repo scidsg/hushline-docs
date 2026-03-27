@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.hushline.docs.weekly-article</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__REPO_DIR__/scripts/run_weekly_article_launchd.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__REPO_DIR__</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>CODEX_HOME</key>
+    <string>__HOME_DIR__/.codex</string>
+    <key>GH_CONFIG_DIR</key>
+    <string>__HOME_DIR__/.config/gh</string>
+    <key>HOME</key>
+    <string>__HOME_DIR__</string>
+    <key>HUSHLINE_DOCS_BUILD_DIR</key>
+    <string>__REPO_DIR__/docs/build</string>
+    <key>HUSHLINE_DOCS_BOT_GIT_SIGNING_KEY</key>
+    <string>__BOT_SIGNING_KEY_PATH__</string>
+    <key>HUSHLINE_DOCS_ENV_FILE</key>
+    <string>__REPO_DIR__/.env.launchd</string>
+    <key>HUSHLINE_DOCS_LAUNCHD_PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HUSHLINE_DOCS_REPO_DIR</key>
+    <string>__REPO_DIR__</string>
+    <key>HUSHLINE_WEBSITE_LIBRARY_DIR</key>
+    <string>__WEBSITE_REPO_DIR__/src/library</string>
+    <key>HUSHLINE_WEBSITE_REPO_DIR</key>
+    <string>__WEBSITE_REPO_DIR__</string>
+    <key>NPM_CONFIG_CACHE</key>
+    <string>__HOME_DIR__/.npm</string>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>XDG_CACHE_HOME</key>
+    <string>__HOME_DIR__/.cache</string>
+    <key>XDG_CONFIG_HOME</key>
+    <string>__HOME_DIR__/.config</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>3</integer>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>__REPO_DIR__/logs/weekly-article.stdout.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>__REPO_DIR__/logs/weekly-article.stderr.log</string>
+</dict>
+</plist>
