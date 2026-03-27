@@ -31,7 +31,7 @@ if SNAPSHOT_METADATA="$(prepare_runner_exec_snapshot "${BASH_SOURCE[0]}" "$0")";
 fi
 
 FORCE_TOPIC_ID=""
-FORCE_DATE="$(date -u +%Y-%m-%d)"
+FORCE_DATE="$(date +%Y-%m-%d)"
 DRY_RUN=0
 
 SCRIPT_DIR="${HUSHLINE_DOCS_WEEKLY_RUNNER_ORIGINAL_SCRIPT_DIR:-$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)}"
@@ -55,6 +55,7 @@ WEBSITE_REPO_SLUG="${HUSHLINE_WEBSITE_REPO_SLUG:-scidsg/hushline-website}"
 WEBSITE_BASE_BRANCH="${HUSHLINE_WEBSITE_BASE_BRANCH:-main}"
 WEBSITE_LIBRARY_DIR="${HUSHLINE_WEBSITE_LIBRARY_DIR:-$WEBSITE_REPO_DIR/src/library}"
 DOCS_BUILD_DIR="${HUSHLINE_DOCS_BUILD_DIR:-$REPO_DIR/docs/build}"
+ALLOW_FUTURE_PUBLICATION_DATE="${HUSHLINE_DOCS_ALLOW_FUTURE_PUBLICATION_DATE:-0}"
 
 PROMPT_FILE=""
 CODEX_OUTPUT_FILE=""
@@ -88,6 +89,16 @@ parse_args() {
 
 runner_status() {
   printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S %Z')" "$*"
+}
+
+assert_publication_date_is_allowed() {
+  local today_local=""
+
+  today_local="$(date +%Y-%m-%d)"
+  if [[ "$FORCE_DATE" > "$today_local" && "$ALLOW_FUTURE_PUBLICATION_DATE" != "1" ]]; then
+    printf '%s\n' "Blocked: publication date $FORCE_DATE is in the future relative to local server date $today_local. Override with HUSHLINE_DOCS_ALLOW_FUTURE_PUBLICATION_DATE=1 only when intentionally pre-publishing." >&2
+    return 1
+  fi
 }
 
 cleanup() {
@@ -312,6 +323,56 @@ json_field() {
   ' "$json_file" "$field_path"
 }
 
+existing_blog_title_paths() {
+  local normalized_title="$1"
+
+  node - "$REPO_DIR/docs/blog" "$normalized_title" <<'EOF'
+    const fs = require("fs");
+    const path = require("path");
+
+    const blogRoot = process.argv[2];
+    const expected = process.argv[3].trim().toLowerCase();
+
+    function walk(dir) {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walk(fullPath);
+          continue;
+        }
+        if (entry.name !== "index.md") {
+          continue;
+        }
+        const content = fs.readFileSync(fullPath, "utf8");
+        const match = content.match(/^title:\s*(.+)$/m);
+        if (!match) {
+          continue;
+        }
+        const title = match[1].trim().replace(/^['"]|['"]$/g, "").toLowerCase();
+        if (title === expected) {
+          console.log(path.relative(process.cwd(), fullPath));
+        }
+      }
+    }
+
+    walk(blogRoot);
+EOF
+}
+
+assert_blog_title_is_unique() {
+  local title="$1"
+  local article_path="$2"
+  local collisions=""
+
+  collisions="$(existing_blog_title_paths "$title" | grep -vxF "$article_path" || true)"
+  if [[ -n "$collisions" ]]; then
+    printf '%s\n' "Blocked: blog title already exists elsewhere: $title" >&2
+    printf '%s\n' "$collisions" >&2
+    return 1
+  fi
+}
+
 select_topic() {
   local cmd=(
     node "$SCRIPT_DIR/select_weekly_article_topic.mjs"
@@ -432,6 +493,7 @@ main() {
   SELECTION_FILE="$(mktemp)"
 
   require_cmd node
+  assert_publication_date_is_allowed
 
   cd "$REPO_DIR"
 
@@ -486,6 +548,7 @@ main() {
 
   runner_status "Selected weekly article topic: $topic_id"
   runner_status "Planned article path: $article_path"
+  assert_blog_title_is_unique "$title_seed" "$article_path"
 
   build_prompt \
     "$article_path" \
