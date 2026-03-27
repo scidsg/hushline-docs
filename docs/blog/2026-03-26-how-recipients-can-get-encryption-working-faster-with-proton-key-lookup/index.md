@@ -2,7 +2,7 @@
 slug: how-recipients-can-get-encryption-working-faster-with-proton-key-lookup
 title: How Recipients Can Get Encryption Working Faster With Proton Key Lookup
 subtitle: Proton key lookup helps new Hush Line recipients launch faster without falling back to weaker setup habits.
-authors: [gsorrentino]
+authors: [hushline-agent]
 tags: [hushline]
 agent_topic_id: admins-proton-pgp
 agent_feature_key: proton-key-lookup

@@ -373,6 +373,91 @@ assert_blog_title_is_unique() {
   fi
 }
 
+existing_blog_topic_paths() {
+  local expected_topic_id="$1"
+
+  node - "$REPO_DIR/docs/blog" "$expected_topic_id" <<'EOF'
+    const fs = require("fs");
+    const path = require("path");
+
+    const blogRoot = process.argv[2];
+    const expected = process.argv[3].trim();
+
+    function walk(dir) {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walk(fullPath);
+          continue;
+        }
+        if (entry.name !== "index.md") {
+          continue;
+        }
+        const content = fs.readFileSync(fullPath, "utf8");
+        const match = content.match(/^agent_topic_id:\s*(.+)$/m);
+        if (!match) {
+          continue;
+        }
+        const topicId = match[1].trim().replace(/^['"]|['"]$/g, "");
+        if (topicId === expected) {
+          console.log(path.relative(process.cwd(), fullPath));
+        }
+      }
+    }
+
+    walk(blogRoot);
+EOF
+}
+
+assert_blog_topic_is_unique() {
+  local topic_id="$1"
+  local article_path="$2"
+  local collisions=""
+
+  collisions="$(existing_blog_topic_paths "$topic_id" | grep -vxF "$article_path" || true)"
+  if [[ -n "$collisions" ]]; then
+    printf '%s\n' "Blocked: agent topic id already exists elsewhere: $topic_id" >&2
+    printf '%s\n' "$collisions" >&2
+    return 1
+  fi
+}
+
+generated_article_field() {
+  local article_path="$1"
+  local field_name="$2"
+
+  node - "$article_path" "$field_name" <<'EOF'
+    const fs = require("fs");
+
+    const articlePath = process.argv[2];
+    const fieldName = process.argv[3];
+    const content = fs.readFileSync(articlePath, "utf8");
+    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+    if (!frontmatterMatch) {
+      process.exit(1);
+    }
+    const line = frontmatterMatch[1]
+      .split("\n")
+      .find((entry) => entry.startsWith(`${fieldName}:`));
+    if (!line) {
+      process.exit(1);
+    }
+    process.stdout.write(line.slice(fieldName.length + 1).trim());
+EOF
+}
+
+assert_generated_article_author() {
+  local article_path="$1"
+  local authors_field=""
+
+  authors_field="$(generated_article_field "$article_path" "authors" 2>/dev/null || true)"
+  if [[ "$authors_field" != "[hushline-agent]" ]]; then
+    printf '%s\n' "Blocked: generated article must use authors [hushline-agent], found: ${authors_field:-<missing>}" >&2
+    return 1
+  fi
+}
+
 select_topic() {
   local cmd=(
     node "$SCRIPT_DIR/select_weekly_article_topic.mjs"
@@ -420,7 +505,7 @@ Article requirements:
 7) Use the existing docs and blog content in this repo as the product source of truth. Do not invent unsupported product behavior.
 8) Start by reading these supporting docs before writing: $supporting_docs
 9) Keep scope narrow: create the article and update any directly needed metadata only.
-10) Use the existing blog conventions in this repo. Prefer authors [gsorrentino] and tags [hushline] unless a small metadata adjustment is clearly needed.
+10) Use the existing blog conventions in this repo. Use authors [hushline-agent] and tags [hushline] unless a small metadata adjustment is clearly needed.
 11) Include a <!-- truncate --> marker after the opening section.
 12) Do not add image assets unless they are necessary. A strong text-only article is acceptable.
 13) Include these custom frontmatter fields so future weekly runs can rotate topics:
@@ -549,6 +634,7 @@ main() {
   runner_status "Selected weekly article topic: $topic_id"
   runner_status "Planned article path: $article_path"
   assert_blog_title_is_unique "$title_seed" "$article_path"
+  assert_blog_topic_is_unique "$topic_id" "$article_path"
 
   build_prompt \
     "$article_path" \
@@ -564,6 +650,7 @@ main() {
     "$core_user_key"
 
   run_codex_from_prompt
+  assert_generated_article_author "$REPO_DIR/$article_path"
 
   if [[ -z "$(git status --short)" ]]; then
     runner_status "Skipped: Codex produced no repository changes."
