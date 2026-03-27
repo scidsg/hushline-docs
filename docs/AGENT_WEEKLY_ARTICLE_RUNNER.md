@@ -2,7 +2,7 @@
 
 Script: `scripts/agent_weekly_article_runner.sh`
 
-This runner creates one new blog article in `hushline-docs`, builds the docs site, and publishes the generated static output into `hushline-website/src/library`. It is designed to be scheduled weekly on a server, similar to the local runners used in the main Hush Line repository.
+This runner creates one new blog article in `hushline-docs`, builds the docs site, publishes the generated static output into `hushline-website/src/library`, and can hand the published article off to the `hushline-social` repo for LinkedIn publication.
 
 ## Goal
 
@@ -35,24 +35,29 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
 
 1. Refresh the local `hushline-docs` checkout to `origin/main`.
 2. Refresh the local `hushline-website` checkout to `origin/main`.
-3. Configure signed-commit git identity for the bot user in both repositories.
-4. Select the next article topic from the catalog.
-5. Ask Codex to write exactly one new blog article under `docs/blog/<date>-<slug>/index.md`.
-6. Run local validation:
+3. Preflight the social publishing environment when weekly social sharing is enabled.
+4. Configure signed-commit git identity for the bot user in both repositories.
+5. Select the next article topic from the catalog.
+6. Ask Codex to write exactly one new blog article under `docs/blog/<date>-<slug>/index.md`.
+7. Run local validation:
    - `npm install`
    - `npm run build`
-7. Delete the contents of `hushline-website/src/library`.
-8. Copy the new contents of `docs/build/` into `hushline-website/src/library`.
-9. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
+8. Render a social-share archive for the article using the existing `hushline-social` renderer.
+9. Delete the contents of `hushline-website/src/library`.
+10. Copy the new contents of `docs/build/` into `hushline-website/src/library`.
+11. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
+12. When weekly social sharing is enabled, install the rendered article archive into `hushline-social/previous-posts/<date-or-date-suffix>/` and publish it through the existing LinkedIn publisher.
 
 ## Output Conventions
 
 The generated article prompt instructs Codex to:
 
 - use the existing blog format in `docs/blog/`
-- use `authors: [gsorrentino]`
+- use `authors: [hushline-agent]`
 - prefer `tags: [hushline]`
 - include `<!-- truncate -->`
+- include at least one current `-fold` screenshot from `/img/screenshots/...`
+- put the preferred social-share screenshot first
 - include these custom frontmatter fields for future rotation:
   - `agent_topic_id`
   - `agent_feature_key`
@@ -123,6 +128,13 @@ The default publish layout assumes sibling checkouts:
 - `HUSHLINE_WEBSITE_REPO_SLUG` (default `scidsg/hushline-website`)
 - `HUSHLINE_WEBSITE_BASE_BRANCH` (default `main`)
 - `HUSHLINE_WEBSITE_LIBRARY_DIR` (default `src/library` inside `HUSHLINE_WEBSITE_REPO_DIR`)
+- `HUSHLINE_DOCS_SITE_BASE_URL` (default `https://hushline.app/library`)
+- `HUSHLINE_DOCS_WEEKLY_SOCIAL_ENABLED` (default `1`)
+- `HUSHLINE_DOCS_WEEKLY_SOCIAL_PUBLISH` (default `1`)
+- `HUSHLINE_SOCIAL_REPO_DIR` (default sibling checkout `../hushline-social`)
+- `HUSHLINE_SOCIAL_BASE_BRANCH` (default `main`)
+- `HUSHLINE_SOCIAL_ARCHIVE_ROOT` (default `previous-posts`)
+- `HUSHLINE_SOCIAL_ENV_FILE` (default `HUSHLINE_SOCIAL_REPO_DIR/.env.launchd`)
 - `HUSHLINE_CODEX_MODEL` (default `gpt-5.4`)
 - `HUSHLINE_CODEX_REASONING_EFFORT` (default `high`)
 
@@ -130,5 +142,6 @@ The default publish layout assumes sibling checkouts:
 
 - This runner is intentionally lighter than the Hush Line app runners because `hushline-docs` has no Docker runtime or app test matrix to bootstrap.
 - It assumes both `hushline-docs` and `hushline-website` are dedicated automation checkouts because it hard-resets both working trees to their configured base branches.
+- If weekly social sharing is enabled, point `HUSHLINE_SOCIAL_REPO_DIR` at a dedicated automation checkout of `hushline-social` as well, because the runner refreshes that checkout before writing the new article-share archive and triggering LinkedIn publication.
 - The publish step is destructive by design: it removes the existing contents of `src/library` only after `npm run build` succeeds, then copies the fresh build output into place.
 - `--dry-run` is safe for local inspection because it only prints the selected topic JSON and exits before any git reset, signing setup, or publish work.

@@ -56,11 +56,19 @@ WEBSITE_BASE_BRANCH="${HUSHLINE_WEBSITE_BASE_BRANCH:-main}"
 WEBSITE_LIBRARY_DIR="${HUSHLINE_WEBSITE_LIBRARY_DIR:-$WEBSITE_REPO_DIR/src/library}"
 DOCS_BUILD_DIR="${HUSHLINE_DOCS_BUILD_DIR:-$REPO_DIR/docs/build}"
 ALLOW_FUTURE_PUBLICATION_DATE="${HUSHLINE_DOCS_ALLOW_FUTURE_PUBLICATION_DATE:-0}"
+SITE_BASE_URL="${HUSHLINE_DOCS_SITE_BASE_URL:-https://hushline.app/library}"
+SOCIAL_ENABLED="${HUSHLINE_DOCS_WEEKLY_SOCIAL_ENABLED:-1}"
+SOCIAL_PUBLISH="${HUSHLINE_DOCS_WEEKLY_SOCIAL_PUBLISH:-1}"
+SOCIAL_REPO_DIR="${HUSHLINE_SOCIAL_REPO_DIR:-$DEFAULT_REPO_PARENT_DIR/hushline-social}"
+SOCIAL_BASE_BRANCH="${HUSHLINE_SOCIAL_BASE_BRANCH:-main}"
+SOCIAL_ARCHIVE_ROOT="${HUSHLINE_SOCIAL_ARCHIVE_ROOT:-previous-posts}"
+SOCIAL_ENV_FILE="${HUSHLINE_SOCIAL_ENV_FILE:-$SOCIAL_REPO_DIR/.env.launchd}"
 
 PROMPT_FILE=""
 CODEX_OUTPUT_FILE=""
 CODEX_TRANSCRIPT_FILE=""
 SELECTION_FILE=""
+SOCIAL_RENDER_DIR=""
 
 parse_args() {
   while [[ $# -gt 0 ]]; do
@@ -104,6 +112,7 @@ assert_publication_date_is_allowed() {
 cleanup() {
   rm -f "${PROMPT_FILE:-}" "${CODEX_OUTPUT_FILE:-}" "${CODEX_TRANSCRIPT_FILE:-}" "${SELECTION_FILE:-}"
   rm -f "${HUSHLINE_DOCS_WEEKLY_RUNNER_SNAPSHOT_PATH:-}"
+  rm -rf "${SOCIAL_RENDER_DIR:-}"
 }
 
 require_cmd() {
@@ -243,6 +252,33 @@ assert_directory_exists() {
   fi
 }
 
+require_env_var() {
+  local name="$1"
+  if [[ -z "${!name:-}" ]]; then
+    printf '%s\n' "Blocked: missing required environment variable: $name" >&2
+    return 1
+  fi
+}
+
+load_env_file_if_present() {
+  local env_file="$1"
+  if [[ -f "$env_file" ]]; then
+    set -a
+    # shellcheck disable=SC1090
+    . "$env_file"
+    set +a
+  fi
+}
+
+assert_relative_repo_path() {
+  local repo_path="$1"
+
+  if [[ -z "$repo_path" || "$repo_path" == /* || "$repo_path" == *".."* ]]; then
+    printf '%s\n' "Blocked: expected a relative path inside the repo, found: $repo_path" >&2
+    return 1
+  fi
+}
+
 assert_publish_target_is_safe() {
   local repo_dir="$1"
   local target_dir="$2"
@@ -300,6 +336,41 @@ sync_build_to_website() {
   runner_status "Replacing $WEBSITE_REPO_SLUG:$target_dir with the latest docs build."
   find "$target_dir" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
   cp -a "$build_dir"/. "$target_dir"/
+}
+
+resolve_next_archive_key() {
+  local archive_root="$1"
+  local target_date="$2"
+  local max_suffix=-1
+  local path=""
+  local name=""
+  local suffix=0
+
+  mkdir -p "$archive_root"
+
+  for path in "$archive_root/$target_date" "$archive_root/$target_date"-*; do
+    [[ -d "$path" ]] || continue
+    name="$(basename "$path")"
+
+    if [[ "$name" == "$target_date" ]]; then
+      (( max_suffix < 0 )) && max_suffix=0
+      continue
+    fi
+
+    if [[ "$name" =~ ^${target_date}-([0-9]+)$ ]]; then
+      suffix="${BASH_REMATCH[1]}"
+      if (( suffix > max_suffix )); then
+        max_suffix="$suffix"
+      fi
+    fi
+  done
+
+  if (( max_suffix < 0 )); then
+    printf '%s\n' "$target_date"
+    return
+  fi
+
+  printf '%s\n' "$target_date-$((max_suffix + 1))"
 }
 
 json_field() {
@@ -507,14 +578,15 @@ Article requirements:
 9) Keep scope narrow: create the article and update any directly needed metadata only.
 10) Use the existing blog conventions in this repo. Use authors [hushline-agent] and tags [hushline] unless a small metadata adjustment is clearly needed.
 11) Include a <!-- truncate --> marker after the opening section.
-12) Do not add image assets unless they are necessary. A strong text-only article is acceptable.
-13) Include these custom frontmatter fields so future weekly runs can rotate topics:
+12) Include at least one product screenshot from /img/screenshots/... so the published article can be shared to social media after publication.
+13) Screenshots must come from the latest local hushline-screenshots release and use above-the-fold -fold captures only. Do not use full-page screenshots. Do not use scrolled screenshots unless the feature is completely below the fold. When two screenshots add value, prefer one desktop and one mobile. Put the preferred social-share screenshot first in the article.
+14) Include these custom frontmatter fields so future weekly runs can rotate topics:
     - agent_topic_id: $topic_id
     - agent_feature_key: $feature_key
     - agent_core_user_key: $core_user_key
-14) Use this slug in frontmatter: $article_slug
-15) Keep the article practical and specific. The reader should understand how Hush Line helps this user in a real operational context.
-16) Do not include meta commentary about following instructions in your final summary.
+15) Use this slug in frontmatter: $article_slug
+16) Keep the article practical and specific. The reader should understand how Hush Line helps this user in a real operational context.
+17) Do not include meta commentary about following instructions in your final summary.
 EOF2
   } > "$PROMPT_FILE"
 }
@@ -571,6 +643,82 @@ build_publish_commit_title() {
   printf 'Publish library build for weekly article: %s\n' "$title_seed"
 }
 
+build_article_url() {
+  local article_slug="$1"
+  local base_url="${SITE_BASE_URL%/}"
+  printf '%s\n' "$base_url/blog/$article_slug"
+}
+
+preflight_social_publish() {
+  if [[ "$SOCIAL_ENABLED" != "1" ]]; then
+    return 0
+  fi
+
+  assert_git_repo_dir "$SOCIAL_REPO_DIR"
+  assert_relative_repo_path "$SOCIAL_ARCHIVE_ROOT"
+  require_cmd node
+
+  if [[ "$SOCIAL_PUBLISH" == "1" ]]; then
+    load_env_file_if_present "$SOCIAL_ENV_FILE"
+    require_env_var LINKEDIN_ACCESS_TOKEN
+    require_env_var LINKEDIN_AUTHOR_URN
+  fi
+}
+
+render_social_handoff() {
+  local article_path="$1"
+  local article_slug="$2"
+  local article_url=""
+
+  article_url="$(build_article_url "$article_slug")"
+  SOCIAL_RENDER_DIR="$(mktemp -d "${TMPDIR:-/tmp}/weekly-article-social.XXXXXX")"
+
+  runner_status "Rendering weekly article social archive."
+  node "$SCRIPT_DIR/render_weekly_article_social_post.js" \
+    --article "$REPO_DIR/$article_path" \
+    --date "$FORCE_DATE" \
+    --article-url "$article_url" \
+    --output-dir "$SOCIAL_RENDER_DIR" \
+    --social-repo "$SOCIAL_REPO_DIR"
+}
+
+install_social_archive() {
+  local archive_key="$1"
+  local archive_root_dir="$SOCIAL_REPO_DIR/$SOCIAL_ARCHIVE_ROOT"
+  local target_dir="$archive_root_dir/$archive_key"
+
+  assert_directory_exists "$SOCIAL_RENDER_DIR"
+  mkdir -p "$archive_root_dir"
+
+  runner_status "Installing weekly article social archive at $SOCIAL_ARCHIVE_ROOT/$archive_key."
+  rm -rf "$target_dir"
+  mkdir -p "$target_dir"
+  cp -a "$SOCIAL_RENDER_DIR"/. "$target_dir"/
+}
+
+publish_social_archive() {
+  local archive_key="$1"
+
+  if [[ "$SOCIAL_ENABLED" != "1" ]]; then
+    runner_status "Skipping weekly article social share: disabled."
+    return 0
+  fi
+
+  refresh_repo_checkout "$SOCIAL_REPO_DIR" "$SOCIAL_BASE_BRANCH" "scidsg/hushline-social"
+  (cd "$SOCIAL_REPO_DIR" && configure_bot_git_identity)
+
+  install_social_archive "$archive_key"
+
+  if [[ "$SOCIAL_PUBLISH" != "1" ]]; then
+    runner_status "Weekly article social archive prepared without publication."
+    return 0
+  fi
+
+  load_env_file_if_present "$SOCIAL_ENV_FILE"
+  runner_status "Publishing weekly article social share to LinkedIn."
+  (cd "$SOCIAL_REPO_DIR" && ./scripts/agent_daily_linkedin_publisher.sh --date "$FORCE_DATE" --archive-key "$archive_key")
+}
+
 main() {
   parse_args "$@"
   trap cleanup EXIT
@@ -598,6 +746,7 @@ main() {
 
   assert_git_repo_dir "$REPO_DIR"
   assert_git_repo_dir "$WEBSITE_REPO_DIR"
+  preflight_social_publish
 
   refresh_repo_checkout "$REPO_DIR" "$BASE_BRANCH" "$REPO_SLUG"
   refresh_repo_checkout "$WEBSITE_REPO_DIR" "$WEBSITE_BASE_BRANCH" "$WEBSITE_REPO_SLUG"
@@ -659,6 +808,11 @@ main() {
 
   validate_article
 
+  local social_archive_key=""
+  if [[ "$SOCIAL_ENABLED" == "1" ]]; then
+    render_social_handoff "$article_path" "$article_slug"
+  fi
+
   sync_build_to_website "$DOCS_BUILD_DIR" "$WEBSITE_LIBRARY_DIR"
 
   git -C "$REPO_DIR" add -A
@@ -673,6 +827,11 @@ main() {
   git -C "$WEBSITE_REPO_DIR" add -A
   git -C "$WEBSITE_REPO_DIR" commit -m "$(build_publish_commit_title "$title_seed")"
   force_push_repo_branch "$WEBSITE_REPO_DIR" "$WEBSITE_REPO_SLUG" "$WEBSITE_BASE_BRANCH"
+
+  if [[ "$SOCIAL_ENABLED" == "1" ]]; then
+    social_archive_key="$(resolve_next_archive_key "$SOCIAL_REPO_DIR/$SOCIAL_ARCHIVE_ROOT" "$FORCE_DATE")"
+    publish_social_archive "$social_archive_key"
+  fi
 }
 
 main "$@"

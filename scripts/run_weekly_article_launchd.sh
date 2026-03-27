@@ -18,6 +18,8 @@ export HUSHLINE_DOCS_REPO_DIR="${HUSHLINE_DOCS_REPO_DIR:-$REPO_DIR}"
 export HUSHLINE_WEBSITE_REPO_DIR="${HUSHLINE_WEBSITE_REPO_DIR:-$DEFAULT_WEBSITE_REPO_DIR}"
 export HUSHLINE_DOCS_BUILD_DIR="${HUSHLINE_DOCS_BUILD_DIR:-$HUSHLINE_DOCS_REPO_DIR/docs/build}"
 export HUSHLINE_WEBSITE_LIBRARY_DIR="${HUSHLINE_WEBSITE_LIBRARY_DIR:-$HUSHLINE_WEBSITE_REPO_DIR/src/library}"
+export HUSHLINE_SOCIAL_REPO_DIR="${HUSHLINE_SOCIAL_REPO_DIR:-$REPO_DIR/../hushline-social}"
+export HUSHLINE_SOCIAL_ENV_FILE="${HUSHLINE_SOCIAL_ENV_FILE:-$HUSHLINE_SOCIAL_REPO_DIR/.env.launchd}"
 
 if [[ -z "${SSH_AUTH_SOCK:-}" ]]; then
   SSH_AUTH_SOCK="$(launchctl getenv SSH_AUTH_SOCK 2>/dev/null || true)"
@@ -65,6 +67,7 @@ require_cmd npm
 runner_status "Starting weekly docs article launchd wrapper."
 runner_status "Using docs repo: $HUSHLINE_DOCS_REPO_DIR"
 runner_status "Using website repo: $HUSHLINE_WEBSITE_REPO_DIR"
+runner_status "Using social repo: $HUSHLINE_SOCIAL_REPO_DIR"
 if [[ -n "${SSH_AUTH_SOCK:-}" ]]; then
   runner_status "Using SSH_AUTH_SOCK: $SSH_AUTH_SOCK"
 else
