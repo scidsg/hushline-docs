@@ -42,7 +42,7 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
 7. Run local validation:
    - `npm install`
    - `npm run build`
-8. Render a social-share archive for the article using the existing `hushline-social` renderer.
+8. Build a social-share archive for the article.
 9. Delete the contents of `hushline-website/src/library`.
 10. Copy the new contents of `docs/build/` into `hushline-website/src/library`.
 11. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
@@ -56,8 +56,7 @@ The generated article prompt instructs Codex to:
 - use `authors: [hushline-agent]`
 - prefer `tags: [hushline]`
 - include `<!-- truncate -->`
-- include at least one current `-fold` screenshot from `/img/screenshots/...`
-- put the preferred social-share screenshot first
+- do not add image assets unless they are necessary
 - include these custom frontmatter fields for future rotation:
   - `agent_topic_id`
   - `agent_feature_key`

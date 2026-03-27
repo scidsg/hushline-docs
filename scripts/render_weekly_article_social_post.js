@@ -4,7 +4,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const { createRequire } = require("module");
 
 function parseArgs(argv) {
   const args = {
@@ -98,31 +97,6 @@ function frontmatterField(frontmatter, fieldName) {
   return match[1].trim().replace(/^['"]|['"]$/g, "");
 }
 
-function extractFirstScreenshot(markdown) {
-  const imagePattern = /!\[([^\]]*)\]\(([^)]+)\)/g;
-  let match = imagePattern.exec(markdown);
-
-  while (match) {
-    const alt = String(match[1] || "").trim();
-    const imagePath = String(match[2] || "").trim();
-
-    if (imagePath.startsWith("/img/screenshots/")) {
-      const screenshotFile = imagePath.slice("/img/screenshots/".length);
-      if (!path.basename(screenshotFile).endsWith("-fold.png")) {
-        throw new Error(
-          `Weekly article social share requires a current above-the-fold -fold screenshot; found ${imagePath}.`,
-        );
-      }
-
-      return { alt, screenshotFile };
-    }
-
-    match = imagePattern.exec(markdown);
-  }
-
-  throw new Error("Weekly article social share requires at least one /img/screenshots/... image in the article.");
-}
-
 function stripMarkdown(markdown) {
   return String(markdown || "")
     .replace(/```[\s\S]*?```/g, " ")
@@ -181,26 +155,33 @@ function fitCopy(limit, segments) {
   return joinWithBreaks([clamp(tail, limit)]);
 }
 
-function inferViewport(screenshotFile) {
-  if (screenshotFile.includes("-mobile-")) {
-    return "mobile";
-  }
-  if (screenshotFile.includes("-desktop-")) {
-    return "desktop";
-  }
-  return "desktop";
-}
-
-function inferTheme(screenshotFile) {
-  if (screenshotFile.includes("-dark-")) {
-    return "dark";
-  }
-  return "light";
-}
-
 function weekdayLabel(date) {
   const parsed = new Date(`${date}T12:00:00`);
   return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][parsed.getDay()];
+}
+
+function buildTxt(post) {
+  return [
+    `Slot: ${post.slot}`,
+    `Planned date: ${post.planned_date}`,
+    `Publish mode: ${post.publish_mode}`,
+    `Article URL: ${post.article_url}`,
+    `Content key: ${post.content_key}`,
+    `Headline: ${post.headline}`,
+    `Subtext: ${post.subtext}`,
+    "",
+    "Social post copy",
+    "",
+    `LinkedIn (${post.social.linkedin.length}/3000)`,
+    post.social.linkedin,
+    "",
+    `Mastodon (${post.social.mastodon.length}/500)`,
+    post.social.mastodon,
+    "",
+    `Bluesky (${post.social.bluesky.length}/300)`,
+    post.social.bluesky,
+    "",
+  ].join("\n");
 }
 
 function buildCopy({ articleUrl, excerpt, title }) {
@@ -232,14 +213,10 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const articlePath = path.resolve(args.article);
   const outputDir = path.resolve(args.outputDir);
-  const socialRepo = path.resolve(args.socialRepo);
-  const requireFromSocial = createRequire(path.join(socialRepo, "package.json"));
-  const { renderPost } = requireFromSocial("./scripts/lib/render-social-post.js");
 
   const article = readArticle(articlePath);
   const title = frontmatterField(article.frontmatter, "title");
   const slug = frontmatterField(article.frontmatter, "slug") || path.basename(path.dirname(articlePath));
-  const { alt, screenshotFile } = extractFirstScreenshot(article.markdown);
   const opening = article.body.split(/<!--\s*truncate\s*-->/i)[0] || article.body;
   const excerpt = clamp(firstNonEmptyParagraphs(opening, 2).join(" "), 260);
 
@@ -253,11 +230,9 @@ async function main() {
   const post = {
     slot: weekdayLabel(args.date),
     planned_date: args.date,
-    screenshot_file: screenshotFile,
     content_key: `weekly-article-${slug}`,
     headline: clamp(title, 120),
     subtext: excerpt,
-    image_alt_text: clamp(alt || `Screenshot from the Hush Line article "${title}".`, 350),
     social: buildCopy({
       articleUrl: args.articleUrl,
       excerpt,
@@ -267,13 +242,14 @@ async function main() {
     audience_scope: "article-share",
     concept_key: "weekly-article-share",
     copy_brief: "Share the new article directly, with the article URL as the CTA.",
-    theme: inferTheme(screenshotFile),
     title,
-    viewport: inferViewport(screenshotFile),
     article_url: args.articleUrl,
+    publish_mode: "text",
   };
 
-  await renderPost(post, outputDir);
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(path.join(outputDir, "post.json"), `${JSON.stringify(post, null, 2)}\n`);
+  fs.writeFileSync(path.join(outputDir, "post-copy.txt"), `${buildTxt(post)}\n`);
   process.stdout.write(`${outputDir}\n`);
 }
 
