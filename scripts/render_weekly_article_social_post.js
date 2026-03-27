@@ -125,9 +125,9 @@ function clamp(value, limit) {
   return `${normalized.slice(0, Math.max(0, limit - 1)).trimEnd()}…`;
 }
 
-function fitCopy(limit, segments) {
+function fitCopy(limit, segments, joiner = "\n\n") {
   const normalized = segments.map((entry) => String(entry || "").trim());
-  const joinWithBreaks = (values) => values.filter(Boolean).join("\n\n");
+  const joinWithBreaks = (values) => values.filter(Boolean).join(joiner);
   const lastIndex = normalized.length - 1;
   const tail = normalized[lastIndex];
   const head = normalized.slice(0, lastIndex);
@@ -160,6 +160,36 @@ function weekdayLabel(date) {
   return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][parsed.getDay()];
 }
 
+function leadingQuestion(title) {
+  const trimmed = String(title || "").trim();
+
+  if (!trimmed) {
+    return "What does this look like in practice?";
+  }
+
+  if (trimmed.endsWith("?")) {
+    return trimmed;
+  }
+
+  if (/^(what|how|why|when|where|who|should|can|does|do|is|are)\b/i.test(trimmed)) {
+    return `${trimmed}?`;
+  }
+
+  return "What does this look like in practice?";
+}
+
+function publishedLine(title) {
+  if (/^how\b/i.test(title)) {
+    return "We just published an article showing how Hush Line handles this.";
+  }
+
+  if (/^(what|why)\b/i.test(title)) {
+    return "We just published an article explaining this.";
+  }
+
+  return "We just published an article describing this.";
+}
+
 function buildTxt(post) {
   return [
     `Slot: ${post.slot}`,
@@ -185,26 +215,25 @@ function buildTxt(post) {
 }
 
 function buildCopy({ articleUrl, excerpt, title }) {
-  const sentences = excerpt
-    .split(/(?<=[.!?])\s+/)
-    .map((entry) => entry.trim())
-    .filter(Boolean);
-  const first = sentences[0] || excerpt;
-  const second = sentences[1] || "";
-  const shortExcerpt = [first, second].filter(Boolean).join(" ");
+  const question = leadingQuestion(title);
+  const articleLine = publishedLine(title);
+  const lines = [question, articleLine, `read it here: ${articleUrl}`];
 
   return {
     bluesky: fitCopy(
       300,
-      [title, first, `Read the new article: ${articleUrl}`],
+      lines,
+      "\n",
     ),
     linkedin: fitCopy(
       3000,
-      [title, shortExcerpt, `Read the new article: ${articleUrl}`],
+      lines,
+      "\n",
     ),
     mastodon: fitCopy(
       500,
-      ["New Hush Line article:", title, first, `Read more: ${articleUrl}`],
+      lines,
+      "\n",
     ),
   };
 }

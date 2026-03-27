@@ -48,6 +48,12 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
 11. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
 12. When weekly social sharing is enabled, install the rendered article archive into `hushline-social/previous-posts/<date-or-date-suffix>/` and publish it through the existing LinkedIn publisher.
 
+The rendered article-share copy should:
+
+- lead with an engaging question
+- put `We just published an article describing...` or `showing...` on its own line
+- end with `read it here: <url>` on its own line
+
 ## Output Conventions
 
 The generated article prompt instructs Codex to:
