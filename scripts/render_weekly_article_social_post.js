@@ -179,6 +179,10 @@ function lcFirst(value) {
     return "";
   }
 
+  if (/^Hush Line\b/.test(value)) {
+    return value;
+  }
+
   return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
