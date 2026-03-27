@@ -697,8 +697,6 @@ install_social_archive() {
 }
 
 publish_social_archive() {
-  local archive_key="$1"
-
   if [[ "$SOCIAL_ENABLED" != "1" ]]; then
     runner_status "Skipping weekly article social share: disabled."
     return 0
@@ -706,6 +704,9 @@ publish_social_archive() {
 
   refresh_repo_checkout "$SOCIAL_REPO_DIR" "$SOCIAL_BASE_BRANCH" "scidsg/hushline-social"
   (cd "$SOCIAL_REPO_DIR" && configure_bot_git_identity)
+
+  local archive_key=""
+  archive_key="$(resolve_next_archive_key "$SOCIAL_REPO_DIR/$SOCIAL_ARCHIVE_ROOT" "$FORCE_DATE")"
 
   install_social_archive "$archive_key"
 
@@ -808,7 +809,6 @@ main() {
 
   validate_article
 
-  local social_archive_key=""
   if [[ "$SOCIAL_ENABLED" == "1" ]]; then
     render_social_handoff "$article_path" "$article_slug"
   fi
@@ -829,8 +829,7 @@ main() {
   force_push_repo_branch "$WEBSITE_REPO_DIR" "$WEBSITE_REPO_SLUG" "$WEBSITE_BASE_BRANCH"
 
   if [[ "$SOCIAL_ENABLED" == "1" ]]; then
-    social_archive_key="$(resolve_next_archive_key "$SOCIAL_REPO_DIR/$SOCIAL_ARCHIVE_ROOT" "$FORCE_DATE")"
-    publish_social_archive "$social_archive_key"
+    publish_social_archive
   fi
 }
 
