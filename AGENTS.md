@@ -63,6 +63,9 @@ The `/library/` path matters because the site base URL is configured to `/librar
 - Preserve existing frontmatter, slugs, and category structure unless a routing/navigation change is explicitly needed.
 - Prefer updating content in place over moving files.
 - Be careful with absolute URLs, internal links, and image paths because the site is served under `/library/`.
+- For screenshot usage in docs and blog posts, prefer one desktop image and one mobile image when both views add value.
+- Do not use full-page screenshots in docs or blog posts.
+- Do not use scrolled screenshots unless the feature being documented is completely below the fold in every non-scrolled view you have available.
 
 ## Generated and Local Artifact Paths
 

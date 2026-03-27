@@ -21,7 +21,7 @@ Imagine a small newsroom editor, an intake coordinator at a legal aid office, or
 
 This is exactly where manual PGP setup can slow things down. If the recipient has to stop and figure out key export steps before they have even finished basic account setup, launch gets pushed back. In practice, that means more time spent in configuration and less time getting a working intake channel in front of the people who need it.
 
-![Hush Line onboarding step for setting up encryption with Proton email search](/img/screenshots/newman/auth-newman-onboarding-encryption-desktop-light-window-02.png)
+![Hush Line onboarding step for setting up encryption with Proton email search](/img/screenshots/newman/auth-newman-onboarding-encryption-desktop-light-fold.png)
 
 *During onboarding, recipients can search for a Proton email address and import the public key without leaving the setup flow.*
 
@@ -37,7 +37,7 @@ That matters because it removes a fragile early step from onboarding:
 
 For teams trying to launch quickly, that is a practical improvement, not a cosmetic one. The easier it is to finish encryption correctly, the less temptation there is to "come back to it later."
 
-![Hush Line settings page showing Proton key import inside the Encryption tab](/img/screenshots/newman/auth-newman-settings-encryption-desktop-light-window-02.png)
+![Hush Line settings page showing Proton key import inside the Encryption tab](/img/screenshots/newman/auth-newman-settings-encryption-mobile-light-fold.png)
 
 *The same Proton key import flow remains available later in Settings, so recipients can finish or revise encryption setup after onboarding.*
 
