@@ -190,8 +190,14 @@ function ucFirst(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-function leadingQuestion(summary) {
+function removeLead(value, lead) {
+  return String(value || "").replace(new RegExp(`^${lead}\\s+`, "i"), "").trim();
+}
+
+function leadingQuestion(title, summary) {
+  const cleanTitle = stripTrailingPunctuation(String(title || "").trim());
   const trimmed = stripTrailingPunctuation(firstSentence(summary));
+  let match;
 
   if (!trimmed) {
     return "What does this look like in practice?";
@@ -201,7 +207,22 @@ function leadingQuestion(summary) {
     return trimmed;
   }
 
-  let match = trimmed.match(/^.+?\bhelps\s+(.+)$/i);
+  match = trimmed.match(/^before\s+(.+?\bgoes live),\s+the page itself should explain\b/i);
+  if (match) {
+    return "What should a public reporting page explain before launch?";
+  }
+
+  match = trimmed.match(/^(.+?)\s+are not cosmetic when\s+(.+)$/i);
+  if (match) {
+    return `Why do ${lcFirst(match[1])} matter when ${lcFirst(match[2])}?`;
+  }
+
+  match = trimmed.match(/^before\s+(.+?),\s+(.+?)\s+should\s+(.+)$/i);
+  if (match) {
+    return `What should ${lcFirst(match[2])} ${match[3]} before ${lcFirst(match[1])}?`;
+  }
+
+  match = trimmed.match(/^.+?\bhelps\s+(.+)$/i);
   if (match) {
     return `How can ${lcFirst(match[1])}?`;
   }
@@ -234,16 +255,56 @@ function leadingQuestion(summary) {
   return "What should teams know before they set this up?";
 }
 
-function publishedLine(title) {
-  if (/^how\b/i.test(title)) {
-    return "We just published an article showing how Hush Line handles this.";
+function publishedLine(title, summary) {
+  const cleanTitle = stripTrailingPunctuation(String(title || "").trim());
+  const cleanSummary = stripTrailingPunctuation(firstSentence(summary));
+  let match = cleanSummary.match(/^before\s+(.+?\bgoes live),\s+the page itself should explain\b/i);
+
+  if (match) {
+    return "We just published an article describing what a public reporting page should explain before launch.";
   }
 
-  if (/^(what|why)\b/i.test(title)) {
-    return "We just published an article explaining this.";
+  match = cleanSummary.match(/^before\s+(.+?),\s+(.+?)\s+should\s+(.+)$/i);
+
+  if (match) {
+    return `We just published an article describing what ${lcFirst(match[2])} should ${match[3]} before ${lcFirst(match[1])}.`;
   }
 
-  return "We just published an article describing this.";
+  if (/^(.+?)\s+are not\s+(.+)$/i.test(cleanSummary)) {
+    match = cleanSummary.match(/^(.+?)\s+are not\s+(.+)$/i);
+    return `We just published an article explaining why ${lcFirst(match[1])} are not ${match[2]}.`;
+  }
+
+  if (/^(.+?)\s+is not\s+(.+)$/i.test(cleanSummary)) {
+    match = cleanSummary.match(/^(.+?)\s+is not\s+(.+)$/i);
+    return `We just published an article explaining why ${lcFirst(match[1])} is not ${match[2]}.`;
+  }
+
+  if (/\bhelps\b|\b(?:lets|allows)\b|\bmakes it easier to\b|\breduces\b|\bkeeps\b/i.test(cleanSummary)) {
+    return `We just published an article showing how ${cleanSummary}.`;
+  }
+
+  if (/\bshould\b/i.test(cleanSummary)) {
+    return `We just published an article describing why ${lcFirst(cleanSummary)}.`;
+  }
+
+  if (cleanSummary) {
+    return `We just published an article describing ${lcFirst(cleanSummary)}.`;
+  }
+
+  if (/^how\b/i.test(cleanTitle)) {
+    return `We just published an article showing how ${lcFirst(removeLead(cleanTitle, "how"))}.`;
+  }
+
+  if (/^why\b/i.test(cleanTitle)) {
+    return `We just published an article explaining why ${lcFirst(removeLead(cleanTitle, "why"))}.`;
+  }
+
+  if (/^what\b/i.test(cleanTitle)) {
+    return `We just published an article describing what ${lcFirst(removeLead(cleanTitle, "what"))}.`;
+  }
+
+  return "We just published an article describing a new Hush Line workflow.";
 }
 
 function buildTxt(post) {
@@ -271,8 +332,8 @@ function buildTxt(post) {
 }
 
 function buildCopy({ articleUrl, summary, title }) {
-  const question = leadingQuestion(summary);
-  const articleLine = publishedLine(title);
+  const question = leadingQuestion(title, summary);
+  const articleLine = publishedLine(title, summary);
   const lines = [question, articleLine, `read it here: ${articleUrl}`];
 
   return {
