@@ -233,6 +233,11 @@ function leadingQuestion(title, summary) {
     return `How can ${clause}?`;
   }
 
+  match = trimmed.match(/^(.+?)\s+make(?:s)? it easier for\s+(.+?)\s+to\s+(.+)$/i);
+  if (match) {
+    return `How can ${lcFirst(match[2])} ${match[3]}?`;
+  }
+
   match = trimmed.match(/^.+?\bmakes it easier to\s+(.+)$/i);
   if (match) {
     return `How do you ${lcFirst(match[1])}?`;
@@ -252,7 +257,11 @@ function leadingQuestion(title, summary) {
     return `${ucFirst(trimmed)}?`;
   }
 
-  return "What should teams know before launch?";
+  if (/^why\b/i.test(cleanTitle)) {
+    return `Why do ${lcFirst(removeLead(cleanTitle, "why"))}?`;
+  }
+
+  return "What should teams make clear before they publish a public reporting page?";
 }
 
 function publishedLine(title, summary) {
@@ -280,7 +289,7 @@ function publishedLine(title, summary) {
     return `We just published an article explaining why ${lcFirst(match[1])} is not ${match[2]}.`;
   }
 
-  if (/\bhelp(?:s)?\b|\b(?:let|lets|allow|allows)\b|\bmakes it easier to\b|\breduce(?:s)?\b|\bkeep(?:s)?\b/i.test(cleanSummary)) {
+  if (/\bhelp(?:s)?\b|\b(?:let|lets|allow|allows)\b|\bmake(?:s)? it easier\b|\breduce(?:s)?\b|\bkeep(?:s)?\b/i.test(cleanSummary)) {
     return `We just published an article showing how ${lcFirst(cleanSummary)}.`;
   }
 
