@@ -18,6 +18,10 @@ const BANNED_PLAIN_LANGUAGE_PHRASES = [
   "chat workflow",
   "intake shape",
   "operational context",
+  "who reviewed",
+  "reviewed them",
+  "team assignment",
+  "shared queue",
 ];
 const BANNED_PLAIN_LANGUAGE_PATTERNS = [
   /\bsort\b.+\boutreach\b/i,
@@ -203,6 +207,7 @@ function buildSocialCopyPrompt({ articleUrl, excerpt, feedback, headings, markdo
     "- Name the concrete thing the article helps with. Do not rely on abstract phrasing like `workflow`, `operational context`, or `intake shape` unless you explain it in plain language.",
     "- Do not use phrases like `turning intake into chat`, `chat workflow`, or similar internal shorthand. Say plainly what the tool helps the team do.",
     "- If a phrase would sound unclear to a normal reader scrolling LinkedIn, rewrite it more simply.",
+    "- Do not imply unsupported product behavior such as multi-user assignment, reviewer tracking, shared queues, or per-user audit state unless the docs in this repo explicitly support it.",
     "- If you mention the product name, spell it exactly `Hush Line`.",
     "- Do not include the link, emojis, hashtags, bullets, markdown, code fences, or extra keys.",
     "- Keep the combined `question` and `article_line` concise enough that adding a third line `Read it here 👉 <url>` will still fit within 500 characters total.",
