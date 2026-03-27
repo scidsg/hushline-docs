@@ -25,6 +25,14 @@ If you are new to this repo, read in this order:
 2. [`docs/README.md`](./docs/README.md)
 3. [`docs/docusaurus.config.js`](./docs/docusaurus.config.js)
 4. [`docs/sidebars.js`](./docs/sidebars.js)
+5. `/Users/scidsg/hushline/AGENTS.md`
+
+## Cross-Repo Grounding
+
+- Before writing or revising product-facing docs or blog content, read `/Users/scidsg/hushline/AGENTS.md`.
+- Treat the main app repo `AGENTS.md` as the source for core users, supported flows, product priorities, and safety/privacy framing.
+- Use it to avoid inventing unsupported workflows, user roles, or product behavior in docs articles or social copy.
+- If docs content appears to conflict with `/Users/scidsg/hushline/AGENTS.md`, stop and verify the product behavior in the main app repo before publishing new claims.
 
 ## Repository Map
 
