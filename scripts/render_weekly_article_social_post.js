@@ -198,6 +198,14 @@ function removeLead(value, lead) {
   return String(value || "").replace(new RegExp(`^${lead}\\s+`, "i"), "").trim();
 }
 
+function simplifyQuestionAction(value) {
+  return String(value || "")
+    .replace(/\s+during\b.+$/i, "")
+    .replace(/\s+before\b.+$/i, "")
+    .replace(/\s+without\b.+$/i, "")
+    .trim();
+}
+
 function leadingQuestion(title, summary) {
   const cleanTitle = stripTrailingPunctuation(String(title || "").trim());
   const trimmed = stripTrailingPunctuation(firstSentence(summary));
@@ -228,18 +236,18 @@ function leadingQuestion(title, summary) {
 
   match = trimmed.match(/^.+?\bhelp(?:s)?\s+(.+)$/i);
   if (match) {
-    return `How can ${lcFirst(match[1])}?`;
+    return `How can ${lcFirst(simplifyQuestionAction(match[1]))}?`;
   }
 
   match = trimmed.match(/^.+?\b(?:let|lets|allow|allows)\s+(.+)$/i);
   if (match) {
-    const clause = lcFirst(match[1]).replace(/^to\s+/i, "");
+    const clause = lcFirst(simplifyQuestionAction(match[1])).replace(/^to\s+/i, "");
     return `How can ${clause}?`;
   }
 
   match = trimmed.match(/^(.+?)\s+make(?:s)? it easier for\s+(.+?)\s+to\s+(.+)$/i);
   if (match) {
-    return `How can ${lcFirst(match[2])} ${match[3]}?`;
+    return `How can ${lcFirst(match[2])} ${simplifyQuestionAction(match[3])}?`;
   }
 
   match = trimmed.match(/^.+?\bmakes it easier to\s+(.+)$/i);
