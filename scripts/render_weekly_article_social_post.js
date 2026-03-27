@@ -334,23 +334,20 @@ function buildTxt(post) {
 function buildCopy({ articleUrl, summary, title }) {
   const question = leadingQuestion(title, summary);
   const articleLine = publishedLine(title, summary);
-  const lines = [question, articleLine, `read it here: ${articleUrl}`];
+  const lines = [question, articleLine, `Read it here 👉 ${articleUrl}`];
 
   return {
     bluesky: fitCopy(
       300,
       lines,
-      "\n",
     ),
     linkedin: fitCopy(
       3000,
       lines,
-      "\n",
     ),
     mastodon: fitCopy(
       500,
       lines,
-      "\n",
     ),
   };
 }
