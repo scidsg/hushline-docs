@@ -160,8 +160,38 @@ function weekdayLabel(date) {
   return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][parsed.getDay()];
 }
 
-function leadingQuestion(title) {
-  const trimmed = String(title || "").trim();
+function firstSentence(value) {
+  const trimmed = String(value || "").trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
+  return (match ? match[1] : trimmed).trim();
+}
+
+function stripTrailingPunctuation(value) {
+  return String(value || "").trim().replace(/[.?!:;]+$/, "");
+}
+
+function lcFirst(value) {
+  if (!value) {
+    return "";
+  }
+
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function ucFirst(value) {
+  if (!value) {
+    return "";
+  }
+
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function leadingQuestion(summary) {
+  const trimmed = stripTrailingPunctuation(firstSentence(summary));
 
   if (!trimmed) {
     return "What does this look like in practice?";
@@ -171,11 +201,37 @@ function leadingQuestion(title) {
     return trimmed;
   }
 
-  if (/^(what|how|why|when|where|who|should|can|does|do|is|are)\b/i.test(trimmed)) {
-    return `${trimmed}?`;
+  let match = trimmed.match(/^.+?\bhelps\s+(.+)$/i);
+  if (match) {
+    return `How can ${lcFirst(match[1])}?`;
   }
 
-  return "What does this look like in practice?";
+  match = trimmed.match(/^.+?\b(?:lets|allows)\s+(.+)$/i);
+  if (match) {
+    const clause = lcFirst(match[1]).replace(/^to\s+/i, "");
+    return `How can ${clause}?`;
+  }
+
+  match = trimmed.match(/^.+?\bmakes it easier to\s+(.+)$/i);
+  if (match) {
+    return `How do you ${lcFirst(match[1])}?`;
+  }
+
+  match = trimmed.match(/^.+?\breduces\s+(.+)$/i);
+  if (match) {
+    return `How do you reduce ${lcFirst(match[1])}?`;
+  }
+
+  match = trimmed.match(/^.+?\bkeeps\s+(.+?)\s+while\s+(.+)$/i);
+  if (match) {
+    return `How do you ${lcFirst(match[1])} while ${lcFirst(match[2])}?`;
+  }
+
+  if (/^(what|how|why|when|where|who|should|can|does|do|is|are)\b/i.test(trimmed)) {
+    return `${ucFirst(trimmed)}?`;
+  }
+
+  return "What should teams know before they set this up?";
 }
 
 function publishedLine(title) {
@@ -214,8 +270,8 @@ function buildTxt(post) {
   ].join("\n");
 }
 
-function buildCopy({ articleUrl, excerpt, title }) {
-  const question = leadingQuestion(title);
+function buildCopy({ articleUrl, summary, title }) {
+  const question = leadingQuestion(summary);
   const articleLine = publishedLine(title);
   const lines = [question, articleLine, `read it here: ${articleUrl}`];
 
@@ -245,9 +301,11 @@ async function main() {
 
   const article = readArticle(articlePath);
   const title = frontmatterField(article.frontmatter, "title");
+  const subtitle = frontmatterField(article.frontmatter, "subtitle");
   const slug = frontmatterField(article.frontmatter, "slug") || path.basename(path.dirname(articlePath));
   const opening = article.body.split(/<!--\s*truncate\s*-->/i)[0] || article.body;
   const excerpt = clamp(firstNonEmptyParagraphs(opening, 2).join(" "), 260);
+  const summary = subtitle || excerpt;
 
   if (!title) {
     throw new Error(`Missing title frontmatter in article: ${articlePath}`);
@@ -264,7 +322,7 @@ async function main() {
     subtext: excerpt,
     social: buildCopy({
       articleUrl: args.articleUrl,
-      excerpt,
+      summary,
       title,
     }),
     rationale: `Share the newly published Hush Line article "${title}" on social media after the docs site goes live.`,
