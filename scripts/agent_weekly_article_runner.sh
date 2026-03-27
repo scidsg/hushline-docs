@@ -36,26 +36,29 @@ DRY_RUN=0
 
 SCRIPT_DIR="${HUSHLINE_DOCS_WEEKLY_RUNNER_ORIGINAL_SCRIPT_DIR:-$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)}"
 DEFAULT_REPO_DIR="$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)"
+DEFAULT_REPO_PARENT_DIR="$(CDPATH= cd -- "$DEFAULT_REPO_DIR/.." && pwd)"
 
 REPO_DIR="${HUSHLINE_DOCS_REPO_DIR:-$DEFAULT_REPO_DIR}"
 REPO_SLUG="${HUSHLINE_DOCS_REPO_SLUG:-scidsg/hushline-docs}"
 BASE_BRANCH="${HUSHLINE_DOCS_BASE_BRANCH:-main}"
-BOT_LOGIN="${HUSHLINE_DOCS_BOT_LOGIN:-hushline-dev}"
-BOT_GIT_NAME="${HUSHLINE_DOCS_BOT_GIT_NAME:-$BOT_LOGIN}"
+BOT_GIT_NAME="${HUSHLINE_DOCS_BOT_GIT_NAME:-hushline-dev}"
 BOT_GIT_EMAIL="${HUSHLINE_DOCS_BOT_GIT_EMAIL:-git-dev@scidsg.org}"
 BOT_GIT_GPG_FORMAT="${HUSHLINE_DOCS_BOT_GIT_GPG_FORMAT:-ssh}"
 BOT_GIT_SIGNING_KEY="${HUSHLINE_DOCS_BOT_GIT_SIGNING_KEY:-}"
 DEFAULT_BOT_GIT_SSH_SIGNING_KEY_PATH="${HUSHLINE_DOCS_BOT_GIT_DEFAULT_SSH_SIGNING_KEY_PATH:-}"
-BRANCH_PREFIX="${HUSHLINE_DOCS_WEEKLY_BRANCH_PREFIX:-codex/weekly-article-}"
 TOPIC_CATALOG="${HUSHLINE_DOCS_WEEKLY_TOPIC_CATALOG:-$SCRIPT_DIR/weekly_article_topics.json}"
 CODEX_MODEL="${HUSHLINE_CODEX_MODEL:-gpt-5.4}"
 CODEX_REASONING_EFFORT="${HUSHLINE_CODEX_REASONING_EFFORT:-high}"
 VERBOSE_CODEX_OUTPUT="${HUSHLINE_DOCS_WEEKLY_VERBOSE_CODEX_OUTPUT:-0}"
+WEBSITE_REPO_DIR="${HUSHLINE_WEBSITE_REPO_DIR:-$DEFAULT_REPO_PARENT_DIR/hushline-website}"
+WEBSITE_REPO_SLUG="${HUSHLINE_WEBSITE_REPO_SLUG:-scidsg/hushline-website}"
+WEBSITE_BASE_BRANCH="${HUSHLINE_WEBSITE_BASE_BRANCH:-main}"
+WEBSITE_LIBRARY_DIR="${HUSHLINE_WEBSITE_LIBRARY_DIR:-$WEBSITE_REPO_DIR/src/library}"
+DOCS_BUILD_DIR="${HUSHLINE_DOCS_BUILD_DIR:-$REPO_DIR/docs/build}"
 
 PROMPT_FILE=""
 CODEX_OUTPUT_FILE=""
 CODEX_TRANSCRIPT_FILE=""
-PR_BODY_FILE=""
 SELECTION_FILE=""
 
 parse_args() {
@@ -88,7 +91,7 @@ runner_status() {
 }
 
 cleanup() {
-  rm -f "${PROMPT_FILE:-}" "${CODEX_OUTPUT_FILE:-}" "${CODEX_TRANSCRIPT_FILE:-}" "${PR_BODY_FILE:-}" "${SELECTION_FILE:-}"
+  rm -f "${PROMPT_FILE:-}" "${CODEX_OUTPUT_FILE:-}" "${CODEX_TRANSCRIPT_FILE:-}" "${SELECTION_FILE:-}"
   rm -f "${HUSHLINE_DOCS_WEEKLY_RUNNER_SNAPSHOT_PATH:-}"
 }
 
@@ -213,60 +216,79 @@ configure_bot_git_identity() {
   fi
 }
 
-remote_branch_exists() {
-  local branch="$1"
-  git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1
-}
-
-push_branch_for_pr() {
-  local branch="$1"
-
-  if remote_branch_exists "$branch"; then
-    runner_status "Remote branch '$branch' exists; pushing with --force-with-lease."
-    git push -u --force-with-lease origin "$branch"
-    return $?
+assert_git_repo_dir() {
+  local repo_dir="$1"
+  if ! git -C "$repo_dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    printf '%s\n' "Blocked: git repository not found: $repo_dir" >&2
+    return 1
   fi
-
-  runner_status "Remote branch '$branch' does not exist; creating it."
-  git push -u origin "$branch"
 }
 
-count_open_bot_prs() {
-  gh pr list \
-    --repo "$REPO_SLUG" \
-    --state open \
-    --author "$BOT_LOGIN" \
-    --limit 100 \
-    --json number \
-    --jq 'length'
+assert_directory_exists() {
+  local dir_path="$1"
+  if [[ ! -d "$dir_path" ]]; then
+    printf '%s\n' "Blocked: directory not found: $dir_path" >&2
+    return 1
+  fi
 }
 
-count_open_human_prs() {
-  gh pr list \
-    --repo "$REPO_SLUG" \
-    --state open \
-    --limit 200 \
-    --json author \
-    --jq '
-      [
-        .[]
-        | (.author.login // "")
-        | select(length > 0)
-        | select(. != "'"$BOT_LOGIN"'")
-        | select(test("\\[bot\\]$") | not)
-      ] | length
-    '
+assert_publish_target_is_safe() {
+  local repo_dir="$1"
+  local target_dir="$2"
+
+  case "$target_dir" in
+    "$repo_dir"/*)
+      ;;
+    *)
+      printf '%s\n' "Blocked: publish target must live inside $repo_dir: $target_dir" >&2
+      return 1
+      ;;
+  esac
+
+  if [[ "$target_dir" == "$repo_dir" ]]; then
+    printf '%s\n' "Blocked: refusing to delete repository root: $target_dir" >&2
+    return 1
+  fi
 }
 
-find_open_pr_for_head_branch() {
-  local head_branch="$1"
-  gh pr list \
-    --repo "$REPO_SLUG" \
-    --state open \
-    --head "$head_branch" \
-    --limit 1 \
-    --json number,url,title \
-    --jq '.[0] // empty'
+refresh_repo_checkout() {
+  local repo_dir="$1"
+  local base_branch="$2"
+  local repo_slug="$3"
+
+  runner_status "Refreshing checkout for $repo_slug."
+  git -C "$repo_dir" fetch origin
+  git -C "$repo_dir" checkout "$base_branch"
+  git -C "$repo_dir" reset --hard "origin/$base_branch"
+  git -C "$repo_dir" clean -fd
+}
+
+repo_has_changes() {
+  local repo_dir="$1"
+  [[ -n "$(git -C "$repo_dir" status --short)" ]]
+}
+
+force_push_repo_branch() {
+  local repo_dir="$1"
+  local repo_slug="$2"
+  local branch="$3"
+
+  runner_status "Force-pushing $repo_slug to origin/$branch."
+  git -C "$repo_dir" push --force-with-lease origin "$branch"
+}
+
+sync_build_to_website() {
+  local build_dir="$1"
+  local target_dir="$2"
+
+  assert_directory_exists "$build_dir"
+  assert_publish_target_is_safe "$WEBSITE_REPO_DIR" "$target_dir"
+
+  mkdir -p "$target_dir"
+
+  runner_status "Replacing $WEBSITE_REPO_SLUG:$target_dir with the latest docs build."
+  find "$target_dir" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+  cp -a "$build_dir"/. "$target_dir"/
 }
 
 json_field() {
@@ -303,10 +325,6 @@ select_topic() {
   fi
 
   "${cmd[@]}"
-}
-
-build_branch_name() {
-  printf '%s%s\n' "$BRANCH_PREFIX" "$FORCE_DATE"
 }
 
 build_prompt() {
@@ -402,29 +420,9 @@ build_pr_title() {
   printf 'Add weekly article: %s\n' "$title_seed"
 }
 
-write_pr_body() {
-  local topic_id="$1"
-  local core_user_label="$2"
-  local scenario="$3"
-  local article_path="$4"
-  local supporting_docs="$5"
-
-  {
-    cat <<EOF2
-## Summary
-- add a new weekly blog article at \`$article_path\`
-- focus the article on Hush Line features for $core_user_label
-- anchor the article in this scenario: $scenario
-
-## Topic
-- topic id: \`$topic_id\`
-- supporting docs: $supporting_docs
-
-## Validation
-- npm install
-- npm run build
-EOF2
-  } > "$PR_BODY_FILE"
+build_publish_commit_title() {
+  local title_seed="$1"
+  printf 'Publish library build for weekly article: %s\n' "$title_seed"
 }
 
 main() {
@@ -446,34 +444,19 @@ main() {
   PROMPT_FILE="$(mktemp)"
   CODEX_OUTPUT_FILE="$(mktemp)"
   CODEX_TRANSCRIPT_FILE="$(mktemp)"
-  PR_BODY_FILE="$(mktemp)"
 
   require_cmd git
-  require_cmd gh
   require_cmd codex
   require_cmd npm
 
-  runner_status "Refreshing local checkout."
-  git fetch origin
-  git checkout "$BASE_BRANCH"
-  git reset --hard "origin/$BASE_BRANCH"
-  git clean -fd
+  assert_git_repo_dir "$REPO_DIR"
+  assert_git_repo_dir "$WEBSITE_REPO_DIR"
 
-  local open_human_prs=""
-  open_human_prs="$(count_open_human_prs)"
-  if [[ "$open_human_prs" =~ ^[0-9]+$ ]] && (( open_human_prs > 0 )); then
-    runner_status "Skipped: found ${open_human_prs} open human-authored PR(s)."
-    return 0
-  fi
+  refresh_repo_checkout "$REPO_DIR" "$BASE_BRANCH" "$REPO_SLUG"
+  refresh_repo_checkout "$WEBSITE_REPO_DIR" "$WEBSITE_BASE_BRANCH" "$WEBSITE_REPO_SLUG"
 
-  local open_bot_prs=""
-  open_bot_prs="$(count_open_bot_prs)"
-  if [[ "$open_bot_prs" =~ ^[0-9]+$ ]] && (( open_bot_prs > 0 )); then
-    runner_status "Skipped: found ${open_bot_prs} open bot-authored PR(s)."
-    return 0
-  fi
-
-  configure_bot_git_identity
+  (cd "$REPO_DIR" && configure_bot_git_identity)
+  (cd "$WEBSITE_REPO_DIR" && configure_bot_git_identity)
 
   select_topic > "$SELECTION_FILE"
 
@@ -488,7 +471,6 @@ main() {
   local article_slug=""
   local feature_key=""
   local core_user_key=""
-  local branch_name=""
 
   topic_id="$(json_field "$SELECTION_FILE" "topic.id")"
   title_seed="$(json_field "$SELECTION_FILE" "topic.title_seed")"
@@ -501,12 +483,9 @@ main() {
   article_slug="$(json_field "$SELECTION_FILE" "articleSlug")"
   feature_key="$(json_field "$SELECTION_FILE" "topic.feature_key")"
   core_user_key="$(json_field "$SELECTION_FILE" "topic.core_user_key")"
-  branch_name="$(build_branch_name)"
 
   runner_status "Selected weekly article topic: $topic_id"
   runner_status "Planned article path: $article_path"
-
-  git checkout -B "$branch_name"
 
   build_prompt \
     "$article_path" \
@@ -530,32 +509,20 @@ main() {
 
   validate_article
 
-  git add .
-  git commit -m "$(build_pr_title "$title_seed")"
-  push_branch_for_pr "$branch_name"
+  sync_build_to_website "$DOCS_BUILD_DIR" "$WEBSITE_LIBRARY_DIR"
 
-  write_pr_body "$topic_id" "$core_user_label" "$scenario" "$article_path" "$supporting_docs"
+  git -C "$REPO_DIR" add -A
+  git -C "$REPO_DIR" commit -m "$(build_pr_title "$title_seed")"
+  force_push_repo_branch "$REPO_DIR" "$REPO_SLUG" "$BASE_BRANCH"
 
-  local existing_pr_json=""
-  existing_pr_json="$(find_open_pr_for_head_branch "$branch_name")"
-  if [[ -n "$existing_pr_json" ]]; then
-    local pr_number=""
-    pr_number="$(node -e 'const pr = JSON.parse(process.argv[1]); console.log(pr.number);' "$existing_pr_json")"
-    runner_status "Updating existing PR #$pr_number."
-    gh pr edit "$pr_number" \
-      --repo "$REPO_SLUG" \
-      --title "$(build_pr_title "$title_seed")" \
-      --body-file "$PR_BODY_FILE"
+  if ! repo_has_changes "$WEBSITE_REPO_DIR"; then
+    runner_status "Skipped website publish: syncing the build produced no changes in $WEBSITE_LIBRARY_DIR."
     return 0
   fi
 
-  runner_status "Creating PR for $branch_name."
-  gh pr create \
-    --repo "$REPO_SLUG" \
-    --base "$BASE_BRANCH" \
-    --head "$branch_name" \
-    --title "$(build_pr_title "$title_seed")" \
-    --body-file "$PR_BODY_FILE"
+  git -C "$WEBSITE_REPO_DIR" add -A
+  git -C "$WEBSITE_REPO_DIR" commit -m "$(build_publish_commit_title "$title_seed")"
+  force_push_repo_branch "$WEBSITE_REPO_DIR" "$WEBSITE_REPO_SLUG" "$WEBSITE_BASE_BRANCH"
 }
 
 main "$@"
