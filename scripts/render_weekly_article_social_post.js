@@ -222,12 +222,12 @@ function leadingQuestion(title, summary) {
     return `What should ${lcFirst(match[2])} ${match[3]} before ${lcFirst(match[1])}?`;
   }
 
-  match = trimmed.match(/^.+?\bhelps\s+(.+)$/i);
+  match = trimmed.match(/^.+?\bhelp(?:s)?\s+(.+)$/i);
   if (match) {
     return `How can ${lcFirst(match[1])}?`;
   }
 
-  match = trimmed.match(/^.+?\b(?:lets|allows)\s+(.+)$/i);
+  match = trimmed.match(/^.+?\b(?:let|lets|allow|allows)\s+(.+)$/i);
   if (match) {
     const clause = lcFirst(match[1]).replace(/^to\s+/i, "");
     return `How can ${clause}?`;
@@ -238,12 +238,12 @@ function leadingQuestion(title, summary) {
     return `How do you ${lcFirst(match[1])}?`;
   }
 
-  match = trimmed.match(/^.+?\breduces\s+(.+)$/i);
+  match = trimmed.match(/^.+?\breduce(?:s)?\s+(.+)$/i);
   if (match) {
     return `How do you reduce ${lcFirst(match[1])}?`;
   }
 
-  match = trimmed.match(/^.+?\bkeeps\s+(.+?)\s+while\s+(.+)$/i);
+  match = trimmed.match(/^.+?\bkeep(?:s)?\s+(.+?)\s+while\s+(.+)$/i);
   if (match) {
     return `How do you ${lcFirst(match[1])} while ${lcFirst(match[2])}?`;
   }
@@ -252,7 +252,7 @@ function leadingQuestion(title, summary) {
     return `${ucFirst(trimmed)}?`;
   }
 
-  return "What should teams know before they set this up?";
+  return "What should teams know before launch?";
 }
 
 function publishedLine(title, summary) {
@@ -280,8 +280,8 @@ function publishedLine(title, summary) {
     return `We just published an article explaining why ${lcFirst(match[1])} is not ${match[2]}.`;
   }
 
-  if (/\bhelps\b|\b(?:lets|allows)\b|\bmakes it easier to\b|\breduces\b|\bkeeps\b/i.test(cleanSummary)) {
-    return `We just published an article showing how ${cleanSummary}.`;
+  if (/\bhelp(?:s)?\b|\b(?:let|lets|allow|allows)\b|\bmakes it easier to\b|\breduce(?:s)?\b|\bkeep(?:s)?\b/i.test(cleanSummary)) {
+    return `We just published an article showing how ${lcFirst(cleanSummary)}.`;
   }
 
   if (/\bshould\b/i.test(cleanSummary)) {
