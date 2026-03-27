@@ -2,8 +2,14 @@
 
 "use strict";
 
+const cp = require("child_process");
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
+
+const REPO_ROOT = path.resolve(__dirname, "..");
+const CODEX_MODEL = process.env.HUSHLINE_CODEX_MODEL || "gpt-5.4";
+const CODEX_REASONING_EFFORT = process.env.HUSHLINE_CODEX_REASONING_EFFORT || "high";
 
 function parseArgs(argv) {
   const args = {
@@ -160,176 +166,163 @@ function weekdayLabel(date) {
   return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][parsed.getDay()];
 }
 
-function firstSentence(value) {
+function articleHeadings(markdown) {
+  return String(markdown || "")
+    .split("\n")
+    .filter((line) => /^##\s+/.test(line))
+    .map((line) => line.replace(/^##\s+/, "").trim())
+    .filter(Boolean);
+}
+
+function buildSocialCopyPrompt({ articleUrl, excerpt, headings, markdown, subtitle, title }) {
+  return [
+    "You are writing social post copy for one newly published Hush Line article.",
+    "",
+    "Return JSON only with exactly these keys:",
+    '{"question":"...","article_line":"..."}',
+    "",
+    "Rules:",
+    "- `question` must be one engaging, grammatical question ending with `?`.",
+    "- `question` must name the actual subject directly. Do not use vague placeholders like `this`, `that`, `before launch`, or `set this up` unless the subject is explicit in the same sentence.",
+    "- `article_line` must be one sentence that starts exactly with `We just published an article`.",
+    "- `article_line` must complement the question instead of repeating the same core phrase verbatim.",
+    "- If you mention the product name, spell it exactly `Hush Line`.",
+    "- Do not include the link, emojis, hashtags, bullets, markdown, code fences, or extra keys.",
+    "- Keep the combined `question` and `article_line` concise enough that adding a third line `Read it here 👉 <url>` will still fit within 500 characters total.",
+    "- Use the article content as the source of truth. Do not invent unsupported product behavior.",
+    "",
+    "Article context:",
+    `Title: ${title}`,
+    `Subtitle: ${subtitle || "(none)"}`,
+    `Excerpt: ${excerpt}`,
+    `URL: ${articleUrl}`,
+    `Section headings: ${headings.length ? headings.join(" | ") : "(none)"}`,
+    "",
+    "Article markdown:",
+    markdown,
+    "",
+  ].join("\n");
+}
+
+function stripCodeFences(value) {
   const trimmed = String(value || "").trim();
-  if (!trimmed) {
-    return "";
-  }
-
-  const match = trimmed.match(/^(.+?[.!?])(?:\s|$)/);
-  return (match ? match[1] : trimmed).trim();
+  const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+  return fenced ? fenced[1].trim() : trimmed;
 }
 
-function stripTrailingPunctuation(value) {
-  return String(value || "").trim().replace(/[.?!:;]+$/, "");
+function parseCodexJson(output) {
+  const trimmed = stripCodeFences(output);
+
+  try {
+    return JSON.parse(trimmed);
+  } catch (_error) {
+    const start = trimmed.indexOf("{");
+    const end = trimmed.lastIndexOf("}");
+    if (start >= 0 && end > start) {
+      return JSON.parse(trimmed.slice(start, end + 1));
+    }
+    throw new Error(`Could not parse Codex JSON output:\n${trimmed}`);
+  }
 }
 
-function lcFirst(value) {
-  if (!value) {
-    return "";
+function assertBrandCasing(value, fieldName) {
+  const text = String(value || "");
+  if (/hush line/i.test(text) && !/Hush Line/.test(text)) {
+    throw new Error(`Codex ${fieldName} used invalid Hush Line capitalization: ${text}`);
   }
-
-  if (/^Hush Line\b/.test(value)) {
-    return value;
-  }
-
-  return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
-function lowerWords(value) {
-  return String(value || "").toLowerCase();
+function validateGeneratedCopy(copy) {
+  if (!copy || typeof copy !== "object" || Array.isArray(copy)) {
+    throw new Error("Codex social copy response must be a JSON object.");
+  }
+
+  const question = String(copy.question || "").trim();
+  const articleLine = String(copy.article_line || "").trim();
+
+  if (!question) {
+    throw new Error("Codex social copy response is missing `question`.");
+  }
+  if (!articleLine) {
+    throw new Error("Codex social copy response is missing `article_line`.");
+  }
+  if (question.includes("\n") || articleLine.includes("\n")) {
+    throw new Error("Codex social copy fields must be single-line strings.");
+  }
+  if (!question.endsWith("?")) {
+    throw new Error(`Codex social question must end with '?': ${question}`);
+  }
+  if (!articleLine.startsWith("We just published an article")) {
+    throw new Error(`Codex social article_line must start with 'We just published an article': ${articleLine}`);
+  }
+  if (/https?:\/\//i.test(question) || /https?:\/\//i.test(articleLine)) {
+    throw new Error("Codex social copy must not include the article URL.");
+  }
+
+  assertBrandCasing(question, "question");
+  assertBrandCasing(articleLine, "article_line");
+
+  return {
+    articleLine,
+    question,
+  };
 }
 
-function ucFirst(value) {
-  if (!value) {
-    return "";
+function generateCodexSocialCopy({ articlePath, articleUrl, excerpt, headings, markdown, subtitle, title }) {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "weekly-article-copy."));
+  const outputPath = path.join(tempDir, "codex-output.txt");
+  const prompt = buildSocialCopyPrompt({
+    articleUrl,
+    excerpt,
+    headings,
+    markdown,
+    subtitle,
+    title,
+  });
+
+  try {
+    const result = cp.spawnSync(
+      "codex",
+      [
+        "exec",
+        "--model",
+        CODEX_MODEL,
+        "-c",
+        `model_reasoning_effort="${CODEX_REASONING_EFFORT}"`,
+        "--full-auto",
+        "--sandbox",
+        "workspace-write",
+        "-C",
+        REPO_ROOT,
+        "-o",
+        outputPath,
+        "-",
+      ],
+      {
+        cwd: REPO_ROOT,
+        encoding: "utf8",
+        input: prompt,
+        maxBuffer: 10 * 1024 * 1024,
+      },
+    );
+
+    if (result.error) {
+      throw result.error;
+    }
+    if (result.status !== 0) {
+      const details = [result.stdout, result.stderr].filter(Boolean).join("\n").trim();
+      throw new Error(
+        `Codex social copy generation failed for ${articlePath} (exit ${result.status}).${details ? `\n${details}` : ""}`,
+      );
+    }
+    if (!fs.existsSync(outputPath)) {
+      throw new Error(`Codex social copy output was not written: ${outputPath}`);
+    }
+
+    return validateGeneratedCopy(parseCodexJson(fs.readFileSync(outputPath, "utf8")));
+  } finally {
+    fs.rmSync(tempDir, { force: true, recursive: true });
   }
-
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
-
-function removeLead(value, lead) {
-  return String(value || "").replace(new RegExp(`^${lead}\\s+`, "i"), "").trim();
-}
-
-function simplifyQuestionAction(value) {
-  return String(value || "")
-    .replace(/\s+during\b.+$/i, "")
-    .replace(/\s+before\b.+$/i, "")
-    .replace(/\s+without\b.+$/i, "")
-    .trim();
-}
-
-function leadingQuestion(title, summary) {
-  const cleanTitle = stripTrailingPunctuation(String(title || "").trim());
-  const trimmed = stripTrailingPunctuation(firstSentence(summary));
-  let match;
-
-  if (/^why\b/i.test(cleanTitle)) {
-    return `Why do ${lowerWords(removeLead(cleanTitle, "why"))}?`;
-  }
-
-  if (!trimmed) {
-    return "What does this look like in practice?";
-  }
-
-  if (trimmed.endsWith("?")) {
-    return trimmed;
-  }
-
-  match = trimmed.match(/^before\s+(.+?\bgoes live),\s+the page itself should explain\b/i);
-  if (match) {
-    return "What should a public reporting page explain before launch?";
-  }
-
-  match = trimmed.match(/^(.+?)\s+are not cosmetic when\s+(.+)$/i);
-  if (match) {
-    return `Why do ${lcFirst(match[1])} matter when ${lcFirst(match[2])}?`;
-  }
-
-  match = trimmed.match(/^before\s+(.+?),\s+(.+?)\s+should\s+(.+)$/i);
-  if (match) {
-    return `What should ${lcFirst(match[2])} ${match[3]} before ${lcFirst(match[1])}?`;
-  }
-
-  match = trimmed.match(/^.+?\bhelp(?:s)?\s+(.+)$/i);
-  if (match) {
-    return `How can ${lcFirst(simplifyQuestionAction(match[1]))}?`;
-  }
-
-  match = trimmed.match(/^.+?\b(?:let|lets|allow|allows)\s+(.+)$/i);
-  if (match) {
-    const clause = lcFirst(simplifyQuestionAction(match[1])).replace(/^to\s+/i, "");
-    return `How can ${clause}?`;
-  }
-
-  match = trimmed.match(/^(.+?)\s+make(?:s)? it easier for\s+(.+?)\s+to\s+(.+)$/i);
-  if (match) {
-    return `How can ${lcFirst(match[2])} ${simplifyQuestionAction(match[3])}?`;
-  }
-
-  match = trimmed.match(/^.+?\bmakes it easier to\s+(.+)$/i);
-  if (match) {
-    return `How do you ${lcFirst(match[1])}?`;
-  }
-
-  match = trimmed.match(/^.+?\breduce(?:s)?\s+(.+)$/i);
-  if (match) {
-    return `How do you reduce ${lcFirst(match[1])}?`;
-  }
-
-  match = trimmed.match(/^.+?\bkeep(?:s)?\s+(.+?)\s+while\s+(.+)$/i);
-  if (match) {
-    return `How do you ${lcFirst(match[1])} while ${lcFirst(match[2])}?`;
-  }
-
-  if (/^(what|how|why|when|where|who|should|can|does|do|is|are)\b/i.test(trimmed)) {
-    return `${ucFirst(trimmed)}?`;
-  }
-
-  return "What should teams make clear before they publish a public reporting page?";
-}
-
-function publishedLine(title, summary) {
-  const cleanTitle = stripTrailingPunctuation(String(title || "").trim());
-  const cleanSummary = stripTrailingPunctuation(firstSentence(summary));
-  let match = cleanSummary.match(/^before\s+(.+?\bgoes live),\s+the page itself should explain\b/i);
-
-  if (match) {
-    return "We just published an article describing what a public reporting page should explain before launch.";
-  }
-
-  match = cleanSummary.match(/^before\s+(.+?),\s+(.+?)\s+should\s+(.+)$/i);
-
-  if (match) {
-    return `We just published an article describing what ${lcFirst(match[2])} should ${match[3]} before ${lcFirst(match[1])}.`;
-  }
-
-  if (/^(.+?)\s+are not\s+(.+)$/i.test(cleanSummary)) {
-    match = cleanSummary.match(/^(.+?)\s+are not\s+(.+)$/i);
-    return `We just published an article explaining why ${lcFirst(match[1])} are not ${match[2]}.`;
-  }
-
-  if (/^(.+?)\s+is not\s+(.+)$/i.test(cleanSummary)) {
-    match = cleanSummary.match(/^(.+?)\s+is not\s+(.+)$/i);
-    return `We just published an article explaining why ${lcFirst(match[1])} is not ${match[2]}.`;
-  }
-
-  if (/\bhelp(?:s)?\b|\b(?:let|lets|allow|allows)\b|\bmake(?:s)? it easier\b|\breduce(?:s)?\b|\bkeep(?:s)?\b/i.test(cleanSummary)) {
-    return `We just published an article showing how ${lcFirst(cleanSummary)}.`;
-  }
-
-  if (/\bshould\b/i.test(cleanSummary)) {
-    return `We just published an article describing why ${lcFirst(cleanSummary)}.`;
-  }
-
-  if (cleanSummary) {
-    return `We just published an article describing ${lcFirst(cleanSummary)}.`;
-  }
-
-  if (/^how\b/i.test(cleanTitle)) {
-    return `We just published an article showing how ${lcFirst(removeLead(cleanTitle, "how"))}.`;
-  }
-
-  if (/^why\b/i.test(cleanTitle)) {
-    return `We just published an article explaining why ${lcFirst(removeLead(cleanTitle, "why"))}.`;
-  }
-
-  if (/^what\b/i.test(cleanTitle)) {
-    return `We just published an article describing what ${lcFirst(removeLead(cleanTitle, "what"))}.`;
-  }
-
-  return "We just published an article describing a new Hush Line workflow.";
 }
 
 function buildTxt(post) {
@@ -356,9 +349,18 @@ function buildTxt(post) {
   ].join("\n");
 }
 
-function buildCopy({ articleUrl, summary, title }) {
-  const question = leadingQuestion(title, summary);
-  const articleLine = publishedLine(title, summary);
+function buildCopy({ articlePath, articleUrl, excerpt, headings, markdown, subtitle, title }) {
+  const generated = generateCodexSocialCopy({
+    articlePath,
+    articleUrl,
+    excerpt,
+    headings,
+    markdown,
+    subtitle,
+    title,
+  });
+  const question = generated.question;
+  const articleLine = generated.articleLine;
   const lines = [question, articleLine, `Read it here 👉 ${articleUrl}`];
 
   return {
@@ -388,7 +390,7 @@ async function main() {
   const slug = frontmatterField(article.frontmatter, "slug") || path.basename(path.dirname(articlePath));
   const opening = article.body.split(/<!--\s*truncate\s*-->/i)[0] || article.body;
   const excerpt = clamp(firstNonEmptyParagraphs(opening, 2).join(" "), 260);
-  const summary = subtitle || excerpt;
+  const headings = articleHeadings(article.markdown);
 
   if (!title) {
     throw new Error(`Missing title frontmatter in article: ${articlePath}`);
@@ -404,8 +406,12 @@ async function main() {
     headline: clamp(title, 120),
     subtext: excerpt,
     social: buildCopy({
+      articlePath,
       articleUrl: args.articleUrl,
-      summary,
+      excerpt,
+      headings,
+      markdown: article.markdown,
+      subtitle,
       title,
     }),
     rationale: `Share the newly published Hush Line article "${title}" on social media after the docs site goes live.`,

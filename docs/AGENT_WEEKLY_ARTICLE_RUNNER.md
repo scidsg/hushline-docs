@@ -43,6 +43,7 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
    - `npm install`
    - `npm run build`
 8. Build a social-share archive for the article.
+   - Generate the text-only social copy from article context via Codex and validate the returned question/body format before writing the archive.
 9. Delete the contents of `hushline-website/src/library`.
 10. Copy the new contents of `docs/build/` into `hushline-website/src/library`.
 11. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
