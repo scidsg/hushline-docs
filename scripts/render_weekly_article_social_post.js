@@ -10,6 +10,19 @@ const path = require("path");
 const REPO_ROOT = path.resolve(__dirname, "..");
 const CODEX_MODEL = process.env.HUSHLINE_CODEX_MODEL || "gpt-5.4";
 const CODEX_REASONING_EFFORT = process.env.HUSHLINE_CODEX_REASONING_EFFORT || "high";
+const SOCIAL_COPY_MAX_ATTEMPTS = 3;
+const BANNED_PLAIN_LANGUAGE_PHRASES = [
+  "sort private outreach",
+  "private outreach",
+  "turning intake into chat",
+  "chat workflow",
+  "intake shape",
+  "operational context",
+];
+const BANNED_PLAIN_LANGUAGE_PATTERNS = [
+  /\bsort\b.+\boutreach\b/i,
+  /\bchat\b/i,
+];
 
 function parseArgs(argv) {
   const args = {
@@ -174,8 +187,8 @@ function articleHeadings(markdown) {
     .filter(Boolean);
 }
 
-function buildSocialCopyPrompt({ articleUrl, excerpt, headings, markdown, subtitle, title }) {
-  return [
+function buildSocialCopyPrompt({ articleUrl, excerpt, feedback, headings, markdown, subtitle, title }) {
+  const lines = [
     "You are writing social post copy for one newly published Hush Line article.",
     "",
     "Return JSON only with exactly these keys:",
@@ -205,7 +218,15 @@ function buildSocialCopyPrompt({ articleUrl, excerpt, headings, markdown, subtit
     "Article markdown:",
     markdown,
     "",
-  ].join("\n");
+  ];
+
+  if (feedback) {
+    lines.push("Revision feedback:");
+    lines.push(feedback);
+    lines.push("");
+  }
+
+  return lines.join("\n");
 }
 
 function stripCodeFences(value) {
@@ -233,6 +254,23 @@ function assertBrandCasing(value, fieldName) {
   const text = String(value || "");
   if (/hush line/i.test(text) && !/Hush Line/.test(text)) {
     throw new Error(`Codex ${fieldName} used invalid Hush Line capitalization: ${text}`);
+  }
+}
+
+function assertPlainLanguage(value, fieldName) {
+  const raw = String(value || "");
+  const text = raw.toLowerCase();
+
+  for (const phrase of BANNED_PLAIN_LANGUAGE_PHRASES) {
+    if (text.includes(phrase)) {
+      throw new Error(`Codex ${fieldName} used banned vague phrase "${phrase}": ${value}`);
+    }
+  }
+
+  for (const pattern of BANNED_PLAIN_LANGUAGE_PATTERNS) {
+    if (pattern.test(raw)) {
+      throw new Error(`Codex ${fieldName} used banned vague pattern ${pattern}: ${value}`);
+    }
   }
 }
 
@@ -265,6 +303,8 @@ function validateGeneratedCopy(copy) {
 
   assertBrandCasing(question, "question");
   assertBrandCasing(articleLine, "article_line");
+  assertPlainLanguage(question, "question");
+  assertPlainLanguage(articleLine, "article_line");
 
   return {
     articleLine,
@@ -275,55 +315,72 @@ function validateGeneratedCopy(copy) {
 function generateCodexSocialCopy({ articlePath, articleUrl, excerpt, headings, markdown, subtitle, title }) {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "weekly-article-copy."));
   const outputPath = path.join(tempDir, "codex-output.txt");
-  const prompt = buildSocialCopyPrompt({
-    articleUrl,
-    excerpt,
-    headings,
-    markdown,
-    subtitle,
-    title,
-  });
 
   try {
-    const result = cp.spawnSync(
-      "codex",
-      [
-        "exec",
-        "--model",
-        CODEX_MODEL,
-        "-c",
-        `model_reasoning_effort="${CODEX_REASONING_EFFORT}"`,
-        "--full-auto",
-        "--sandbox",
-        "workspace-write",
-        "-C",
-        REPO_ROOT,
-        "-o",
-        outputPath,
-        "-",
-      ],
-      {
-        cwd: REPO_ROOT,
-        encoding: "utf8",
-        input: prompt,
-        maxBuffer: 10 * 1024 * 1024,
-      },
-    );
+    let feedback = "";
+    let lastError = "";
 
-    if (result.error) {
-      throw result.error;
-    }
-    if (result.status !== 0) {
-      const details = [result.stdout, result.stderr].filter(Boolean).join("\n").trim();
-      throw new Error(
-        `Codex social copy generation failed for ${articlePath} (exit ${result.status}).${details ? `\n${details}` : ""}`,
+    for (let attempt = 1; attempt <= SOCIAL_COPY_MAX_ATTEMPTS; attempt += 1) {
+      const prompt = buildSocialCopyPrompt({
+        articleUrl,
+        excerpt,
+        feedback,
+        headings,
+        markdown,
+        subtitle,
+        title,
+      });
+      const result = cp.spawnSync(
+        "codex",
+        [
+          "exec",
+          "--model",
+          CODEX_MODEL,
+          "-c",
+          `model_reasoning_effort="${CODEX_REASONING_EFFORT}"`,
+          "--full-auto",
+          "--sandbox",
+          "workspace-write",
+          "-C",
+          REPO_ROOT,
+          "-o",
+          outputPath,
+          "-",
+        ],
+        {
+          cwd: REPO_ROOT,
+          encoding: "utf8",
+          input: prompt,
+          maxBuffer: 10 * 1024 * 1024,
+        },
       );
-    }
-    if (!fs.existsSync(outputPath)) {
-      throw new Error(`Codex social copy output was not written: ${outputPath}`);
+
+      if (result.error) {
+        throw result.error;
+      }
+      if (result.status !== 0) {
+        const details = [result.stdout, result.stderr].filter(Boolean).join("\n").trim();
+        throw new Error(
+          `Codex social copy generation failed for ${articlePath} (exit ${result.status}).${details ? `\n${details}` : ""}`,
+        );
+      }
+      if (!fs.existsSync(outputPath)) {
+        throw new Error(`Codex social copy output was not written: ${outputPath}`);
+      }
+
+      try {
+        return validateGeneratedCopy(parseCodexJson(fs.readFileSync(outputPath, "utf8")));
+      } catch (error) {
+        lastError = error.message || String(error);
+        feedback = [
+          `The previous answer was rejected on attempt ${attempt}.`,
+          `Problem: ${lastError}`,
+          "Rewrite both lines in simpler, more concrete language and return JSON only.",
+        ].join("\n");
+      }
     }
 
-    return validateGeneratedCopy(parseCodexJson(fs.readFileSync(outputPath, "utf8")));
+    throw new Error(`Codex social copy validation failed for ${articlePath} after ${SOCIAL_COPY_MAX_ATTEMPTS} attempts.\n${lastError}`);
   } finally {
     fs.rmSync(tempDir, { force: true, recursive: true });
   }
