@@ -529,6 +529,17 @@ assert_generated_article_author() {
   fi
 }
 
+assert_generated_article_headings() {
+  local article_path="$1"
+  local banned_pattern='^## +(The Real-World Scenario|The Real World Scenario|Why This Matters|The Practical Takeaway|Conclusion|Key Takeaways?) *$'
+
+  if rg -n "$banned_pattern" "$article_path" >/dev/null 2>&1; then
+    printf '%s\n' "Blocked: generated article uses generic canned section headings. Use article-specific headings instead." >&2
+    rg -n "$banned_pattern" "$article_path" >&2 || true
+    return 1
+  fi
+}
+
 select_topic() {
   local cmd=(
     node "$SCRIPT_DIR/select_weekly_article_topic.mjs"
@@ -586,7 +597,8 @@ Article requirements:
     - agent_core_user_key: $core_user_key
 15) Use this slug in frontmatter: $article_slug
 16) Keep the article practical and specific. The reader should understand how Hush Line helps this user in a real operational context.
-17) Do not include meta commentary about following instructions in your final summary.
+17) Section headings must be specific to the article's subject. Do not use canned headings like "The Real-World Scenario", "Why This Matters", "The Practical Takeaway", or "Conclusion".
+18) Do not include meta commentary about following instructions in your final summary.
 EOF2
   } > "$PROMPT_FILE"
 }
@@ -801,6 +813,7 @@ main() {
 
   run_codex_from_prompt
   assert_generated_article_author "$REPO_DIR/$article_path"
+  assert_generated_article_headings "$REPO_DIR/$article_path"
 
   if [[ -z "$(git status --short)" ]]; then
     runner_status "Skipped: Codex produced no repository changes."

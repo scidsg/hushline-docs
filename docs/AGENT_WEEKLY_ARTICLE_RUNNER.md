@@ -62,6 +62,7 @@ The generated article prompt instructs Codex to:
 - use `authors: [hushline-agent]`
 - prefer `tags: [hushline]`
 - include `<!-- truncate -->`
+- use section headings that are specific to the article subject, not canned labels like `The Real-World Scenario` or `The Practical Takeaway`
 - do not add image assets unless they are necessary
 - include these custom frontmatter fields for future rotation:
   - `agent_topic_id`
