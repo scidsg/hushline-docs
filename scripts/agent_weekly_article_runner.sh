@@ -61,7 +61,7 @@ SOCIAL_ENABLED="${HUSHLINE_DOCS_WEEKLY_SOCIAL_ENABLED:-1}"
 SOCIAL_PUBLISH="${HUSHLINE_DOCS_WEEKLY_SOCIAL_PUBLISH:-1}"
 SOCIAL_REPO_DIR="${HUSHLINE_SOCIAL_REPO_DIR:-$DEFAULT_REPO_PARENT_DIR/hushline-social}"
 SOCIAL_BASE_BRANCH="${HUSHLINE_SOCIAL_BASE_BRANCH:-main}"
-SOCIAL_ARCHIVE_ROOT="${HUSHLINE_SOCIAL_ARCHIVE_ROOT:-previous-posts}"
+SOCIAL_ARCHIVE_ROOT="${HUSHLINE_SOCIAL_ARCHIVE_ROOT:-previous-article-posts}"
 SOCIAL_ENV_FILE="${HUSHLINE_SOCIAL_ENV_FILE:-$SOCIAL_REPO_DIR/.env.launchd}"
 
 PROMPT_FILE=""
@@ -729,7 +729,7 @@ publish_social_archive() {
 
   load_env_file_if_present "$SOCIAL_ENV_FILE"
   runner_status "Publishing weekly article social share to LinkedIn."
-  (cd "$SOCIAL_REPO_DIR" && ./scripts/agent_daily_linkedin_publisher.sh --date "$FORCE_DATE" --archive-key "$archive_key")
+  (cd "$SOCIAL_REPO_DIR" && ./scripts/agent_daily_linkedin_publisher.sh --date "$FORCE_DATE" --archive-key "$archive_key" --date-root "$SOCIAL_ARCHIVE_ROOT")
 }
 
 main() {
