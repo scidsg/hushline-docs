@@ -18,6 +18,7 @@ export HUSHLINE_DOCS_REPO_DIR="${HUSHLINE_DOCS_REPO_DIR:-$REPO_DIR}"
 export HUSHLINE_WEBSITE_REPO_DIR="${HUSHLINE_WEBSITE_REPO_DIR:-$DEFAULT_WEBSITE_REPO_DIR}"
 export HUSHLINE_DOCS_BUILD_DIR="${HUSHLINE_DOCS_BUILD_DIR:-$HUSHLINE_DOCS_REPO_DIR/docs/build}"
 export HUSHLINE_WEBSITE_LIBRARY_DIR="${HUSHLINE_WEBSITE_LIBRARY_DIR:-$HUSHLINE_WEBSITE_REPO_DIR/src/library}"
+export HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH="${HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH:-main}"
 DEFAULT_SOCIAL_REPO_DIR="$REPO_DIR/../hushline-social"
 
 if [[ -z "${SSH_AUTH_SOCK:-}" ]]; then
@@ -77,4 +78,11 @@ else
 fi
 
 cd "$HUSHLINE_DOCS_REPO_DIR"
+current_branch="$(git branch --show-current 2>/dev/null || true)"
+if [[ -n "$HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH" && "$current_branch" != "$HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH" ]]; then
+  printf 'Blocked: weekly article launchd wrapper must run from checkout branch %s, found %s. Set HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH to override intentionally.\n' \
+    "$HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH" \
+    "${current_branch:-<detached>}" >&2
+  exit 1
+fi
 ./scripts/agent_weekly_article_runner.sh "$@"

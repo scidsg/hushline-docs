@@ -138,6 +138,7 @@ The default publish layout assumes sibling checkouts:
 - `HUSHLINE_DOCS_WEEKLY_ALLOW_TOPIC_REUSE` (default `0`; when `1`, falls back to the least recently used topic after the catalog is exhausted)
 - `HUSHLINE_DOCS_WEEKLY_VERBOSE_CODEX_OUTPUT` (default `0`)
 - `HUSHLINE_DOCS_BUILD_DIR` (default `docs/build`)
+- `HUSHLINE_DOCS_REQUIRED_CHECKOUT_BRANCH` (default `main`; used by the launchd wrapper to block runs from stale feature-branch checkouts unless intentionally overridden)
 - `HUSHLINE_WEBSITE_REPO_DIR` (default sibling checkout `../hushline-website`)
 - `HUSHLINE_WEBSITE_REPO_SLUG` (default `scidsg/hushline-website`)
 - `HUSHLINE_WEBSITE_BASE_BRANCH` (default `main`)
@@ -159,3 +160,4 @@ The default publish layout assumes sibling checkouts:
 - If weekly social sharing is enabled, point `HUSHLINE_SOCIAL_REPO_DIR` at a dedicated automation checkout of `hushline-social` as well, because the runner refreshes that checkout before writing the new article-share archive and triggering LinkedIn publication.
 - The publish step is destructive by design: it removes the existing contents of `src/library` only after `npm run build` succeeds, then copies the fresh build output into place.
 - `--dry-run` is safe for local inspection because it only prints the selected topic JSON and exits before any git reset, signing setup, or publish work.
+- The scheduled launchd wrapper is intended to run from a checkout on `main`. Running the weekly runner from stale feature branches is unsupported because older script snapshots can bypass newer publish and LinkedIn-share safeguards.
