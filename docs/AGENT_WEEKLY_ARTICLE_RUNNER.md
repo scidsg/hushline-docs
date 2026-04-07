@@ -28,7 +28,7 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
 
 - scans existing blog posts for `agent_topic_id` frontmatter
 - prefers topics that have never been used
-- otherwise falls back to the least recently used topic
+- stops once the catalog is exhausted, unless reuse is explicitly enabled
 - can be forced to a specific topic with `--topic <id>`
 
 ## Execution Flow
@@ -96,6 +96,12 @@ Force a specific publication date:
 ./scripts/agent_weekly_article_runner.sh --date 2026-04-06
 ```
 
+Allow topic reuse after the catalog is exhausted:
+
+```bash
+HUSHLINE_DOCS_WEEKLY_ALLOW_TOPIC_REUSE=1 ./scripts/agent_weekly_article_runner.sh
+```
+
 ## Suggested Server Schedule
 
 Example cron entry for a Monday morning run:
@@ -129,6 +135,7 @@ The default publish layout assumes sibling checkouts:
 - `HUSHLINE_DOCS_BOT_GIT_SIGNING_KEY` (optional)
 - `HUSHLINE_DOCS_BOT_GIT_DEFAULT_SSH_SIGNING_KEY_PATH` (optional)
 - `HUSHLINE_DOCS_WEEKLY_TOPIC_CATALOG` (default `scripts/weekly_article_topics.json`)
+- `HUSHLINE_DOCS_WEEKLY_ALLOW_TOPIC_REUSE` (default `0`; when `1`, falls back to the least recently used topic after the catalog is exhausted)
 - `HUSHLINE_DOCS_WEEKLY_VERBOSE_CODEX_OUTPUT` (default `0`)
 - `HUSHLINE_DOCS_BUILD_DIR` (default `docs/build`)
 - `HUSHLINE_WEBSITE_REPO_DIR` (default sibling checkout `../hushline-website`)

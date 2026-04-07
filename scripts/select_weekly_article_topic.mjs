@@ -11,6 +11,7 @@ function parseArgs(argv) {
     catalogPath: path.resolve(__dirname, 'weekly_article_topics.json'),
     date: new Date().toISOString().slice(0, 10),
     topicId: '',
+    allowReuse: process.env.HUSHLINE_DOCS_WEEKLY_ALLOW_TOPIC_REUSE === '1',
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -27,6 +28,8 @@ function parseArgs(argv) {
     } else if (arg === '--topic') {
       options.topicId = argv[index + 1];
       index += 1;
+    } else if (arg === '--allow-reuse') {
+      options.allowReuse = true;
     } else {
       throw new Error(`Unknown argument: ${arg}`);
     }
@@ -83,13 +86,24 @@ function extractLatestTopicUsage(blogRoot) {
   return usage;
 }
 
-function selectTopic({ topics, usage, forcedTopicId }) {
+function selectTopic({ topics, usage, forcedTopicId, allowReuse }) {
   if (forcedTopicId) {
     const forced = topics.find((topic) => topic.id === forcedTopicId);
     if (!forced) {
       throw new Error(`Topic id not found in catalog: ${forcedTopicId}`);
     }
     return forced;
+  }
+
+  const unusedTopics = topics.filter((topic) => !usage.has(topic.id));
+  if (unusedTopics.length > 0) {
+    return [...unusedTopics].sort((left, right) => left.id.localeCompare(right.id))[0];
+  }
+
+  if (!allowReuse) {
+    throw new Error(
+      'All weekly article topics in the catalog have already been used. Add more topics or set HUSHLINE_DOCS_WEEKLY_ALLOW_TOPIC_REUSE=1 to reuse the least recently used topic.',
+    );
   }
 
   const ranked = [...topics].sort((left, right) => {
@@ -122,7 +136,12 @@ function main(argv = process.argv.slice(2)) {
   const options = parseArgs(argv);
   const topics = JSON.parse(fs.readFileSync(options.catalogPath, 'utf8'));
   const usage = extractLatestTopicUsage(path.join(options.repoRoot, 'docs', 'blog'));
-  const topic = selectTopic({ topics, usage, forcedTopicId: options.topicId });
+  const topic = selectTopic({
+    topics,
+    usage,
+    forcedTopicId: options.topicId,
+    allowReuse: options.allowReuse,
+  });
   const selection = buildSelection({
     repoRoot: options.repoRoot,
     date: options.date,
