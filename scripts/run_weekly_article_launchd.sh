@@ -9,7 +9,7 @@ ENV_FILE="${HUSHLINE_DOCS_ENV_FILE:-$REPO_DIR/.env.launchd}"
 
 export HOME="${HOME:-/Users/scidsg}"
 export PATH="${HUSHLINE_DOCS_LAUNCHD_PATH:-/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin}"
-export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+export CODEX_HOME="${CODEX_HOME:-$HOME/.codex-hushline-agent-002}"
 export GH_CONFIG_DIR="${GH_CONFIG_DIR:-$HOME/.config/gh}"
 export NPM_CONFIG_CACHE="${NPM_CONFIG_CACHE:-$HOME/.npm}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"

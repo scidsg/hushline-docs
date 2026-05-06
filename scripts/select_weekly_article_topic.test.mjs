@@ -55,7 +55,7 @@ test('selectTopic prefers topics that have never been used', () => {
   assert.equal(selectTopic({ topics, usage, forcedTopicId: '' }).id, 'topic-c');
 });
 
-test('selectTopic falls back to least recently used topic when all have been used', () => {
+test('selectTopic blocks reuse by default when all topics have been used', () => {
   const topics = [
     { id: 'topic-a' },
     { id: 'topic-b' },
@@ -67,7 +67,25 @@ test('selectTopic falls back to least recently used topic when all have been use
     ['topic-c', '2026-04-01'],
   ]);
 
-  assert.equal(selectTopic({ topics, usage, forcedTopicId: '' }).id, 'topic-b');
+  assert.throws(
+    () => selectTopic({ topics, usage, forcedTopicId: '' }),
+    /All weekly article topics in the catalog have already been used/,
+  );
+});
+
+test('selectTopic falls back to least recently used topic when reuse is enabled', () => {
+  const topics = [
+    { id: 'topic-a' },
+    { id: 'topic-b' },
+    { id: 'topic-c' },
+  ];
+  const usage = new Map([
+    ['topic-a', '2026-03-01'],
+    ['topic-b', '2026-02-01'],
+    ['topic-c', '2026-04-01'],
+  ]);
+
+  assert.equal(selectTopic({ topics, usage, forcedTopicId: '', allowReuse: true }).id, 'topic-b');
 });
 
 test('buildSelection returns the final article path and slug', () => {

@@ -567,6 +567,7 @@ build_prompt() {
   local supporting_docs="$9"
   local feature_key="${10}"
   local core_user_key="${11}"
+  local last_used_at="${12:-}"
 
   {
     cat <<EOF2
@@ -600,6 +601,11 @@ Article requirements:
 17) Section headings must be specific to the article's subject. Do not use canned headings like "The Real-World Scenario", "Why This Matters", "The Practical Takeaway", or "Conclusion".
 18) Do not include meta commentary about following instructions in your final summary.
 EOF2
+    if [[ -n "$last_used_at" ]]; then
+      cat <<EOF2
+19) This topic was last used on $last_used_at. Treat the title seed as directional only: choose a fresh final title, scenario framing, and article structure so this post is not a duplicate of the previous article.
+EOF2
+    fi
   } > "$PROMPT_FILE"
 }
 
@@ -780,6 +786,7 @@ main() {
   local article_slug=""
   local feature_key=""
   local core_user_key=""
+  local last_used_at=""
 
   topic_id="$(json_field "$SELECTION_FILE" "topic.id")"
   title_seed="$(json_field "$SELECTION_FILE" "topic.title_seed")"
@@ -792,11 +799,16 @@ main() {
   article_slug="$(json_field "$SELECTION_FILE" "articleSlug")"
   feature_key="$(json_field "$SELECTION_FILE" "topic.feature_key")"
   core_user_key="$(json_field "$SELECTION_FILE" "topic.core_user_key")"
+  last_used_at="$(json_field "$SELECTION_FILE" "lastUsedAt")"
 
   runner_status "Selected weekly article topic: $topic_id"
   runner_status "Planned article path: $article_path"
-  assert_blog_title_is_unique "$title_seed" "$article_path"
-  assert_blog_topic_is_unique "$topic_id" "$article_path"
+  if [[ -z "$last_used_at" ]]; then
+    assert_blog_title_is_unique "$title_seed" "$article_path"
+    assert_blog_topic_is_unique "$topic_id" "$article_path"
+  else
+    runner_status "Reusing previously published topic $topic_id from $last_used_at."
+  fi
 
   build_prompt \
     "$article_path" \
@@ -809,7 +821,8 @@ main() {
     "$prompt_angle" \
     "$supporting_docs" \
     "$feature_key" \
-    "$core_user_key"
+    "$core_user_key" \
+    "$last_used_at"
 
   run_codex_from_prompt
   assert_generated_article_author "$REPO_DIR/$article_path"
