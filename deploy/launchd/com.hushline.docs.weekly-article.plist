@@ -16,7 +16,7 @@
   <key>EnvironmentVariables</key>
   <dict>
     <key>CODEX_HOME</key>
-    <string>__HOME_DIR__/.codex</string>
+    <string>__HOME_DIR__/.codex-hushline-agent-002</string>
     <key>GH_CONFIG_DIR</key>
     <string>__HOME_DIR__/.config/gh</string>
     <key>HOME</key>
@@ -31,6 +31,8 @@
     <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     <key>HUSHLINE_DOCS_REPO_DIR</key>
     <string>__REPO_DIR__</string>
+    <key>HUSHLINE_DOCS_WEEKLY_ALLOW_TOPIC_REUSE</key>
+    <string>1</string>
     <key>HUSHLINE_WEBSITE_LIBRARY_DIR</key>
     <string>__WEBSITE_REPO_DIR__/src/library</string>
     <key>HUSHLINE_WEBSITE_REPO_DIR</key>
