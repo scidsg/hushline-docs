@@ -1,0 +1,639 @@
+---
+slug: contact-form-security-study-2026
+title: "Among 500 Top Domains, 0% of Assessed Contact Forms Met Our Full Security Standard"
+description: A reproducible browser study of contact-form transport, cross-site scripts, pre-submit data flows, identity requirements, CSP, retention transparency, and end-to-end encryption.
+authors: [gsorrentino]
+tags: [hushline]
+---
+
+import React, {useMemo, useState} from 'react';
+
+export const assessedForms = [
+  {rank: 45, domain: 'skype.com', url: 'https://support.microsoft.com/en-US/teams/free/microsoft-teams-free-help', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 6, domain: 'microsoft.com', url: 'https://support.microsoft.com/contactus', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 3, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 88, domain: 'workers.dev', url: 'https://www.cloudflare.com/resource/contact-enterprise-sales/', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 7, preSubmitLeak: false, requiredHighRiskIdentity: true, cspFormAction: true, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 116, domain: 'b-cdn.net', url: 'https://bunny.net/contact/', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 190, domain: 'cnn.com', url: 'https://www.cnn.com/', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 4, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: true, e2ee: false},
+  {rank: 230, domain: 'nist.gov', url: 'https://www.nist.gov/contact', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 4, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 234, domain: 'ubuntu.com', url: 'https://ubuntu.com/', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 240, domain: 'stripe.com', url: 'https://stripe.com/contact/sales', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 1, preSubmitLeak: false, requiredHighRiskIdentity: true, cspFormAction: true, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 245, domain: 'meraki.com', url: 'https://www.cisco.com/site/us/en/about/contact-cisco/meraki/index.html', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 3, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 292, domain: 'www.gov.uk', url: 'https://www.gov.uk/contact/govuk', transport: true, privacy: true, hardened: false, secure: false, crossSiteScripts: 0, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 358, domain: 'quickconnect.to', url: 'https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/connection_quickconnect', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: true, e2ee: false},
+  {rank: 364, domain: 'selectel.ru', url: 'https://selectel.ru/support/', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 1, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 381, domain: 'plesk.com', url: 'https://www.plesk.com/contact-us/', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 385, domain: 'tp-link.com', url: 'https://www.tp-link.com/us/support/contact-technical-support/', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 3, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+  {rank: 400, domain: 'zendesk.com', url: 'https://www.zendesk.com/contact/', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: true, retention: true, e2ee: false},
+  {rank: 410, domain: 'cloudns.net', url: 'https://www.cloudns.net/contact/', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 414, domain: 'netangels.ru', url: 'https://www.netangels.ru/', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 4, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 429, domain: 'steamcommunity.com', url: 'https://www.valvesoftware.com/en/contact?contact-person=Translation%20Team%20Feedback', transport: false, privacy: false, hardened: false, secure: false, crossSiteScripts: 2, preSubmitLeak: false, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 481, domain: 'mediatek.com', url: 'https://www.mediatek.com/company/contact-us', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 8, preSubmitLeak: true, requiredHighRiskIdentity: false, cspFormAction: false, cspFrameAncestors: false, retention: false, e2ee: false},
+  {rank: 491, domain: 'paloaltonetworks.com', url: 'https://www.paloaltonetworks.com/company/contact-sales', transport: true, privacy: false, hardened: false, secure: false, crossSiteScripts: 6, preSubmitLeak: false, requiredHighRiskIdentity: true, cspFormAction: false, cspFrameAncestors: true, retention: false, e2ee: false},
+];
+
+export const tierOptions = [
+  {key: 'secure', label: 'Full observable standard', shortLabel: 'Full', count: 0, description: 'All transport, isolation, minimization, CSP, retention, and E2EE evidence criteria.'},
+  {key: 'hardened', label: 'Hardened form', shortLabel: 'Hardened', count: 0, description: 'Privacy-respecting plus CSP form-action and frame-ancestors controls.'},
+  {key: 'privacy', label: 'Privacy-respecting', shortLabel: 'Privacy', count: 1, description: 'Protected transport, no cross-site scripts, no observed leak, and no required high-risk identity.'},
+  {key: 'transport', label: 'Protected transport', shortLabel: 'Transport', count: 11, description: 'HTTPS page, HTTPS action, and a rendered form declaring POST.'},
+];
+
+export const criterionResults = [
+  {label: 'HTTPS form page', count: 20, note: '20 of 20'},
+  {label: 'HTTPS action', count: 19, note: '19 of 20'},
+  {label: 'Declared POST', count: 11, note: '11 of 20'},
+  {label: 'No cross-site scripts in form frame', count: 1, note: '1 of 20'},
+  {label: 'No observed pre-submit cross-site canary', count: 19, note: '19 of 20'},
+  {label: 'No required high-risk identity field', count: 17, note: '17 of 20'},
+  {label: 'CSP form-action', count: 2, note: '2 of 20'},
+  {label: 'CSP frame-ancestors', count: 13, note: '13 of 20'},
+  {label: 'Retention or deletion disclosure', count: 3, note: '3 of 20'},
+  {label: 'Specific client-side or E2EE evidence', count: 0, note: '0 of 20'},
+];
+
+export function Percent({value}) {
+  return <span>{Math.round((value / assessedForms.length) * 100)}%</span>;
+}
+
+export function PassMark({value, label}) {
+  return (
+    <span className={value ? 'cf-study-pass' : 'cf-study-fail'}>
+      <span aria-hidden="true">{value ? 'Pass' : 'No'}</span>
+      <span className="cf-study-sr-only">{label}: {value ? 'passes' : 'does not pass'}</span>
+    </span>
+  );
+}
+
+export function StudyDashboard() {
+  const [tier, setTier] = useState('secure');
+  const [query, setQuery] = useState('');
+  const [resultFilter, setResultFilter] = useState('all');
+  const selectedTier = tierOptions.find((option) => option.key === tier);
+  const visibleForms = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    return assessedForms.filter((form) => {
+      const matchesQuery =
+        !normalizedQuery ||
+        form.domain.toLowerCase().includes(normalizedQuery) ||
+        form.url.toLowerCase().includes(normalizedQuery);
+      const matchesResult =
+        resultFilter === 'all' ||
+        (resultFilter === 'pass' && form[tier]) ||
+        (resultFilter === 'not-pass' && !form[tier]);
+      return matchesQuery && matchesResult;
+    });
+  }, [query, resultFilter, tier]);
+
+  return (
+    <section className="cf-study-dashboard" aria-labelledby="interactive-results">
+      <style>{`
+        .cf-study-dashboard {
+          --cf-accent: #7253ed;
+          --cf-good: #0b5d38;
+          --cf-warning: #a15c00;
+          --cf-bad: #b42318;
+          --cf-border: color-mix(in srgb, var(--ifm-font-color-base) 18%, transparent);
+          margin: 2rem 0;
+        }
+        #__blog-post-container a {
+          text-decoration: underline;
+          text-underline-offset: .15em;
+        }
+        .cf-study-hero {
+          background:
+            radial-gradient(circle at 92% 10%, color-mix(in srgb, var(--cf-accent) 24%, transparent), transparent 38%),
+            var(--ifm-background-surface-color);
+          border: 1px solid var(--cf-border);
+          border-radius: 1.25rem;
+          padding: clamp(1.25rem, 4vw, 2.5rem);
+        }
+        .cf-study-eyebrow {
+          color: var(--cf-accent);
+          font-size: .78rem;
+          font-weight: 800;
+          letter-spacing: .09em;
+          margin: 0 0 .5rem;
+          text-transform: uppercase;
+        }
+        .cf-study-big-number {
+          font-size: clamp(3.4rem, 12vw, 7.5rem);
+          font-weight: 850;
+          letter-spacing: -.07em;
+          line-height: .88;
+          margin: .5rem 0 1rem;
+        }
+        .cf-study-big-number span {
+          color: var(--cf-accent);
+        }
+        .cf-study-lede {
+          font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+          line-height: 1.45;
+          margin: 0;
+          max-width: 48rem;
+        }
+        .cf-study-metrics {
+          display: grid;
+          gap: .8rem;
+          grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+          margin: 1rem 0 2rem;
+        }
+        .cf-study-metric {
+          background: var(--ifm-background-surface-color);
+          border: 1px solid var(--cf-border);
+          border-radius: .9rem;
+          padding: 1rem;
+        }
+        .cf-study-metric strong {
+          display: block;
+          font-size: 1.8rem;
+          line-height: 1;
+          margin-bottom: .4rem;
+        }
+        .cf-study-controls {
+          border: 1px solid var(--cf-border);
+          border-radius: 1rem;
+          margin: 1.5rem 0;
+          padding: 1rem;
+        }
+        .cf-study-tier-buttons {
+          display: grid;
+          gap: .55rem;
+          grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+        }
+        .cf-study-tier-button {
+          background: var(--ifm-background-color);
+          border: 1px solid var(--cf-border);
+          border-radius: .7rem;
+          color: var(--ifm-font-color-base);
+          cursor: pointer;
+          min-height: 3.3rem;
+          padding: .65rem .75rem;
+          text-align: left;
+        }
+        .cf-study-tier-button[aria-pressed="true"] {
+          border-color: var(--cf-accent);
+          box-shadow: 0 0 0 2px color-mix(in srgb, var(--cf-accent) 25%, transparent);
+        }
+        .cf-study-tier-button strong, .cf-study-tier-button span {
+          display: block;
+        }
+        .cf-study-tier-button span {
+          font-size: .78rem;
+          opacity: .75;
+        }
+        .cf-study-selected-result {
+          align-items: baseline;
+          display: flex;
+          flex-wrap: wrap;
+          gap: .75rem;
+          margin: 1.25rem 0 .4rem;
+        }
+        .cf-study-selected-result strong {
+          color: var(--cf-accent);
+          font-size: 2.4rem;
+          line-height: 1;
+        }
+        .cf-study-bars {
+          display: grid;
+          gap: .75rem;
+          margin: 1.5rem 0 2rem;
+        }
+        .cf-study-bar-row {
+          display: grid;
+          gap: .35rem;
+          grid-template-columns: minmax(180px, 1fr) 3fr minmax(62px, auto);
+          align-items: center;
+        }
+        .cf-study-bar-track {
+          background: color-mix(in srgb, var(--ifm-font-color-base) 10%, transparent);
+          border-radius: 999px;
+          min-height: .8rem;
+          overflow: hidden;
+        }
+        .cf-study-bar-fill {
+          background: var(--cf-accent);
+          border-radius: inherit;
+          min-height: .8rem;
+          min-width: 0;
+        }
+        .cf-study-table-controls {
+          display: grid;
+          gap: .75rem;
+          grid-template-columns: minmax(180px, 1fr) minmax(150px, 220px);
+          margin: 1rem 0;
+        }
+        .cf-study-table-controls input, .cf-study-table-controls select {
+          background: var(--ifm-background-color);
+          border: 1px solid var(--cf-border);
+          border-radius: .55rem;
+          color: var(--ifm-font-color-base);
+          font: inherit;
+          min-height: 2.7rem;
+          padding: .55rem .7rem;
+          width: 100%;
+        }
+        .cf-study-table-wrap {
+          border: 1px solid var(--cf-border);
+          border-radius: .8rem;
+          overflow-x: auto;
+        }
+        .cf-study-table {
+          border-collapse: collapse;
+          display: table;
+          font-size: .82rem;
+          margin: 0;
+          min-width: 880px;
+          width: 100%;
+        }
+        .cf-study-table th, .cf-study-table td {
+          border-bottom: 1px solid var(--cf-border);
+          padding: .65rem .7rem;
+          text-align: left;
+          vertical-align: middle;
+        }
+        .cf-study-table tbody tr:last-child td { border-bottom: 0; }
+        .cf-study-table th {
+          background: color-mix(in srgb, var(--ifm-font-color-base) 6%, transparent);
+          font-size: .72rem;
+          letter-spacing: .04em;
+          text-transform: uppercase;
+        }
+        .cf-study-domain {
+          font-weight: 750;
+          white-space: nowrap;
+        }
+        .cf-study-pass, .cf-study-fail {
+          border-radius: 999px;
+          display: inline-block;
+          font-size: .7rem;
+          font-weight: 800;
+          padding: .2rem .48rem;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+        .cf-study-pass {
+          background: color-mix(in srgb, var(--cf-good) 16%, transparent);
+          color: var(--cf-good);
+        }
+        .cf-study-fail {
+          background: color-mix(in srgb, var(--cf-bad) 14%, transparent);
+          color: var(--cf-bad);
+        }
+        .cf-study-callout {
+          border-left: .28rem solid var(--cf-accent);
+          background: color-mix(in srgb, var(--cf-accent) 8%, var(--ifm-background-surface-color));
+          border-radius: .35rem .8rem .8rem .35rem;
+          margin: 1.5rem 0;
+          padding: 1rem 1.2rem;
+        }
+        .cf-study-sr-only {
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          height: 1px;
+          overflow: hidden;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+        @media (max-width: 700px) {
+          .cf-study-bar-row { grid-template-columns: 1fr auto; }
+          .cf-study-bar-track { grid-column: 1 / -1; grid-row: 2; }
+          .cf-study-table-controls { grid-template-columns: 1fr; }
+        }
+      `}</style>
+
+      <div className="cf-study-hero">
+        <p className="cf-study-eyebrow">2026 contact-form security study</p>
+        <div className="cf-study-big-number"><span>0%</span></div>
+        <p className="cf-study-lede">
+          <strong>0 of 20 unique contact-form implementations</strong> met every
+          observable control in our full standard. This is a strict
+          “demonstrated secure” result, not proof that every form is exploitable.
+        </p>
+      </div>
+
+      <div className="cf-study-metrics" aria-label="Study scope">
+        <div className="cf-study-metric"><strong>500</strong>ranked domains screened</div>
+        <div className="cf-study-metric"><strong>261</strong>reachable homepages</div>
+        <div className="cf-study-metric"><strong>24</strong>domain instances with a form</div>
+        <div className="cf-study-metric"><strong>20</strong>unique implementations assessed</div>
+      </div>
+
+      <div className="cf-study-controls">
+        <h2 id="interactive-results">Change the definition and inspect the result</h2>
+        <div className="cf-study-tier-buttons" role="group" aria-label="Security standard">
+          {tierOptions.map((option) => (
+            <button
+              className="cf-study-tier-button"
+              type="button"
+              key={option.key}
+              aria-pressed={tier === option.key}
+              onClick={() => setTier(option.key)}
+            >
+              <strong>{option.label}</strong>
+              <span>{option.count} of {assessedForms.length}</span>
+            </button>
+          ))}
+        </div>
+        <div className="cf-study-selected-result" aria-live="polite">
+          <strong><Percent value={selectedTier.count} /></strong>
+          <span>{selectedTier.count} of {assessedForms.length} passed “{selectedTier.label}.”</span>
+        </div>
+        <p>{selectedTier.description}</p>
+      </div>
+
+      <h3>Control-by-control results</h3>
+      <div className="cf-study-bars">
+        {criterionResults.map((criterion) => (
+          <div className="cf-study-bar-row" key={criterion.label}>
+            <span>{criterion.label}</span>
+            <div className="cf-study-bar-track" aria-hidden="true">
+              <div
+                className="cf-study-bar-fill"
+                style={{width: `${(criterion.count / assessedForms.length) * 100}%`}}
+              />
+            </div>
+            <strong>{criterion.note}</strong>
+          </div>
+        ))}
+      </div>
+
+      <h3>Explore every assessed implementation</h3>
+      <div className="cf-study-table-controls">
+        <label>
+          <span className="cf-study-sr-only">Search assessed domains or URLs</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search domain or URL"
+          />
+        </label>
+        <label>
+          <span className="cf-study-sr-only">Filter selected-tier result</span>
+          <select
+            value={resultFilter}
+            onChange={(event) => setResultFilter(event.target.value)}
+          >
+            <option value="all">All results</option>
+            <option value="pass">Pass selected tier</option>
+            <option value="not-pass">Did not pass selected tier</option>
+          </select>
+        </label>
+      </div>
+      <p aria-live="polite">{visibleForms.length} implementations shown.</p>
+      <div className="cf-study-table-wrap">
+        <table className="cf-study-table">
+          <thead>
+            <tr>
+              <th>Rank / domain</th>
+              <th>Declared transport</th>
+              <th>Cross-site scripts</th>
+              <th>Pre-submit leak</th>
+              <th>High-risk identity</th>
+              <th>CSP form + frame</th>
+              <th>Retention</th>
+              <th>E2EE evidence</th>
+              <th>{selectedTier.shortLabel}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {visibleForms.map((form) => (
+              <tr key={`${form.rank}-${form.domain}`}>
+                <td>
+                  <span className="cf-study-domain">#{form.rank} {form.domain}</span><br />
+                  <a href={form.url} target="_blank" rel="noopener noreferrer">observed form</a>
+                </td>
+                <td><PassMark value={form.transport} label="Protected transport" /></td>
+                <td>{form.crossSiteScripts}</td>
+                <td><PassMark value={!form.preSubmitLeak} label="No observed pre-submit cross-site leak" /></td>
+                <td><PassMark value={!form.requiredHighRiskIdentity} label="No required high-risk identity" /></td>
+                <td><PassMark value={form.cspFormAction && form.cspFrameAncestors} label="CSP form and frame restrictions" /></td>
+                <td><PassMark value={form.retention} label="Retention disclosure" /></td>
+                <td><PassMark value={form.e2ee} label="E2EE evidence" /></td>
+                <td><PassMark value={form[tier]} label={selectedTier.label} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+<StudyDashboard />
+
+The short answer is stark: **0% of the contact-form implementations we could
+assess demonstrated every control in our observable security standard**.
+
+The more useful answer is in the shape of the failure:
+
+- **19 of 20 forms loaded scripts from at least one cross-site origin in the same
+  browser frame as the form.** Those scripts have the technical ability to read
+  form fields, even when we did not observe them transmitting the canary values.
+- **11 of 20 forms declared an HTTPS POST submission.** All 20 form pages were
+  HTTPS, but a padlock on the page did not establish secure form handling.
+- **1 of 20 forms transmitted our synthetic email address to a cross-site form
+  processor before submission.** The request went to a HubSpot email-validation
+  endpoint. We did not observe pre-submit transmission of the synthetic message
+  body.
+- **0 of 20 forms published specific evidence of browser-side or end-to-end
+  message encryption.**
+- **3 of 20 forms surfaced retention or deletion language on the assessed page.**
+
+<!-- truncate -->
+
+## What “secure” means in this study
+
+“Secure” is often used as a synonym for “served over HTTPS.” That is too weak for
+a form that may receive reports about abuse, legal problems, workplace
+retaliation, security vulnerabilities, health, finances, or identity.
+
+We counted a form as meeting the **full observable standard** only when every
+one of these controls was demonstrated:
+
+| Control | Passing condition | Why it matters |
+| --- | --- | --- |
+| Protected submission | The rendered page and action used HTTPS, and the form declared POST | GET submissions can place field values in URLs and logs; HTTPS protects network transport |
+| Input isolation | No scripts from another registrable domain executed in the form’s frame | Cross-site JavaScript can read the form DOM |
+| No pre-submit leak | Synthetic message, email, name, and phone canaries were not observed in cross-site requests before submission | A user has not clicked send yet |
+| Data minimization | No phone, address, account identifier, or similar high-risk identity field was mandatory | Sensitive outreach should not require unnecessary identity |
+| Browser hardening | CSP included both `form-action` and `frame-ancestors` | These controls constrain submission destinations and framing |
+| Lifecycle transparency | Retention or deletion handling was disclosed | Encryption does not answer how long data persists |
+| Message confidentiality | The page published specific browser-side or end-to-end encryption evidence | TLS ends at the server and does not establish ciphertext storage |
+
+This is intentionally a **demonstrated-security** standard. A form that did not
+pass is not automatically vulnerable. It means the form did not expose enough
+observable evidence for us to classify it as secure under this threat model.
+
+The standard draws on the
+[W3C Privacy Principles](https://www.w3.org/TR/privacy-principles/), especially
+data minimization, transparency, purpose limitation, and sensitive-information
+handling. The cross-site script criterion reflects
+[OWASP’s warning](https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html)
+that third-party JavaScript can disclose sensitive DOM data. The CSP checks use
+the defense-in-depth guidance in the
+[OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html).
+
+## What we can and cannot prove from outside
+
+The original hypothesis included plaintext storage and unnecessary server logs.
+Those are important questions, but a public browser crawl cannot directly answer
+them.
+
+We can observe:
+
+- transport and form methods
+- form actions and cross-site script origins
+- field requirements
+- response security headers
+- pre-submit browser requests containing synthetic values
+- public claims about retention and end-to-end encryption
+
+We cannot observe:
+
+- whether the receiving server logs request bodies
+- whether application databases store plaintext
+- who can access internal dashboards or backups
+- whether published retention promises are followed operationally
+- whether a non-public encryption control exists
+
+For those controls, the right follow-up is an evidence request: architecture,
+data-flow diagrams, retention schedules, access-control policy, audit logs, and
+independent testing. We did not convert “unknown” into “insecure,” but unknown
+also did not qualify as demonstrated secure.
+
+## Methodology
+
+We used the top 500 pay-level domains from
+[Tranco list XLPJN](https://tranco-list.eu/list/XLPJN), generated on
+June 7, 2026 from 30 days of ranking inputs. Tranco is designed for reproducible
+web measurement and provides permanent references for historical lists.
+
+The crawl ran on June 8, 2026:
+
+1. Request the HTTPS homepage, falling back to HTTP only when HTTPS navigation
+   failed.
+2. Inspect the homepage and at most one highest-scoring contact, support,
+   feedback, help, report, or tip link.
+3. Require a rendered form with a substantive non-CAPTCHA textarea.
+4. Render candidate pages in headless Chrome and inspect every frame.
+5. Record scripts executing in the same frame as the form.
+6. Fill eligible fields with clearly synthetic values under `example.com`,
+   dispatch normal input/change/blur events, and watch requests for 3.5 seconds.
+7. Never click submit, never send a form, and never solve or bypass a CAPTCHA.
+8. Deduplicate identical form implementations reached through multiple ranked
+   domains.
+9. Manually review every assessed implementation and remove search,
+   CAPTCHA-only, honeypot-only, and failed-render false positives.
+
+Of 500 ranked domains, 261 returned a reachable homepage in this run. The crawl
+found 24 ranked-domain instances representing 20 unique form implementations.
+The high attrition is expected because Tranco includes infrastructure domains,
+CDNs, APIs, redirectors, and sites that block automated browsers. Therefore the
+headline denominator is **20 assessed implementations**, not all 500 domains.
+
+The complete redacted output is available as
+[JSON data](pathname:///data/contact-form-study-2026.json). The
+[study runner](https://github.com/scidsg/hushline-docs/blob/main/docs/scripts/contact-form-study.mjs)
+and fixed ranking snapshot are included in the documentation repository.
+
+## What engineering teams should change
+
+### 1. Isolate the sensitive form
+
+Do not place a sensitive textarea in the same document as advertising,
+session-replay, marketing automation, A/B testing, or broad tag-manager code.
+Use a dedicated form document with a minimal script set. A sandboxed cross-origin
+iframe can prevent scripts in the parent page from reading the form.
+
+### 2. Treat cross-site JavaScript as privileged access
+
+An analytics script does not need to exfiltrate a canary during this test to be
+a risk. If it executes in the form frame, it can read the DOM. Inventory every
+script origin, identify its owner and purpose, and remove it unless it is
+necessary for the submission.
+
+### 3. Add explicit CSP controls
+
+At minimum, constrain where the form may submit and who may frame it:
+
+```text
+Content-Security-Policy:
+  default-src 'self';
+  script-src 'self';
+  connect-src 'self';
+  form-action 'self';
+  frame-ancestors 'self' https://approved.example;
+```
+
+Real deployments may need additional exact origins, but broad wildcards and
+marketing domains should not be inherited by a sensitive intake surface.
+
+### 4. Make identity optional by default
+
+A reply address can be useful, but it should not be confused with a security
+requirement. Ask only for fields necessary to complete the user’s stated task.
+For high-risk reporting, anonymous submission should be a first-class path.
+
+### 5. Encrypt for the recipient before transmission
+
+TLS protects the hop to the web server. It does not stop that server, its logs,
+its database operators, or a compromised application from reading plaintext.
+For sensitive intake, encrypt the message in the browser to a recipient-held key
+and fail closed if encryption cannot be completed.
+
+### 6. Publish the data lifecycle
+
+State what is collected, whether metadata is minimized, where ciphertext or
+plaintext is stored, who can access it, how long it is retained, and how it is
+deleted. A generic footer privacy link is not a substitute for form-specific
+handling information.
+
+## What this means for Hush Line embeds
+
+The study supports the product premise behind Hush Line’s embeddable forms:
+sensitive input should be separated from the host website’s marketing and
+analytics environment.
+
+The current Hush Line embed implementation:
+
+- places the form in a
+  [sandboxed iframe](https://github.com/scidsg/hushline/blob/main/hushline/embeds.py)
+  with `referrerpolicy="no-referrer"`
+- requires exact allowed parent origins
+- uses an HTTPS POST form
+- labels encryption state in the
+  [embedded form](https://github.com/scidsg/hushline/blob/main/hushline/templates/embed_profile.html)
+- encrypts configured fields in the browser to recipient public keys
+- blocks eligible embeds when the recipient lacks a usable encryption key
+
+Applying the same rubric to our own implementation also produced two concrete
+follow-ups:
+
+1. Add an explicit `form-action 'self'` directive to the Hush Line CSP.
+2. Surface a concise, linked retention and privacy explanation inside the embed.
+
+Those gaps should be closed before turning this study into an unqualified
+“Hush Line is secure and other forms are not” claim. The more defensible value
+proposition is narrower: **Hush Line provides an isolated, recipient-encrypted
+intake component that replaces the riskiest parts of a typical contact-form
+stack, and its remaining observable gaps are specific and fixable.**
+
+## Conclusion
+
+The experiment supports the core hypothesis, with an important qualification.
+We did not prove that most contact forms store plaintext or log message bodies.
+We did find that the observable security posture of popular-site contact forms
+is weak:
+
+- none demonstrated the full standard
+- almost every form shared a frame with cross-site JavaScript
+- only half declared protected POST transport
+- retention information was uncommon
+- none published specific end-to-end encryption evidence
+
+That is enough to make contact-form security a measurable product category
+rather than a vague assertion. It also gives engineering teams a concrete
+checklist and gives Hush Line a value proposition grounded in reproducible data,
+not fear.
