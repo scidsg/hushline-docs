@@ -1,7 +1,7 @@
 ---
 slug: contact-form-security-study-2026
 title: "Among 500 Top Domains, 0% of Assessed Contact Forms Met Our Full Security Standard"
-description: A reproducible browser study of contact-form transport, cross-site scripts, pre-submit data flows, identity requirements, CSP, retention transparency, and end-to-end encryption.
+description: A reproducible browser study of contact-form submission routes, other-domain scripts, early data transmission, identity requirements, browser guardrails, retention transparency, and end-to-end encryption.
 authors: [gsorrentino]
 tags: [hushline]
 ---
@@ -32,23 +32,101 @@ export const assessedForms = [
 ];
 
 export const tierOptions = [
-  {key: 'secure', label: 'Full observable standard', shortLabel: 'Full', count: 0, description: 'All transport, isolation, minimization, CSP, retention, and E2EE evidence criteria.'},
-  {key: 'hardened', label: 'Hardened form', shortLabel: 'Hardened', count: 0, description: 'Privacy-respecting plus CSP form-action and frame-ancestors controls.'},
-  {key: 'privacy', label: 'Privacy-respecting', shortLabel: 'Privacy', count: 1, description: 'Protected transport, no cross-site scripts, no observed leak, and no required high-risk identity.'},
-  {key: 'transport', label: 'Protected transport', shortLabel: 'Transport', count: 11, description: 'HTTPS page, HTTPS action, and a rendered form declaring POST.'},
+  {key: 'secure', label: 'Full observable standard', shortLabel: 'Full', count: 0, description: 'The form showed every public sign we would want before calling it secure: safe submission, no other-domain scripts in the form, no early data transmission, minimal required identity, browser guardrails, retention clarity, and browser-side or end-to-end encryption evidence.'},
+  {key: 'hardened', label: 'Hardened form', shortLabel: 'Hardened', count: 0, description: 'The form avoided the biggest privacy risks and also told the browser where the form may submit and who may embed it.'},
+  {key: 'privacy', label: 'Privacy-respecting', shortLabel: 'Privacy', count: 1, description: 'The form used a safer submission route, kept other-domain scripts out of the form frame, did not send our synthetic values early, and did not require high-risk identity fields.'},
+  {key: 'transport', label: 'Protected submission route', shortLabel: 'Route', count: 11, description: 'The page used HTTPS, the form submitted to an HTTPS destination, and the form used POST so submitted values should go in the request body instead of the URL.'},
 ];
 
 export const criterionResults = [
-  {label: 'HTTPS form page', count: 20, note: '20 of 20'},
-  {label: 'HTTPS action', count: 19, note: '19 of 20'},
-  {label: 'Declared POST', count: 11, note: '11 of 20'},
-  {label: 'No cross-site scripts in form frame', count: 1, note: '1 of 20'},
-  {label: 'No observed pre-submit cross-site canary', count: 19, note: '19 of 20'},
-  {label: 'No required high-risk identity field', count: 17, note: '17 of 20'},
-  {label: 'CSP form-action', count: 2, note: '2 of 20'},
-  {label: 'CSP frame-ancestors', count: 13, note: '13 of 20'},
-  {label: 'Retention or deletion disclosure', count: 3, note: '3 of 20'},
-  {label: 'Specific client-side or E2EE evidence', count: 0, note: '0 of 20'},
+  {label: 'Page loaded over HTTPS', count: 20, note: '20 of 20'},
+  {label: 'Submit destination used HTTPS', count: 19, note: '19 of 20'},
+  {label: 'Form used POST', count: 11, note: '11 of 20'},
+  {label: 'No other-domain scripts in form', count: 1, note: '1 of 20'},
+  {label: 'No typed data sent before submit', count: 19, note: '19 of 20'},
+  {label: 'No required high-risk identity', count: 17, note: '17 of 20'},
+  {label: 'Submission destination locked by CSP', count: 2, note: '2 of 20'},
+  {label: 'Embedding locked by CSP', count: 13, note: '13 of 20'},
+  {label: 'Retention or deletion explained', count: 3, note: '3 of 20'},
+  {label: 'Browser-side or E2EE evidence', count: 0, note: '0 of 20'},
+];
+
+export const legendTerms = [
+  {
+    term: 'POST',
+    plain: 'A form submission method that puts submitted values in the request body.',
+    why: 'This is safer than GET for sensitive text because GET can put values in the URL, where they can appear in browser history, server logs, referrer headers, analytics, and screenshots.',
+  },
+  {
+    term: 'Submit destination',
+    plain: 'The URL the browser sends the form to after someone clicks send.',
+    why: 'A page can be HTTPS while the form points somewhere else. We checked the page and the destination separately.',
+  },
+  {
+    term: 'Other-domain script',
+    plain: 'JavaScript loaded from a different registrable domain while the form is on screen.',
+    why: 'If that script runs in the same frame as the textarea, it can technically read what a person types.',
+  },
+  {
+    term: 'Pre-submit leak',
+    plain: 'A network request containing a synthetic value after typing but before clicking send.',
+    why: 'The user has not consented to submit yet. In this run, we saw one cross-site pre-submit leak: an email value sent to a HubSpot email-check endpoint.',
+  },
+  {
+    term: 'CSP',
+    plain: 'Content Security Policy, a browser rule set sent by the site.',
+    why: '`form-action` limits where the form may submit. `frame-ancestors` limits who may embed the page.',
+  },
+  {
+    term: 'E2EE evidence',
+    plain: 'Public evidence that the message is encrypted in the browser to the recipient, not just protected by HTTPS on the way to the server.',
+    why: 'HTTPS does not prove the server stores ciphertext or that staff, vendors, logs, or backups cannot read the message.',
+  },
+];
+
+export const evidenceCards = [
+  {
+    title: 'Submission route',
+    count: '11 of 20',
+    finding: 'Only 11 forms passed all three basic route checks: HTTPS page, HTTPS destination, and POST.',
+    detail: 'Nine forms used GET or a JavaScript-only action. We did not submit the forms, so this is a route-quality finding, not proof that any user data was actually placed in a URL during our run.',
+  },
+  {
+    title: 'Script access to the form',
+    count: '19 of 20',
+    finding: 'Nineteen forms loaded at least one other-domain script in the same frame as the form.',
+    detail: 'Examples included Google Tag Manager, HubSpot, Marketo, Adobe, Yandex, New Relic, PostHog, Trustpilot, LiveChat, Microsoft CDN hosts, and bot/captcha services. One form, GOV.UK, had zero other-domain scripts in the form frame.',
+  },
+  {
+    title: 'Data sent before submit',
+    count: '1 of 20',
+    finding: 'One form transmitted a synthetic value before the user clicked send.',
+    detail: 'MediaTek sent the synthetic email field to `forms.hsforms.com/emailcheck/v1/json-ext` using an XHR POST request. We did not observe the synthetic message body, name, or phone number sent cross-site before submit.',
+  },
+  {
+    title: 'Required identity',
+    count: '3 of 20 failed',
+    finding: 'Three forms required high-risk identity fields such as phone number, business email, company, or detailed business profiling.',
+    detail: 'This matters because the safest sensitive-intake path should let someone ask for help without first disclosing more identity than the task requires.',
+  },
+  {
+    title: 'Browser guardrails',
+    count: '2 of 20',
+    finding: 'Only two forms locked the submit destination with CSP `form-action`; thirteen limited framing with `frame-ancestors`.',
+    detail: 'These headers are not encryption. They are defense-in-depth rules that reduce the blast radius of mistakes, injected code, and unauthorized embedding.',
+  },
+  {
+    title: 'Storage and lifecycle clarity',
+    count: '3 of 20',
+    finding: 'Only three forms surfaced retention or deletion language on the assessed page.',
+    detail: 'A privacy link in the footer is not the same as telling a sensitive sender how long the message persists, who can access it, and how deletion works.',
+  },
+  {
+    title: 'Message confidentiality',
+    count: '0 of 20',
+    finding: 'No assessed form published specific browser-side or end-to-end encryption evidence.',
+    detail: 'The test cannot prove plaintext storage from the outside. It can show whether the page gives a sender evidence that plaintext will not be readable by the receiving server or its vendors.',
+  },
 ];
 
 export function Percent({value}) {
@@ -198,6 +276,36 @@ export function StudyDashboard() {
           gap: .75rem;
           margin: 1.5rem 0 2rem;
         }
+        .cf-study-glossary, .cf-study-evidence-grid {
+          display: grid;
+          gap: .85rem;
+          grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+          margin: 1rem 0 2rem;
+        }
+        .cf-study-term, .cf-study-evidence-card {
+          background: var(--ifm-background-surface-color);
+          border: 1px solid var(--cf-border);
+          border-radius: .9rem;
+          padding: 1rem;
+        }
+        .cf-study-term strong, .cf-study-evidence-card strong {
+          display: block;
+          font-size: 1rem;
+          margin-bottom: .35rem;
+        }
+        .cf-study-term p, .cf-study-evidence-card p {
+          margin: .35rem 0 0;
+        }
+        .cf-study-muted {
+          color: color-mix(in srgb, var(--ifm-font-color-base) 72%, transparent);
+          font-size: .9rem;
+        }
+        .cf-study-evidence-count {
+          color: var(--cf-accent);
+          font-size: 1.7rem;
+          font-weight: 850;
+          line-height: 1;
+        }
         .cf-study-bar-row {
           display: grid;
           gap: .35rem;
@@ -262,6 +370,12 @@ export function StudyDashboard() {
           font-weight: 750;
           white-space: nowrap;
         }
+        .cf-study-cell-note {
+          display: block;
+          font-size: .74rem;
+          margin-top: .2rem;
+          max-width: 13rem;
+        }
         .cf-study-pass, .cf-study-fail {
           border-radius: 999px;
           display: inline-block;
@@ -321,6 +435,11 @@ export function StudyDashboard() {
 
       <div className="cf-study-controls">
         <h2 id="interactive-results">Change the definition and inspect the result</h2>
+        <p className="cf-study-muted">
+          These buttons change how strict the word “secure” is. The strictest
+          definition requires every public signal we could check. The loosest
+          definition only checks whether the form appears to submit safely.
+        </p>
         <div className="cf-study-tier-buttons" role="group" aria-label="Security standard">
           {tierOptions.map((option) => (
             <button
@@ -342,7 +461,23 @@ export function StudyDashboard() {
         <p>{selectedTier.description}</p>
       </div>
 
+      <h3>Legend: what the terms mean</h3>
+      <div className="cf-study-glossary">
+        {legendTerms.map((item) => (
+          <div className="cf-study-term" key={item.term}>
+            <strong>{item.term}</strong>
+            <p>{item.plain}</p>
+            <p className="cf-study-muted">{item.why}</p>
+          </div>
+        ))}
+      </div>
+
       <h3>Control-by-control results</h3>
+      <p className="cf-study-muted">
+        Each row below is a yes/no control. A passing count means the control
+        was visible from the browser during this run, not that the site passed
+        a private architecture review.
+      </p>
       <div className="cf-study-bars">
         {criterionResults.map((criterion) => (
           <div className="cf-study-bar-row" key={criterion.label}>
@@ -358,7 +493,25 @@ export function StudyDashboard() {
         ))}
       </div>
 
+      <h3>What the data says for each control</h3>
+      <div className="cf-study-evidence-grid">
+        {evidenceCards.map((card) => (
+          <div className="cf-study-evidence-card" key={card.title}>
+            <div className="cf-study-evidence-count">{card.count}</div>
+            <strong>{card.title}</strong>
+            <p>{card.finding}</p>
+            <p className="cf-study-muted">{card.detail}</p>
+          </div>
+        ))}
+      </div>
+
       <h3>Explore every assessed implementation</h3>
+      <p className="cf-study-muted">
+        “Pass” means that specific control was visible and satisfied in the
+        browser. “No” means the control was missing or not demonstrated. For
+        early data transmission, “Pass” means our synthetic values were not
+        observed in cross-site requests before submit.
+      </p>
       <div className="cf-study-table-controls">
         <label>
           <span className="cf-study-sr-only">Search assessed domains or URLs</span>
@@ -387,13 +540,13 @@ export function StudyDashboard() {
           <thead>
             <tr>
               <th>Rank / domain</th>
-              <th>Declared transport</th>
-              <th>Cross-site scripts</th>
-              <th>Pre-submit leak</th>
-              <th>High-risk identity</th>
-              <th>CSP form + frame</th>
-              <th>Retention</th>
-              <th>E2EE evidence</th>
+              <th>Submission route</th>
+              <th>Other-domain scripts</th>
+              <th>Typed data sent early</th>
+              <th>Required identity</th>
+              <th>Browser guardrails</th>
+              <th>Retention explained</th>
+              <th>Encryption evidence</th>
               <th>{selectedTier.shortLabel}</th>
             </tr>
           </thead>
@@ -404,13 +557,48 @@ export function StudyDashboard() {
                   <span className="cf-study-domain">#{form.rank} {form.domain}</span><br />
                   <a href={form.url} target="_blank" rel="noopener noreferrer">observed form</a>
                 </td>
-                <td><PassMark value={form.transport} label="Protected transport" /></td>
-                <td>{form.crossSiteScripts}</td>
-                <td><PassMark value={!form.preSubmitLeak} label="No observed pre-submit cross-site leak" /></td>
-                <td><PassMark value={!form.requiredHighRiskIdentity} label="No required high-risk identity" /></td>
-                <td><PassMark value={form.cspFormAction && form.cspFrameAncestors} label="CSP form and frame restrictions" /></td>
-                <td><PassMark value={form.retention} label="Retention disclosure" /></td>
-                <td><PassMark value={form.e2ee} label="E2EE evidence" /></td>
+                <td>
+                  <PassMark value={form.transport} label="Protected submission route" />
+                  <span className="cf-study-cell-note cf-study-muted">
+                    {form.transport ? 'HTTPS page + HTTPS destination + POST.' : 'At least one route check failed.'}
+                  </span>
+                </td>
+                <td>
+                  {form.crossSiteScripts}
+                  <span className="cf-study-cell-note cf-study-muted">
+                    {form.crossSiteScripts === 0 ? 'No other-domain scripts observed in the form frame.' : `${form.crossSiteScripts} other-domain host${form.crossSiteScripts === 1 ? '' : 's'} could access the form frame.`}
+                  </span>
+                </td>
+                <td>
+                  <PassMark value={!form.preSubmitLeak} label="No observed pre-submit cross-site leak" />
+                  <span className="cf-study-cell-note cf-study-muted">
+                    {form.preSubmitLeak ? 'Synthetic email sent to forms.hsforms.com before submit.' : 'No synthetic value observed cross-site before submit.'}
+                  </span>
+                </td>
+                <td>
+                  <PassMark value={!form.requiredHighRiskIdentity} label="No required high-risk identity" />
+                  <span className="cf-study-cell-note cf-study-muted">
+                    {form.requiredHighRiskIdentity ? 'Required phone or detailed business identity.' : 'No high-risk identity field was required.'}
+                  </span>
+                </td>
+                <td>
+                  <PassMark value={form.cspFormAction && form.cspFrameAncestors} label="CSP form and frame restrictions" />
+                  <span className="cf-study-cell-note cf-study-muted">
+                    {form.cspFormAction && form.cspFrameAncestors ? 'CSP locked both submit destination and embedding.' : 'Missing form-action, frame-ancestors, or both.'}
+                  </span>
+                </td>
+                <td>
+                  <PassMark value={form.retention} label="Retention disclosure" />
+                  <span className="cf-study-cell-note cf-study-muted">
+                    {form.retention ? 'Lifecycle language found on the assessed page.' : 'No form-specific lifecycle language found.'}
+                  </span>
+                </td>
+                <td>
+                  <PassMark value={form.e2ee} label="E2EE evidence" />
+                  <span className="cf-study-cell-note cf-study-muted">
+                    No browser-side or E2EE evidence found.
+                  </span>
+                </td>
                 <td><PassMark value={form[tier]} label={selectedTier.label} /></td>
               </tr>
             ))}
@@ -426,19 +614,25 @@ export function StudyDashboard() {
 The short answer is stark: **0% of the contact-form implementations we could
 assess demonstrated every control in our observable security standard**.
 
-The more useful answer is in the shape of the failure:
+The practical answer is more specific: most forms were not failing one exotic
+cryptography test. They were failing ordinary intake hygiene that a non-expert
+can understand.
 
-- **19 of 20 forms loaded scripts from at least one cross-site origin in the same
-  browser frame as the form.** Those scripts have the technical ability to read
-  form fields, even when we did not observe them transmitting the canary values.
-- **11 of 20 forms declared an HTTPS POST submission.** All 20 form pages were
-  HTTPS, but a padlock on the page did not establish secure form handling.
-- **1 of 20 forms transmitted our synthetic email address to a cross-site form
-  processor before submission.** The request went to a HubSpot email-validation
-  endpoint. We did not observe pre-submit transmission of the synthetic message
-  body.
+- **19 of 20 forms gave other-domain JavaScript access to the form frame.** This
+  does not prove those scripts collected the message, but it means they had the
+  technical position to read what a person typed.
+- **9 of 20 forms failed the full submission-route check.** Every form page used
+  HTTPS, but only 11 also submitted to an HTTPS destination with `POST`.
+- **1 of 20 forms sent typed data before submit.** MediaTek’s form sent the
+  synthetic email address to HubSpot’s `forms.hsforms.com/emailcheck/v1/json-ext`
+  endpoint before we clicked send. We did not observe the synthetic message
+  body, name, or phone number sent cross-site before submit.
+- **17 of 20 forms avoided required high-risk identity fields.** Three required
+  fields such as phone number or detailed business identity before a user could
+  complete the form.
 - **0 of 20 forms published specific evidence of browser-side or end-to-end
-  message encryption.**
+  message encryption.** HTTPS is useful, but it does not prove ciphertext
+  storage or recipient-only access.
 - **3 of 20 forms surfaced retention or deletion language on the assessed page.**
 
 <!-- truncate -->
@@ -452,19 +646,53 @@ retaliation, security vulnerabilities, health, finances, or identity.
 We counted a form as meeting the **full observable standard** only when every
 one of these controls was demonstrated:
 
-| Control | Passing condition | Why it matters |
+| Plain-English control | Passing condition | What failure communicates |
 | --- | --- | --- |
-| Protected submission | The rendered page and action used HTTPS, and the form declared POST | GET submissions can place field values in URLs and logs; HTTPS protects network transport |
-| Input isolation | No scripts from another registrable domain executed in the form’s frame | Cross-site JavaScript can read the form DOM |
-| No pre-submit leak | Synthetic message, email, name, and phone canaries were not observed in cross-site requests before submission | A user has not clicked send yet |
-| Data minimization | No phone, address, account identifier, or similar high-risk identity field was mandatory | Sensitive outreach should not require unnecessary identity |
-| Browser hardening | CSP included both `form-action` and `frame-ancestors` | These controls constrain submission destinations and framing |
-| Lifecycle transparency | Retention or deletion handling was disclosed | Encryption does not answer how long data persists |
-| Message confidentiality | The page published specific browser-side or end-to-end encryption evidence | TLS ends at the server and does not establish ciphertext storage |
+| Protected submission route | The page used HTTPS, the submit destination used HTTPS, and the form used `POST` | The form may still work, but it did not show the basic route pattern expected for sensitive text |
+| Input isolation | No scripts from another registrable domain executed in the form’s frame | Other-domain code had technical access to the fields |
+| No typed data sent early | Synthetic message, email, name, and phone canaries were not observed in cross-site requests before submission | A value moved before the user clicked send |
+| Data minimization | Phone, address, account identifier, or similarly high-risk identity fields were not mandatory | The form demanded more identity than sensitive intake should require by default |
+| Browser guardrails | CSP included both `form-action` and `frame-ancestors` | The site did not ask the browser to enforce where forms may submit or who may embed the form |
+| Lifecycle transparency | Retention or deletion handling was disclosed on the assessed page | The sender cannot see how long the message persists or who may access it |
+| Message confidentiality | The page published specific browser-side or end-to-end encryption evidence | HTTPS protects transport only; it does not prove encrypted storage or recipient-only access |
 
 This is intentionally a **demonstrated-security** standard. A form that did not
 pass is not automatically vulnerable. It means the form did not expose enough
 observable evidence for us to classify it as secure under this threat model.
+
+In other words, “secure” here does not mean “we found no exploit.” It means “a
+reasonable sender can see enough evidence, in the browser, to trust this as a
+sensitive intake surface.”
+
+## What actually leaked
+
+We observed **one cross-site pre-submit leak**.
+
+The form was on `mediatek.com`. After the test typed a synthetic email address,
+the browser sent that email value to:
+
+```text
+host: forms.hsforms.com
+path: /emailcheck/v1/json-ext
+method: POST
+resource type: XHR
+matched field type: email
+timing: before submit
+```
+
+We did **not** observe the synthetic message body, name, or phone number sent to
+a cross-site host before submit. That distinction matters. The strongest finding
+is not “every form leaked typed content during this test.” The stronger,
+reproducible finding is that most forms allowed unnecessary access paths, and
+one form converted that access into an observed early transmission.
+
+The most common exposure was not an observed leak; it was **script access**. In
+19 of 20 forms, code from another registrable domain executed in the same frame
+as the form. Examples included Google Tag Manager, HubSpot, Marketo, Adobe,
+Yandex, New Relic, PostHog, Trustpilot, LiveChat, Microsoft CDN hosts, and
+bot/captcha services. Some of those services may be legitimate operational
+dependencies. The point is narrower: if a script runs in the form frame, it is
+in the trust boundary for that form.
 
 The standard draws on the
 [W3C Privacy Principles](https://www.w3.org/TR/privacy-principles/), especially
@@ -483,8 +711,9 @@ them.
 
 We can observe:
 
-- transport and form methods
-- form actions and cross-site script origins
+- whether the page and submit destination used HTTPS
+- whether the form used POST or GET
+- other-domain script origins running in the form frame
 - field requirements
 - response security headers
 - pre-submit browser requests containing synthetic values
@@ -629,7 +858,7 @@ is weak:
 
 - none demonstrated the full standard
 - almost every form shared a frame with cross-site JavaScript
-- only half declared protected POST transport
+- only about half showed a protected submission route
 - retention information was uncommon
 - none published specific end-to-end encryption evidence
 
