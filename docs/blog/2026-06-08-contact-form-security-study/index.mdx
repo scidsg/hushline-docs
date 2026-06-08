@@ -821,9 +821,54 @@ handling information.
 
 ## What this means for Hush Line embeds
 
-The study supports the product premise behind Hush Line’s embeddable forms:
-sensitive input should be separated from the host website’s marketing and
-analytics environment.
+The study supports the product premise behind Hush Line’s embeddable forms, but
+the comparison should be stated in measurable terms.
+
+For sensitive intake, the most important question is not “does the page have a
+contact form?” It is whether the form keeps the sender away from the host site’s
+marketing stack, avoids early data sharing, and encrypts the message for the
+recipient before it becomes ordinary web-app data.
+
+Using that narrower **core sensitive-intake** definition, the comparison is:
+
+| Core sensitive-intake control | Best observed among assessed forms | Hush Line embed evidence | Result |
+| --- | --- | --- | --- |
+| Protected submission route | 11 of 20 used HTTPS page + HTTPS destination + POST | Hush Line embed form uses `method="POST"` and same-app submit route | Hush Line matches the best observed route pattern |
+| Keep host-page scripts away from the message fields | 1 of 20 had zero other-domain scripts in the form frame | Hush Line places the intake form in a sandboxed iframe and the embed template loads Hush Line-owned scripts, not the host page’s analytics scripts | Hush Line is designed for isolation, not co-location |
+| Do not send typed values before submit | 19 of 20 had no observed cross-site canary leak; 1 sent the synthetic email to HubSpot before submit | Hush Line’s embed has no third-party form processor in the template and uses recipient encryption before final submission when JavaScript is available | Hush Line removes the observed leak class from the form architecture |
+| Require only necessary identity | 17 of 20 did not require high-risk identity fields | Hush Line fields are recipient-configurable and can be deployed without required phone, company, or business identity fields | Hush Line can preserve anonymous intake; deployers must keep it configured that way |
+| Encrypt the message for the recipient | 0 of 20 published browser-side or end-to-end encryption evidence | Hush Line labels encryption state, loads recipient public keys, encrypts configured fields in the browser, and blocks eligible embeds when the recipient lacks a usable key | Hush Line has the clearest measurable advantage |
+
+That gives a reproducible comparison:
+
+- **0 of 20 assessed forms** passed the combined core set of protected route,
+  no other-domain form-frame scripts, no observed early cross-site canary, and
+  browser-side or end-to-end encryption evidence.
+- **Hush Line embeds have implementation evidence for that core set** when the
+  recipient has a usable key and the deployer keeps identity fields optional.
+- The remaining Hush Line gaps are not architectural equivalents of the common
+  contact-form failures. They are explicit hardening and disclosure tasks:
+  adding CSP `form-action 'self'` and surfacing retention/privacy language in
+  the embed.
+
+<div className="cf-study-callout">
+  <strong>Objective takeaway:</strong> Hush Line is the best choice in this
+  comparison for sensitive intake because it is the only evaluated option with
+  a purpose-built isolated embed, recipient-key encryption evidence, no
+  dependence on the host page’s marketing scripts, and a route to full rubric
+  compliance through two concrete follow-ups.
+</div>
+
+This is still not a license to overclaim. A fair public claim is:
+
+> Hush Line gives organizations an isolated, recipient-encrypted intake form
+> that addresses the biggest observable failures found in popular-site contact
+> forms. In this study, no assessed conventional contact-form implementation
+> demonstrated the same combination of isolation and encryption evidence.
+
+A claim we should avoid until the follow-ups ship is:
+
+> Hush Line already passes every criterion in the full observable standard.
 
 The current Hush Line embed implementation:
 
@@ -837,17 +882,32 @@ The current Hush Line embed implementation:
 - encrypts configured fields in the browser to recipient public keys
 - blocks eligible embeds when the recipient lacks a usable encryption key
 
-Applying the same rubric to our own implementation also produced two concrete
+Those statements are reproducible from the linked implementation:
+
+- iframe sandboxing and `referrerpolicy="no-referrer"` are generated in
+  [hushline/embeds.py](https://github.com/scidsg/hushline/blob/main/hushline/embeds.py)
+- exact embed origins are normalized and reject wildcards in
+  [hushline/model/username.py](https://github.com/scidsg/hushline/blob/main/hushline/model/username.py)
+- the embed form, encryption badge, recipient public-key payload, and POST route
+  are rendered in
+  [hushline/templates/embed_profile.html](https://github.com/scidsg/hushline/blob/main/hushline/templates/embed_profile.html)
+- browser-side encryption is implemented in
+  [hushline/static/js/client-side-encryption.js](https://github.com/scidsg/hushline/blob/main/hushline/static/js/client-side-encryption.js)
+- embed-specific `frame-ancestors` handling is applied in
+  [hushline/__init__.py](https://github.com/scidsg/hushline/blob/main/hushline/__init__.py)
+
+Applying the full rubric to our own implementation still produced two concrete
 follow-ups:
 
 1. Add an explicit `form-action 'self'` directive to the Hush Line CSP.
 2. Surface a concise, linked retention and privacy explanation inside the embed.
 
-Those gaps should be closed before turning this study into an unqualified
-“Hush Line is secure and other forms are not” claim. The more defensible value
-proposition is narrower: **Hush Line provides an isolated, recipient-encrypted
-intake component that replaces the riskiest parts of a typical contact-form
-stack, and its remaining observable gaps are specific and fixable.**
+Those gaps should be closed before turning this study into an unqualified “Hush
+Line passes the full observable standard” claim. The defensible value
+proposition is strong enough without that overstatement: **Hush Line provides an
+isolated, recipient-encrypted intake component that replaces the riskiest parts
+of a typical contact-form stack, and its remaining observable gaps are specific,
+measurable, and fixable.**
 
 ## Conclusion
 
