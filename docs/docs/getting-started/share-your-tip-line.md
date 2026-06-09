@@ -8,7 +8,7 @@ sidebar_position: 5
 
 Opt-in to the public user directory in **Settings > Profile > Public User Directory** so whistleblowers can find your account.
 
-![Settings](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/artvandelay/auth-artvandelay-settings-profile-desktop-light-fold.png?raw=true)
+![Settings](/img/screenshots/current/artvandelay/auth-artvandelay-settings-profile-desktop-light-fold.png)
 
 ## Step 2. Share Your Address Widely
 

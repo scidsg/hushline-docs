@@ -8,13 +8,13 @@ title: Secure Your Account
 
 Enhance your security by enabling 2FA. In **Settings > Authentication > Two-Factor Authentication**, click **Enable 2FA**.
 
-![Enable 2FA](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/artvandelay/auth-artvandelay-settings-auth-desktop-light-fold.png?raw=true)
+![Enable 2FA](/img/screenshots/current/artvandelay/auth-artvandelay-settings-auth-desktop-light-fold.png)
 
 ## Step 2. Scan the QR Code
 
 Download an authenticator app like Google Authenticator or Aegis, scan the QR code, and enter the generated six-digit code in the “2FA Code” field.
 
-![Scan QR](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/artvandelay/auth-artvandelay-enable-2fa-desktop-light-fold.png?raw=true)
+![Scan QR](/img/screenshots/current/artvandelay/auth-artvandelay-enable-2fa-desktop-light-fold.png)
 
 ## Step 3. Log in Again
 
