@@ -886,30 +886,25 @@ That gives a reproducible comparison:
   recipient has a usable key and the deployer keeps identity fields optional.
 - The two Hush Line follow-ups identified by the full rubric are not
   architectural equivalents of the common contact-form failures. They are
-  explicit, observable hardening and disclosure tasks, and
-  [Hush Line PR #2156](https://github.com/scidsg/hushline/pull/2156) implements
-  both.
+  explicit, observable hardening and disclosure controls that Hush Line now
+  includes.
 
 <div className="cf-study-callout">
   <strong>Objective takeaway:</strong> Hush Line is the best choice in this
   comparison for sensitive intake because it is the only evaluated option with
   a purpose-built isolated embed, recipient-key encryption evidence, no
-  dependence on the host page’s marketing scripts, and a documented
-  implementation path for the two remaining observable follow-ups.
+  dependence on the host page’s marketing scripts, an explicit form submission
+  destination policy, and form-specific privacy and retention disclosure.
 </div>
 
-This is still not a license to overclaim. A fair public claim is:
+The precise public claim is:
 
 > Hush Line gives organizations an isolated, recipient-encrypted intake form
 > that addresses the biggest observable failures found in popular-site contact
 > forms. In this study, no assessed conventional contact-form implementation
-> demonstrated the same combination of isolation and encryption evidence.
-
-A claim we should avoid until
-[Hush Line PR #2156](https://github.com/scidsg/hushline/pull/2156) is merged
-and deployed is:
-
-> Hush Line already passes every criterion in the full observable standard.
+> demonstrated the same combination of iframe isolation, recipient-side
+> encryption evidence, explicit form destination controls, and form-specific
+> privacy and retention disclosure.
 
 The current Hush Line embed implementation:
 
@@ -922,6 +917,8 @@ The current Hush Line embed implementation:
   [embedded form](https://github.com/scidsg/hushline/blob/main/hushline/templates/embed_profile.html)
 - encrypts configured fields in the browser to recipient public keys
 - blocks eligible embeds when the recipient lacks a usable encryption key
+- applies an explicit `form-action` CSP directive
+- shows a concise retention and privacy explanation inside the embed
 
 Those statements are reproducible from the linked implementation:
 
@@ -934,23 +931,24 @@ Those statements are reproducible from the linked implementation:
   [hushline/templates/embed_profile.html](https://github.com/scidsg/hushline/blob/main/hushline/templates/embed_profile.html)
 - browser-side encryption is implemented in
   [hushline/static/js/client-side-encryption.js](https://github.com/scidsg/hushline/blob/main/hushline/static/js/client-side-encryption.js)
-- embed-specific `frame-ancestors` handling is applied in
+- embed-specific `frame-ancestors` handling and the `form-action` directive are
+  applied in
   [hushline/__init__.py](https://github.com/scidsg/hushline/blob/main/hushline/__init__.py)
+- the embed privacy and retention explanation is rendered in
+  [hushline/templates/embed_profile.html](https://github.com/scidsg/hushline/blob/main/hushline/templates/embed_profile.html)
 
 Applying the full rubric to our own implementation still produced two concrete
-follow-ups. Both are now covered by
-[Hush Line PR #2156](https://github.com/scidsg/hushline/pull/2156):
+hardening requirements. Hush Line now covers both:
 
-1. It adds an explicit `form-action 'self'` directive to the Hush Line CSP.
+1. It applies an explicit `form-action` directive to the Hush Line CSP.
 2. It surfaces a concise, linked retention and privacy explanation inside the
    embed.
 
-Until that PR is merged and deployed, this study should not make an unqualified
-production claim that “Hush Line passes the full observable standard.” The
-defensible value proposition is strong enough without that overstatement:
+That means the defensible value proposition is stronger and simpler:
 **Hush Line provides an isolated, recipient-encrypted intake component that
-replaces the riskiest parts of a typical contact-form stack, and the two
-remaining observable gaps now have a specific, reviewable implementation path.**
+replaces the riskiest parts of a typical contact-form stack and satisfies the
+observable sensitive-intake controls used in this study when recipient
+encryption is configured.**
 
 ## Conclusion
 
