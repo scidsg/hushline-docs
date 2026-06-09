@@ -762,10 +762,55 @@ The high attrition is expected because Tranco includes infrastructure domains,
 CDNs, APIs, redirectors, and sites that block automated browsers. Therefore the
 headline denominator is **20 assessed implementations**, not all 500 domains.
 
-The complete redacted output is available as
-[JSON data](pathname:///data/contact-form-study-2026.json). The
-[study runner](https://github.com/scidsg/hushline-docs/blob/main/docs/scripts/contact-form-study.mjs)
-and fixed ranking snapshot are included in the documentation repository.
+## Raw data you can audit
+
+A credible version of this study cannot ask readers to trust the charts alone.
+We are publishing the redacted evidence files used to produce the article:
+
+| Artifact | What it contains | Why it matters |
+| --- | --- | --- |
+| [Full redacted JSON output](pathname:///data/contact-form-study-2026.json) | Metadata, summary counts, and one record for each of the 500 ranked domains | This is the canonical evidence file. It includes homepage/contact-page status, selected contact links, form metadata, script hosts, CSP checks, canary-request summaries, and scoring fields. |
+| [Deduped assessed-implementation CSV](pathname:///data/contact-form-study-2026-assessed-implementations.csv) | One row per unique assessed form implementation, deduped by `formFingerprint` | This is the easiest file for checking the headline denominator of 20 and the pass/fail columns behind each chart. |
+| [Tranco top-500 input CSV](pathname:///data/contact-form-study-2026-tranco-XLPJN-top500.csv) | The fixed `XLPJN` ranking snapshot used as crawl input | This lets reviewers confirm the starting population and rerun the study against the same ranked domains. |
+| [Study runner](https://github.com/scidsg/hushline-docs/blob/main/docs/scripts/contact-form-study.mjs) | The non-submitting browser measurement script | This documents how pages were selected, filled with synthetic values, scored, and redacted. |
+
+The published files intentionally do **not** include screenshots, raw request
+bodies, cookies, tokens, browser storage, or complete response headers. The goal
+is reproducibility without publishing sensitive byproducts from third-party
+sites. Canary request records are reduced to host, path, method, resource type,
+and matched synthetic field type.
+
+The main fields behind the claims are:
+
+| Claim in article | Raw field or derivation |
+| --- | --- |
+| 500 ranked domains screened | `metadata.ranking.rankRange` and the Tranco input CSV |
+| 261 reachable homepages | `summary.reachableHomepages` |
+| 20 unique implementations assessed | CSV row count, or JSON records where `score.assessed` is true deduped by `formFingerprint` |
+| 0 passed the full observable standard | `full_observable_standard` in CSV, or `score.secure` in JSON |
+| 11 passed protected transport | `protected_transport_tier` in CSV, or `score.baselineTransport` in JSON |
+| 19 loaded other-domain scripts | `no_third_party_scripts=false` in CSV, or `score.criteria.noThirdPartyScripts=false` in JSON |
+| 1 sent typed data to a cross-site processor before submit | `leaked_before_submit=true`, `third_party_canary_hosts`, and `canary_request_details` in CSV, or `browserCheck.leakedBeforeSubmit=true` in JSON |
+| 0 published browser-side or E2EE evidence | `encryption_disclosed=false` in CSV, or `score.criteria.encryptionDisclosed=false` in JSON |
+
+For example, a reviewer can reproduce the strict headline from the CSV by
+counting rows where `full_observable_standard` is `true`; the answer is zero.
+The MediaTek pre-submit finding is the one row where `leaked_before_submit` is
+`true`, with the redacted request recorded as:
+
+```text
+POST forms.hsforms.com/emailcheck/v1/json-ext XHR matched=email
+```
+
+The CSV also includes `canary_request_count` and `canary_hosts`. Those fields
+show any request containing a synthetic value after input, including same-party
+validation requests. The leak claim uses the narrower `leaked_before_submit`
+boolean and `third_party_canary_hosts` field, which require a synthetic value to
+move to a different registrable domain before the form was submitted.
+
+This evidence still has limits. It supports claims about what a browser could
+observe during this run. It does not prove internal plaintext storage, server
+logging, access-control policy, or retention enforcement.
 
 ## What engineering teams should change
 
