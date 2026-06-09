@@ -762,10 +762,48 @@ The high attrition is expected because Tranco includes infrastructure domains,
 CDNs, APIs, redirectors, and sites that block automated browsers. Therefore the
 headline denominator is **20 assessed implementations**, not all 500 domains.
 
+## Raw data you can audit
+
 The complete redacted output is available as
-[JSON data](pathname:///data/contact-form-study-2026.json). The
+[JSON data](pathname:///data/contact-form-study-2026.json), an
+[assessed-implementations CSV](pathname:///data/contact-form-study-2026-assessed-implementations.csv),
+and the
+[fixed top-500 ranking snapshot CSV](pathname:///data/contact-form-study-2026-tranco-XLPJN-top500.csv).
+The
 [study runner](https://github.com/scidsg/hushline-docs/blob/main/docs/scripts/contact-form-study.mjs)
 and fixed ranking snapshot are included in the documentation repository.
+
+The exact fields behind the headline claims are:
+
+| Claim in article | Raw field or derivation |
+| --- | --- |
+| 500 ranked domains screened | `metadata.ranking.rankRange` and the Tranco input CSV |
+| 261 reachable homepages | `summary.reachableHomepages` |
+| 20 unique implementations assessed | CSV row count, or JSON records where `score.assessed` is true deduped by `formFingerprint` |
+| 0 passed the full observable standard | `full_observable_standard` in CSV, or `score.secure` in JSON |
+| 11 passed protected transport | `protected_transport_tier` in CSV, or `score.baselineTransport` in JSON |
+| 19 loaded other-domain scripts | `no_third_party_scripts=false` in CSV, or `score.criteria.noThirdPartyScripts=false` in JSON |
+| 1 sent typed data to a cross-site processor before submit | `leaked_before_submit=true`, `third_party_canary_hosts`, and `canary_request_details` in CSV, or `browserCheck.leakedBeforeSubmit=true` in JSON |
+| 0 published browser-side or E2EE evidence | `encryption_disclosed=false` in CSV, or `score.criteria.encryptionDisclosed=false` in JSON |
+
+For example, a reviewer can reproduce the strict headline from the CSV by
+counting rows where `full_observable_standard` is `true`; the answer is zero.
+The MediaTek pre-submit finding is the one row where `leaked_before_submit` is
+`true`, with the redacted request recorded as:
+
+```text
+POST forms.hsforms.com/emailcheck/v1/json-ext XHR matched=email
+```
+
+The CSV also includes `canary_request_count` and `canary_hosts`. Those fields
+show any request containing a synthetic value after input, including same-party
+validation requests. The leak claim uses the narrower `leaked_before_submit`
+boolean and `third_party_canary_hosts` field, which require a synthetic value to
+move to a different registrable domain before the form was submitted.
+
+This evidence still has limits. It supports claims about what a browser could
+observe during this run. It does not prove internal plaintext storage, server
+logging, access-control policy, or retention enforcement.
 
 ## What engineering teams should change
 
@@ -846,17 +884,18 @@ That gives a reproducible comparison:
   browser-side or end-to-end encryption evidence.
 - **Hush Line embeds have implementation evidence for that core set** when the
   recipient has a usable key and the deployer keeps identity fields optional.
-- The remaining Hush Line gaps are not architectural equivalents of the common
-  contact-form failures. They are explicit hardening and disclosure tasks:
-  adding CSP `form-action 'self'` and surfacing retention/privacy language in
-  the embed.
+- The two Hush Line follow-ups identified by the full rubric are not
+  architectural equivalents of the common contact-form failures. They are
+  explicit, observable hardening and disclosure tasks, and
+  [Hush Line PR #2156](https://github.com/scidsg/hushline/pull/2156) implements
+  both.
 
 <div className="cf-study-callout">
   <strong>Objective takeaway:</strong> Hush Line is the best choice in this
   comparison for sensitive intake because it is the only evaluated option with
   a purpose-built isolated embed, recipient-key encryption evidence, no
-  dependence on the host page’s marketing scripts, and a route to full rubric
-  compliance through two concrete follow-ups.
+  dependence on the host page’s marketing scripts, and a documented
+  implementation path for the two remaining observable follow-ups.
 </div>
 
 This is still not a license to overclaim. A fair public claim is:
@@ -866,7 +905,9 @@ This is still not a license to overclaim. A fair public claim is:
 > forms. In this study, no assessed conventional contact-form implementation
 > demonstrated the same combination of isolation and encryption evidence.
 
-A claim we should avoid until the follow-ups ship is:
+A claim we should avoid until
+[Hush Line PR #2156](https://github.com/scidsg/hushline/pull/2156) is merged
+and deployed is:
 
 > Hush Line already passes every criterion in the full observable standard.
 
@@ -897,17 +938,19 @@ Those statements are reproducible from the linked implementation:
   [hushline/__init__.py](https://github.com/scidsg/hushline/blob/main/hushline/__init__.py)
 
 Applying the full rubric to our own implementation still produced two concrete
-follow-ups:
+follow-ups. Both are now covered by
+[Hush Line PR #2156](https://github.com/scidsg/hushline/pull/2156):
 
-1. Add an explicit `form-action 'self'` directive to the Hush Line CSP.
-2. Surface a concise, linked retention and privacy explanation inside the embed.
+1. It adds an explicit `form-action 'self'` directive to the Hush Line CSP.
+2. It surfaces a concise, linked retention and privacy explanation inside the
+   embed.
 
-Those gaps should be closed before turning this study into an unqualified “Hush
-Line passes the full observable standard” claim. The defensible value
-proposition is strong enough without that overstatement: **Hush Line provides an
-isolated, recipient-encrypted intake component that replaces the riskiest parts
-of a typical contact-form stack, and its remaining observable gaps are specific,
-measurable, and fixable.**
+Until that PR is merged and deployed, this study should not make an unqualified
+production claim that “Hush Line passes the full observable standard.” The
+defensible value proposition is strong enough without that overstatement:
+**Hush Line provides an isolated, recipient-encrypted intake component that
+replaces the riskiest parts of a typical contact-form stack, and the two
+remaining observable gaps now have a specific, reviewable implementation path.**
 
 ## Conclusion
 
