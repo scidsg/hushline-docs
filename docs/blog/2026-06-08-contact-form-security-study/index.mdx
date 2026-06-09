@@ -884,10 +884,6 @@ That gives a reproducible comparison:
   browser-side or end-to-end encryption evidence.
 - **Hush Line embeds have implementation evidence for that core set** when the
   recipient has a usable key and the deployer keeps identity fields optional.
-- The two Hush Line follow-ups identified by the full rubric are not
-  architectural equivalents of the common contact-form failures. They are
-  explicit, observable hardening and disclosure controls that Hush Line now
-  includes.
 
 <div className="cf-study-callout">
   <strong>Objective takeaway:</strong> Hush Line is the best choice in this
@@ -936,19 +932,6 @@ Those statements are reproducible from the linked implementation:
   [hushline/__init__.py](https://github.com/scidsg/hushline/blob/main/hushline/__init__.py)
 - the embed privacy and retention explanation is rendered in
   [hushline/templates/embed_profile.html](https://github.com/scidsg/hushline/blob/main/hushline/templates/embed_profile.html)
-
-Applying the full rubric to our own implementation still produced two concrete
-hardening requirements. Hush Line now covers both:
-
-1. It applies an explicit `form-action` directive to the Hush Line CSP.
-2. It surfaces a concise, linked retention and privacy explanation inside the
-   embed.
-
-That means the defensible value proposition is stronger and simpler:
-**Hush Line provides an isolated, recipient-encrypted intake component that
-replaces the riskiest parts of a typical contact-form stack and satisfies the
-observable sensitive-intake controls used in this study when recipient
-encryption is configured.**
 
 ## Conclusion
 
