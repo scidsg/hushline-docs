@@ -10,7 +10,7 @@ Route: `/email-headers`
 
 Paste raw email headers and Hush Line analyzes available authentication artifacts to help determine whether an email appears to originate from the stated sender.
 
-![Email Validation](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/admin/auth-admin-tools-email-validation-desktop-light-fold.png?raw=true)
+![Email Validation](/img/screenshots/current/admin/auth-admin-tools-email-validation-desktop-light-fold.png)
 
 ## What It Checks
 
@@ -34,15 +34,15 @@ Each section includes a `Summary` block that explains how to interpret the findi
 
 ### Authentic Email Example
 
-![Successful Email Validation](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/admin/auth-admin-tools-email-validation-status-valid-desktop-light-fold.png?raw=true)
+![Successful Email Validation](/img/screenshots/current/admin/auth-admin-tools-email-validation-status-valid-desktop-light-fold.png)
 
 ### Inauthentic Email Example
 
-![Inauthentic Email](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/admin/auth-admin-tools-email-validation-status-inauthentic-desktop-light-fold.png?raw=true)
+![Inauthentic Email](/img/screenshots/current/admin/auth-admin-tools-email-validation-status-inauthentic-desktop-light-fold.png)
 
 ### Forged Email Example
 
-![Forged Email](https://github.com/scidsg/hushline-screenshots/blob/main/releases/latest/admin/auth-admin-tools-email-validation-status-forged-desktop-light-fold.png?raw=true)
+![Forged Email](/img/screenshots/current/admin/auth-admin-tools-email-validation-status-forged-desktop-light-fold.png)
 
 ## Report Download
 
