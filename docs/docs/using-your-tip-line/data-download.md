@@ -10,7 +10,7 @@ Hush Line provides a self-serve mechanism to download a complete copy of your ac
 
 Navigate to <code>Settings > Advanced</code> to find the **Download My Data** section.
 
-![Advanced Settings](/img/screenshots/current/artvandelay/auth-artvandelay-settings-advanced-desktop-light-fold.png)
+![Advanced Settings](/img/screenshots/artvandelay/auth-artvandelay-settings-advanced-desktop-light-fold.png)
 
 ## What Is Included
 

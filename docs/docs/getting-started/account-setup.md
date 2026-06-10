@@ -12,13 +12,13 @@ Let's get you set up! Hush Line works best as a background service—once config
 
 In **Settings > Profile**, add a clear bio, extra links, or your Signal username to help your community.
 
-![Settings](/img/screenshots/current/newman/auth-newman-settings-profile-desktop-light-fold.png)
+![Settings](/img/screenshots/newman/auth-newman-settings-profile-desktop-light-fold.png)
 
 ## Step 2. Enable End-to-End Encryption
 
 Add an encryption key so you can receive messages securely. Let's start from **Settings > Encryption**:
 
-![Encryption settings wireframe](/img/screenshots/current/newman/auth-newman-settings-encryption-desktop-light-fold.png)
+![Encryption settings wireframe](/img/screenshots/newman/auth-newman-settings-encryption-desktop-light-fold.png)
 
 ### Option 2.1. Use with Proton Mail
 
@@ -32,7 +32,7 @@ Prefer Gmail or no email forwarding? Use [Mailvelope](https://mailvelope.com/en/
 
 Forward messages so you don’t have to log back in. For Proton Mail, use your new Proton email. For Gmail users with Mailvelope, click the red Mailvelope seal in your inbox and enter your key password.
 
-![Email](/img/screenshots/current/artvandelay/auth-artvandelay-settings-notifications-desktop-light-fold.png)
+![Email](/img/screenshots/artvandelay/auth-artvandelay-settings-notifications-desktop-light-fold.png)
 
 ---
 
