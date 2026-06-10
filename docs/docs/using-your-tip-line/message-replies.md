@@ -10,7 +10,7 @@ sidebar_position: 7
 
 Customize automatic responses when a tip is received (e.g., “✅ Accepted” or “⛔️ Declined”) to include additional contact details.
 
-![Custom replies example](/img/screenshots/current/artvandelay/auth-artvandelay-settings-replies-desktop-light-fold.png)
+![Custom replies example](/img/screenshots/artvandelay/auth-artvandelay-settings-replies-desktop-light-fold.png)
 
 ## Step 2. A Good Accept Message
 
@@ -30,4 +30,4 @@ When someone submits a message to you they'll receive a unique URL only known to
 them. When you update the status of a message in your inbox, the message on this
 page will update.
 
-![Status dropdown options](/img/screenshots/current/guest/guest-message-status-desktop-light-fold.png)
+![Status dropdown options](/img/screenshots/guest/guest-message-status-desktop-light-fold.png)

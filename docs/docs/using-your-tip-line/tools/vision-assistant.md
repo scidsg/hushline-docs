@@ -10,7 +10,7 @@ Route: `/vision`
 
 Vision Assistant is a browser-based OCR tool that extracts searchable text from uploaded images.
 
-![Vision Assistant](/img/screenshots/current/admin/auth-admin-tools-vision-assistant-desktop-light-fold.png)
+![Vision Assistant](/img/screenshots/admin/auth-admin-tools-vision-assistant-desktop-light-fold.png)
 
 ## How It Works
 

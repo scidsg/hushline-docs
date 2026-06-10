@@ -8,13 +8,13 @@ sidebar_position: 8
 
 In **Settings > Profile**, update your Display Name for authenticity. (Changing it later will remove verified status.)
 
-![Settings](/img/screenshots/current/artvandelay/auth-artvandelay-settings-profile-desktop-light-fold.png)
+![Settings](/img/screenshots/artvandelay/auth-artvandelay-settings-profile-desktop-light-fold.png)
 
 ## Step 2. Include Additional URLs
 
 Add your LinkedIn, website, or other professional profiles in your bio’s extra fields for multi-channel verification.
 
-![Extra URL fields](/img/screenshots/current/artvandelay/auth-artvandelay-settings-profile-desktop-light-window-02.png)
+![Extra URL fields](/img/screenshots/artvandelay/auth-artvandelay-settings-profile-desktop-light-window-02.png)
 
 ## Step 3. Contact Us
 
@@ -22,4 +22,4 @@ When ready, contact us to begin verification. Businesses should have authorized 
 
 [Verify Your Account](https://tips.hushline.app/to/admin)
 
-![Message verification](/img/screenshots/current/guest/guest-profile-admin-desktop-light-fold.png)
+![Message verification](/img/screenshots/guest/guest-profile-admin-desktop-light-fold.png)
