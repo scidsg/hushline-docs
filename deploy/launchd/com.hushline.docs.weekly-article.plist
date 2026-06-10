@@ -16,7 +16,7 @@
   <key>EnvironmentVariables</key>
   <dict>
     <key>CODEX_HOME</key>
-    <string>__HOME_DIR__/.codex-hushline-agent-002</string>
+    <string>__HOME_DIR__/.codex-hushline-agents</string>
     <key>GH_CONFIG_DIR</key>
     <string>__HOME_DIR__/.config/gh</string>
     <key>HOME</key>

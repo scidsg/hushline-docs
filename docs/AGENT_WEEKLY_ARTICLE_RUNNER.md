@@ -153,6 +153,7 @@ The default publish layout assumes sibling checkouts:
 - `HUSHLINE_SOCIAL_BASE_BRANCH` (default `main`)
 - `HUSHLINE_SOCIAL_ARCHIVE_ROOT` (default `previous-posts`)
 - `HUSHLINE_SOCIAL_ENV_FILE` (default `HUSHLINE_SOCIAL_REPO_DIR/.env.launchd`)
+- `CODEX_HOME` (default `~/.codex-hushline-agents` in the launchd wrapper)
 - `HUSHLINE_CODEX_MODEL` (default `gpt-5.4`)
 - `HUSHLINE_CODEX_REASONING_EFFORT` (default `high`)
 
