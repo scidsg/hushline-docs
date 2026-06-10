@@ -44,10 +44,11 @@ The selector script [`scripts/select_weekly_article_topic.mjs`](../scripts/selec
    - `npm run build`
 8. Build a social-share archive for the article.
    - Generate the text-only social copy from article context via Codex and validate the returned question/body format before writing the archive.
-9. Delete the contents of `hushline-website/src/library`.
-10. Copy the new contents of `docs/build/` into `hushline-website/src/library`.
-11. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
-12. When weekly social sharing is enabled, install the rendered article archive into `hushline-social/previous-posts/<date-or-date-suffix>/` and publish it through the existing LinkedIn publisher.
+9. Replace `docs/build/img/screenshots/` with the curated current screenshot tree from `hushline-website/src/assets/img/screenshots/current`.
+10. Delete the contents of `hushline-website/src/library`.
+11. Copy the prepared contents of `docs/build/` into `hushline-website/src/library`.
+12. Commit and force-push directly to the configured base branches in both repositories. No PR is created.
+13. When weekly social sharing is enabled, install the rendered article archive into `hushline-social/previous-posts/<date-or-date-suffix>/` and publish it through the existing LinkedIn publisher.
 
 The rendered article-share copy should:
 
@@ -143,6 +144,8 @@ The default publish layout assumes sibling checkouts:
 - `HUSHLINE_WEBSITE_REPO_SLUG` (default `scidsg/hushline-website`)
 - `HUSHLINE_WEBSITE_BASE_BRANCH` (default `main`)
 - `HUSHLINE_WEBSITE_LIBRARY_DIR` (default `src/library` inside `HUSHLINE_WEBSITE_REPO_DIR`)
+- `HUSHLINE_WEBSITE_CURRENT_SCREENSHOTS_DIR` (default `src/assets/img/screenshots/current` inside `HUSHLINE_WEBSITE_REPO_DIR`)
+- `HUSHLINE_DOCS_BUILD_SCREENSHOTS_DIR` (default `img/screenshots` inside `HUSHLINE_DOCS_BUILD_DIR`)
 - `HUSHLINE_DOCS_SITE_BASE_URL` (default `https://hushline.app/library`)
 - `HUSHLINE_DOCS_WEEKLY_SOCIAL_ENABLED` (default `1`)
 - `HUSHLINE_DOCS_WEEKLY_SOCIAL_PUBLISH` (default `1`)
@@ -158,6 +161,6 @@ The default publish layout assumes sibling checkouts:
 - This runner is intentionally lighter than the Hush Line app runners because `hushline-docs` has no Docker runtime or app test matrix to bootstrap.
 - It assumes both `hushline-docs` and `hushline-website` are dedicated automation checkouts because it hard-resets both working trees to their configured base branches.
 - If weekly social sharing is enabled, point `HUSHLINE_SOCIAL_REPO_DIR` at a dedicated automation checkout of `hushline-social` as well, because the runner refreshes that checkout before writing the new article-share archive and triggering LinkedIn publication.
-- The publish step is destructive by design: it removes the existing contents of `src/library` only after `npm run build` succeeds, then copies the fresh build output into place.
+- The publish step is destructive by design: it removes the existing contents of `src/library` only after `npm run build` succeeds, replaces the build's screenshot assets with the website repo's curated current screenshots, then copies the fresh build output into place.
 - `--dry-run` is safe for local inspection because it only prints the selected topic JSON and exits before any git reset, signing setup, or publish work.
 - The scheduled launchd wrapper is intended to run from a checkout on `main`. Running the weekly runner from stale feature branches is unsupported because older script snapshots can bypass newer publish and LinkedIn-share safeguards.

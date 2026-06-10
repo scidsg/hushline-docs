@@ -54,7 +54,9 @@ WEBSITE_REPO_DIR="${HUSHLINE_WEBSITE_REPO_DIR:-$DEFAULT_REPO_PARENT_DIR/hushline
 WEBSITE_REPO_SLUG="${HUSHLINE_WEBSITE_REPO_SLUG:-scidsg/hushline-website}"
 WEBSITE_BASE_BRANCH="${HUSHLINE_WEBSITE_BASE_BRANCH:-main}"
 WEBSITE_LIBRARY_DIR="${HUSHLINE_WEBSITE_LIBRARY_DIR:-$WEBSITE_REPO_DIR/src/library}"
+WEBSITE_CURRENT_SCREENSHOTS_DIR="${HUSHLINE_WEBSITE_CURRENT_SCREENSHOTS_DIR:-$WEBSITE_REPO_DIR/src/assets/img/screenshots/current}"
 DOCS_BUILD_DIR="${HUSHLINE_DOCS_BUILD_DIR:-$REPO_DIR/docs/build}"
+DOCS_BUILD_SCREENSHOTS_DIR="${HUSHLINE_DOCS_BUILD_SCREENSHOTS_DIR:-$DOCS_BUILD_DIR/img/screenshots}"
 ALLOW_FUTURE_PUBLICATION_DATE="${HUSHLINE_DOCS_ALLOW_FUTURE_PUBLICATION_DATE:-0}"
 SITE_BASE_URL="${HUSHLINE_DOCS_SITE_BASE_URL:-https://hushline.app/library}"
 SOCIAL_ENABLED="${HUSHLINE_DOCS_WEEKLY_SOCIAL_ENABLED:-1}"
@@ -336,6 +338,18 @@ sync_build_to_website() {
   runner_status "Replacing $WEBSITE_REPO_SLUG:$target_dir with the latest docs build."
   find "$target_dir" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
   cp -a "$build_dir"/. "$target_dir"/
+}
+
+sync_build_screenshots_from_website() {
+  local source_dir="$1"
+  local target_dir="$2"
+
+  assert_directory_exists "$source_dir"
+
+  runner_status "Replacing docs build screenshots with curated website screenshots from $source_dir."
+  rm -rf "$target_dir"
+  mkdir -p "$target_dir"
+  cp -a "$source_dir"/. "$target_dir"/
 }
 
 resolve_next_archive_key() {
@@ -839,6 +853,7 @@ main() {
     render_social_handoff "$article_path" "$article_slug"
   fi
 
+  sync_build_screenshots_from_website "$WEBSITE_CURRENT_SCREENSHOTS_DIR" "$DOCS_BUILD_SCREENSHOTS_DIR"
   sync_build_to_website "$DOCS_BUILD_DIR" "$WEBSITE_LIBRARY_DIR"
 
   git -C "$REPO_DIR" add -A
