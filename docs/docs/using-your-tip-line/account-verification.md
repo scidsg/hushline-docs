@@ -36,9 +36,9 @@ For an organization, publish the link on the organization's official website—n
 
 ## Step 4. Add the Official Page as a Self-Verified URL
 
-In **Settings > Profile**, scroll to **Profile Details**. Add a label such as “Official website,” then enter the complete HTTPS URL of the page where you published the Hush Line link. Select **Update Bio**.
+In **Settings > Profile**, scroll to **Custom Fields**. Add a label such as “Official website,” then enter the complete HTTPS URL of the page where you published the Hush Line link. Select **Update Bio**.
 
-Hush Line checks that page for the matching `rel="me"` link. When the check succeeds, a checkmark appears beside the URL on your profile. This proves that the Hush Line account and the official website are under related control; it does not by itself grant the account-level Verified badge.
+Hush Line checks that page for the matching `rel="me"` link. This automated check proves that the Hush Line account and the official website are under related control; it does not by itself grant the account-level Verified badge.
 
 ![Extra URL fields](/img/screenshots/artvandelay/auth-artvandelay-settings-profile-desktop-light-window-02.png)
 
@@ -49,7 +49,15 @@ If the checkmark does not appear, confirm that:
 - the page is public and available over HTTPS without a redirect; and
 - the `rel="me"` link is present in the page's HTML, rather than added only after JavaScript runs.
 
-## Step 5. Request Account Verification
+## Step 5. Confirm the Verified URL on Your Profile
+
+Visit your public Hush Line profile. A successfully verified URL has a checkmark immediately beside the website link, as shown below.
+
+![Checkmark beside a verified website URL on a Hush Line profile](./verified-url-profile.png)
+
+The checkmark applies to that URL. It is separate from the account-level **Verified** badge shown near the profile's display name.
+
+## Step 6. Request Account Verification
 
 After completing the LinkedIn and self-verified URL checks, contact us from your Hush Line account to request review. Businesses and other organizations should have an authorized representative available.
 
