@@ -40,7 +40,7 @@ In **Settings > Profile**, scroll to **Custom Fields**. Add a label such as “O
 
 Hush Line checks that page for the matching `rel="me"` link. This automated check proves that the Hush Line account and the official website are under related control; it does not by itself grant the account-level Verified badge.
 
-![Extra URL fields](/img/screenshots/artvandelay/auth-artvandelay-settings-profile-desktop-light-window-02.png)
+![Custom Fields with a verified Website URL and Update Bio button](./custom-fields-url-verification.png)
 
 If the checkmark does not appear, confirm that:
 
