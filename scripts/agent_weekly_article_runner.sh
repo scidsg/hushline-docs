@@ -605,7 +605,7 @@ Article requirements:
 10) Use the existing blog conventions in this repo. Use authors [hushline-agent] and tags [hushline] unless a small metadata adjustment is clearly needed.
 11) Include a <!-- truncate --> marker after the opening section.
 12) Do not add image assets unless they are necessary. A strong text-only article is acceptable.
-13) If you include screenshots, they must come from the latest local hushline-screenshots release and use above-the-fold -fold captures only. Do not use full-page screenshots. Do not use scrolled screenshots unless the feature is completely below the fold. When two screenshots add value, prefer one desktop and one mobile.
+13) If you include screenshots, fetch only the needed images from the published online screenshot manifest at https://raw.githubusercontent.com/scidsg/hushline-screenshots/main/releases/latest/manifest.json and use above-the-fold -fold captures only. Do not clone or download the screenshot archive repository. If the online source is unavailable, omit screenshots rather than using an unverified substitute. Do not use full-page screenshots. Do not use scrolled screenshots unless the feature is completely below the fold. When two screenshots add value, prefer one desktop and one mobile.
 14) Include these custom frontmatter fields so future weekly runs can rotate topics:
     - agent_topic_id: $topic_id
     - agent_feature_key: $feature_key
